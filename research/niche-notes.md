@@ -50,4 +50,3 @@ Another useful experiment compares blind and perceptive locomotion while degradi
 ## Categorization
 
 Gecko measures structural condition; ANYbotics primarily inspects operational equipment state. Mytra targets heavy volumetric material flow; Exotec targets container fulfillment. FieldAI bridges niche industrial deployment, world models, foundation models, and digital twins. CMR is a surgeon-controlled assistance platform. No padding was added: these eight cover construction, logistics, inspection, agriculture, surgery, and industrial autonomy.
-
