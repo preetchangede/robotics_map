@@ -1,0 +1,779 @@
+[
+  {
+    "id": "general-recovery",
+    "category": "general",
+    "title": "Autonomy that survives a whole shift",
+    "summary": "A robot must notice failed grasps, blocked routes, dropped objects and incomplete steps, then recover without a person resetting the scene. Long sequences expose a different reliability problem from completing one carefully staged skill.",
+    "why": "Small errors compound. Even assuming independent steps, a 99% reliable skill gives only about 82% success over twenty steps. In practice, one slip changes the state and can invalidate later actions. Useful deployment therefore needs measured intervention frequency, recovery time and productive hours, alongside task success.",
+    "approaches": "Combine fast action-consistency monitors with slower checks of task progress; keep a verified state estimate and explicitly plan recovery. Collect the states reached after mistakes rather than only successful demonstrations. Hierarchical skills and bounded retries help, but a monitor that merely stops the robot shifts the remaining work to an operator. Evaluate repeated, unreset sequences under realistic interruptions.",
+    "whatToWatch": "Unedited multi-hour runs, recovery success after injected failures, false alarm rates and total operator minutes per productive hour. Require the denominator and reset policy whenever a success rate is reported.",
+    "tags": [
+      "reliability",
+      "failure recovery",
+      "long horizon",
+      "fleet operations"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Sentinel: monitoring consistency and progress",
+        "url": "https://arxiv.org/abs/2410.04640",
+        "type": "paper",
+        "note": "Distinguishes erratic action failures from confident failures to make task progress; monitoring does not itself solve recovery."
+      },
+      {
+        "title": "RoboCasa task environments",
+        "url": "https://robocasa.ai/",
+        "type": "demo",
+        "note": "Household task sequences and foundational skills provide concrete environments for probing compounding errors."
+      },
+      {
+        "title": "Industrial automation practitioners discuss the demo-to-floor gap",
+        "url": "https://www.reddit.com/r/robotics/comments/1siej3f/people_with_10_years_in_industrial_automation_is/",
+        "type": "reddit",
+        "note": "Practitioner sentiment and discovery; comments are not an audited measure of industrial reliability."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "general-contact",
+    "category": "general",
+    "title": "Dexterity when contact is hidden",
+    "summary": "Insertion, peeling, deformable handling and fragile objects depend on force, slip and material state that cameras cannot fully observe. General-purpose hands need contact feedback and compliant control, not simply more visually convincing grasp demonstrations.",
+    "why": "The valuable tasks often involve touching something uncertain: a cable snags, a bag deforms, or a fitting jams. Applying the wrong force can damage the workpiece even when the visual trajectory looks correct. Sensor wear and replacement also change the input distribution, making dexterity a hardware, control and learning problem.",
+    "approaches": "Fuse vision, touch and force with a fast controller that limits contact forces and adapts compliance. Tactile-VLA explores learned tactile reasoning plus hybrid position-force control; AnySkin tackles replaceability and sensor-instance transfer. Compare approaches across different objects, materials and replacement sensors. The open question is economical, robust contact generalization, rather than whether tactile feedback can help in selected laboratory tasks.",
+    "whatToWatch": "Task success and damage rates after changing friction, object compliance, lighting and tactile skins. Look for sensor calibration cost, maintenance intervals, control latency and force traces, alongside video demonstrations.",
+    "tags": [
+      "tactile sensing",
+      "dexterity",
+      "contact",
+      "compliant control"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Tactile-VLA",
+        "url": "https://arxiv.org/abs/2507.09160",
+        "type": "paper",
+        "note": "Combines tactile reasoning with hybrid position-force control; published demonstrations remain a bounded evaluation."
+      },
+      {
+        "title": "AnySkin",
+        "url": "https://arxiv.org/abs/2409.08276",
+        "type": "paper",
+        "note": "Addresses tactile sensor versatility, replaceability and transfer across sensor instances."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "general-safety",
+    "category": "general",
+    "title": "A safety envelope for learned whole-body behavior",
+    "summary": "A general-purpose robot must translate uncertain visual and language reasoning into bounded physical behavior around people. Refusing a dangerous instruction, avoiding a collision and providing a safety-rated stop are different requirements that need coordinated evidence.",
+    "why": "A language model can correctly describe a hazard while an actuator still moves dangerously. Whole-body motion, carried loads and unexpected human movement make fixed workspace assumptions fragile. Deployments need a documented operating envelope and independent physical safeguards; a semantic safety benchmark cannot establish compliance or prove safety across arbitrary situations.",
+    "approaches": "Separate semantic instruction checks, physical constraint enforcement and operational safeguards. Use independent monitoring, restricted speeds and forces, safe fallback controllers and application-level risk assessment. Test adversarial instructions and dynamic human intrusion separately. DeepMind explicitly labels its demonstrated safety-distance response as ongoing research rather than a guaranteed safety-rated system, illustrating the gap between model behavior and system assurance.",
+    "whatToWatch": "Independent safety assessment for a stated application, measured stopping behavior, contact-force evidence and documented behavior outside the operating envelope. Model benchmark gains should be accompanied by hardware and operational safeguards.",
+    "tags": [
+      "safety",
+      "whole body",
+      "human interaction",
+      "assurance"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Gemini Robotics safety framework",
+        "url": "https://deepmind.google/models/gemini-robotics/responsibly-advancing-ai-and-robotics/",
+        "type": "company",
+        "note": "Primary description of semantic, physical and operational safety layers; explicitly qualifies the safety-distance demonstration."
+      },
+      {
+        "title": "ISO 10218-2:2025 application and cell safety",
+        "url": "https://www.iso.org/standard/73934.html",
+        "type": "report",
+        "note": "Scope covers industrial robot applications and cells; the public overview is not the full standard or a humanoid certification."
+      },
+      {
+        "title": "ASIMOV semantic safety research",
+        "url": "https://arxiv.org/abs/2503.08663",
+        "type": "paper",
+        "note": "Evaluates semantic safety reasoning, a distinct layer from safety-rated control."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "foundation-embodiment",
+    "category": "foundation",
+    "title": "Transfer a skill without rebuilding the robot interface",
+    "summary": "Training across many robots is promising, but identical language instructions can require different action spaces, timing, reach and contact behavior. Transferring a policy to a new body still needs an interface that respects that body's constraints.",
+    "why": "A shared dataset format does not make a parallel gripper equivalent to a hand or a mobile manipulator equivalent to a fixed arm. Camera placement and controller conventions also matter. Cross-robot positive transfer is real evidence, but it should not be confused with zero-calibration deployment on any new robot.",
+    "approaches": "Use embodiment-aware representations, normalized task-space actions, modular observation and action adapters, and targeted fine-tuning. Open X-Embodiment demonstrates positive transfer; Octo makes adaptation to new sensor and action setups a design goal. Evaluate transfer to robots held out during pretraining and disclose new demonstrations, calibration and controller tuning. Measure the total adaptation effort, not just the size of a model update.",
+    "whatToWatch": "Leave-one-robot-out results with adaptation budgets, action-frequency changes and end-effector differences disclosed. Strong evidence reduces setup time and new demonstrations while maintaining precision, safety and closed-loop recovery on the target hardware.",
+    "tags": [
+      "cross embodiment",
+      "transfer learning",
+      "action representation",
+      "calibration"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Open X-Embodiment and RT-X",
+        "url": "https://arxiv.org/abs/2310.08864",
+        "type": "paper",
+        "note": "Establishes standardized multi-robot data and positive transfer; it does not claim every unseen body is ready to deploy."
+      },
+      {
+        "title": "Octo generalist robot policy",
+        "url": "https://arxiv.org/abs/2405.12213",
+        "type": "paper",
+        "note": "Explicitly studies flexible adaptation to new observations and action spaces."
+      },
+      {
+        "title": "Open X-Embodiment dataset code",
+        "url": "https://github.com/google-deepmind/open_x_embodiment",
+        "type": "code",
+        "note": "Useful for inspecting the diversity and conventions hidden beneath a unified dataset interface."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "foundation-data",
+    "category": "foundation",
+    "title": "Data coverage, not just trajectory volume",
+    "summary": "Robot datasets are expensive to collect and often overrepresent repeatable successes in familiar settings. The bottleneck is coverage of contact, unusual objects, ambiguous instructions and recovery states, with consistent calibration and labels across collection sites.",
+    "why": "Millions of similar frames may add little information about a rare jam or an unfamiliar material. Unlike internet text, action data depends on a particular controller, sensor rig and physical outcome. DROID expands real-scene diversity, but gathering and curating representative physical experience remains a substantial hardware and human-labor investment.",
+    "approaches": "Audit task, object, scene and failure coverage before scaling collection. Standardize timestamps, action conventions, camera calibration and outcome labels; use interventions to target missing states. Combine human demonstration, autonomous exploration and simulated data, while measuring what each source contributes to held-out real tasks. Recovery and force-sensitive data should be evaluated explicitly rather than inferred from total dataset size.",
+    "whatToWatch": "Learning curves by data diversity, held-out scene and failure mode, plus transparent collection cost and annotation quality. Ask whether additional data improves recovery and contact tasks or mostly repeats existing successful behaviors.",
+    "tags": [
+      "robot data",
+      "data quality",
+      "coverage",
+      "teleoperation"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "DROID in-the-wild manipulation dataset",
+        "url": "https://arxiv.org/abs/2403.12945",
+        "type": "paper",
+        "note": "Details the logistical, safety and hardware cost of collecting diverse robot data and reports improved generalization."
+      },
+      {
+        "title": "DROID collection workflow",
+        "url": "https://droid-dataset.github.io/droid/example-workflows/data-collection.html",
+        "type": "code",
+        "note": "Documents calibration and collection procedures; useful for understanding the effort behind raw trajectory counts."
+      },
+      {
+        "title": "DROID dataset visualizer",
+        "url": "https://droid-dataset.github.io/visualizer/",
+        "type": "demo",
+        "note": "Allows direct inspection of a sample's scene, object and task distribution rather than relying only on aggregate size."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "foundation-evaluation",
+    "category": "foundation",
+    "title": "Tell generalization apart from benchmark familiarity",
+    "summary": "High benchmark scores can hide reliance on familiar object positions, task identities or instruction patterns. Foundation policies need evaluation that measures changed environments and meaningful language use, with independent held-out tasks and reproducible real-world tests.",
+    "why": "LIBERO-PRO reports that selected policies retain similar trajectories under changed objects or corrupted instructions, despite strong scores under the standard protocol. That finding concerns those tested settings, not every policy. It nevertheless exposes a concrete risk: a leaderboard can reward remembered motion while obscuring perception and instruction-following failures.",
+    "approaches": "Perturb objects, camera views, starting states and language independently; include counterfactual tests such as removing the requested object. Hold out combinations and sites, publish resets and trial counts, and report uncertainty. Pair simulation rankings with physical evaluations. Evaluate task comprehension, precision, long-horizon behavior and robustness separately so a single average cannot conceal a commercially important weakness.",
+    "whatToWatch": "Reproducible protocols with task holdouts, confidence intervals and meaningful perturbations. Prefer models whose rankings persist across sites and physical trials, and whose behavior changes appropriately when instructions or objects change.",
+    "tags": [
+      "evaluation",
+      "out of distribution",
+      "benchmarks",
+      "instruction following"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "LIBERO-PRO evaluation audit",
+        "url": "https://arxiv.org/abs/2510.03827",
+        "type": "paper",
+        "note": "Specific reported failure modes under changed objects, positions, instructions and environments; read as a scoped benchmark audit."
+      },
+      {
+        "title": "SIMPLER paired simulation and physical evaluation",
+        "url": "https://arxiv.org/abs/2405.05941",
+        "type": "paper",
+        "note": "Shows why correlation with physical policy behavior is a useful validation target."
+      },
+      {
+        "title": "RoboDojo sim-and-real benchmark",
+        "url": "https://arxiv.org/abs/2607.04434",
+        "type": "paper",
+        "note": "Recent preprint expands evaluation across precision, memory, long horizon, generalization and instruction following."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "niche-supervision",
+    "category": "niche",
+    "title": "Unit economics after the rescue calls",
+    "summary": "A specialized robot can perform its core task well and still lose money when interventions, travel, consumables and downtime are counted. Agricultural supervision research makes this concrete: the economically optimal human involvement depends on failures and fleet size.",
+    "why": "Replacing labor only helps if the replacement does not create more expensive support work. Seasonal utilization makes agricultural machinery particularly sensitive to delays. A robot-as-a-service price or throughput headline is insufficient without productive availability and supervision cost. Some intervention is economically rational; the goal is profitable operation, not an arbitrary claim of complete autonomy.",
+    "approaches": "Build an intervention ledger that records frequency, duration, location, cause and lost production. Model supervision jointly with fleet size and operational windows, rather than applying a fixed labor-savings assumption. Separate remote diagnosis from on-site recovery. Pilot across full work periods and representative conditions, and compare cost per successful unit of output against the customer's existing process.",
+    "whatToWatch": "Paid repeat deployments with support ratios, seasonal utilization, repair costs and net output disclosed. Look for cost per accepted unit after interventions, rather than best-case cycle time or total demonstrations.",
+    "tags": [
+      "unit economics",
+      "agriculture",
+      "supervision",
+      "uptime"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Economically optimal farmer supervision of crop robots",
+        "url": "https://hau.repository.guildhe.ac.uk/id/eprint/17883/",
+        "type": "paper",
+        "note": "Primary economic model connects intervention frequency, supervisor location and fleet size to optimal supervision."
+      },
+      {
+        "title": "Lessons in adoption of autonomous field equipment",
+        "url": "https://doi.org/10.1002/aepp.13177",
+        "type": "paper",
+        "note": "Explores adoption and supervision constraints; conclusions depend on the farm and regulatory scenarios studied."
+      },
+      {
+        "title": "Practitioner discussion of integration costs",
+        "url": "https://www.reddit.com/r/robotics/comments/1ky7hs7/estimate_cost_for_this_robot/",
+        "type": "reddit",
+        "note": "Qualitative discussion of integration and machine-vision work; not a reliable market price estimate."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "niche-integration",
+    "category": "niche",
+    "title": "Make a robot fit the customer's whole workflow",
+    "summary": "Factory and logistics robots must coordinate with conveyors, doors, elevators, inventory software and other fleets. A successful isolated skill does not guarantee useful throughput when upstream variability, exception handling and conflicting vendor interfaces enter the workflow.",
+    "why": "An AMR that reaches its destination can still leave a production line waiting if the handoff, inventory transaction or shared corridor fails. MassRobotics explicitly distinguishes basic information exchange from fleet management, navigation and safety. Integration therefore needs clear ownership of decisions and exceptions, not simply a claim that devices support a standard.",
+    "approaches": "Start from the customer's bottleneck and measure end-to-end accepted output. Define machine handshakes, mission ownership, traffic coordination and fallback procedures; version the interfaces and test degraded states. Use interoperability standards for the capabilities they actually cover. Amazon's production pick-success work illustrates task-specific models grounded in operating data, while mixed-fleet orchestration remains a separate systems problem.",
+    "whatToWatch": "Acceptance tests spanning the entire workflow, named interface contracts and measured recovery from network, handoff and equipment failures. Repeat deployments should reduce commissioning time and improve end-to-end throughput without escalating custom engineering.",
+    "tags": [
+      "industrial integration",
+      "interoperability",
+      "logistics",
+      "workflow"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "MassRobotics interoperability standard scope",
+        "url": "https://www.massrobotics.org/what-is-the-massrobotics-amr-interoperability-standard/",
+        "type": "report",
+        "note": "Explicitly states that the standard is not a fleet manager, navigation system or safety system."
+      },
+      {
+        "title": "MassRobotics AMR interoperability implementation",
+        "url": "https://github.com/MassRobotics-AMR/AMR_Interop_Standard",
+        "type": "code",
+        "note": "Inspectable message definitions and reference implementation for basic mixed-fleet information exchange."
+      },
+      {
+        "title": "Amazon production package manipulation",
+        "url": "https://arxiv.org/abs/2305.10272",
+        "type": "paper",
+        "note": "Primary work on learned pick-success metrics using real production data; not evidence that general warehouse integration is solved."
+      },
+      {
+        "title": "AMR practitioners discuss deployment challenges",
+        "url": "https://www.reddit.com/r/robotics/comments/17spm7x/what_are_the_greatest_challenges_for_autonomous/",
+        "type": "reddit",
+        "note": "Discovery and qualitative discussion of interoperability and environment integration costs."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "niche-clinical",
+    "category": "niche",
+    "title": "From tissue demonstrations to clinical evidence",
+    "summary": "Autonomous surgical steps must handle variable anatomy, tissue deformation and unexpected events over extended procedures. Laboratory success establishes a research capability; clinical value requires a defined intended use, representative validation and evidence about patient outcomes and human supervision.",
+    "why": "SRT-H reports autonomous step-level success on eight unseen ex vivo gallbladders, an important but bounded result. It does not establish autonomous surgery on patients. FDA guidance also distinguishes authorized procedures from unproven long-term outcomes in certain uses. Precision, workflow fit, complication handling and outcomes must be assessed separately as capability expands.",
+    "approaches": "Use hierarchical planning with low-level control and explicit corrective actions, while retaining surgeon oversight and defined escalation. Evaluate anatomical and procedural variation, failure detection, recovery and operator learning curves. Progress through appropriate preclinical and clinical evidence for each intended use. Treat outcome validation as an engineering and clinical program, rather than extrapolating from successful video or a small tissue study.",
+    "whatToWatch": "Representative prospective evidence, clearly stated autonomy level, intended-use authorization and reporting of complications and interventions. Distinguish ex vivo experiments, supervised human procedures and demonstrated patient benefit whenever a milestone is described.",
+    "tags": [
+      "surgical robotics",
+      "clinical validation",
+      "soft tissue",
+      "human oversight"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "SRT-H hierarchical autonomous surgical steps",
+        "url": "https://arxiv.org/abs/2505.10251",
+        "type": "paper",
+        "note": "Reports eight unseen ex vivo gallbladder trials; explicitly a step toward clinical deployment, not a patient outcome study."
+      },
+      {
+        "title": "FDA computer-assisted surgical systems",
+        "url": "https://www.fda.gov/medical-devices/surgery-devices/computer-assisted-surgical-systems",
+        "type": "report",
+        "note": "Clarifies intended use, training and limits of evidence for certain long-term cancer-related outcomes."
+      },
+      {
+        "title": "FDA draft guidance on RAS premarket submissions",
+        "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/robotically-assisted-surgical-devices-premarket-submissions",
+        "type": "report",
+        "note": "September 2026 draft recommendations on nonclinical testing, clinical data and labeling; draft status matters."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "simulation-contact",
+    "category": "simulation",
+    "title": "Fast contact that behaves like the real material",
+    "summary": "A simulator needs friction, compliance, collision geometry and actuator behavior that reproduce task-relevant contact. Stable-looking motion is insufficient: a policy may exploit solver artifacts or rely on a grip that disappears when the physical surface changes.",
+    "why": "Insertion and dexterity are especially sensitive to small contact errors. MuJoCo documents a deliberately soft constraint model and distinct friction dimensions, showing that contact settings encode modeling choices rather than universal material truth. A practitioner biped thread describes unrealistic sliding versus glued feet, a useful anecdote about calibration difficulty rather than proof of one simulator's inadequacy.",
+    "approaches": "Measure forces and motion on representative hardware, identify parameters from experiments, and validate contact events rather than only rendered images. Use task-appropriate collision meshes, friction models, compliance and actuator limits. Stress-test solver settings and timestep sensitivity. More detailed deformable models can help selected tasks but cost throughput; the useful target is enough fidelity to preserve physical policy behavior.",
+    "whatToWatch": "Force traces, slip thresholds, insertion outcomes and timestep sensitivity compared with hardware. Good evidence explains which contact regimes the model matches, what was calibrated and where solver or material assumptions still fail.",
+    "tags": [
+      "contact physics",
+      "friction",
+      "system identification",
+      "deformable simulation"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "MuJoCo contact and constraint computation",
+        "url": "https://mujoco.readthedocs.io/en/stable/computation/",
+        "type": "code",
+        "note": "Primary documentation of soft constraints, contact dimensionality, friction cones and solver assumptions."
+      },
+      {
+        "title": "MuJoCo model and parameter design",
+        "url": "https://mujoco.readthedocs.io/en/stable/modeling.html",
+        "type": "code",
+        "note": "Explains how contact and constraint parameters affect the model; useful for controlled calibration experiments."
+      },
+      {
+        "title": "Biped builder reports contact and actuator mismatch",
+        "url": "https://www.reddit.com/r/robotics/comments/1ww01sd/small_update_on_my_walking_robot/",
+        "type": "reddit",
+        "note": "October 2026 practitioner observation; anecdotal and hardware-specific, not a simulator benchmark."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "simulation-transfer",
+    "category": "simulation",
+    "title": "Randomize the uncertainties that actually matter",
+    "summary": "Domain randomization can make policies robust to uncertain physics and appearances, but choosing the right distributions remains difficult. Missing actuator delays or correlated parameters can break transfer; indiscriminately widening every parameter can make learning unnecessarily conservative or inefficient.",
+    "why": "Real uncertainty is structured. Motor strength changes with load, sensors have delays, and camera exposure changes jointly with appearance. DrEureka addresses the manual effort in designing rewards and randomization distributions. Successful transfer in selected locomotion and manipulation tasks is encouraging, but does not identify a universal distribution for every robot and operating condition.",
+    "approaches": "Combine system identification with targeted randomization and real-world discrepancy tests. Include actuator dynamics, latency, sensor noise, controller conventions and correlated changes that the deployment can actually experience. Use adaptive curricula or automated proposal tools to reduce tuning work. Keep a small physical validation set separate from tuning, and collect failures that expose uncertainties the simulator did not cover.",
+    "whatToWatch": "Transfer across multiple physical units and conditions, with tuning effort and hardware validation budgets disclosed. Inspect whether failure cases motivate new distributions and whether robustness persists after wear, payload and latency changes.",
+    "tags": [
+      "sim to real",
+      "domain randomization",
+      "actuator models",
+      "distribution shift"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "DrEureka sim-to-real design research",
+        "url": "https://arxiv.org/abs/2406.01967",
+        "type": "paper",
+        "note": "Automates reward and domain-randomization design; reports selected quadruped and dexterous-manipulation experiments."
+      },
+      {
+        "title": "DrEureka implementation",
+        "url": "https://github.com/eureka-research/DrEureka",
+        "type": "code",
+        "note": "Allows inspection of rewards, randomized parameters and training setup instead of treating transfer as a black box."
+      },
+      {
+        "title": "Open-source biped sim-to-real discussion",
+        "url": "https://www.reddit.com/r/robotics/comments/1q2vj4o/finally_got_simtoreal_working_on_my_opensource/",
+        "type": "reddit",
+        "note": "Practitioner discussion of actuator identification, observable quantities, friction and delays; self-reported evidence."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "simulation-validation",
+    "category": "simulation",
+    "title": "Does a simulator rank policies correctly?",
+    "summary": "A visually realistic environment is not automatically a valid benchmark or a source of useful training data. The central validation question is whether policy improvements, failures and sensitivities measured in simulation predict corresponding behavior on physical robots.",
+    "why": "A simulator can reward artifacts, use an unrealistic controller or omit the object variations that cause real failure. Then the best simulated policy may be the worse deployment choice. SIMPLER demonstrates strong paired sim-real correlation for specified setups and introduces a ranking-focused metric; that validation must be repeated when bodies, tasks or conditions change.",
+    "approaches": "Run matched policies in paired simulated and physical tasks, compare rankings and failure modes, and identify the visual and control gaps separately. Report ranking violations as well as correlation and uncertainty. Validate synthetic assets for scale, collision and dynamics, not just rendering. Maintain regression scenarios drawn from physical failures and state explicitly which environments the simulator can credibly predict.",
+    "whatToWatch": "Paired physical validation across several policies, meaningful task variation and ranking uncertainty. Treat photorealism and large synthetic episode counts as intermediate properties until their effect on real task performance is demonstrated.",
+    "tags": [
+      "simulation validation",
+      "synthetic data",
+      "benchmarks",
+      "real-world evaluation"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "SIMPLER evaluation research",
+        "url": "https://arxiv.org/abs/2405.05941",
+        "type": "paper",
+        "note": "Paired physical and simulated tests support scoped predictive validity, not a blanket claim for all simulations."
+      },
+      {
+        "title": "SIMPLER methods and ranking metric",
+        "url": "https://simpler-env.github.io/",
+        "type": "demo",
+        "note": "Explains system identification, visual matching and Mean Maximum Rank Violation for policy ranking."
+      },
+      {
+        "title": "Benchmarking perspective on sim-to-real policy evaluation",
+        "url": "https://arxiv.org/abs/2508.11117",
+        "type": "paper",
+        "note": "Recommends perturbation, visual fidelity and measured alignment between simulated and real-world performance."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "world-causality",
+    "category": "world",
+    "title": "Make actions cause the right future",
+    "summary": "An action-conditioned video model can produce a plausible continuation while ignoring or misinterpreting the action. A useful simulator must distinguish counterfactual actions from the same state, including doing nothing, and predict the correct consequences for planning.",
+    "why": "If left and right commands produce similar futures, an agent cannot use the model to choose between them. Replaying common motion patterns can look convincing while hiding this failure. ACT-Bench measures action fidelity, while recent CoCo research specifically examines statistical shortcuts and motion persisting under zero action. This is causal-control evidence beyond video quality.",
+    "approaches": "Evaluate the same initial state with alternative, inverse and zero actions. Train with explicit action labels where available and enforce consistency under counterfactual changes; latent-action learning needs careful grounding to physical controls. Report action fidelity, state change and planning success separately. Distinguish intended-action text prompts from low-level control inputs with known timing and physical meaning.",
+    "whatToWatch": "Same-state counterfactual tests, zero-action stability and verified action-to-motion mappings. Strong results show that changing the control changes the predicted outcome appropriately, including unusual action sequences outside common training trajectories.",
+    "tags": [
+      "causal control",
+      "action conditioning",
+      "counterfactuals",
+      "planning"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "ACT-Bench action fidelity",
+        "url": "https://arxiv.org/abs/2412.05337",
+        "type": "paper",
+        "note": "Driving-focused benchmark finds that video plausibility does not establish adherence to trajectory instructions."
+      },
+      {
+        "title": "CoCo counterfactual consistency research",
+        "url": "https://arxiv.org/abs/2608.04653",
+        "type": "paper",
+        "note": "August 2026 preprint identifies statistical action shortcuts and proposes inverse/zero-action consistency tests."
+      },
+      {
+        "title": "Genie generative interactive environments",
+        "url": "https://deepmind.google/research/publications/60474/",
+        "type": "paper",
+        "note": "Shows latent-action learning from unlabeled videos; action grounding remains a distinct issue from environment diversity."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "world-persistence",
+    "category": "world",
+    "title": "A world that remembers what happened off camera",
+    "summary": "Interactive world models need persistent objects, geometry and physical state when an agent turns away or returns later. Long rollouts can accumulate errors, so local visual consistency does not guarantee a stable world for multi-step interaction and planning.",
+    "why": "An agent may put an object behind a door and return after another action. If it disappears, moves without cause or changes size, the learned environment invalidates the plan. DeepMind reports finite visual-memory and consistency horizons for Genie 3; PlayWorld evaluates out-of-sight evolution and finds persistent-state weaknesses in its tested models.",
+    "approaches": "Use explicit memory, object-centric state, spatial representations and constraints on physical evolution alongside generated imagery. Test revisits, occlusion, delayed interaction and irreversible changes over increasing horizons. Compare state error and task success, not just frame quality. Persistent state is not the same as a deterministic world: uncertain hidden events should be represented coherently rather than silently rewriting the scene.",
+    "whatToWatch": "Long unedited revisit tests, persistent object identity and intervention effects that survive occlusion. Require stated memory horizons and distinguish a repeatable physical state from a visually similar reconstruction produced on return.",
+    "tags": [
+      "persistent state",
+      "spatial memory",
+      "long horizon",
+      "physics"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Genie 3 official capabilities and limitations",
+        "url": "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/",
+        "type": "company",
+        "note": "Documents finite consistency/visual-memory horizons and current limits; use as developer disclosure, not independent validation."
+      },
+      {
+        "title": "PlayWorld interactive long-horizon benchmark",
+        "url": "https://arxiv.org/abs/2608.13552",
+        "type": "paper",
+        "note": "August 2026 preprint assesses geometry, interaction and out-of-sight evolution on objective-driven interactions."
+      },
+      {
+        "title": "Physion physical prediction benchmark",
+        "url": "https://arxiv.org/abs/2106.08261",
+        "type": "paper",
+        "note": "Controlled physical scenarios provide a complementary way to test prediction beyond visual appearance."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "world-evaluation",
+    "category": "world",
+    "title": "Prove that imagined worlds improve real decisions",
+    "summary": "Perceptual video metrics and compelling demos do not establish a world model's usefulness for robotics. Evaluation needs physical consistency, action fidelity, calibrated uncertainty and downstream decisions, with a clear test of whether training or planning transfers to reality.",
+    "why": "A planner can exploit an imagined shortcut that is impossible on the real machine. Human ratings of visual realism may miss subtle geometry or conservation errors. WorldModelBench introduces instruction-following and physics dimensions; interactive benchmarks add objectives. Neither alone proves that a policy trained inside a model will operate safely or usefully on hardware.",
+    "approaches": "Combine controlled physical prediction tests, counterfactual action tests, long-horizon interaction and held-out real task evaluation. Audit automated judges against human labels and measurable ground truth, since a judge can reward its own blind spots. Compare planning or training with and without the model at equal compute and real-data budgets. Report failures and uncertainty for unfamiliar conditions.",
+    "whatToWatch": "Independent, reproducible evaluations where better model scores predict better physical decisions. Look for matched-budget ablations, real-world transfer, judge calibration and explicit failures, alongside separate physics, controllability and video-quality measurements.",
+    "tags": [
+      "world model evaluation",
+      "physical reasoning",
+      "sim to real",
+      "uncertainty"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "WorldModelBench",
+        "url": "https://arxiv.org/abs/2502.20694",
+        "type": "paper",
+        "note": "Adds physics-adherence and instruction-following labels beyond generic video-quality assessment."
+      },
+      {
+        "title": "Physion reproducible physical prediction",
+        "url": "https://arxiv.org/abs/2106.08261",
+        "type": "paper",
+        "note": "Primary dataset comparing prediction across controlled physical scenarios and human judgments."
+      },
+      {
+        "title": "PlayWorld benchmark code",
+        "url": "https://github.com/hku-sail/PlayWorld",
+        "type": "code",
+        "note": "Objective-driven interactive evaluation complements single-clip quality; it does not itself certify physical transfer."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "twins-synchronization",
+    "category": "twins",
+    "title": "Keep the twin current, and say when it is stale",
+    "summary": "A useful digital twin must maintain a coherent relationship with the physical asset as sensors lag, events arrive out of order and equipment changes. Synchronization is an ongoing state-estimation problem, not a one-time 3D modeling or dashboard task.",
+    "why": "A detailed replica can still give the wrong recommendation if a replaced component, delayed reading or changed process is missing from its state. Different subsystems update at different rates. Microsoft's twin-to-twin event documentation makes the propagation machinery explicit; NIST emphasizes continuous validation. A live data connection alone does not establish a current, trustworthy state.",
+    "approaches": "Track measurement timestamps, asset identity, calibration, configuration and provenance. Use event-driven updates with explicit reconciliation and uncertainty for missing observations. Define freshness budgets by decision: maintenance planning and collision avoidance need different latency. Replay recorded incidents, test outages and validate the estimated state against independent measurements after maintenance or process changes.",
+    "whatToWatch": "Freshness and state-error budgets tied to specific decisions, tested outage recovery and versioned asset changes. A trustworthy system exposes stale or uncertain state clearly and reconciles updates across linked assets and subsystems.",
+    "tags": [
+      "live synchronization",
+      "state estimation",
+      "data provenance",
+      "observability"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "NIST continuous twin validation",
+        "url": "https://www.nist.gov/digital-twins/validating-and-advancement",
+        "type": "report",
+        "note": "Connects continuous validation with synchronized, trustworthy operational twins."
+      },
+      {
+        "title": "Azure twin-to-twin event handling",
+        "url": "https://learn.microsoft.com/en-us/azure/digital-twins/how-to-send-twin-to-twin-events",
+        "type": "code",
+        "note": "Primary implementation documentation shows how updates are explicitly propagated through a twin graph."
+      },
+      {
+        "title": "Azure twin graph metadata",
+        "url": "https://learn.microsoft.com/en-us/azure/digital-twins/concepts-twins-graph",
+        "type": "code",
+        "note": "Documents property update timestamps; receiving an update and observing the physical event are distinct concepts."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "twins-semantics",
+    "category": "twins",
+    "title": "Interoperability that preserves physical meaning",
+    "summary": "Connecting CAD, sensors, simulators and enterprise systems requires shared asset identities, units, coordinate frames and semantics. Transporting data in a common file or protocol is insufficient if different twins disagree about what that data represents.",
+    "why": "A machine's measured temperature, a simulator's material temperature and a maintenance system's limit can refer to different locations or time bases. Aggregating twins multiplies these mismatches. NIST's interoperability analysis identifies technical, organizational and standards challenges; OPC UA with Asset Administration Shells offers semantic structure, but implementation choices and cross-system agreement remain necessary.",
+    "approaches": "Use explicit schemas, semantic identifiers, unit and coordinate conventions, lifecycle versioning and documented model contracts. Asset Administration Shell submodels and OPC UA information models provide building blocks; co-simulation also needs compatible time and boundary conditions. Test interoperability with realistic end-to-end scenarios, including changed versions and missing fields. Avoid treating syntactically valid exchange as proof of shared meaning.",
+    "whatToWatch": "Cross-vendor conformance tests that preserve units, identities and meanings, plus version migration and co-simulation evidence. Watch whether integration effort decreases across deployments instead of simply moving into bespoke schema translation.",
+    "tags": [
+      "semantic interoperability",
+      "asset administration shell",
+      "co simulation",
+      "standards"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "NIST digital twin interoperability analysis",
+        "url": "https://www.nist.gov/publications/interoperability-digital-twins-challenges-success-factors-and-future-research",
+        "type": "paper",
+        "note": "Analyzes aggregated twins across technical, strategic, standardization and organizational perspectives."
+      },
+      {
+        "title": "OPC UA for Asset Administration Shell",
+        "url": "https://reference.opcfoundation.org/specs/OPC-30270/4.1",
+        "type": "report",
+        "note": "Primary specification explains standardized asset representation and the role of semantic models."
+      },
+      {
+        "title": "Digital Twin Consortium interoperability framework",
+        "url": "https://www.digitaltwinconsortium.org/wp-content/uploads/sites/3/2022/06/Digital-Twin-System-Interoperability-Framework-12072021.pdf",
+        "type": "report",
+        "note": "Industry framework distinguishes multiple interoperability concepts, including semantics."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "twins-credibility",
+    "category": "twins",
+    "title": "Validate the decision, not the realism of the replica",
+    "summary": "A digital twin must be credible for a stated decision and operating range. That requires verified software, validated models, quantified uncertainty and trustworthy measurements, rather than assuming that a detailed visualization or accurate historical fit implies predictive reliability.",
+    "why": "A twin used to choose maintenance intervals has different acceptable errors from one used to control a machine. Hidden model discrepancy and drifting sensors can yield confident but wrong recommendations. NIST calls for verification, validation and uncertainty quantification throughout the lifecycle and separately analyzes trust in the data and control interfaces that twins centralize.",
+    "approaches": "Define intended use, acceptance criteria and validation cases before building the model. Separate measurement uncertainty, parameter uncertainty and model discrepancy; test predictions on held-out operating conditions. Version evidence with the model and asset configuration, and revalidate after change. Preserve data provenance and integrity so corrupted inputs cannot masquerade as physical changes. Publish where the twin supports decisions and where it does not.",
+    "whatToWatch": "Decision-specific validation evidence, uncertainty intervals that remain calibrated under changed conditions and documented revalidation triggers. Seek demonstrated improvement in maintenance, quality or control outcomes, with errors and operating limits made explicit.",
+    "tags": [
+      "verification and validation",
+      "uncertainty quantification",
+      "trust",
+      "decision support"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "NIST credibility considerations for manufacturing twins",
+        "url": "https://www.nist.gov/publications/credibility-consideration-digital-twins-manufacturing",
+        "type": "paper",
+        "note": "Primary argument for lifecycle VVUQ and intended-purpose credibility assessment."
+      },
+      {
+        "title": "NIST IR 8356 security and trust",
+        "url": "https://nvlpubs.nist.gov/nistpubs/ir/2025/NIST.IR.8356.pdf",
+        "type": "report",
+        "note": "Details how centralizing instrument data and control feeds introduces integrity and trust challenges."
+      },
+      {
+        "title": "NIST Digital Twins Workshops Summary Report",
+        "url": "https://www.nist.gov/publications/digital-twins-workshops-summary-report",
+        "type": "report",
+        "note": "July 2026 synthesis identifies VVUQ, interoperability and cybersecurity as persistent research and standards priorities."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "spatial-geometry",
+    "category": "spatial",
+    "title": "Good pixels are not yet trustworthy surfaces",
+    "summary": "Gaussian splats can reproduce images while encoding uncertain or inconsistent surface geometry. Robotics, measurement and collision require metric depth, thin structures and usable surfaces, so reconstruction must be evaluated beyond photorealistic novel views and image similarity.",
+    "why": "A floating splat or blurry boundary may be visually acceptable yet place a grasp or collision surface incorrectly. Sparse views, reflections and camera errors amplify this ambiguity. The 2DGS paper explicitly addresses multi-view-inconsistent geometry in volumetric 3D Gaussians. Geometry remains a distinct target from appearance, even when improved representations reduce the gap.",
+    "approaches": "Add depth, normals, surface consistency and metric constraints where available. Compare 2D surface splats, mesh extraction and hybrid representations against independent depth or scan references. Separate accurate observed geometry from inferred unseen regions. Evaluate thin objects, reflective surfaces and sparse captures, and carry uncertainty into downstream planning rather than treating every rendered depth pixel as a measured obstacle.",
+    "whatToWatch": "Metric surface and depth errors, collision tests and held-out viewpoints alongside image quality. Look for uncertainty in sparse or reflective regions and clearly distinguish extracted geometry from an attractive view-dependent rendering.",
+    "tags": [
+      "surface geometry",
+      "metric reconstruction",
+      "gaussian splatting",
+      "collision"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "2D Gaussian Splatting for geometrically accurate fields",
+        "url": "https://arxiv.org/abs/2403.17888",
+        "type": "paper",
+        "note": "Primary analysis of view-inconsistent 3D Gaussian geometry and surface-oriented alternatives."
+      },
+      {
+        "title": "2DGS official implementation",
+        "url": "https://github.com/hbb1/2d-gaussian-splatting",
+        "type": "code",
+        "note": "Includes geometry reconstruction and evaluation scripts, enabling comparison with appearance metrics."
+      },
+      {
+        "title": "Practitioner discussion: splats to meshes",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1iz9p7d/good_ways_to_convert_gaussian_splats_to_mesh/",
+        "type": "reddit",
+        "note": "Practical discussion of collision geometry and conversion; anecdotal evidence rather than metrology validation."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "spatial-dynamics",
+    "category": "spatial",
+    "title": "Track a changing scene without rewriting its identity",
+    "summary": "Moving people, deforming objects and changing illumination violate the static-scene assumptions of many reconstruction pipelines. Dynamic splats must preserve object identity and geometry through motion and occlusion, while SLAM separates actual scene changes from camera-estimation errors.",
+    "why": "Discarding moving objects can simplify localization but removes precisely the interactions a robot needs to understand. Fitting every change into geometry can corrupt the map. Dynamic 3D Gaussians demonstrates persistent moving primitives, and DG-SLAM addresses dynamic observations; robust monocular reconstruction through occlusion and changing topology remains more demanding than a controlled multi-camera capture.",
+    "approaches": "Use persistent primitives or object tracks, motion and local-rigidity priors, and explicit uncertainty under occlusion. Separate static map, dynamic objects and camera pose estimation. Combine segmentation or depth with scene-flow constraints where appropriate, while testing sensitivity to missed detections. Evaluate identity and geometry after objects reappear, not only rendered quality on observed frames.",
+    "whatToWatch": "Persistent tracks through occlusion, dynamic-object reconstruction and pose accuracy on independent references. Distinguish static-background-only mapping from full dynamic scenes, and disclose camera count, depth input, latency and deformation assumptions.",
+    "tags": [
+      "dynamic reconstruction",
+      "4D",
+      "tracking",
+      "occlusion"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "Dynamic 3D Gaussians",
+        "url": "https://arxiv.org/abs/2308.09713",
+        "type": "paper",
+        "note": "Models persistent appearance primitives that move and rotate with local-rigidity constraints."
+      },
+      {
+        "title": "DG-SLAM dynamic Gaussian mapping",
+        "url": "https://arxiv.org/abs/2411.08373",
+        "type": "paper",
+        "note": "Addresses inconsistent geometry and photometry in dynamic environments; not a universal solution to changing topology."
+      },
+      {
+        "title": "Dynamic 3D Gaussians author thread",
+        "url": "https://x.com/JonathonLuiten/status/1692346451668636100",
+        "type": "x",
+        "note": "Direct author thread linked from the project; discovery/demo context. X text was unavailable without platform access, so no factual claim rests on it."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "spatial-scale",
+    "category": "spatial",
+    "title": "A map that stays coherent at building scale",
+    "summary": "Large splat maps need bounded memory, efficient rendering and globally consistent camera poses. Real-time frame rendering does not imply online mapping or reliable relocalization, especially when a robot revisits a corridor after accumulated drift or environmental change.",
+    "why": "Local reconstructions can look sharp while disagreeing when merged into a larger map. Revisits require loop closure, and dense Gaussian populations create storage and compute pressure. Hierarchical Gaussian research tackles large-scene rendering; LoopSplat tackles global consistency through submaps and registration. These solve complementary pieces, not an entire persistent navigation stack.",
+    "approaches": "Combine submaps, pose-graph optimization and verified loop closure with level-of-detail rendering and selective updates. Track how corrections propagate into the dense representation, and avoid allowing compression to erase important thin obstacles. Test repeated routes, changed lighting and changed objects. Measure map size, update cost, relocalization failures and pose drift separately from the renderer's frames per second.",
+    "whatToWatch": "Multi-session maps with loop-closure evidence, bounded resource use and recovery after tracking loss. Require separate mapping and rendering rates, global pose accuracy and tests on revisits rather than only camera-path flythroughs.",
+    "tags": [
+      "SLAM",
+      "loop closure",
+      "large scenes",
+      "resource efficiency"
+    ],
+    "related": [],
+    "sources": [
+      {
+        "title": "LoopSplat global consistency",
+        "url": "https://arxiv.org/abs/2408.10154",
+        "type": "paper",
+        "note": "RGB-D submaps and Gaussian registration provide online loop closure and pose-graph consistency."
+      },
+      {
+        "title": "Hierarchical Gaussian representation for large captures",
+        "url": "https://arxiv.org/abs/2406.12080",
+        "type": "paper",
+        "note": "Addresses rendering and training resources using chunks and level of detail; rendering scale is distinct from robot localization."
+      },
+      {
+        "title": "LoopSplat implementation",
+        "url": "https://github.com/GradientSpaces/loopsplat",
+        "type": "code",
+        "note": "Provides an inspectable implementation and evaluation workflow for loop closure in Gaussian SLAM."
+      }
+    ],
+    "reviewed": "2026-10-07"
+  }
+]

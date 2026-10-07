@@ -1,0 +1,491 @@
+[
+  {
+    "id": "act-vs-diffusion",
+    "title": "Two valid grasps, one dataset: ACT vs diffusion",
+    "category": "foundation",
+    "status": "Proposed",
+    "summary": "Teach the same small arm a task with two valid approaches, then measure when action chunking and action diffusion commit to one mode or average between them.",
+    "hypothesis": "A policy's action-distribution design matters most when equally valid demonstrations disagree. Faster inference may outweigh better mode coverage once the arm must react in real time.",
+    "steps": [
+      "Calibrate a SO-101 leader/follower pair and fixed camera. Choose a lightweight object that can be approached from either side; record 80–120 demonstrations balanced across both routes and several starting positions.",
+      "Hold out entire starting positions and recording sessions. Train LeRobot ACT and diffusion policies with the same observations, action coordinates and demonstrations; report both equal-update and equal-wall-clock comparisons rather than equating different training costs.",
+      "Freeze checkpoints before evaluation. Run at least 30 resets per policy in randomized order, logging success, chosen approach, pauses, end-to-end action latency and peak GPU memory; repeat with three seeds if the initial comparison is promising.",
+      "At a predefined point, move the object a small fixed distance in a cleared workspace. Compare recovery and timeout rates at matched control frequency; record whether each failure came from perception, route switching or stale action chunks.",
+      "Plot success against inference latency and data size. Keep raw videos and failed runs; a policy that covers both demonstration modes offline but switches midway through a grasp should count as a failure."
+    ],
+    "successMetric": "A reproducible success/latency tradeoff across held-out poses, with approach-mode counts, intervention-free completion and confidence intervals. No claimed winner before running the experiment.",
+    "resources": "Open-source software. Budget roughly 20–80 GPU-hours for a multi-seed comparison, depending on image size and update count; a one-seed pilot is much cheaper. Hardware and cloud rates vary by supplier.",
+    "hardware": "SO-101 leader and follower, one USB camera, clamped bench; Linux and a 12–16 GB NVIDIA GPU recommended. Use the same kit for the SmolVLA and recovery-data experiments.",
+    "time": "4–8 days including setup, data collection and evaluation",
+    "difficulty": "Intermediate",
+    "tags": ["Imitation learning", "Action chunking", "Diffusion policy", "Multimodality", "Real robot"],
+    "related": ["smolvla-shift", "recovery-data"],
+    "sources": [
+      {"title": "LeRobot reference implementation", "url": "https://github.com/huggingface/lerobot", "type": "code", "note": "Official policy, dataset and robot stack; current extras include diffusion and SmolVLA. Pin a commit and its matching documentation."},
+      {"title": "ACT: Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware", "url": "https://arxiv.org/abs/2304.13705", "type": "paper", "note": "Primary source for action chunking; the paper's bimanual task results do not predict this proposed SO-101 benchmark."},
+      {"title": "Diffusion Policy", "url": "https://arxiv.org/abs/2303.04137", "type": "paper", "note": "Primary source for action diffusion and receding-horizon visuomotor control."},
+      {"title": "SO-101 assembly and calibration", "url": "https://huggingface.co/docs/lerobot/so101", "type": "report", "note": "Official motor, teleoperation and calibration instructions; calibration differences can confound the architecture comparison."},
+      {"title": "Practitioner: ACT bag manipulation, backlash and chunk frequency", "url": "https://www.reddit.com/r/robotics/comments/1uzuwbf/what_task_should_i_teach_it_next/", "type": "reddit", "note": "Read the build discussion and linked dataset/model. Useful implementation observations, not a controlled architecture benchmark."}
+    ],
+    "caveat": "Proposed protocol. A small dataset and one embodiment cannot establish a generally superior architecture. LeRobot main currently requires Python 3.12+; use an isolated environment and reduce batch size after measuring memory. Supervise all arm rollouts with a readily reachable stop.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "smolvla-shift",
+    "title": "How much of a VLA's competence survives moving the camera?",
+    "category": "foundation",
+    "status": "Proposed",
+    "summary": "Fine-tune SmolVLA on a small pick-and-place dataset, then separate language conditioning from camera, lighting and object-position robustness.",
+    "hypothesis": "Pretraining can improve data efficiency while leaving a policy surprisingly dependent on the exact camera and tabletop layout. Targeted variation may help more than doubling nominal demonstrations.",
+    "steps": [
+      "Use a calibrated SO-101 and fixed front camera. Collect at least 50 demonstrations with five documented object positions and a consistent task instruction, following the official SmolVLA dataset guidance.",
+      "Fine-tune the published SmolVLA base checkpoint. Freeze a baseline; create a second equal-size dataset with modest lighting and object-position variation, keeping the training budget and task labels matched.",
+      "Pre-register four test groups: original setup, changed lighting, camera translated by a measured few centimetres, and a held-out object shape. Run 20 or more resets per group without fine-tuning on test frames.",
+      "Test a small set of instruction paraphrases on the same visual states. Pair these trials with the original instruction, and separately test an intentionally incompatible instruction to avoid confusing visual competence with language obedience.",
+      "Measure success, object-selection errors and intervention count. Audit failures against camera timestamps and joint normalization before attributing them to reasoning; compare varied-data and nominal-data models using the same held-out resets."
+    ],
+    "successMetric": "A perturbation matrix showing the drop in success from the nominal condition and whether equal-budget targeted variation reduces that drop. Include uncertainty and actual inference latency.",
+    "resources": "Fine-tuning only; do not pretrain a VLA. Official guidance estimates about four A100 hours for 20k steps at its stated settings; smaller GPUs and repeated ablations may take substantially longer. Begin with one small-batch pilot and a fixed rental cap.",
+    "hardware": "SO-101 leader/follower and one fixed camera; Linux plus a 12–24 GB NVIDIA GPU recommended for reduced-batch fine-tuning. A100-class compute is optional, not required for the concept.",
+    "time": "3–7 days once the arm is assembled",
+    "difficulty": "Intermediate",
+    "tags": ["SmolVLA", "Distribution shift", "Language grounding", "Data efficiency", "Real robot"],
+    "related": ["act-vs-diffusion", "recovery-data"],
+    "sources": [
+      {"title": "SmolVLA paper", "url": "https://arxiv.org/abs/2506.01844", "type": "paper", "note": "Primary model description and evaluation; this experiment proposes a smaller controlled robustness study."},
+      {"title": "Official SmolVLA fine-tuning guide", "url": "https://huggingface.co/docs/lerobot/smolvla", "type": "report", "note": "Read the 50-episode guidance, task variation advice, GPU-time estimate and fine-tuning procedure."},
+      {"title": "SmolVLA base model card and weights", "url": "https://huggingface.co/lerobot/smolvla_base", "type": "code", "note": "Published checkpoint, provenance and reference implementation; pin the model revision alongside the code."},
+      {"title": "SmolVLA technical release", "url": "https://huggingface.co/blog/smolvla", "type": "company", "note": "Hugging Face's explanation of the compact VLA and asynchronous execution; distinguish publisher claims from your measured behavior."},
+      {"title": "Practitioner: SmolVLA fine-tuning on SO-101", "url": "https://www.reddit.com/r/robotics/comments/1qxm907/does_anyone_have_experience_with_finetuning/", "type": "reddit", "note": "Read the setup and fine-tuning difficulty discussion. It motivates checking calibration and compute rather than assuming a base checkpoint works immediately."}
+    ],
+    "caveat": "Proposed protocol. A base checkpoint is not a plug-and-play controller for a new arm and camera setup. Camera movement can change reachability and calibration as well as visual distribution; keep those factors separate. Published A100 timing is not a promise for a consumer GPU.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "recovery-data",
+    "title": "Spend the next hour on recoveries, not perfect demonstrations",
+    "category": "general",
+    "status": "Proposed",
+    "summary": "Compare extra clean demonstrations with human corrections collected from the policy's own failures. Measure how far targeted recovery data stretches a small robot-learning budget.",
+    "hypothesis": "When deployment drift dominates, an hour of labelled corrections can improve intervention-free completion more than an hour of additional demonstrations from easy initial states.",
+    "steps": [
+      "Train one ACT policy on a simple transfer task using 50–100 demonstrations. Freeze the base model and record its failure states on a separate development set, including missed grasps and interrupted trajectories.",
+      "Allocate the same operator time to two data branches: additional successful demonstrations and LeRobot human-in-the-loop corrections. Use a compatible motorized SO leader; log the time spent intervening and resetting, not just frame count.",
+      "Keep original data in both branches. Preserve intervention labels and train only expert-corrected action targets where appropriate; do not accidentally clone the failed autonomous actions as expert behavior. Match update budgets and sampling rules.",
+      "Evaluate both branches on the same held-out starting poses and predetermined mild disturbances. Count success without assistance, interventions per episode, recovery duration and any regression on the original easy task.",
+      "Review recovery videos and label failure causes. Repeat one collect-and-fine-tune round only after freezing the test set; chart success against cumulative human minutes, including setup and reset time."
+    ],
+    "successMetric": "Higher intervention-free success per operator hour on held-out disturbances, with no large nominal-task regression. Report how much data consisted of actual expert corrections.",
+    "resources": "Reuse an assembled LeRobot kit and baseline checkpoint. Approximately 5–30 GPU-hours for short fine-tuning comparisons, with operator evaluation often the larger cost; estimates depend on the dataset and GPU.",
+    "hardware": "SO-101 follower, compatible torque-controlled leader and camera; Linux, 8–16 GB NVIDIA GPU for ACT fine-tuning, with a supervised cleared workspace.",
+    "time": "2–5 days after obtaining a working baseline",
+    "difficulty": "Intermediate",
+    "tags": ["Human in the loop", "DAgger", "Failure recovery", "Data economics", "Real robot"],
+    "related": ["act-vs-diffusion", "smolvla-shift"],
+    "sources": [
+      {"title": "LeRobot human-in-the-loop collection", "url": "https://huggingface.co/docs/lerobot/main/hil_data_collection", "type": "report", "note": "Official takeover protocol, compatible motorized teleoperators, correction tagging and inference-mode requirements."},
+      {"title": "LeRobot deployment and DAgger strategy", "url": "https://huggingface.co/docs/lerobot/main/inference", "type": "code", "note": "Current deployment API documents corrections-only and continuous recording modes; check defaults before preparing training data."},
+      {"title": "DAgger: no-regret online imitation learning", "url": "https://arxiv.org/abs/1011.0686", "type": "paper", "note": "The original distribution-shift motivation; a human-gated correction study does not automatically inherit its theoretical guarantee."},
+      {"title": "LeRobot implementation", "url": "https://github.com/huggingface/lerobot", "type": "code", "note": "Reference code for the robot, policies, processors and dataset tooling."},
+      {"title": "Practitioner: bag manipulation and missing recovery episodes", "url": "https://www.reddit.com/r/robotics/comments/1uzuwbf/what_task_should_i_teach_it_next/", "type": "reddit", "note": "Read the explicit discussion of clean-success bias and later HIL correction collection; exact model and dataset links are included in the thread."}
+    ],
+    "caveat": "Proposed protocol. Human intervention quality, operator fatigue and reset speed are confounders. Current HIL support expects teleoperators that can mirror the follower state; a passive or unsupported controller may need integration work. Stop before collisions rather than collecting dangerous failures.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "randomization-frontier",
+    "title": "Find the point where domain randomization stops helping",
+    "category": "simulation",
+    "status": "Proposed",
+    "summary": "Train a small locomotion policy with narrow, measured and excessively broad friction/mass ranges, then expose the tradeoff between robustness and nominal performance.",
+    "hypothesis": "Wider randomization is not automatically better: implausible dynamics can consume training capacity and obscure the particular variation a deployed controller actually faces.",
+    "steps": [
+      "Reproduce one documented MuJoCo Playground Go1 locomotion setup. Pin the code, assets and JAX backend; verify that the environment actually registers the intended domain randomizer and that runs terminate successfully.",
+      "Create three training variants with identical rewards and observation histories: nominal dynamics, modest friction/mass variation around the nominal model, and deliberately broad but physically valid ranges. Log the parameters actually sampled.",
+      "Train with the same environment-step budget and at least three seeds for the final comparison. Record compilation time, environment throughput, GPU memory and return; keep precision settings fixed.",
+      "Evaluate without adaptation on a held-out grid of floor friction and payload mass, including points outside training support. Use matched initial states and velocity commands, and record falls, tracking error and energy cost.",
+      "Plot a heatmap of failure probability and a nominal-performance versus worst-case-performance curve. Flag success that depends on simulator-specific contact settings; optional hardware testing is a separate supervised stage."
+    ],
+    "successMetric": "A reproducible robustness frontier across dynamics ranges, including nominal tracking error, worst-cell fall rate and compute cost. Sim-to-sim robustness is the base deliverable.",
+    "resources": "No physical robot required. Expect roughly 10–60 GPU-hours for a multi-seed sweep, plus first-run JAX compilation. A smaller pilot can use fewer environments; full throughput claims require the stated hardware/backend.",
+    "hardware": "Linux workstation, NVIDIA GPU with about 12–24 GB VRAM and 32 GB RAM recommended. A CPU can inspect models and run small evaluations; parallel training is intended for an accelerator.",
+    "time": "3–6 days including the evaluation harness",
+    "difficulty": "Intermediate",
+    "tags": ["MuJoCo", "Domain randomization", "Robust control", "Sim-to-real", "No robot required"],
+    "related": ["latency-trap", "twin-identifiability"],
+    "sources": [
+      {"title": "MuJoCo Playground", "url": "https://github.com/google-deepmind/mujoco_playground", "type": "code", "note": "Official environment/training stack; README describes backends and warns about GPU precision and reproduction differences."},
+      {"title": "Go1 domain-randomization implementation", "url": "https://github.com/google-deepmind/mujoco_playground/blob/main/mujoco_playground/_src/locomotion/go1/randomize.py", "type": "code", "note": "Read the actual friction, mass, joint-friction and centre-of-mass randomization code rather than guessing environment capabilities."},
+      {"title": "MuJoCo Playground paper", "url": "https://arxiv.org/abs/2502.08844", "type": "paper", "note": "Primary framework description and sim-to-real examples; this ablation is a proposed extension."},
+      {"title": "MuJoCo modeling and contact semantics", "url": "https://mujoco.readthedocs.io/en/stable/modeling.html", "type": "report", "note": "Reference for friction, contact models and physical parameter semantics; randomization must respect those semantics."}
+    ],
+    "caveat": "Proposed protocol. Evaluation within one engine cannot establish real-world transfer. Confirm that the chosen model/backend supports every randomized field. Pin the precision setting: Playground documents TF32-related reproducibility issues on common NVIDIA GPUs.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "contact-gradient-audit",
+    "title": "When does a differentiable simulator give the wrong direction?",
+    "category": "simulation",
+    "status": "Proposed",
+    "summary": "Compare autodiff with finite differences across a smooth control problem and a contact transition. Turn differentiable physics from a feature claim into an inspectable numerical tool.",
+    "hypothesis": "Gradients can be useful away from contact changes yet unstable, zero or undefined when the contact active set changes. An optimizer can exploit the simulator rather than improve a robust physical trajectory.",
+    "steps": [
+      "Pin a Genesis release with the documented differentiable path. Run a short contact-free force-control example and confirm gradients are nonzero before adding complexity; use a supported entity/state getter, not an assumed differentiable operation.",
+      "For a scalar control amplitude, compare the autodiff loss gradient with central finite differences at several perturbation sizes. Reset the complete scene before each rollout and keep the timestep and horizon fixed.",
+      "Add a simple ground-contact or tool/soft-body scene supported by that pinned solver. Sweep controls across first contact; record contact events, loss, gradient agreement and cases where an operation provides no derivative.",
+      "Optimize identical initial controls using the gradient and a bounded derivative-free baseline under the same rollout budget. Evaluate both solutions after perturbing initial state, timestep and contact parameters.",
+      "Publish gradient-error curves, solver settings and memory versus horizon. Mark unsupported contact paths explicitly; zero gradients are diagnostic results rather than evidence that the physical objective is locally flat."
+    ],
+    "successMetric": "Directional agreement and relative error between autodiff and finite differences outside discontinuities, plus perturbation-tested terminal loss. Report invalid/unsupported derivatives separately.",
+    "resources": "A short numerical audit needs approximately 1–10 GPU-hours rather than large RL training. Long differentiable rollouts retain intermediate states and can exhaust VRAM; begin with tens of steps.",
+    "hardware": "Linux or another platform supported by the pinned Genesis build; an 8–16 GB NVIDIA GPU recommended for a small differentiable scene. No robot or camera required.",
+    "time": "2–5 days, with solver setup as the main uncertainty",
+    "difficulty": "Advanced",
+    "tags": ["Differentiable physics", "Genesis", "Contact", "Numerical verification", "No robot required"],
+    "related": ["twin-identifiability", "randomization-frontier"],
+    "sources": [
+      {"title": "Genesis World reference code", "url": "https://github.com/Genesis-Embodied-AI/genesis-world", "type": "code", "note": "Current canonical repository; the historical Genesis URL redirects here. Solver coverage differs by release."},
+      {"title": "Genesis differentiable simulation, v1.2.2", "url": "https://genesis-world.readthedocs.io/en/v1.2.2/api_reference/differentiation/index.html", "type": "report", "note": "Read the reset requirement, scene-linked tensors, horizon-dependent memory and explicit contact/collision gradient limitations."},
+      {"title": "Genesis solver options", "url": "https://github.com/Genesis-Embodied-AI/genesis-world/blob/main/genesis/options/solvers.py", "type": "code", "note": "Actual solver options include contact models and combinations unsupported in differentiable mode; inspect the selected release."},
+      {"title": "DiffTaichi", "url": "https://arxiv.org/abs/1910.00935", "type": "paper", "note": "Background on differentiable physical simulation and optimization; it is not a validation of every Genesis solver."}
+    ],
+    "caveat": "Proposed protocol. Contact is nonsmooth, so finite differences are not a universal ground truth at a transition. The linked Genesis API explicitly says some paths have zero or undefined gradients. If rigid contact is unsupported in your release, use a supported tool/soft-body example and report that scope.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "latency-trap",
+    "title": "The policy that survives slippery floors but fails one stale command",
+    "category": "simulation",
+    "status": "Proposed",
+    "summary": "Probe an Isaac Lab policy with actuator delay, observation age and friction changes independently. Identify failures that attractive simulation renders conceal.",
+    "hypothesis": "A policy robust to visual or friction variation may remain brittle to small timing errors. Training randomization should model the full sensing-to-actuation loop, not only scene appearance.",
+    "steps": [
+      "Reproduce a documented state-based locomotion or joint-control task in a pinned Isaac Lab/Isaac Sim pair. Use an explicit actuator model compatible with DelayedPDActuator and confirm the nominal policy works before evaluating delay.",
+      "Introduce delay using documented physics-step units, then convert it to milliseconds. Add a separate observation queue for sensor age; keep actuator delay, observation delay and control decimation as independently logged variables.",
+      "Run a matched evaluation grid over delay, observation age and floor friction with fixed resets. Record falls or task failures, tracking error, applied versus requested commands and contact impulses; avoid interpreting render FPS as control latency.",
+      "Train a second policy with plausible delay randomization and compare it with a friction-only randomized policy under equal training steps. Hold out at least one delay/friction combination from both training distributions.",
+      "Review the earliest divergence in failed rollouts. Plot failure probability against actual end-to-end latency, and check nominal performance to expose any cost of robustness."
+    ],
+    "successMetric": "A failure boundary measured in milliseconds, with matched latency/observation controls and a held-out robustness gain. This is a simulation study unless separately evaluated on hardware.",
+    "resources": "Isaac Lab is open source; the PhysX workflow requires the compatible Isaac Sim runtime, drivers and sizeable downloads. Approximately 10–50 GPU-hours for training comparisons; initial installation may dominate elapsed time.",
+    "hardware": "Linux workstation recommended; compatible NVIDIA RTX GPU with at least 16 GB VRAM and 32 GB system RAM per the documented Isaac Lab guidance. More VRAM may be needed for rendering/training.",
+    "time": "3–7 days including installation and ablations",
+    "difficulty": "Advanced",
+    "tags": ["Isaac Lab", "Latency", "Actuator models", "Sim-to-real", "No robot required"],
+    "related": ["randomization-frontier", "live-usd-twin"],
+    "sources": [
+      {"title": "Isaac Lab reference implementation", "url": "https://github.com/isaac-sim/IsaacLab", "type": "code", "note": "Official robot-learning framework; pin the release and corresponding supported simulation backend."},
+      {"title": "Delayed PD actuator documentation", "url": "https://isaac-sim.github.io/IsaacLab/main/source/api/lab/isaaclab.actuators.html", "type": "report", "note": "Read the circular-buffer delay implementation and reset-time lag randomization. Delay is counted in physics steps."},
+      {"title": "Isaac Lab MDP randomization events", "url": "https://isaac-sim.github.io/IsaacLab/main/source/api/lab/isaaclab.envs.mdp.html", "type": "report", "note": "Material, mass and actuator randomization semantics; material assignment has initialization-time and PhysX limits."},
+      {"title": "Isaac Lab installation requirements", "url": "https://isaac-sim.github.io/IsaacLab/v2.2.0/source/setup/installation/index.html", "type": "report", "note": "Versioned installation guide states 32 GB RAM/16 GB VRAM guidance. Main-branch backend requirements can change."},
+      {"title": "MuJoCo Playground paper: transfer context", "url": "https://arxiv.org/abs/2502.08844", "type": "paper", "note": "Cross-framework context for training and transfer; do not substitute its results for this Isaac Lab timing experiment."}
+    ],
+    "caveat": "Proposed protocol. Latest Isaac Lab supports multiple backends; the specific DelayedPDActuator/PhysX workflow needs a compatible pinned runtime. Do not mix a v2 installation recipe with main-branch APIs without checking compatibility. No real-world robustness is established by sim-to-sim results.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "dreamer-horizon",
+    "title": "When a world model's beautiful prediction stops helping control",
+    "category": "world",
+    "status": "Proposed",
+    "summary": "Train a small DreamerV3 control agent, vary the length of imagined action rollouts and compare prediction quality with decisions that actually succeed.",
+    "hypothesis": "Longer imagined rollouts can improve foresight until accumulated model error dominates. Reconstruction quality alone may rank models differently from closed-loop control return.",
+    "steps": [
+      "Pin the author-maintained DreamerV3 reimplementation and reproduce one small DeepMind Control task. Start with a reduced model and short pilot; a debug configuration validates installation but is not a performance baseline.",
+      "Hold out complete real-environment episodes for model evaluation. Record predicted rewards and latent/state rollouts at several horizons; compare with actual outcomes from the same initial state and action sequence where simulator state can be restored.",
+      "Train matched variants with short, default and longer imagination lengths. Change the actual imagined-rollout length setting, not the separate return discount horizon; keep collected environment steps and update ratio fixed.",
+      "Evaluate each frozen agent on new seeds and a modest dynamics perturbation, logging return, failure rate, prediction error, training time and peak memory. Repeat at least three seeds for the final comparison.",
+      "Plot control return against rollout length and model-error growth. Inspect high predicted-reward trajectories that fail in the environment; include a simple model-free baseline if compute allows, with its own equal-step and equal-time results."
+    ],
+    "successMetric": "A measured imagination-length versus return curve, alongside reward/rollout error and seed variance. The interesting result is a disagreement between predictive and control metrics.",
+    "resources": "Small-task training rather than Minecraft replication. Roughly 10–60 GPU-hours for a modest multi-seed ablation; model size, observation mode and train ratio can change this substantially. CPU debug runs are useful but not a substitute for full training.",
+    "hardware": "Linux, Python 3.11+, compatible JAX; a 12–24 GB NVIDIA GPU and 32 GB RAM recommended. No robot required.",
+    "time": "3–7 days for a small task and evaluation harness",
+    "difficulty": "Advanced",
+    "tags": ["DreamerV3", "Model-based RL", "Imagination", "Control metrics", "No robot required"],
+    "related": ["diamond-consistency", "randomization-frontier"],
+    "sources": [
+      {"title": "DreamerV3 reimplementation", "url": "https://github.com/danijar/dreamerv3", "type": "code", "note": "Author-maintained JAX implementation; README explicitly describes it as a reimplementation unrelated to Google/DeepMind and documents small debug configurations."},
+      {"title": "DreamerV3 configuration", "url": "https://github.com/danijar/dreamerv3/blob/main/dreamerv3/configs.yaml", "type": "code", "note": "Read the separate imag_length and horizon settings and the DMC configurations to avoid an invalid ablation."},
+      {"title": "Mastering Diverse Domains through World Models", "url": "https://arxiv.org/abs/2301.04104", "type": "paper", "note": "Primary description of learning a policy through imagined trajectories; cited results are not claimed for the proposed small-budget run."},
+      {"title": "Practitioner: reconstruction-based world-model failure cases", "url": "https://www.reddit.com/r/reinforcementlearning/comments/1lic56s/benchmarks_fooling_reconstruction_based_world/", "type": "reddit", "note": "Read the disagreement about task-relevant representation and noisy distractors; use it as a hypothesis source, not a factual verdict on Dreamer."},
+      {"title": "Practitioner: rigorous DreamerV3 work on modest compute", "url": "https://www.reddit.com/r/reinforcementlearning/comments/1uclavz/questions_for_research_directions_on_dreamerv3/", "type": "reddit", "note": "Read the discussion of limited budgets and seed variance, motivating a small task and matched comparisons."}
+    ],
+    "caveat": "Proposed protocol. Full Minecraft or pixel-heavy replication is far more expensive. A learned latent state has no automatic correspondence to physical state; compare reward/observation predictions and evaluate decisions in the real simulator. The public repository is a reimplementation, not a supported DeepMind product.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "diamond-consistency",
+    "title": "Play a diffusion world model until its rules break",
+    "category": "world",
+    "status": "Proposed",
+    "summary": "Use DIAMOND's published Atari world models to test object persistence, action causality and reward consistency as imagined rollouts become longer.",
+    "hypothesis": "A playable model can produce convincing frames while violating the game's state and reward rules. Human counterfactual probes can expose failures that short video demos hide.",
+    "steps": [
+      "Install the documented Atari branch in an isolated Python 3.10 environment and load a published world-model/policy checkpoint. Use licensed ROMs; begin with a single simple game rather than training from scratch or using the separate CSGO branch.",
+      "Create a small replay/evaluation harness that restores identical emulator states and conditioning frame histories. Apply matched action sequences in the emulator and model; use the documented play controls for exploratory discovery, then freeze the probes.",
+      "Test collision response, repeated no-op actions, object reappearance after occlusion and contradictory steering. Run horizons of approximately 5, 25 and 100 imagined frames with several sampling seeds from each initial state.",
+      "Label event-level rule violations and compare predicted rewards with emulator rewards. Measure object trajectories and action-response latency separately from perceptual similarity; retain failures even when the rendered video looks plausible.",
+      "Vary denoising steps to plot latency versus event accuracy. Build a short paired-video report with expected versus generated outcomes and distinguish state-reset errors from genuine model inconsistency."
+    ],
+    "successMetric": "Rule violations per 100 generated frames, reward error and causal-event accuracy across horizons, plus wall-clock inference latency. No subjective video-quality score can replace these checks.",
+    "resources": "Use pretrained checkpoints, so the base build avoids training costs. A pilot needs a few GPU-hours and downloaded models/ROM assets. The CPU/MPS path may be slow; target latency depends on denoising settings and device.",
+    "hardware": "Linux and an 8–16 GB NVIDIA GPU recommended for a small Atari model; Python 3.10 and the repository's pinned dependencies. No robotics hardware required.",
+    "time": "1–2 days for a pilot; 3–5 days with a paired-state evaluation harness",
+    "difficulty": "Intermediate",
+    "tags": ["DIAMOND", "Diffusion world model", "Causal consistency", "Pretrained", "No robot required"],
+    "related": ["dreamer-horizon"],
+    "sources": [
+      {"title": "DIAMOND playable world-model code", "url": "https://github.com/eloialonso/diamond", "type": "code", "note": "Read the Atari checkpoint download, imagination-horizon controls, real/model environment switching, recording and diffusion-sampler settings."},
+      {"title": "Diffusion for World Modeling: Visual Details Matter in Atari", "url": "https://arxiv.org/abs/2405.12399", "type": "paper", "note": "Primary DIAMOND model and RL evaluation; the experiment proposes additional causal/event-level stress tests."},
+      {"title": "DIAMOND project and interactive demos", "url": "https://diamond-wm.github.io/", "type": "demo", "note": "Author project demonstrating both Atari and the separately implemented CSGO model; do not assume the branches share setup."},
+      {"title": "DIAMOND author Atari thread", "url": "https://x.com/EloiAlonso1/status/1793916382779982120", "type": "x", "note": "Exact author-thread permalink extracted from the official repository. Direct X fetching was blocked; technical claims are checked against the paper and code."},
+      {"title": "DIAMOND practitioner discussion", "url": "https://www.reddit.com/r/aigamedev/comments/1g2m5zh/diffusion_for_world_modeling_visual_details/", "type": "reddit", "note": "Read the project/discussion as a discovery source; game-world results do not establish robotics fidelity."}
+    ],
+    "caveat": "Proposed protocol. Manual play in two independent episodes is not a paired counterfactual experiment; matching emulator state and conditioning history needs a small harness. Atari rules are a tractable diagnostic, not a substitute for contact, geometry or robot-dynamics validation. ROM licensing and checkpoint availability remain prerequisites.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "live-usd-twin",
+    "title": "Build a twin that knows when its live data is stale",
+    "category": "twins",
+    "status": "Proposed",
+    "summary": "Connect timestamped joint or conveyor telemetry to an OpenUSD scene, then test dropped packets, clock skew and replay without overwriting the asset's durable model.",
+    "hypothesis": "The difficult part of a useful live twin is trustworthy state synchronization. A visually smooth scene can be confidently wrong when timestamps, identities or units are inconsistent.",
+    "steps": [
+      "Create a tiny OpenUSD conveyor or two-link arm using the official Python tutorials. Set explicit units, up-axis and stable asset identifiers; save the durable geometry and transforms as the baseline layer.",
+      "Generate a timestamped telemetry stream with source ID, sequence number, joint angle or speed, units and quality flag. First replay a recorded log; implement a small adapter that updates runtime transforms in a session layer rather than changing the baseline asset.",
+      "Add a display of source time, receive time and sample age. Integrate the stage into a viewer with its supported update callbacks, or export explicit snapshots; do not assume every USD viewer automatically refreshes changed files.",
+      "Inject packet loss, reordering, a 200 ms delay and an incorrect degree/radian conversion. Compare latest-value and timestamp-ordered reconstruction; mark stale/invalid samples and test whether the displayed transform disagrees with known source state.",
+      "Replay the same log deterministically and compare stage values at fixed times. Verify that closing and reopening the scene restores the durable baseline, while intentionally saved runtime snapshots remain independently traceable."
+    ],
+    "successMetric": "Transform error versus source-state ground truth, stale-sample detection rate, update latency and deterministic replay. Baseline asset contents must remain identical after a live session.",
+    "resources": "CPU authoring and synthetic telemetry are enough; no commercial twin platform or factory hardware is required. Authoring bindings and a full usdview/Qt/OpenGL viewer are different installation paths. Live viewer integration needs a small adapter.",
+    "hardware": "A laptop with 8–16 GB RAM; OpenUSD Python bindings, and optionally a supported OpenGL viewer. Real robot telemetry is an optional extension, not needed for the base experiment.",
+    "time": "1–3 days for file/replay version; 3–5 days with live viewer integration",
+    "difficulty": "Starter",
+    "tags": ["OpenUSD", "Telemetry", "Data freshness", "Scene composition", "CPU friendly"],
+    "related": ["twin-identifiability", "latency-trap"],
+    "sources": [
+      {"title": "OpenUSD source and build instructions", "url": "https://github.com/PixarAnimationStudios/OpenUSD", "type": "code", "note": "Canonical implementation and Python/tooling prerequisites. A minimal authoring package is not automatically a full interactive viewer."},
+      {"title": "OpenUSD transforms and time-sampled animation", "url": "https://openusd.org/release/tut_xforms.html", "type": "report", "note": "Read the transform, time-sample and layer-offset conventions; they establish the scene side of the adapter."},
+      {"title": "OpenUSD stage and session-layer API", "url": "https://openusd.org/release/api/class_usd_stage.html", "type": "report", "note": "Primary stage/session-layer reference; transient runtime opinions can remain separate from the durable root layer."},
+      {"title": "OpenUSD runtime-state practitioner guide", "url": "https://haluszka.com/openusd-goodstart/learning-path/16-runtime-data-telemetry/technical-bridge.html", "type": "report", "note": "Practitioner discussion of keeping transient telemetry in session state. It inspires the layering choice, not a validated industrial integration."},
+      {"title": "Practitioner: robotics twins before hardware exists", "url": "https://www.reddit.com/r/robotics/comments/1h5tk3y/i_made_a_video_showing_how_we_use_digital_twins/", "type": "reddit", "note": "Read the ROS/CAD-to-URDF development discussion; software integration and model fidelity matter beyond the scene's appearance."}
+    ],
+    "caveat": "Proposed protocol. OpenUSD is a scene-description/composition system, not a telemetry transport or real-time controller. Synthetic replay validates the adapter, not the physics of a factory. Absolute cross-machine latency needs synchronized clocks; report receive-side age separately when clocks are not aligned.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "twin-identifiability",
+    "title": "Can two different physical twins explain the same motion?",
+    "category": "twins",
+    "status": "Proposed",
+    "summary": "Fit mass and damping in a tiny MuJoCo pendulum, then demonstrate why a good replay fit may hide non-identifiable parameters and fail under a new input.",
+    "hypothesis": "A low-error twin can still have the wrong physical parameters. Deliberately informative inputs and held-out trajectories reveal ambiguities that passive replay cannot resolve.",
+    "steps": [
+      "Create a single-link pendulum with known geometry and a torque actuator. Generate hidden-ground-truth trajectories using documented MuJoCo parameters; log applied torque and angle at a fixed sample rate and add a small known observation-noise level.",
+      "Use bounded SciPy least-squares to fit mass and viscous damping from passive swings alone. Start from several parameter guesses, correctly updating both mass and inertia for the known link geometry; plot parameter combinations with similar residual error.",
+      "Collect a second synthetic dataset with safe bounded torque pulses or a chirp that excites multiple speeds. Refit without changing the model structure, keeping a third input sequence completely held out.",
+      "Compare one-step and long-rollout prediction on held-out inputs. Inspect residuals, parameter uncertainty and numerical sensitivity; a mass/damping ratio fit during free motion should not be mistaken for independent identification of both parameters.",
+      "Perturb the held-out model's actuation gain or introduce unmodelled friction to expose model mismatch. Optional real-data validation requires a measured torque-capable setup and independently calibrated timestamps; synthetic data alone remains a calibration exercise."
+    ],
+    "successMetric": "Held-out angle/velocity error, sensitivity and the spread of equally good parameter fits. The desired deliverable is evidence of ambiguity and whether informative inputs reduce it.",
+    "resources": "MuJoCo, NumPy and SciPy; no neural-network training. A laptop can run a small finite-difference optimization in minutes to hours. Real validation needs trustworthy applied-torque data, which many cheap hobby servos do not provide.",
+    "hardware": "Ordinary laptop, 8–16 GB RAM; no GPU or physical robot required for the synthetic base. Optional physical pendulum with encoder and calibrated torque input.",
+    "time": "1–3 days for the synthetic study; substantially longer for calibrated hardware",
+    "difficulty": "Intermediate",
+    "tags": ["System identification", "Identifiability", "MuJoCo", "Model validity", "CPU friendly"],
+    "related": ["live-usd-twin", "contact-gradient-audit", "randomization-frontier"],
+    "sources": [
+      {"title": "MuJoCo implementation", "url": "https://github.com/google-deepmind/mujoco", "type": "code", "note": "Official simulator and Python bindings; the proposed model is deliberately much smaller than a full industrial twin."},
+      {"title": "MuJoCo physical modeling", "url": "https://mujoco.readthedocs.io/en/stable/modeling.html", "type": "report", "note": "Reference for inertial parameters, actuators, damping and contact semantics. Updating mass without consistent inertia creates a misleading fit."},
+      {"title": "SciPy bounded least-squares", "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html", "type": "code", "note": "Verified numerical optimizer API with bounds, residuals and Jacobian choices; no custom differentiable simulator is required."},
+      {"title": "Differentiable simulation-based system identification", "url": "https://arxiv.org/abs/2508.04696", "type": "paper", "note": "Research example connecting physical-parameter identification and robot transfer. The proposed finite-difference pendulum study is not a reproduction of its locomotion results."}
+    ],
+    "caveat": "Proposed protocol. Fitting a simulator to its own synthetic data establishes implementation correctness, not real-world fidelity. Passive pendulum motion can leave mass entangled with damping; physical identifiability depends on the input, measurements and assumed model structure. Unknown torque gain adds another ambiguity.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "gsplat-efficiency",
+    "title": "Same scene, same quality: what does the splat backend really save?",
+    "category": "spatial",
+    "status": "Proposed",
+    "summary": "Compare gsplat with the original 3DGS implementation under matched data and settings. Measure quality, time, memory and Gaussian count instead of repeating a headline speedup.",
+    "hypothesis": "Backend efficiency and training strategy are different improvements. A claimed speedup only remains meaningful when image resolution, splat count, losses and held-out quality are matched.",
+    "steps": [
+      "Start with one public COLMAP-format scene and its fixed train/test cameras. Use isolated environments for the original implementation and a pinned gsplat release; record GPU, driver, compiler and library versions.",
+      "Reproduce gsplat's documented evaluation configuration before trying your own capture. Align resolution, iteration count, appearance degree, loss weights, initialization and densification schedule; note any setting that cannot be matched.",
+      "Run each configuration several times, separating first-use CUDA compilation and data-loading warm-up from steady-state training. Measure peak allocated/reserved memory, wall-clock time and final Gaussian count.",
+      "Evaluate held-out PSNR, SSIM and LPIPS at identical views, with render throughput at a fixed output size. Add a time-to-target-quality comparison rather than only a fixed-iteration result.",
+      "Repeat on a small phone capture containing a textured area and a shiny object. Inspect crop-level failures and report the efficiency/quality frontier; do not silently enable newer gsplat strategies in the reference-equivalence comparison."
+    ],
+    "successMetric": "Time and peak VRAM at matched held-out quality, plus Gaussian count and render throughput. A reproducible result on your hardware is more useful than an assumed universal speedup.",
+    "resources": "One small scene takes roughly 1–10 GPU-hours for multiple runs and comparisons; large scenes need more. Current gsplat main requires PyTorch 2.7+ and CUDA-extension compatibility. Compilation time belongs in the setup budget.",
+    "hardware": "Linux/Windows with compatible NVIDIA CUDA GPU; 12–24 GB VRAM recommended for comparing both implementations, and 32 GB RAM. A small gsplat-only pilot may need less memory.",
+    "time": "1–3 days after obtaining compatible builds",
+    "difficulty": "Intermediate",
+    "tags": ["gsplat", "3D Gaussian splatting", "Benchmarking", "Memory efficiency", "Reconstruction"],
+    "related": ["splat-collision-gap", "laptop-splat"],
+    "sources": [
+      {"title": "gsplat implementation", "url": "https://github.com/nerfstudio-project/gsplat", "type": "code", "note": "Canonical maintained library; read current dependency requirements and evaluation setup rather than copying an old wheel recipe."},
+      {"title": "Original 3D Gaussian Splatting implementation", "url": "https://github.com/graphdeco-inria/gaussian-splatting", "type": "code", "note": "Authors' reference implementation, used as the explicitly configured baseline."},
+      {"title": "gsplat paper", "url": "https://arxiv.org/abs/2409.06765", "type": "paper", "note": "Primary efficiency study; reported savings depend on the benchmark and comparison settings."},
+      {"title": "gsplat evaluation methodology", "url": "https://docs.gsplat.studio/main/tests/eval.html", "type": "report", "note": "Read the reference-equivalence evaluation and quality/memory/runtime metrics."},
+      {"title": "Original 3DGS paper", "url": "https://arxiv.org/abs/2308.04079", "type": "paper", "note": "Primary representation, density-control and visibility-aware rasterization approach."}
+    ],
+    "caveat": "Proposed protocol. New training strategies can alter Gaussian count and quality, so a backend-only comparison must isolate them. Rasterizer licenses and dependencies differ between projects. Neither attractive held-out renders nor low LPIPS establishes geometrically valid collision surfaces.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "splat-slam-loop",
+    "title": "A photorealistic map that closes the loop in the wrong place",
+    "category": "spatial",
+    "status": "Proposed",
+    "summary": "Run Splat-SLAM on a camera sequence that revisits the start, then separate attractive novel-view rendering from pose accuracy, drift and map consistency.",
+    "hypothesis": "A map can render convincing local views while carrying global pose errors. Revisits and global updates reveal whether the representation stays geometrically consistent.",
+    "steps": [
+      "Reproduce one documented Replica or TUM sequence in the archived Splat-SLAM repository before collecting new footage. Use its supplied configuration, pretrained depth/tracking weights and evaluation scripts; preserve the old dependency environment.",
+      "Choose a sequence with a revisit and known camera trajectory. Process an initial prefix and the complete sequence under the same settings, recording keyframe poses, final map size, runtime and any global pose updates.",
+      "Run the documented tracking-only mode as an additional diagnostic, then the full mapping pipeline. Treat these as different configurations, not an automatic clean ablation of global optimization; a controlled optimizer toggle would require code inspection and a small modification.",
+      "Evaluate aligned absolute and relative trajectory error, held-out rendering quality and reconstruction error where ground-truth geometry exists. Report the alignment convention, including monocular scale ambiguity, and errors near revisited areas.",
+      "Test a degraded copy with subsampled frames or motion blur, preserving a clean control sequence. Inspect duplicate walls, stretched surfaces and failure recovery rather than assuming a visually smooth viewer implies successful tracking."
+    ],
+    "successMetric": "Trajectory error, revisit consistency and surface error alongside PSNR/SSIM/LPIPS, memory and runtime. Explicitly identify cases where appearance quality masks geometric failure.",
+    "resources": "Published weights avoid training from scratch. Roughly 1–10 GPU-hours for short sequences, plus dataset downloads. The archived build requires legacy CUDA extensions and a documented rasterizer near-plane change; reserve time for dependency repair.",
+    "hardware": "Linux, a compatible NVIDIA GPU with roughly 16–24 GB VRAM recommended, and 32 GB RAM. Start with benchmark data; an ordinary phone camera is optional for a later custom-sequence adapter.",
+    "time": "3–7 days, particularly if rebuilding legacy dependencies",
+    "difficulty": "Advanced",
+    "tags": ["Splat-SLAM", "SLAM", "Loop closure", "Pose drift", "Map consistency"],
+    "related": ["splat-collision-gap", "gsplat-efficiency"],
+    "sources": [
+      {"title": "Splat-SLAM code and benchmark instructions", "url": "https://github.com/google-research/Splat-SLAM", "type": "code", "note": "Read the actual Replica/TUM recipes, tracking-only flag, near-plane edit and reproduction notes. The repository is archived."},
+      {"title": "Splat-SLAM paper", "url": "https://arxiv.org/abs/2405.16544", "type": "paper", "note": "Primary global pose/depth optimization and deformable-map approach."},
+      {"title": "Gaussian Splatting SLAM", "url": "https://arxiv.org/abs/2312.06741", "type": "paper", "note": "Related primary research on jointly tracking cameras and mapping with Gaussians; useful conceptual comparison, not the same implementation."},
+      {"title": "Practitioner: splatting and camera/depth initialization", "url": "https://www.reddit.com/r/GaussianSplatting/comments/1bnqoxv/computer_scientists_release_code_for_gaussianslam/", "type": "reddit", "note": "Read the discussion of offline COLMAP versus online mapping. It references another Gaussian-SLAM project, so do not confuse the repositories."}
+    ],
+    "caveat": "Proposed protocol. A prefix/full-sequence comparison changes available evidence and is not a pure optimizer ablation. Splat-SLAM is archived, with an older Python/CUDA stack and pretrained assets hosted separately. Monocular trajectory alignment can conceal scale error; state the evaluation convention.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "splat-collision-gap",
+    "title": "A gorgeous splat, a terrible collider",
+    "category": "spatial",
+    "status": "Proposed",
+    "summary": "Compare 3DGS and 2DGS reconstructions as rendered images and extracted surfaces. Test whether a navigation-sized probe can trust the geometry it sees.",
+    "hypothesis": "Surface-oriented splats and regularization may improve usable geometry, but good image metrics still do not guarantee holes, thin structures or clearances are correct.",
+    "steps": [
+      "Choose one documented DTU scan with ground-truth geometry, or render a small textured synthetic scene with known camera poses and meshes. Fix image split, scale, alignment and an explicit observable-region mask before training.",
+      "Train a pinned 2DGS implementation and a matched 3DGS/gsplat baseline. Retain both held-out renders and depth outputs; state depth conventions, opacity thresholds and any foreground masks.",
+      "Use the official 2DGS meshing path. For the 3D baseline, integrate rendered depth with a documented Open3D TSDF pipeline, validating units and camera extrinsics first; this adapter is small engineering work, not an assumed built-in 3DGS feature.",
+      "Compare observable-surface distance and completeness against ground truth, then sweep a sphere or ray probe across measured clearances and thin objects. Log false free-space, false obstacles and mesh holes at several voxel/truncation settings.",
+      "Plot image quality against geometry and collision-query errors. Add a qualitative overlay of the worst false-clearance regions; unknown/unseen surfaces must remain labelled unknown rather than being scored as confirmed free space."
+    ],
+    "successMetric": "Held-out image metrics plus surface precision/completeness and false-clearance rate at stated probe size. A usable result must expose disagreement between visual and collision quality.",
+    "resources": "Approximately 2–15 GPU-hours for a small scene and parameter sweep; TSDF meshing adds CPU/RAM work. Public 2DGS data and evaluation tools exist, but their masks, scale and dependency versions must be preserved.",
+    "hardware": "Compatible NVIDIA CUDA GPU with 12–24 GB VRAM recommended, 32 GB RAM; no scanner required for the synthetic/public-data base. Optional RGB-D capture adds independent measured geometry.",
+    "time": "3–6 days including a depth-to-TSDF adapter and evaluation",
+    "difficulty": "Advanced",
+    "tags": ["2DGS", "Collision geometry", "TSDF", "Reconstruction", "Robotics perception"],
+    "related": ["gsplat-efficiency", "splat-slam-loop", "articulated-splat"],
+    "sources": [
+      {"title": "2D Gaussian Splatting implementation", "url": "https://github.com/hbb1/2d-gaussian-splatting", "type": "code", "note": "Read bounded/unbounded meshing, depth/voxel parameters, DTU masks and its explicit broken-mesh FAQ."},
+      {"title": "2D Gaussian Splatting paper", "url": "https://arxiv.org/abs/2403.17888", "type": "paper", "note": "Primary surfel-based, geometrically oriented reconstruction method; better benchmark geometry does not certify collision safety."},
+      {"title": "gsplat reference implementation", "url": "https://github.com/nerfstudio-project/gsplat", "type": "code", "note": "Maintained 3DGS baseline with depth-rendering support; camera and depth conventions need explicit conversion for meshing."},
+      {"title": "Open3D RGB-D/TSDF integration", "url": "https://www.open3d.org/docs/release/tutorial/pipelines/rgbd_integration.html", "type": "report", "note": "Verified depth-integration and surface-extraction API; rendered splat depth needs the same calibrated units/extrinsics."},
+      {"title": "Practitioner: traversability gaps in a generated splat world", "url": "https://www.reddit.com/r/GaussianSplatting/comments/1wx3vhq/im_building_a_game_in_the_part_of_a_marble_world/", "type": "reddit", "note": "Read the concrete report of floor holes, collider/navigation issues and coordinate transforms. Motivates testing traversability rather than only appearance."}
+    ],
+    "caveat": "Proposed protocol. 2DGS meshing also depends on coverage, thresholds and regularization. A synthetic scene provides exact geometry but misses real capture artifacts. Unknown geometry is not free space; this probe is a research diagnostic, not a validated robot-navigation safety system.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "articulated-splat",
+    "title": "Make a photographed robot move, then audit the illusion",
+    "category": "general",
+    "status": "Proposed",
+    "summary": "Use SplatSim's supplied robot splat and trajectories to attach photorealistic appearance to simulated articulation. Measure calibration and appearance failure as the robot leaves its scanned pose.",
+    "hypothesis": "A static robot scan can supply useful novel joint views, but frame alignment, segmentation, disocclusion and baked lighting determine when the render becomes misleading training data.",
+    "steps": [
+      "Follow the verified CMU SplatSim repository's rendering recipe using its supplied COLMAP data, Gaussian models and replay trajectories. Reproduce the documented UR5 apple/plate scene first; no physical UR5 or GELLO device is required for replay.",
+      "Validate the simulator-to-splat transform using visible link landmarks and the documented articulated-robot point-cloud pipeline. Record the scan pose, scale, axis convention and per-link segmentation rather than aligning the render by eye alone.",
+      "Render trajectories with increasing joint displacement from the captured pose. Inspect link seams, disoccluded surfaces, duplicated background, wires and highlights that remain fixed when the robot moves.",
+      "Inject a known small translation, rotation and scale error into the splat alignment. Measure landmark reprojection error and silhouette disagreement against simulator geometry at fixed camera poses; label the baseline's geometry as a consistency reference, not real-image ground truth.",
+      "Optionally scan an accessible small arm and capture independent held-out real views at several joint configurations. Compare observed/rendered landmarks and appearance; keep policy-training claims separate until a complete training/deployment pipeline is reproduced."
+    ],
+    "successMetric": "Calibration/reprojection error versus joint displacement, plus counts of link-seam and disocclusion artifacts. A supplied-data rendering reproduction is the base milestone; real-image consistency needs new held-out captures.",
+    "resources": "Use provided splats/trajectories to avoid capture hardware and initial reconstruction. Roughly 2–10 GPU-hours for replay and sweeps; custom reconstruction adds time. Current README documents Python 3.12, Torch 2.7.1/CUDA 12.6 and multiple compiled submodules.",
+    "hardware": "Linux workstation, compatible NVIDIA CUDA GPU with approximately 12–24 GB VRAM and 32 GB RAM recommended. Supplied replay needs no robot; a phone and small arm are optional for custom capture.",
+    "time": "3–7 days for supplied replay and audit; 1–2 weeks with a new robot scan",
+    "difficulty": "Advanced",
+    "tags": ["SplatSim", "Articulation", "Real-to-sim", "Synthetic data", "Calibration"],
+    "related": ["splat-collision-gap", "live-usd-twin", "act-vs-diffusion"],
+    "sources": [
+      {"title": "CMU SplatSim implementation", "url": "https://github.com/qureshinomaan/SplatSim", "type": "code", "note": "Read rendering/replay setup, provided assets, point-cloud calibration, segmentation and baked-lighting advice. This is the paper's repo, not the unrelated tier4/splatsim project."},
+      {"title": "SplatSim paper", "url": "https://arxiv.org/abs/2409.10161", "type": "paper", "note": "Primary demonstration of Gaussian rendering over a physics simulator for RGB manipulation transfer; its reported transfer result is not this experiment's outcome."},
+      {"title": "SplatSim project demos", "url": "https://splatsim.github.io/", "type": "demo", "note": "Author videos illustrate moving robot/object splats, reversed gravity and calibration; visual plausibility alone does not verify dynamics."},
+      {"title": "SplatSim author technical thread", "url": "https://x.com/qunomaan/status/1844063704939364475", "type": "x", "note": "Exact thread permalink extracted from the official project-page source. Direct X fetching was blocked; the rendering claims are checked against code and paper."}
+    ],
+    "caveat": "Proposed protocol. The public README still marks trained diffusion-policy visualization as TODO; rendering replay is the documented reproducible scope. Gaussian appearance does not supply contact physics, and camera/robot alignment needs explicit calibration. Baked reflections can survive articulation incorrectly.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "laptop-splat",
+    "title": "Build a tiny splat without an NVIDIA GPU",
+    "category": "spatial",
+    "status": "Proposed",
+    "summary": "Use OpenSplat's CPU or Apple Metal path on a small calibrated capture, then measure the reconstruction-quality and runtime costs of making 3DGS accessible on a laptop.",
+    "hypothesis": "A very small, carefully captured scene can teach the important reconstruction failure modes on modest hardware, although CPU training may be too slow for production-scale capture.",
+    "steps": [
+      "Build the current canonical WebODM/OpenSplat repository for your CPU or supported Metal/AMD backend. Start with a supplied small dataset and verify the actual backend in logs before attributing speed to hardware acceleration.",
+      "Capture 40–80 well-overlapped photographs of a matte, textured tabletop object under fixed diffuse lighting. Reconstruct poses and sparse points with COLMAP's supported workflow, using CPU feature/matching options when appropriate; OpenSplat expects initialized sparse points.",
+      "Hold out an entire short camera arc rather than scattered nearly identical frames. Train at modest resolution under a fixed wall-clock cap, saving intermediate checkpoints and logging image count, splat count, memory and runtime.",
+      "Repeat one controlled capture change: poor coverage, a glossy surface, or moving illumination. Inspect held-out views and separate failed pose recovery from artifacts introduced during splat optimization.",
+      "If another backend is available, rerun the same initialized project at matched settings. Plot held-out quality versus elapsed time and show worst-view crops; keep the tiny-scene conclusion separate from room-scale feasibility."
+    ],
+    "successMetric": "A reproducible small-scene capture-to-splat pipeline, with backend-confirmed quality/runtime curves and a labelled failure comparison. Completing under a stated time cap matters more than a decorative viewer demo.",
+    "resources": "No paid service required. CPU runs can be dramatically slower: the current README estimates approximately 100× compared with GPU acceleration. Begin with provided assets and low resolution; building LibTorch/OpenCV can be the main setup cost.",
+    "hardware": "Linux/macOS/Windows laptop with 16 GB RAM recommended; CPU sufficient for a small capped run. Apple Metal or a supported AMD/NVIDIA GPU is optional. Phone camera optional after the sample-data milestone.",
+    "time": "1–3 days for a small build; CPU optimization may require an overnight run",
+    "difficulty": "Starter",
+    "tags": ["OpenSplat", "CPU friendly", "Apple Metal", "Capture quality", "Reconstruction"],
+    "related": ["gsplat-efficiency", "splat-collision-gap"],
+    "sources": [
+      {"title": "OpenSplat canonical implementation", "url": "https://github.com/WebODM/OpenSplat", "type": "code", "note": "The old pierotofy URL redirects here. Read CPU/Metal/ROCm builds, supported project formats, backend fallback and the sparse-point requirement."},
+      {"title": "OpenSplat original practitioner release discussion", "url": "https://www.reddit.com/r/GaussianSplatting/comments/1atgyb5/opensplat_free_and_open_source_3d_gaussian/", "type": "reddit", "note": "Read the author's release discussion and implementation/license context; consult the current repository for today's supported backends."},
+      {"title": "COLMAP tutorial", "url": "https://colmap.github.io/tutorial.html", "type": "report", "note": "Primary source for recovering calibrated poses and sparse points; use the version's documented CPU options rather than assuming a GPU is necessary."},
+      {"title": "3D Gaussian Splatting paper", "url": "https://arxiv.org/abs/2308.04079", "type": "paper", "note": "Representation and optimization background; the CPU portability experiment does not reproduce the paper's GPU performance claims."}
+    ],
+    "caveat": "Proposed protocol. CPU compatibility is not a promise of interactive training; start tiny and cap runtime. Structure-from-motion still needs adequate texture, overlap and a static scene. Native build dependencies and Metal-toolchain installation vary; a CPU fallback must be reported explicitly.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "touch-under-occlusion",
+    "title": "Can simulated touch recover what the camera cannot see?",
+    "category": "niche",
+    "status": "Proposed",
+    "summary": "Build a small contact-localization benchmark using TACTO's simulated tactile images. Compare vision, touch and their combination when a gripper occludes the object.",
+    "hypothesis": "Tactile geometry can disambiguate contact under visual occlusion, but a model may overfit renderer lighting or mesh identity rather than learning transferable contact information.",
+    "steps": [
+      "Reproduce TACTO's documented PyBullet DIGIT or gripper example in an isolated environment. Verify the renderer and physics engine separately; generate contact readings for a few simple meshes and known contact positions.",
+      "Record paired camera crops, tactile RGB/depth and contact-location labels from the simulator. Include no-contact frames, and split by whole trajectories and held-out object meshes rather than randomly mixing adjacent frames.",
+      "Train a small supervised contact-localization model with vision-only, touch-only and combined inputs under matched data and compute. Add a simple geometry/contact baseline so a neural model is not credited for exploiting label leakage.",
+      "Evaluate with the object visually occluded, then change tactile-renderer lighting and sensor pose independently. Track localization error, no-contact false positives and confidence calibration on unseen meshes.",
+      "Inspect whether tactile depth or RGB contributes the gain and whether it survives lighting changes. An optional follow-on can use published NeuralFeels/Feelsight data; physical DIGIT transfer is a separate calibrated experiment."
+    ],
+    "successMetric": "Held-out contact-location error and no-contact false-positive rate, stratified by camera occlusion, new object mesh and tactile appearance shift. Report modality gains with equal data budgets.",
+    "resources": "No physical tactile sensor needed. Approximately 1–8 GPU-hours for small supervised models, or CPU baselines with fewer samples. TACTO is archived, so old PyBullet/PyRender/OpenGL dependencies may require environment repair.",
+    "hardware": "Ubuntu recommended, 16 GB RAM; supported OpenGL/EGL renderer, or slower OSMesa CPU rendering. An 8 GB GPU is useful but not mandatory for the small model; no physical robot required.",
+    "time": "3–6 days including archived dependency setup and data generation",
+    "difficulty": "Intermediate",
+    "tags": ["Tactile sensing", "TACTO", "Occlusion", "Contact perception", "Niche manipulation"],
+    "related": ["contact-gradient-audit", "splat-collision-gap", "smolvla-shift"],
+    "sources": [
+      {"title": "TACTO simulator", "url": "https://github.com/facebookresearch/tacto", "type": "code", "note": "Read DIGIT/gripper examples, EGL/OSMesa setup and the explicit warning that TACTO is not physically accurate contact deformation/friction simulation. Archived January 2024."},
+      {"title": "TACTO paper", "url": "https://arxiv.org/abs/2012.08456", "type": "paper", "note": "Primary vision-based tactile rendering approach; proposed contact-localization ablation is smaller than its full demonstrations."},
+      {"title": "NeuralFeels implementation and Feelsight data", "url": "https://github.com/facebookresearch/neuralfeels", "type": "code", "note": "Verified visuo-tactile reconstruction/tracking code and data links; useful follow-on evidence beyond a synthetic renderer-only benchmark."},
+      {"title": "Neural feels with neural fields", "url": "https://arxiv.org/abs/2312.13469", "type": "paper", "note": "Primary research connecting vision, touch and proprioception for in-hand pose/shape estimation. Its hardware outcomes are not promised for the proposed build."}
+    ],
+    "caveat": "Proposed protocol. TACTO renders tactile observations using another engine's contacts; it does not independently validate gel deformation, friction or real slip dynamics. The archived repository has known rendering/platform limitations. Synthetic localization gains alone do not establish transfer to a physical sensor.",
+    "reviewed": "2026-10-07"
+  }
+]

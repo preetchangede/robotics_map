@@ -1,0 +1,756 @@
+{
+  "physical-intelligence": {
+    "founders": [
+      {
+        "name": "Karol Hausman",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.emcap.com/portfolio/physical-intelligence",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/karolhausman",
+            "kind": "profile",
+            "provenance": "https://www.generalist.com/p/karol-hausman-physical-intelligence",
+            "note": "The source explicitly links this professional profile. LinkedIn returned an access restriction (HTTP 999); its full profile and messaging availability were not inspected.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Brian Ichter",
+        "role": "Co-founder",
+        "roleSource": "https://brianichter.com/",
+        "channels": [
+          {
+            "label": "Published work email",
+            "url": "mailto:brian@physicalintelligence.company",
+            "kind": "email",
+            "provenance": "https://brianichter.com/",
+            "note": "Published in the Contact section of his professional research website. This is a company-domain address, not a guessed email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Chelsea Finn",
+        "role": "Co-founder",
+        "roleSource": "https://ai.stanford.edu/~cbfinn/",
+        "channels": [
+          {
+            "label": "Stanford professional page",
+            "url": "https://ai.stanford.edu/~cbfinn/",
+            "kind": "website",
+            "provenance": "https://ai.stanford.edu/~cbfinn/",
+            "note": "Her university-hosted page states that she co-founded Physical Intelligence. This is a public academic profile, not a dedicated business inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Sergey Levine",
+        "role": "Co-founder",
+        "roleSource": "https://www.emcap.com/portfolio/physical-intelligence",
+        "channels": [
+          {
+            "label": "Berkeley professional page",
+            "url": "https://people.eecs.berkeley.edu/~svlevine/",
+            "kind": "website",
+            "provenance": "https://people.eecs.berkeley.edu/~svlevine/",
+            "note": "University-hosted research profile. Co-founder identity is separately supported by the investor portfolio; no direct business email is inferred.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Lachy Groom",
+        "role": "Co-founder",
+        "roleSource": "https://www.emcap.com/portfolio/physical-intelligence",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/lachy-groom-b218895",
+            "kind": "profile",
+            "provenance": "https://www.generalist.com/p/karol-hausman-physical-intelligence",
+            "note": "The source explicitly links this professional profile. LinkedIn returned an access restriction (HTTP 999); its full profile and messaging availability were not inspected.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "skild-ai": {
+    "founders": [
+      {
+        "name": "Deepak Pathak",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.cs.cmu.edu/~dpathak/",
+        "channels": [
+          {
+            "label": "CMU professional page",
+            "url": "https://www.cs.cmu.edu/~dpathak/",
+            "kind": "website",
+            "provenance": "https://www.cs.cmu.edu/~dpathak/",
+            "note": "University-hosted page states his current Skild founder/CEO role. Its protected email was not recoverable; no email is guessed.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Abhinav Gupta",
+        "role": "Co-founder and president",
+        "roleSource": "https://lsvp.com/company/skild-ai/",
+        "channels": [
+          {
+            "label": "CMU professional page",
+            "url": "https://www.cs.cmu.edu/~abhinavg/",
+            "kind": "website",
+            "provenance": "https://www.cs.cmu.edu/~abhinavg/",
+            "note": "University-hosted professional profile; current company role is separately corroborated by the investor portfolio. This is not a company business inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "generalist": {
+    "founders": [
+      {
+        "name": "Pete Florence",
+        "role": "Co-founder",
+        "roleSource": "https://www.peteflorence.com/",
+        "channels": [
+          {
+            "label": "Published professional email",
+            "url": "mailto:pete.florence@gmail.com",
+            "kind": "email",
+            "provenance": "https://www.peteflorence.com/",
+            "note": "His professional website explicitly invites research collaboration and role inquiries at this address. Publicly published for professional use; it is not a company-domain inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Andy Zeng",
+        "role": "Co-founder",
+        "roleSource": "https://andyzeng.github.io/",
+        "channels": [
+          {
+            "label": "Published work email",
+            "url": "mailto:andyzeng@generalistai.com",
+            "kind": "email",
+            "provenance": "https://andyzeng.github.io/",
+            "note": "Explicit company-domain contact address on his professional research website.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Andrew (Andy) Barry",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://podcasts.apple.com/ca/podcast/andrew-barry-on-why-dexterity-is-the-next/id1837762221?i=1000772012343",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/andy-barry",
+            "kind": "profile",
+            "provenance": "https://podcasts.apple.com/ca/podcast/andrew-barry-on-why-dexterity-is-the-next/id1837762221?i=1000772012343",
+            "note": "The A3 interview description names his co-founder/CTO role and explicitly links this profile under Connect with Andrew Barry. The destination returned HTTP 999; messaging requires LinkedIn access.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "dyna": {
+    "founders": [
+      {
+        "name": "Lindon Gao",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.linkedin.com/posts/lindon-gao_im-thrilled-to-share-that-dyna-robotics-activity-7373489833240920064-sUiH",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/lindon-gao",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/lindon-gao_im-thrilled-to-share-that-dyna-robotics-activity-7373489833240920064-sUiH",
+            "note": "His accessible post embeds the official Dyna announcement identifying him as CEO; the official post links his profile. The destination returned HTTP 999.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Yecheng Jason Ma",
+        "role": "Co-founder and research lead",
+        "roleSource": "https://jasonma2016.github.io/",
+        "channels": [
+          {
+            "label": "Published professional email",
+            "url": "mailto:yechengma@gmail.com",
+            "kind": "email",
+            "provenance": "https://jasonma2016.github.io/",
+            "note": "His professional site states his Dyna role, invites people interested in the mission to reach out, and publishes this email. This is not a company-domain inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "York Yang",
+        "role": "Co-founder",
+        "roleSource": "https://salesforceventures.com/companies/dyna-robotics/",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/ysyyork",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/lindon-gao_im-thrilled-to-share-that-dyna-robotics-activity-7373489833240920064-sUiH",
+            "note": "Salesforce Ventures names York Yang as a founder. The official Dyna announcement embedded in Lindon Gao’s public post tags this profile. The destination returned HTTP 999.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "rlwrld": {
+    "founders": [
+      {
+        "name": "Junghee Ryu",
+        "role": "Founder and CEO",
+        "roleSource": "https://www.rlwrld.ai/en/news/61",
+        "channels": [
+          {
+            "label": "World Economic Forum professional profile",
+            "url": "https://www.weforum.org/people/junghee-ryu/",
+            "kind": "profile",
+            "provenance": "https://www.weforum.org/people/junghee-ryu/",
+            "note": "Accessible institutional biography states his RLWRLD founder/CEO role. It is a professional identity page, not a direct-message service.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company business inquiries",
+            "url": "https://www.rlwrld.ai/en/contact",
+            "kind": "company",
+            "provenance": "https://www.rlwrld.ai/en/contact",
+            "note": "Official business-inquiry page. Its email is protected in the retrieved page, so no address was transcribed or guessed. This is a shared company route.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Founder identity is supported by an official company interview and the WEF biography. No verified direct founder email was recovered; the company page provides the business route.",
+    "reviewed": "2026-10-07"
+  },
+  "x-square": {
+    "founders": [
+      {
+        "name": "Wang Qian",
+        "role": "Founder and CEO",
+        "roleSource": "https://www.prnewswire.com/apac/news-releases/x-square-robot-secures-140-million-in-series-a-funding-302659254.html",
+        "channels": [
+          {
+            "label": "Company partnership email",
+            "url": "mailto:coop@x2robot.com",
+            "kind": "company",
+            "provenance": "https://x2robot.com/en/purchase",
+            "note": "Published under Partnership on the official English purchase/contact page. This is a shared partnership inbox, not Wang Qian’s personal or direct email.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "No verified direct founder email or professional profile was recovered. The official partnership address is provided with its actual purpose.",
+    "reviewed": "2026-10-07"
+  },
+  "figure": {
+    "founders": [
+      {
+        "name": "Brett Adcock",
+        "role": "Founder and CEO",
+        "roleSource": "https://www.figure.ai/news/figure-and-nscale-sign-strategic-partnership",
+        "channels": [
+          {
+            "label": "Professional inquiry form",
+            "url": "https://www.brettadcock.com/contact",
+            "kind": "website",
+            "provenance": "https://podcasts.apple.com/us/podcast/brett-adcock-humanoid-run-on-neural-net-autonomous/id1648228034?i=1000749330199",
+            "note": "The February 2026 Moonshots interview explicitly links his personal website under Connect with Brett. Its accessible Contact page offers speaking, press, investment, and partnership inquiries. This is a form, not a disclosed direct email; he says he cannot reply to all messages.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "1x": {
+    "founders": [
+      {
+        "name": "Bernt Øyvind Børnich",
+        "role": "Founder and CEO",
+        "roleSource": "https://www.1x.tech/about",
+        "channels": [
+          {
+            "label": "Company investment inquiries",
+            "url": "https://www.1x.tech/investor-relations",
+            "kind": "company",
+            "provenance": "https://www.1x.tech/investor-relations",
+            "note": "Official investor-relations form for investment inquiries; it is not a direct founder inbox.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company product support",
+            "url": "https://www.1x.tech/support",
+            "kind": "company",
+            "provenance": "https://www.1x.tech/support",
+            "note": "Official support form for product questions. This is a support route, not a founder or general partnership contact.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The official about page and CEO interview verify his role. No verified direct founder email or professional contact profile was recovered. Company forms are labeled by purpose.",
+    "reviewed": "2026-10-07"
+  },
+  "agility": {
+    "founders": [
+      {
+        "name": "Jonathan Hurst",
+        "role": "Co-founder and chief robot officer",
+        "roleSource": "https://www.agilityrobotics.com/company-overview",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/jonathanwhurst/",
+            "kind": "profile",
+            "provenance": "https://www.agilityrobotics.com/company-overview",
+            "note": "The official leadership biography names his current role and directly links this profile. The destination returned HTTP 999.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Damion Shelton",
+        "role": "Co-founder and chairman of the board",
+        "roleSource": "https://www.agilityrobotics.com/company-overview",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/damion-shelton/",
+            "kind": "profile",
+            "provenance": "https://www.agilityrobotics.com/company-overview",
+            "note": "The official leadership biography names his current chairman role and directly links this profile. The destination returned HTTP 999. He is not presented as the current CEO.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "sunday": {
+    "founders": [
+      {
+        "name": "Tony Zhao",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://tonyzhaozh.github.io/",
+        "channels": [
+          {
+            "label": "Professional research website",
+            "url": "https://tonyzhaozh.github.io/",
+            "kind": "website",
+            "provenance": "https://mobile-aloha.github.io/",
+            "note": "Official Stanford Mobile ALOHA author links identify this professional website, whose current header states his Sunday co-founder/CEO role. No old academic email is repurposed as a business address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Cheng Chi",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://cheng-chi.github.io/",
+        "channels": [
+          {
+            "label": "Published work email",
+            "url": "mailto:cheng@sunday.ai",
+            "kind": "email",
+            "provenance": "https://cheng-chi.github.io/",
+            "note": "His current professional site explicitly publishes this Sunday-domain address, displayed with at/dot wording. Author identity is also linked from the official Columbia Diffusion Policy project.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "genesis-ai": {
+    "founders": [
+      {
+        "name": "Zhou Xian",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.prnewswire.com/news-releases/genesis-ai-unveils-gene-26-5--the-first-ai-brain-to-enable-robots-with-human-level-physical-manipulation-capabilities-302763638.html",
+        "channels": [
+          {
+            "label": "Published professional email",
+            "url": "mailto:zhouxian.sq@gmail.com",
+            "kind": "email",
+            "provenance": "https://www.zhou-xian.com/",
+            "note": "His professional website states his Genesis founder role and invites robotics/AI discussions at this publicly published address. It is not a company-domain inbox. The site is linked from the official CMU Act3D project.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company general inquiries",
+            "url": "mailto:info@genesis.ai",
+            "kind": "company",
+            "provenance": "https://www.genesis.ai/",
+            "note": "Published on the official company footer. This is a shared general-inquiry inbox, not a founder’s direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Theophile Gervet",
+        "role": "Co-founder and president",
+        "roleSource": "https://www.prnewswire.com/news-releases/genesis-ai-unveils-gene-26-5--the-first-ai-brain-to-enable-robots-with-human-level-physical-manipulation-capabilities-302763638.html",
+        "channels": [
+          {
+            "label": "Professional research website",
+            "url": "https://theophilegervet.github.io/",
+            "kind": "website",
+            "provenance": "https://act3d.github.io/",
+            "note": "The official CMU Act3D project links this author website. Its current biography says he started Genesis AI; no direct business email was recovered.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company general inquiries",
+            "url": "mailto:info@genesis.ai",
+            "kind": "company",
+            "provenance": "https://www.genesis.ai/",
+            "note": "Published on the official company footer. This is a shared general-inquiry inbox, not a founder’s direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Zhenjia Xu",
+        "role": "Co-founder",
+        "roleSource": "https://zhenjiaxu.com/",
+        "channels": [
+          {
+            "label": "Published professional email",
+            "url": "mailto:xuzhenjia1997@gmail.com",
+            "kind": "email",
+            "provenance": "https://zhenjiaxu.com/",
+            "note": "His current professional biography explicitly states co-founder of Genesis AI and publishes this contact email. The site is linked by the official Columbia Diffusion Policy project. This is a professional research contact, not a company-domain inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "galaxea": {
+    "founders": [
+      {
+        "name": "Jiyang Gao",
+        "role": "Founder and CEO",
+        "roleSource": "https://www.prnewswire.com/apac/news-releases/galaxea-ai-demonstrated-fullstack-capabilities-and-embodied-ai-generalization-at-its-wrc-2026-productivity-awakening-exhibition-302857785.html",
+        "channels": [
+          {
+            "label": "Company enterprise and education sales",
+            "url": "mailto:product@galaxea-dynamics.com",
+            "kind": "company",
+            "provenance": "https://galaxea-dynamics.com/pages/contact",
+            "note": "Published for purchasing and enterprise/education inquiries on the official contact page. This is a shared company route; no verified direct founder inbox was recovered.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Hang Zhao",
+        "role": "Co-founder",
+        "roleSource": "https://hangzhaomit.github.io/",
+        "channels": [
+          {
+            "label": "Published professional email",
+            "url": "mailto:ZhaoHang0124@gmail.com",
+            "kind": "email",
+            "provenance": "https://hangzhaomit.github.io/",
+            "note": "His professional faculty website states Galaxea co-founder and publishes this email with a recruiting invitation. This is an academic/professional inbox, not a company-domain sales address; the author website is also linked by the official Robot Parkour project.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "fauna": {
+    "founders": [
+      {
+        "name": "Rob Cochran",
+        "role": "Co-founder and CEO at the Sprout launch",
+        "roleSource": "https://faunarobotics.com/news/fauna-robotics-launches-sprout-the-easiest-way-to-build-with-humanoids",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/rpcochran/",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/fauna-robotics_fauna-robotics-activity-7341937642210553859-UFFU",
+            "note": "An accessible official Fauna post links Rob Cochran’s comment/profile; the official company LinkedIn page also tags him as CEO. The destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company platform sales",
+            "url": "mailto:sales@faunarobotics.com",
+            "kind": "company",
+            "provenance": "https://faunarobotics.com/news/fauna-robotics-joins-amazon",
+            "note": "Published in the official page footer after the acquisition announcement. Shared platform-sales inbox; not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Josh Merel",
+        "role": "Co-founder and CTO at the Sprout launch",
+        "roleSource": "https://faunarobotics.com/news/fauna-robotics-launches-sprout-the-easiest-way-to-build-with-humanoids",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/josh-merel-9222b72a2/",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/josh-merel-9222b72a2_careers-fauna-robotics-activity-7282179617816252416-qWNh",
+            "note": "His accessible professional post reshares the official Fauna hiring announcement. His identity and launch role are separately verified by the official Sprout announcement. The profile destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company platform sales",
+            "url": "mailto:sales@faunarobotics.com",
+            "kind": "company",
+            "provenance": "https://faunarobotics.com/news/fauna-robotics-joins-amazon",
+            "note": "Published in the official page footer after the acquisition announcement. Shared platform-sales inbox; not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Fauna joined Amazon in March 2026. Founder titles are attributed to the January launch; no claim is made about an undisclosed post-acquisition reporting structure. Public profiles and the continuing platform-sales route are provided.",
+    "reviewed": "2026-10-07"
+  },
+  "limx": {
+    "founders": [
+      {
+        "name": "Wei (Will) Zhang",
+        "role": "Founder",
+        "roleSource": "https://kr-asia.com/limx-dynamics-founder-says-embodied-intelligence-is-just-getting-started-despite-bubble-concerns",
+        "channels": [
+          {
+            "label": "Company business development",
+            "url": "mailto:bd@limxdynamics.com",
+            "kind": "company",
+            "provenance": "https://www.limxdynamics.com/en/about",
+            "note": "Explicitly published in the official company footer as an order/consultation route. Shared business-development inbox; not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The 36Kr founder interview, reproduced by KrASIA and linked by the company, verifies the identity. No verified direct professional founder contact was recovered; the published company business-development route is labeled honestly.",
+    "reviewed": "2026-10-07"
+  },
+  "persona-ai": {
+    "founders": [
+      {
+        "name": "Nicolaus Radford",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://persona.ai/the-team/",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/nicolaus-radford-375b9865/",
+            "kind": "profile",
+            "provenance": "https://persona.ai/the-team/",
+            "note": "The source explicitly links this professional profile. LinkedIn returned an access restriction (HTTP 999); its full profile and messaging availability were not inspected.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Jerry Pratt",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://persona.ai/the-team/",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/jerry-pratt/",
+            "kind": "profile",
+            "provenance": "https://persona.ai/the-team/",
+            "note": "The source explicitly links this professional profile. LinkedIn returned an access restriction (HTTP 999); its full profile and messaging availability were not inspected.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Jide Akinyode",
+        "role": "Co-founder and COO",
+        "roleSource": "https://persona.ai/the-team/",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://www.linkedin.com/in/jideakinyode/",
+            "kind": "profile",
+            "provenance": "https://persona.ai/the-team/",
+            "note": "The source explicitly links this professional profile. LinkedIn returned an access restriction (HTTP 999); its full profile and messaging availability were not inspected.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Public professional routes only. Founder list reflects people whose identities and routes could be verified; it is not necessarily exhaustive.",
+    "reviewed": "2026-10-07"
+  },
+  "generative-bionics": {
+    "founders": [
+      {
+        "name": "Daniele Pucci",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://it.linkedin.com/in/daniele-pucci-78428420",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/generative-bionics_generative-bionics-about-us-activity-7404104640075730944-0617",
+            "note": "An accessible official Generative Bionics post directly tags this founder profile. The destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company business inquiry form",
+            "url": "https://gbionics.ai/contact/",
+            "kind": "company",
+            "provenance": "https://gbionics.ai/contact/",
+            "note": "Official contact page includes Business Inquiries. This is a shared company form, not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Alessio Del Bue",
+        "role": "Co-founder and chief AI officer",
+        "roleSource": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://it.linkedin.com/in/alessiodelbue",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/generative-bionics_generative-bionics-about-us-activity-7404104640075730944-0617",
+            "note": "The official founding release verifies the role. A public CDP Venture Capital comment in the official company post links this profile; the destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company business inquiry form",
+            "url": "https://gbionics.ai/contact/",
+            "kind": "company",
+            "provenance": "https://gbionics.ai/contact/",
+            "note": "Official contact page includes Business Inquiries. This is a shared company form, not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Marco Maggiali",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://it.linkedin.com/in/marco-maggiali-4b422188",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/generative-bionics_generative-bionics-about-us-activity-7404104640075730944-0617",
+            "note": "The official founding release verifies the role. A public CDP Venture Capital comment in the official company post links this profile; the destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company business inquiry form",
+            "url": "https://gbionics.ai/contact/",
+            "kind": "company",
+            "provenance": "https://gbionics.ai/contact/",
+            "note": "Official contact page includes Business Inquiries. This is a shared company form, not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Andrea Pagnin",
+        "role": "Co-founder and chief business officer",
+        "roleSource": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://it.linkedin.com/in/andrea-pagnin",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/generative-bionics_generative-bionics-about-us-activity-7404104640075730944-0617",
+            "note": "The official founding release verifies the role. A public CDP Venture Capital comment in the official company post links this profile; the destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company business inquiry form",
+            "url": "https://gbionics.ai/contact/",
+            "kind": "company",
+            "provenance": "https://gbionics.ai/contact/",
+            "note": "Official contact page includes Business Inquiries. This is a shared company form, not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Davide Rota",
+        "role": "Co-founder and executive chairman",
+        "roleSource": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "channels": [
+          {
+            "label": "Professional LinkedIn",
+            "url": "https://it.linkedin.com/in/davide-rota-6107442",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/generative-bionics_generative-bionics-about-us-activity-7404104640075730944-0617",
+            "note": "The official founding release verifies the role. A public CDP Venture Capital comment in the official company post links this profile; the destination returned HTTP 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company business inquiry form",
+            "url": "https://gbionics.ai/contact/",
+            "kind": "company",
+            "provenance": "https://gbionics.ai/contact/",
+            "note": "Official contact page includes Business Inquiries. This is a shared company form, not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Jeffrey Libshutz",
+        "role": "Co-founder",
+        "roleSource": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "channels": [
+          {
+            "label": "Company business inquiry form",
+            "url": "https://gbionics.ai/contact/",
+            "kind": "company",
+            "provenance": "https://gbionics.ai/contact/",
+            "note": "Official contact page includes Business Inquiries. This is a shared company form, not a direct founder email.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The December 2025 official funding release names all six founders and five operating titles. Profiles were traced from the official company discussion and its investor’s public tags, not guessed. No verified direct founder business email was recovered; Jeffrey Libshutz has only the shared company route.",
+    "reviewed": "2026-10-07"
+  }
+}

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920" role="img" aria-labelledby="title description">
+  <title id="title">MORPH — how physical intelligence connects</title>
+  <desc id="description">Seven fields connected by potential technical relationships. 3D reconstruction supports world models and digital twins. Twins and world models inform simulation. Simulation and world models support robot policies. Policies control general-purpose and applied robots. Field deployments supply operational telemetry to twins. These are conceptual relationships, not company partnerships or validated integrations.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#5b58a3" stroke-width="1.4"/></marker>
+    <marker id="feedback" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#657565" stroke-width="1.4"/></marker>
+    <style>
+      text { font-family: 'Manrope', 'Avenir Next', 'Segoe UI', Arial, sans-serif; fill: #292d44; }
+      .mono { font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace; font-size: 13px; letter-spacing: 1.5px; fill: #707383; }
+      .title { font-size: 26px; font-weight: 600; letter-spacing: -.7px; }
+      .body { font-size: 16px; fill: #676b7b; }
+      .count { font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 12px; fill: #707383; }
+      .wire { fill: none; stroke: #5b58a3; stroke-width: 1.8; marker-end: url(#arrow); }
+      .label { font-size: 12px; fill: #77769a; }
+      .card { fill: #fcfbf8; stroke: #dddcd4; stroke-width: 1; }
+    </style>
+  </defs>
+  <rect width="1400" height="920" rx="20" fill="#f4f2ec"/>
+  <g transform="translate(48 36) scale(.75)">
+    <rect width="48" height="48" rx="5" fill="#242631"/>
+    <g fill="none" stroke="#e2e7a3">
+      <path d="M7 35V13l17 17 17-17v22" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M7 35l17-10 17 10M24 25V9" stroke-width="1.3" opacity=".6"/>
+    </g>
+    <circle cx="24" cy="9" r="3" fill="#e2e7a3"/>
+  </g>
+  <text x="96" y="62" font-size="26" font-weight="700" letter-spacing="-1">MORPH</text>
+  <text x="242" y="59" class="mono">THE PHYSICAL INTELLIGENCE INDEX</text>
+  <text x="1352" y="58" text-anchor="end" class="mono">SEVEN CONNECTED FIELDS</text>
+  <text x="48" y="127" font-size="36" font-weight="500" letter-spacing="-1.1">From representing a world to acting in it.</text>
+  <line x1="48" y1="157" x2="1352" y2="157" stroke="#dddcd4"/>
+  <text x="48" y="198" class="mono">01 / CAPTURE &amp; CONNECT</text>
+  <text x="390" y="198" class="mono">02 / PREDICT &amp; TEST</text>
+  <text x="738" y="198" class="mono">03 / LEARN</text>
+  <text x="1080" y="198" class="mono">04 / ACT</text>
+  <path class="wire" d="M332 313 H390"/>
+  <path class="wire" d="M190 396 V560"/>
+  <text x="211" y="476" class="label">Asset context</text>
+  <path class="wire" d="M332 643 H390"/>
+  <path class="wire" d="M532 396 V560"/>
+  <text x="552" y="476" class="label">Possible test worlds</text>
+  <path class="wire" d="M674 313 C714 313 694 435 738 435"/>
+  <text x="719" y="353" class="label">Planning</text>
+  <path class="wire" d="M674 643 C714 643 694 495 738 495"/>
+  <text x="724" y="594" class="label">Training data</text>
+  <path class="wire" d="M1022 435 C1062 435 1040 313 1080 313"/>
+  <path class="wire" d="M1022 495 C1062 495 1040 643 1080 643"/>
+  <path d="M1216 726 V764 Q1216 810 1170 810 H236 Q190 810 190 764 V726" fill="none" stroke="#657565" stroke-width="1.6" stroke-dasharray="6 7" marker-end="url(#feedback)"/>
+  <rect x="464" y="790" width="472" height="38" rx="19" fill="#f4f2ec"/>
+  <text x="700" y="814" text-anchor="middle" font-size="14">Field telemetry feeds operational models</text>
+  <g>
+    <rect class="card" x="48" y="230" width="284" height="166" rx="7"/>
+    <path d="M55 230 H325" stroke="#aa756f" stroke-width="3"/>
+    <text x="68" y="261" class="mono" style="font-size:11px;letter-spacing:.6px">GAUSSIAN SPLATTING &amp; 3D</text>
+    <text x="68" y="305" class="title">Capture a space</text>
+    <text x="68" y="337" class="body">Photos and scans become</text>
+    <text x="68" y="360" class="body">representations of real scenes.</text>
+    <text x="310" y="380" text-anchor="end" class="count">11 COMPANIES</text>
+  </g>
+  <g>
+    <rect class="card" x="48" y="560" width="284" height="166" rx="7"/>
+    <path d="M55 560 H325" stroke="#7383ac" stroke-width="3"/>
+    <text x="68" y="591" class="mono" style="font-size:11px;letter-spacing:.6px">DIGITAL TWINS</text>
+    <text x="68" y="635" class="title">Keep it connected</text>
+    <text x="68" y="667" class="body">Link models to real assets</text>
+    <text x="68" y="690" class="body">and their operating state.</text>
+    <text x="310" y="710" text-anchor="end" class="count">07 COMPANIES</text>
+  </g>
+  <g>
+    <rect class="card" x="390" y="230" width="284" height="166" rx="7"/>
+    <path d="M397 230 H667" stroke="#ad9750" stroke-width="3"/>
+    <text x="410" y="261" class="mono" style="font-size:11px;letter-spacing:.6px">WORLD MODELS</text>
+    <text x="410" y="305" class="title" style="font-size:24px">Predict what happens</text>
+    <text x="410" y="337" class="body">Learn how environments</text>
+    <text x="410" y="360" class="body">change and respond to action.</text>
+    <text x="652" y="380" text-anchor="end" class="count">07 COMPANIES</text>
+  </g>
+  <g>
+    <rect class="card" x="390" y="560" width="284" height="166" rx="7"/>
+    <path d="M397 560 H667" stroke="#699098" stroke-width="3"/>
+    <text x="410" y="591" class="mono" style="font-size:11px;letter-spacing:.6px">SIMULATION &amp; SYNTHETIC DATA</text>
+    <text x="410" y="635" class="title">Train and test</text>
+    <text x="410" y="667" class="body">Controlled worlds, rollouts,</text>
+    <text x="410" y="690" class="body">and data for learning.</text>
+    <text x="652" y="710" text-anchor="end" class="count">06 COMPANIES</text>
+  </g>
+  <g>
+    <rect x="738" y="382" width="284" height="166" rx="7" fill="#292d44"/>
+    <path d="M745 382 H1015" stroke="#d6dc8a" stroke-width="3"/>
+    <text x="758" y="413" class="mono" style="fill:#d6dc8a;font-size:11px;letter-spacing:.6px">ROBOTICS FOUNDATION MODELS</text>
+    <text x="758" y="457" class="title" style="fill:#fcfbf8">Learn reusable skills</text>
+    <text x="758" y="489" class="body" style="fill:#cccbd8">Policies for different tasks</text>
+    <text x="758" y="512" class="body" style="fill:#cccbd8">and different robot bodies.</text>
+    <text x="1000" y="532" text-anchor="end" class="count" style="fill:#aaaabd">08 COMPANIES</text>
+  </g>
+  <g>
+    <rect class="card" x="1080" y="230" width="272" height="166" rx="7"/>
+    <path d="M1087 230 H1345" stroke="#527765" stroke-width="3"/>
+    <text x="1100" y="261" class="mono" style="font-size:11px;letter-spacing:.6px">GENERAL-PURPOSE ROBOTICS</text>
+    <text x="1100" y="305" class="title" style="font-size:24px">Build versatile bodies</text>
+    <text x="1100" y="337" class="body">One robot, many tasks.</text>
+    <text x="1100" y="360" class="body">Reliability is the hard part.</text>
+    <text x="1330" y="380" text-anchor="end" class="count">08 COMPANIES</text>
+  </g>
+  <g>
+    <rect class="card" x="1080" y="560" width="272" height="166" rx="7"/>
+    <path d="M1087 560 H1345" stroke="#bc7950" stroke-width="3"/>
+    <text x="1100" y="591" class="mono" style="font-size:11px;letter-spacing:.6px">APPLIED ROBOTICS</text>
+    <text x="1100" y="635" class="title" style="font-size:24px">Solve a valuable job</text>
+    <text x="1100" y="667" class="body">Specific tasks with</text>
+    <text x="1100" y="690" class="body">compelling economics.</text>
+    <text x="1330" y="710" text-anchor="end" class="count">13 COMPANIES</text>
+  </g>
+  <line x1="48" y1="852" x2="1352" y2="852" stroke="#dddcd4"/>
+  <text x="48" y="886" font-size="13">Connections describe possible technical relationships, not partnerships or proven integrations.</text>
+  <text x="1352" y="886" text-anchor="end" class="mono" style="font-size:11px">EDITION 02 · 7 OCT 2026</text>
+</svg>

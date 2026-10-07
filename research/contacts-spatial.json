@@ -1,0 +1,672 @@
+{
+  "niantic-spatial": {
+    "founders": [
+      {
+        "name": "John Hanke",
+        "role": "Founder & Executive Chairman",
+        "roleSource": "https://nianticspatial.com/about",
+        "channels": [
+          {
+            "label": "John Hanke on LinkedIn",
+            "url": "https://www.linkedin.com/in/john-hanke-6a896",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/john-hanke-6a896_today-marks-the-closing-of-one-chapter-and-activity-7305558206666158080-wRG5",
+            "note": "Public professional profile; LinkedIn returned an access restriction (999). Identity and the published route are corroborated by the linked provenance; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company sales contact",
+            "url": "https://www.nianticspatial.com/en/contact",
+            "kind": "company",
+            "provenance": "https://www.nianticspatial.com/en/contact",
+            "note": "Company form, not a direct founder inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The current official About page labels John Hanke Founder and Executive Chairman. Inhi Cho Suh became CEO effective March 30, 2026; she is not presented as a founder. No directly published professional email for Hanke was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "xgrids": {
+    "founders": [
+      {
+        "name": "Kaiyong Zhao",
+        "role": "Founder & CEO",
+        "roleSource": "https://dsa.hkust-gz.edu.cn/zh/blog/2023/05/11/learning-complex-structured-models-in-nlp/",
+        "channels": [
+          {
+            "label": "Kaiyong Zhao on LinkedIn",
+            "url": "https://hk.linkedin.com/in/kaiyong-zhao-17a02b1a",
+            "kind": "profile",
+            "provenance": "https://hk.linkedin.com/in/kaiyong-zhao-17a02b1a",
+            "note": "Indexed self-profile identifies XGRIDS; the primary university seminar independently identifies founder/CEO. Direct profile access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Official XGRIDS website",
+            "url": "https://www.xgrids.com/intl",
+            "kind": "company",
+            "provenance": "https://www.xgrids.com/intl",
+            "note": "Company route; no verified direct founder email was found.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Primary HKUST(GZ) seminar biography explicitly identifies Kaiyong Zhao (赵开勇) as founder and CEO in May 2023; the indexed professional profile corroborates the company identity. No additional founder was named confidently from the sources inspected.",
+    "reviewed": "2026-10-07"
+  },
+  "volinga": {
+    "founders": [
+      {
+        "name": "Fernando Rivas-Manzaneque",
+        "role": "Co-founder & CEO",
+        "roleSource": "https://mo-sys.com/media/volinga/",
+        "channels": [
+          {
+            "label": "Fernando Rivas-Manzaneque on LinkedIn",
+            "url": "https://es.linkedin.com/in/fernando-rivas-manzaneque",
+            "kind": "profile",
+            "provenance": "https://es.linkedin.com/in/fernando-rivas-manzaneque",
+            "note": "Indexed professional profile matches the primary Mo-Sys speaker biography; direct profile access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Official Volinga website",
+            "url": "https://www.volinga.ai/",
+            "kind": "company",
+            "provenance": "https://www.volinga.ai/",
+            "note": "Company route, not a verified direct founder inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Orlando Avila-García",
+        "role": "Co-founder",
+        "roleSource": "https://www.etcenter.org/news/vetc-at-siggraph-2023-new-worlds-adventures-into-computer-vision-problems-for-creating-3d-worlds",
+        "channels": [
+          {
+            "label": "Orlando Avila-García on LinkedIn",
+            "url": "https://es.linkedin.com/in/oavilagarcia",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/oavilagarcia_unraveling-nerfs-creation-application-activity-7115767806293422080-iC3q",
+            "note": "Own public Volinga-related post and primary ETC@USC speaker biography corroborate identity. Profile access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Official Volinga website",
+            "url": "https://www.volinga.ai/",
+            "kind": "company",
+            "provenance": "https://www.volinga.ai/",
+            "note": "Company route; no direct founder email was verified from a readable primary source.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Founder roles come from primary industry-event organizers, with professional-profile corroboration. A 2025 trade-fair catalog indexed a founder email, but its PDF could not be opened in this review; it is omitted rather than promoted into a current direct contact.",
+    "reviewed": "2026-10-07"
+  },
+  "jawset": {
+    "founders": [
+      {
+        "name": "Jascha Wetzel",
+        "role": "Owner / developer",
+        "roleSource": "https://www.jawset.com/about/",
+        "channels": [
+          {
+            "label": "Company information inbox",
+            "url": "mailto:info@jawset.com",
+            "kind": "company",
+            "provenance": "https://www.jawset.com/about/",
+            "note": "Official public company inbox. The imprint identifies Jascha Wetzel as the operator; this is not represented as his personal email.",
+            "verification": "primary"
+          },
+          {
+            "label": "Jawset imprint and contact",
+            "url": "https://www.jawset.com/about/",
+            "kind": "company",
+            "provenance": "https://www.jawset.com/about/",
+            "note": "Working official operator/contact page, with separate sales and support channels.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The primary imprint names Jascha Wetzel as the company operator; CG Channel's March 2012 coverage identifies Jawset with developer Wetzel. The primary material does not explicitly give a historical founder title, so the verified role is owner/developer. No direct individual contact is claimed.",
+    "reviewed": "2026-10-07"
+  },
+  "playcanvas": {
+    "founders": [
+      {
+        "name": "Will Eastcott",
+        "role": "Co-founder & CEO",
+        "roleSource": "https://blog.playcanvas.com/authors/will/",
+        "channels": [
+          {
+            "label": "Will Eastcott on LinkedIn",
+            "url": "https://uk.linkedin.com/in/willeastcott",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/willeastcott_15-years-ago-david-evans-and-i-had-a-crazy-activity-7356391798711144450-fUos",
+            "note": "Public professional profile; LinkedIn returned an access restriction (999). Identity and the published route are corroborated by the linked provenance; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "PlayCanvas community forum",
+            "url": "https://forum.playcanvas.com/",
+            "kind": "company",
+            "provenance": "https://blog.playcanvas.com/meet-the-playcanvas-team-will-eastcott/",
+            "note": "Official public team/community route; not a guaranteed direct founder channel.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "David (Dave) Evans",
+        "role": "Co-founder & CTO",
+        "roleSource": "https://blog.playcanvas.com/authors/dave/",
+        "channels": [
+          {
+            "label": "Dave Evans on LinkedIn",
+            "url": "https://www.linkedin.com/in/davewevans",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/willeastcott_15-years-ago-david-evans-and-i-had-a-crazy-activity-7356391798711144450-fUos",
+            "note": "Eastcott's own founding-history post links this exact David Evans profile; direct access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Dave Evans on X / Twitter",
+            "url": "https://twitter.com/daredevildave",
+            "kind": "profile",
+            "provenance": "https://blog.playcanvas.com/meet-the-playcanvas-team-dave-evans/",
+            "note": "Exact professional account linked by the official team interview. The account returns no readable text to this research tool; current posting activity was not verified.",
+            "verification": "restricted"
+          },
+          {
+            "label": "PlayCanvas community forum",
+            "url": "https://forum.playcanvas.com/",
+            "kind": "company",
+            "provenance": "https://blog.playcanvas.com/meet-the-playcanvas-team-dave-evans/",
+            "note": "Official public team/community route.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Official author pages identify current CEO/CTO roles; Eastcott's own 2025 founding-history post names Evans as the original partner. PlayCanvas is part of Snap. No unpublished founder email was inferred.",
+    "reviewed": "2026-10-07"
+  },
+  "gracia": {
+    "founders": [
+      {
+        "name": "Georgii Vysotskii",
+        "role": "Co-founder",
+        "roleSource": "https://www.linkedin.com/posts/triptyq-capital_why-we-investedgracia-ai-activity-7209185665933000705--y7W",
+        "channels": [
+          {
+            "label": "Georgii Vysotskii on LinkedIn",
+            "url": "https://uk.linkedin.com/in/georgiivysotskii",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/triptyq-capital_why-we-investedgracia-ai-activity-7209185665933000705--y7W",
+            "note": "Primary investor announcement names and links this founder; direct profile access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company SDK support inbox",
+            "url": "mailto:support@gracia.ai",
+            "kind": "company",
+            "provenance": "https://docs.gracia.ai/streaming-usage/",
+            "note": "Public company support channel, not a direct founder inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Andrey Volodin",
+        "role": "Co-founder & CTO",
+        "roleSource": "https://www.linkedin.com/posts/georgiivysotskii_meet-my-partner-and-cto-andrey-volodin-activity-7405618606115405824-FyT5",
+        "channels": [
+          {
+            "label": "Andrey Volodin on LinkedIn",
+            "url": "https://uk.linkedin.com/in/andreyyvolodin",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/triptyq-capital_why-we-investedgracia-ai-activity-7209185665933000705--y7W",
+            "note": "Primary investor announcement explicitly names and links this founder; direct access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Andrey Volodin on X",
+            "url": "https://x.com/s1ddok",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/georgiivysotskii_meet-my-partner-and-cto-andrey-volodin-activity-7405618606115405824-FyT5",
+            "note": "Georgii's own public CTO introduction explicitly points readers to this account. Direct X reading is restricted; recent activity is not verified.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company SDK support inbox",
+            "url": "mailto:support@gracia.ai",
+            "kind": "company",
+            "provenance": "https://docs.gracia.ai/streaming-usage/",
+            "note": "Public company support channel, not a direct founder inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Triptyq's primary investment announcement verifies both founders; Georgii's own public post verifies Andrey's CTO role and exact X handle. No direct individual email was found.",
+    "reviewed": "2026-10-07"
+  },
+  "splatica": {
+    "founders": [
+      {
+        "name": "Eugene Nikolsky",
+        "role": "Co-founder & CEO / CTO",
+        "roleSource": "https://splatica.com/media/",
+        "channels": [
+          {
+            "label": "Eugene Nikolskiy on LinkedIn",
+            "url": "https://www.linkedin.com/in/eugenenikolskiy",
+            "kind": "profile",
+            "provenance": "https://splatica.com/media/",
+            "note": "Exact profile linked from the official press page. The company uses Nikolsky while Insta360 and the profile use Nikolskiy; this is the linked founder, not a guessed homonym. Direct access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact inbox",
+            "url": "mailto:contact@splatica.com",
+            "kind": "company",
+            "provenance": "https://splatica.com/media/",
+            "note": "Official public company contact/press channel, not his individual inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Marat Bashlykov",
+        "role": "Co-founder & CFO / COO",
+        "roleSource": "https://splatica.com/media/",
+        "channels": [
+          {
+            "label": "Company contact inbox",
+            "url": "mailto:contact@splatica.com",
+            "kind": "company",
+            "provenance": "https://splatica.com/media/",
+            "note": "No direct verified public professional contact found. This is the company's published route.",
+            "verification": "primary"
+          },
+          {
+            "label": "Splatica team and contact page",
+            "url": "https://splatica.com/media/",
+            "kind": "company",
+            "provenance": "https://splatica.com/media/",
+            "note": "Official founder identity and company contact.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Andrey Shelomentsev",
+        "role": "Co-founder, Revenue & Growth",
+        "roleSource": "https://splatica.com/media/",
+        "channels": [
+          {
+            "label": "Public professional email",
+            "url": "mailto:andrey@shelomentsev.com",
+            "kind": "email",
+            "provenance": "https://shelomentsev.com/",
+            "note": "Explicitly published on his own site for Physical AI, robotics and deep-tech conversations; mailbox delivery was not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "Andrey's professional website",
+            "url": "https://shelomentsev.com/",
+            "kind": "website",
+            "provenance": "https://splatica.com/media/",
+            "note": "Official company press page links the founder's own site, which also confirms his Splatica role.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "All three founders and current roles are named on Splatica's official press page. Only explicitly published contact routes are included; Marat has a clearly labeled company fallback.",
+    "reviewed": "2026-10-07"
+  },
+  "arrival-space": {
+    "founders": [
+      {
+        "name": "Thomas Richter-Trummer",
+        "role": "Co-founder & CTO",
+        "roleSource": "https://claim.arrival.space/",
+        "channels": [
+          {
+            "label": "Thomas Richter-Trummer on LinkedIn",
+            "url": "https://at.linkedin.com/in/thomas-richter-trummer-72939014",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/willeastcott_15-years-ago-david-evans-and-i-had-a-crazy-activity-7356391798711144450-fUos",
+            "note": "Exact professional profile linked from his public comment on a PlayCanvas engineering announcement; identity is independently verified by Arrival.Space's founder page. Direct access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact inbox",
+            "url": "mailto:hello@arrival.space",
+            "kind": "company",
+            "provenance": "https://claim.arrival.space/",
+            "note": "Official Stratum1 / Arrival.Space inbox, not a direct founder address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Gero A.E. Egger",
+        "role": "Co-founder & CEO",
+        "roleSource": "https://claim.arrival.space/",
+        "channels": [
+          {
+            "label": "Company contact inbox",
+            "url": "mailto:hello@arrival.space",
+            "kind": "company",
+            "provenance": "https://claim.arrival.space/",
+            "note": "No direct public professional contact verified; company inbox is the explicit fallback.",
+            "verification": "primary"
+          },
+          {
+            "label": "Official founder and contact page",
+            "url": "https://claim.arrival.space/",
+            "kind": "company",
+            "provenance": "https://claim.arrival.space/",
+            "note": "Company-published identity and contact route.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Lisa Maria Egger",
+        "role": "Co-founder & COO",
+        "roleSource": "https://claim.arrival.space/",
+        "channels": [
+          {
+            "label": "Lisa Maria Egger on LinkedIn",
+            "url": "https://www.linkedin.com/in/lisamaria-egger/",
+            "kind": "profile",
+            "provenance": "https://www.xraispotlight.com/videos/why-gaussian-splatting-changes-everything-for-the-3d-web/",
+            "note": "Exact professional profile published in her founder interview. Direct access returned 999; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact inbox",
+            "url": "mailto:hello@arrival.space",
+            "kind": "company",
+            "provenance": "https://claim.arrival.space/",
+            "note": "Official public company inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The current official founder page uses Lisa Maria Egger; some older reporting uses Wurzinger. Arrival.Space is the Stratum1 GmbH platform. Gero has a company fallback because a direct professional route was not independently verified.",
+    "reviewed": "2026-10-07"
+  },
+  "amrax": {
+    "founders": [
+      {
+        "name": "Martin Huber",
+        "role": "Co-founder & CEO",
+        "roleSource": "https://amrax.ai/who-we-are/",
+        "channels": [
+          {
+            "label": "Martin Huber on LinkedIn",
+            "url": "https://at.linkedin.com/in/martin-huber-b940a084",
+            "kind": "profile",
+            "provenance": "https://creators.spotify.com/pod/show/aaip/episodes/45--Martin-Huber---AMRAX---Building-Digital-Twins-for-indoor-applications-e27th5k",
+            "note": "Exact guest profile published with the Amrax founder interview and corroborated by the indexed self-profile. Direct LinkedIn access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Amrax company contact form",
+            "url": "https://amrax.ai/contact-us/",
+            "kind": "company",
+            "provenance": "https://amrax.ai/contact-us/",
+            "note": "Working official company form, not a direct founder inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Hans Schlick",
+        "role": "Co-founder",
+        "roleSource": "https://amrax.ai/who-we-are/",
+        "channels": [
+          {
+            "label": "Hans Schlick on LinkedIn",
+            "url": "https://at.linkedin.com/in/hans-schlick-009b3391",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/hans-schlick-009b3391_what-is-metaroom-3d-room-scanner-activity-7186638468591075328-kgaH",
+            "note": "Exact author of a public Metaroom-related post, cross-checked against the official founder identity; direct profile access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Amrax company contact form",
+            "url": "https://amrax.ai/contact-us/",
+            "kind": "company",
+            "provenance": "https://amrax.ai/contact-us/",
+            "note": "Official company route.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Both founders are explicitly named on the official About page. Direct LinkedIn pages restrict automated access; published posts/interviews corroborate the routes. No individual email was guessed.",
+    "reviewed": "2026-10-07"
+  },
+  "kiri-innovations": {
+    "founders": [
+      {
+        "name": "Jack Wang",
+        "role": "Co-founder & CEO",
+        "roleSource": "https://innovationfactory.ca/clients/kiri-innovation-kiri-engine/",
+        "channels": [
+          {
+            "label": "Published KIRI professional email",
+            "url": "mailto:jack.w@kiri-innov.com",
+            "kind": "email",
+            "provenance": "https://www.kiriengine.app/about",
+            "note": "Explicitly published beside Jack's CEO/co-founder biography on the official site; mailbox delivery was not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "Jack Wang on LinkedIn",
+            "url": "https://www.linkedin.com/in/jack-wang-kiri/",
+            "kind": "profile",
+            "provenance": "https://innovationfactory.ca/clients/kiri-innovation-kiri-engine/",
+            "note": "Exact profile linked by the primary accelerator directory; direct LinkedIn access returned 999.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Chris Hu",
+        "role": "Co-founder",
+        "roleSource": "https://innovationfactory.ca/clients/kiri-innovation-kiri-engine/",
+        "channels": [
+          {
+            "label": "Published KIRI professional email",
+            "url": "mailto:chris.h@kiri-innov.com",
+            "kind": "email",
+            "provenance": "https://www.kiriengine.app/about",
+            "note": "Official About page explicitly publishes Chris's address beside his co-founder biography; mailbox delivery was not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "Chris Hu on LinkedIn",
+            "url": "https://www.linkedin.com/in/xingye-chris-hu-470b0474/",
+            "kind": "profile",
+            "provenance": "https://innovationfactory.ca/clients/kiri-innovation-kiri-engine/",
+            "note": "Exact profile linked by the primary accelerator directory; direct access returned 999.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Peter Yang",
+        "role": "Historical co-founder",
+        "roleSource": "https://phandroid.com/2022/12/21/meet-nerf-an-accessible-take-on-3d-imaging-technology/",
+        "channels": [
+          {
+            "label": "Company contact inbox",
+            "url": "mailto:contact@kiri-innov.com",
+            "kind": "company",
+            "provenance": "https://www.kiriengine.app/about",
+            "note": "No direct public professional route for Peter was verified. This company inbox is an explicit fallback.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The current company team page names Jack and Chris and directly publishes their emails; the accelerator verifies their full names and lists three original friends. December 2022 coverage quotes Peter Yang as a co-founder, but his current operating role was not reconfirmed, so it is labeled historical.",
+    "reviewed": "2026-10-07"
+  },
+  "solaya": {
+    "founders": [
+      {
+        "name": "Massimo Moretti",
+        "role": "Co-founder & CEO",
+        "roleSource": "https://www.solaya.ai/about",
+        "channels": [
+          {
+            "label": "Massimo Moretti on LinkedIn",
+            "url": "https://fr.linkedin.com/in/massimomorettiparis",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/massimomorettiparis_team-is-everything-and-today-i-have-some-activity-7439585625449816064-fDZC",
+            "note": "Own public Solaya post and official founder page identify this professional profile, avoiding other Massimo Moretti homonyms. Direct access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Solaya company contact form",
+            "url": "https://www.solaya.ai/contact",
+            "kind": "company",
+            "provenance": "https://www.solaya.ai/contact",
+            "note": "Official company route; no direct founder email was published in the pages inspected.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Mariem Farhat",
+        "role": "Co-founder & COO",
+        "roleSource": "https://www.solaya.ai/about",
+        "channels": [
+          {
+            "label": "Solaya company contact form",
+            "url": "https://www.solaya.ai/contact",
+            "kind": "company",
+            "provenance": "https://www.solaya.ai/contact",
+            "note": "No exact direct public professional profile or email was verified; this is the explicit company fallback.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Current roles are verified by the official site and the October 6, 2026 PlayCanvas interview. A separate April podcast mistakenly calls Mariem CEO; the primary company's COO designation is used. Solaya's own public LinkedIn announcement also verifies her co-founder/COO role.",
+    "reviewed": "2026-10-07"
+  },
+  "spaitial": {
+    "founders": [
+      {
+        "name": "Matthias Niessner",
+        "role": "Co-founder",
+        "roleSource": "https://spaitial.ai/blog/announcing-spaitial",
+        "channels": [
+          {
+            "label": "Published academic research email",
+            "url": "mailto:niessner@tum.de",
+            "kind": "email",
+            "provenance": "https://www.niessnerlab.org/members/matthias_niessner/profile.html",
+            "note": "Public professional research address on his lab site. This is an academic contact, not a dedicated SpAItial sales inbox; the lab expressly directs applications to its application system.",
+            "verification": "primary"
+          },
+          {
+            "label": "Matthias Niessner's lab profile",
+            "url": "https://www.niessnerlab.org/members/matthias_niessner/profile.html",
+            "kind": "website",
+            "provenance": "https://www.niessnerlab.org/members/matthias_niessner/profile.html",
+            "note": "Official research biography and contact publication.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Luke Rogers",
+        "role": "Co-founder",
+        "roleSource": "https://spaitial.ai/blog/announcing-spaitial",
+        "channels": [
+          {
+            "label": "Luke Rogers on LinkedIn",
+            "url": "https://uk.linkedin.com/in/lukerog",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/lukerog_excited-to-share-a-sneak-peak-of-what-weve-activity-7333030783210635264-yxkW",
+            "note": "Own public SpAItial founding/funding post corroborates the exact professional profile; direct access returned 999.",
+            "verification": "restricted"
+          },
+          {
+            "label": "SpAItial company support form",
+            "url": "https://spaitial.ai/support",
+            "kind": "company",
+            "provenance": "https://spaitial.ai/blog/echo-2-release",
+            "note": "Official footer's Contact link leads here. Company support route, not a direct founder channel.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Ricardo Martin-Brualla",
+        "role": "Co-founder",
+        "roleSource": "https://spaitial.ai/blog/announcing-spaitial",
+        "channels": [
+          {
+            "label": "Published professional research email",
+            "url": "mailto:rmbrualla@gmail.com",
+            "kind": "email",
+            "provenance": "https://ricardomartinbrualla.com/",
+            "note": "Explicitly published on his own professional research site; this is not a guessed company email. Mailbox delivery was not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "Ricardo's research website",
+            "url": "https://ricardomartinbrualla.com/",
+            "kind": "website",
+            "provenance": "https://ricardomartinbrualla.com/",
+            "note": "Own professional biography, bibliography and contact.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "David Novotny",
+        "role": "Co-founder",
+        "roleSource": "https://spaitial.ai/blog/announcing-spaitial",
+        "channels": [
+          {
+            "label": "Published professional research email",
+            "url": "mailto:davnov134@gmail.com",
+            "kind": "email",
+            "provenance": "https://d-novotny.github.io/",
+            "note": "Explicitly published on his professional 3D computer-vision website; not a guessed company address. Mailbox delivery was not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "David's research website",
+            "url": "https://d-novotny.github.io/",
+            "kind": "website",
+            "provenance": "https://d-novotny.github.io/",
+            "note": "Own professional biography and contact publication.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "All four founders are named in the primary launch announcement. Public research addresses remain labeled with their actual context. Individual executive titles are not inferred from inconsistent directories; no outreach or mailbox verification was performed.",
+    "reviewed": "2026-10-07"
+  }
+}

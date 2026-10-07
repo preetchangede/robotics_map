@@ -1,0 +1,9 @@
+{
+  "general": {"Industrial humanoids": ["figure", "agility"], "Home assistants": ["1x", "sunday"]},
+  "foundation": {"Generalist action policies": ["physical-intelligence", "generalist", "rlwrld", "x-square"], "Deployment-oriented learning": ["skild-ai", "dyna"]},
+  "niche": {"Construction & field autonomy": ["monumental", "field-ai"], "Industrial inspection": ["gecko-robotics", "anybotics"], "Warehouse automation": ["mytra", "exotec"], "Agriculture": ["carbon-robotics"], "Surgical systems": ["cmr-surgical"]},
+  "simulation": {"Robot learning infrastructure": ["nvidia"], "Autonomy testing": ["applied-intuition"], "Synthetic perception data": ["parallel-domain", "bifrost"]},
+  "world": {"Spatial world generation": ["world-labs"], "Interactive predictive worlds": ["odyssey", "general-intuition"], "Closed-loop autonomy": ["waabi"]},
+  "twins": {"Physics surrogates": ["physicsx"], "Scenario & sensor twins": ["duality-ai"], "Operational asset context": ["cognite"], "Robot workflow twins": ["wandelbots"]},
+  "spatial": {"Capture & localization": ["niantic-spatial", "xgrids"], "Reconstruction & production": ["jawset", "volinga"], "Editing & web delivery": ["playcanvas"], "Dynamic volumetric scenes": ["gracia"]}
+}

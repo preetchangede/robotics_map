@@ -1,0 +1,692 @@
+[
+  {
+    "id": "resource-underactuated",
+    "title": "Underactuated Robotics: control, contact and model learning",
+    "category": "general",
+    "format": "Read",
+    "level": "Foundational",
+    "author": "Russ Tedrake · MIT",
+    "summary": "Learn why physically capable robots need dynamics, feedback and contact reasoning alongside learned perception.",
+    "why": "The best antidote to treating robotics as image-to-action prediction. It connects stability, optimization and learned models to the physical behavior you actually need to control.",
+    "learn": "Begin with dynamics and LQR, then read Planning and Control through Contact and System Identification. Learn why accurate prediction, identifiable parameters and a useful control model are different goals.",
+    "prerequisite": "Linear algebra, calculus and basic mechanics; introductory state-space control helps.",
+    "time": "Reference",
+    "url": "https://underactuated.mit.edu/",
+    "tags": [
+      "Control",
+      "Contact",
+      "System identification",
+      "Legged robotics"
+    ],
+    "related": [
+      "general-contact",
+      "general-safety",
+      "simulation-contact",
+      "simulation-transfer",
+      "anybotics"
+    ],
+    "sources": [
+      {
+        "title": "MIT working textbook",
+        "url": "https://underactuated.mit.edu/",
+        "type": "docs",
+        "note": "Open course notes; chapters are evolving working material, not a frozen publication."
+      },
+      {
+        "title": "Planning and Control through Contact",
+        "url": "https://underactuated.mit.edu/contact.html",
+        "type": "docs",
+        "note": "Concrete treatment of hybrid contact dynamics and planning; selected reading after basic dynamics."
+      },
+      {
+        "title": "System Identification",
+        "url": "https://underactuated.mit.edu/sysid.html",
+        "type": "docs",
+        "note": "Connects learning models with observability, controllability and relevance to the control task."
+      }
+    ],
+    "caveat": "Mathematically demanding. Work through a small dynamical example rather than skimming the equations; this is a control foundation, not a turnkey robot deployment guide.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-modern-robotics",
+    "title": "Modern Robotics: rigid motion, twists and Jacobians",
+    "category": "general",
+    "format": "Watch",
+    "level": "Foundational",
+    "author": "Kevin M. Lynch and Frank C. Park",
+    "summary": "Use the authors' free chapter videos to make robot frames, motion and forces precise before reading action-model papers.",
+    "why": "Many apparent learning failures begin as a frame or action-interface error. This gives you the mathematical vocabulary to diagnose them and understand what a robot controller actually receives.",
+    "learn": "Watch Chapters 3 and 5: SE(3), twists, coordinate changes, Jacobians, singularities and force/torque relationships. Follow a worked calculation with the educational Python or MATLAB library.",
+    "prerequisite": "Linear algebra and basic calculus; no physical robot required.",
+    "time": "3–5 h selections",
+    "url": "https://modernrobotics.northwestern.edu/chapters/chapter3/",
+    "tags": [
+      "Kinematics",
+      "Coordinate frames",
+      "Manipulation",
+      "Control"
+    ],
+    "related": [
+      "foundation-embodiment",
+      "general-contact",
+      "monumental"
+    ],
+    "sources": [
+      {
+        "title": "Chapter 3 author videos",
+        "url": "https://modernrobotics.northwestern.edu/chapters/chapter3/",
+        "type": "demo",
+        "note": "Free author-produced video sequence on rigid-body motion; use this instead of a paid-course landing page."
+      },
+      {
+        "title": "Chapter 5 author videos",
+        "url": "https://modernrobotics.northwestern.edu/chapters/chapter5/",
+        "type": "demo",
+        "note": "Velocity kinematics and statics provide the bridge to real control interfaces."
+      },
+      {
+        "title": "Modern Robotics educational code",
+        "url": "https://github.com/NxRLab/ModernRobotics",
+        "type": "code",
+        "note": "Readable companion library; README explicitly says it is not optimized for efficiency or robustness."
+      }
+    ],
+    "caveat": "Selected-video time is an estimate, not a playlist runtime. The companion library is educational code and should not be treated as a production controller.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-anyskin",
+    "title": "AnySkin: build touch that survives replacing the skin",
+    "category": "general",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Raunaq Bhirangi and collaborators",
+    "summary": "A tactile sensor project that makes wear, replacement and data reuse part of the learning problem.",
+    "why": "Unusually instructive hardware research: the sensing electronics and deformable surface are separated, so you can test whether a learned contact signal transfers after a real component change.",
+    "learn": "Inspect fabrication and the magnetometer interface, collect contact/no-contact data, then compare signals before and after a skin replacement. Read the plug-insertion and slip-detection evaluations alongside your results.",
+    "prerequisite": "Python, basic electronics and access to fabrication parts; a robot is optional for signal experiments.",
+    "time": "1–3 days + parts",
+    "url": "https://any-skin.github.io/",
+    "tags": [
+      "Tactile sensing",
+      "Hardware",
+      "Calibration",
+      "Contact"
+    ],
+    "related": [
+      "general-contact",
+      "touch-under-occlusion",
+      "sunday"
+    ],
+    "sources": [
+      {
+        "title": "AnySkin fabrication and demonstrations",
+        "url": "https://any-skin.github.io/",
+        "type": "demo",
+        "note": "Primary project explains magnetic sensing, separated surfaces and replacement experiments."
+      },
+      {
+        "title": "AnySkin paper",
+        "url": "https://arxiv.org/abs/2409.08276",
+        "type": "paper",
+        "note": "Defines the sensor and evaluates cross-instance policy transfer and slip detection."
+      },
+      {
+        "title": "AnySkin sensor interface",
+        "url": "https://github.com/raunaqbhirangi/anyskin",
+        "type": "code",
+        "note": "Official data-collection classes and stream interface; inspect this before wiring your experiment."
+      }
+    ],
+    "caveat": "Requires physical components and careful fabrication. Demonstrated cross-instance transfer is scoped to the tested sensors and tasks; raw magnetic readings are not universally calibrated contact forces.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-robopapers",
+    "title": "RoboPapers: technical conversations with the authors",
+    "category": "general",
+    "format": "Follow",
+    "level": "Deep dive",
+    "author": "Chris Paxton and RoboPapers co-hosts",
+    "summary": "Follow the research process through author interviews on contact, actions, evaluation and embodied models.",
+    "why": "The questions expose choices that abstracts hide: what was measured, why the representation works and what failed. Start with the contact-grounded-policy or PolaRiS episode, then follow topics rather than hype.",
+    "learn": "Use an episode as a guided reading of its linked paper. Compare the author's explanation of assumptions, evaluation and remaining gaps with the methods, code and evidence in this map.",
+    "prerequisite": "Comfort reading a robot-learning paper; pause and consult the linked source when terminology is unfamiliar.",
+    "time": "Ongoing",
+    "url": "https://robopapers.substack.com/archive",
+    "tags": [
+      "Research interviews",
+      "Contact",
+      "Policy evaluation",
+      "Robot learning"
+    ],
+    "related": [
+      "general-contact",
+      "foundation-evaluation",
+      "physical-intelligence",
+      "simulation-validation"
+    ],
+    "sources": [
+      {
+        "title": "RoboPapers episode archive",
+        "url": "https://robopapers.substack.com/archive",
+        "type": "demo",
+        "note": "Verified archive of the author-interview series; a discovery route rather than independent replication."
+      },
+      {
+        "title": "Contact Grounded Policy interview",
+        "url": "https://robopapers.substack.com/p/ep89-contact-grounded-policy",
+        "type": "demo",
+        "note": "July 2026 discussion with the research authors focuses on evolving multi-point contact."
+      },
+      {
+        "title": "PolaRiS author interview",
+        "url": "https://robopapers.substack.com/p/ep62-polaris-scalable-real-to-sim",
+        "type": "demo",
+        "note": "February 2026 conversation with Arhan Jain and Karl Pertsch about paired real-to-sim evaluation."
+      },
+      {
+        "title": "Chris Paxton's author profile",
+        "url": "https://cpaxton.github.io/about/",
+        "type": "docs",
+        "note": "Primary profile establishes the creator and links the series."
+      }
+    ],
+    "caveat": "Interviews are author perspectives, not independent audits. Publication pace and co-hosts can change; favor episodes whose papers and code you can inspect.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-diffusion-policy",
+    "title": "Diffusion Policy: why actions need a distribution",
+    "category": "foundation",
+    "format": "Read",
+    "level": "Foundational",
+    "author": "Cheng Chi and collaborators",
+    "summary": "The essential paper for understanding multimodal robot actions, action sequences and receding-horizon execution.",
+    "why": "It makes clear why averaging two valid motions can produce an invalid one. The paper and runnable code connect a generative model to closed-loop control instead of stopping at impressive demonstrations.",
+    "learn": "Read the action-diffusion formulation, observation/action horizons and receding-horizon execution. Inspect one small simulation task, then compare valid action modes, sampling cost and failure behavior.",
+    "prerequisite": "Basic imitation learning and diffusion models; Python/PyTorch for the code.",
+    "time": "60–90 min",
+    "url": "https://diffusion-policy.cs.columbia.edu/",
+    "tags": [
+      "Diffusion policy",
+      "Imitation learning",
+      "Action chunking",
+      "Manipulation"
+    ],
+    "related": [
+      "act-vs-diffusion",
+      "general-recovery",
+      "physical-intelligence",
+      "foundation-evaluation"
+    ],
+    "sources": [
+      {
+        "title": "Diffusion Policy project",
+        "url": "https://diffusion-policy.cs.columbia.edu/",
+        "type": "demo",
+        "note": "Author explanations, benchmark demonstrations and runnable notebook provide a concrete entry point."
+      },
+      {
+        "title": "Diffusion Policy paper",
+        "url": "https://arxiv.org/abs/2303.04137",
+        "type": "paper",
+        "note": "Primary formulation and benchmark evidence; paper results are scoped to its evaluated tasks."
+      },
+      {
+        "title": "Official reference implementation",
+        "url": "https://github.com/real-stanford/diffusion_policy",
+        "type": "code",
+        "note": "Inspect horizons, datasets and evaluation code; environment and hardware dependencies are version-sensitive."
+      }
+    ],
+    "caveat": "The original stack has older dependencies. Reproduce a small supplied environment first; diffusion inference latency and distribution shift remain practical limits.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-open-x",
+    "title": "Open X-Embodiment: inspect what cross-robot transfer means",
+    "category": "foundation",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Open X-Embodiment Collaboration",
+    "summary": "Study the data, interfaces and experiments behind sharing experience across different robot bodies.",
+    "why": "A foundational reference for assessing robot-model scaling claims. Its positive-transfer experiments are more informative than a trajectory count, and its data loader exposes the differences a shared format cannot erase.",
+    "learn": "Read the cross-robot transfer experiments, then inspect two datasets' camera inputs, control rates and action conventions. Separate shared representation from target-robot calibration and adaptation.",
+    "prerequisite": "Basic imitation learning; familiarity with robot state/action interfaces helps.",
+    "time": "60–90 min",
+    "url": "https://robotics-transformer-x.github.io/",
+    "tags": [
+      "Cross-embodiment",
+      "Robot data",
+      "Transfer learning",
+      "Action representation"
+    ],
+    "related": [
+      "foundation-embodiment",
+      "foundation-data",
+      "skild-ai",
+      "rlwrld"
+    ],
+    "sources": [
+      {
+        "title": "Open X-Embodiment project",
+        "url": "https://robotics-transformer-x.github.io/",
+        "type": "demo",
+        "note": "Primary explanation of the collaboration and positive transfer."
+      },
+      {
+        "title": "RT-X and dataset paper",
+        "url": "https://arxiv.org/abs/2310.08864",
+        "type": "paper",
+        "note": "Inspect the versioned experiments and data mix rather than extrapolating arbitrary-body transfer."
+      },
+      {
+        "title": "Dataset loading and schemas",
+        "url": "https://github.com/google-deepmind/open_x_embodiment",
+        "type": "code",
+        "note": "Primary loader, conventions and dataset references make the embodiment differences inspectable."
+      }
+    ],
+    "caveat": "A unified dataset does not imply identical controllers or zero-shot deployment on any body. Individual datasets also have their own access and licensing terms.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-pi05",
+    "title": "π0.5 + OpenPI: read the heterogeneous co-training recipe",
+    "category": "foundation",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Physical Intelligence",
+    "summary": "A concrete recipe combining robot actions, semantic subtasks and non-robot data to generalize beyond familiar scenes.",
+    "why": "The useful lesson is how the data and training stages fit together, not simply that a VLM can drive a robot. Ablations and an open earlier-model implementation let you examine the mechanism.",
+    "learn": "Read Sections IV–V: discrete-token pretraining, continuous-action post-training, heterogeneous supervision and high-level inference. Compare the co-training ablations, then inspect the released OpenPI model and adapters.",
+    "prerequisite": "Transformers, imitation learning and basic flow matching; robot interface knowledge for adaptation.",
+    "time": "75–120 min",
+    "url": "https://arxiv.org/abs/2504.16054",
+    "tags": [
+      "VLA",
+      "Co-training",
+      "Flow matching",
+      "Open weights"
+    ],
+    "related": [
+      "physical-intelligence",
+      "foundation-data",
+      "foundation-embodiment",
+      "sunday"
+    ],
+    "sources": [
+      {
+        "title": "π0.5 primary paper",
+        "url": "https://arxiv.org/abs/2504.16054",
+        "type": "paper",
+        "note": "Methods and ablations describe a specific co-training recipe and author-run physical evaluations."
+      },
+      {
+        "title": "OpenPI checkpoints and adapters",
+        "url": "https://github.com/Physical-Intelligence/openpi",
+        "type": "code",
+        "note": "Released earlier models and adaptation guides; the README warns transfer to a new setup may fail."
+      }
+    ],
+    "caveat": "Chosen for instructive methods and available implementation, not as the latest PI model. OpenPI releases do not imply released weights or every capability of later π0.7 research.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-lerobot",
+    "title": "LeRobot: collect, train and evaluate one real skill",
+    "category": "foundation",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Hugging Face LeRobot contributors",
+    "summary": "A practical route from camera calibration and teleoperation to a recorded dataset, trained policy and physical evaluation.",
+    "why": "It exposes the hidden work behind a robot-learning result: consistent sensors, action timing, reset conditions and usable demonstrations. The value is the complete feedback loop, not downloading a checkpoint.",
+    "learn": "Follow the versioned imitation-learning guide with a simple task. Inspect your recordings, train ACT, and evaluate under a changed object position before trying a VLA. Keep intervention and reset logs.",
+    "prerequisite": "Python, a supported calibrated robot/teleoperator and cameras; GPU or documented Apple-silicon path for training.",
+    "time": "1–3 days + hardware",
+    "url": "https://huggingface.co/docs/lerobot/v0.5.1/il_robots",
+    "tags": [
+      "LeRobot",
+      "Data collection",
+      "Imitation learning",
+      "Reproducibility"
+    ],
+    "related": [
+      "act-vs-diffusion",
+      "recovery-data",
+      "smolvla-shift",
+      "foundation-data"
+    ],
+    "sources": [
+      {
+        "title": "Versioned real-robot imitation guide",
+        "url": "https://huggingface.co/docs/lerobot/v0.5.1/il_robots",
+        "type": "docs",
+        "note": "Inspected calibration prerequisites, recording, dataset inspection, training and inference steps."
+      },
+      {
+        "title": "LeRobot implementation",
+        "url": "https://github.com/huggingface/lerobot",
+        "type": "code",
+        "note": "Primary code and current supported policies/hardware; match the checkout to the selected documentation."
+      },
+      {
+        "title": "Builder discussion: backlash, action timing and recovery data",
+        "url": "https://www.reddit.com/r/robotics/comments/1uzuwbf/what_task_should_i_teach_it_next/",
+        "type": "reddit",
+        "note": "Self-reported ACT build discussion with dataset/model links, physical vibration and subsequent HIL corrections. Useful troubleshooting questions, not a controlled architecture benchmark."
+      }
+    ],
+    "caveat": "Hardware, calibration and control-rate differences can dominate results. Use a matching release and document actual compute and reset policy; the guide is not a guarantee of successful arbitrary-task learning.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-robin",
+    "title": "Amazon Robin: what production manipulation actually looks like",
+    "category": "niche",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Shuai Li and collaborators · Amazon Robotics",
+    "summary": "A rare production-data paper on choosing successful picks from messy, deformable package piles.",
+    "why": "A valuable counterweight to foundation-model demos: a targeted learned success estimator can generate economic value at fleet scale. It also shows why ranking, collision checks and operational data matter.",
+    "learn": "Read the pick-success features, online ranking and production evaluation. Ask which variability the system handles, what assumptions bound the workcell and which exceptions remain outside the learned estimator.",
+    "prerequisite": "Basic machine learning and grasp planning; no specialist deep-learning background required.",
+    "time": "35–50 min",
+    "url": "https://arxiv.org/abs/2305.10272",
+    "tags": [
+      "Production robotics",
+      "Picking",
+      "Unit economics",
+      "Operational data"
+    ],
+    "related": [
+      "niche-integration",
+      "exotec",
+      "mytra",
+      "general-recovery"
+    ],
+    "sources": [
+      {
+        "title": "Production package manipulation paper",
+        "url": "https://arxiv.org/abs/2305.10272",
+        "type": "paper",
+        "note": "Primary production evaluation of the Robin fleet's learned pick-success estimator."
+      },
+      {
+        "title": "RSS 2023 proceedings",
+        "url": "https://roboticsproceedings.org/rss19/p023.html",
+        "type": "paper",
+        "note": "Peer-reviewed conference record and accessible paper; establishes the specific study rather than a current fleet claim."
+      }
+    ],
+    "caveat": "Historical author-reported evidence from a bounded package-induction application. The study does not establish today's fleet metrics or a general-purpose manipulation capability.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-farm-supervision",
+    "title": "Crop-robot economics: price the human rescue time",
+    "category": "niche",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Elias Maritan and collaborators",
+    "summary": "An economic model showing when robot supervision saves money and when it consumes the automation benefit.",
+    "why": "It changes how you evaluate niche robots: intervention rate, supervisor location, fleet size and seasonal availability can matter more than an impressive autonomous cycle.",
+    "learn": "Follow the supervision scenarios and sensitivity analysis. Rebuild a small version for a target operation using productive output, support minutes, travel and utilization; compare it with the incumbent process.",
+    "prerequisite": "Basic spreadsheet modeling; willingness to distinguish assumptions from measured operating data.",
+    "time": "45–60 min",
+    "url": "https://hau.repository.guildhe.ac.uk/id/eprint/17883/",
+    "tags": [
+      "Agricultural robotics",
+      "Supervision",
+      "Unit economics",
+      "Deployment"
+    ],
+    "related": [
+      "niche-supervision",
+      "carbon-robotics",
+      "field-ai"
+    ],
+    "sources": [
+      {
+        "title": "Economically optimal farmer supervision",
+        "url": "https://hau.repository.guildhe.ac.uk/id/eprint/17883/",
+        "type": "paper",
+        "note": "Open repository record and full-text route for the model and its scenario assumptions."
+      },
+      {
+        "title": "Lessons in autonomous field-equipment adoption",
+        "url": "https://doi.org/10.1002/aepp.13177",
+        "type": "paper",
+        "note": "Companion treatment of adoption, scale and supervision constraints."
+      }
+    ],
+    "caveat": "This is a scenario model, not a current price list or forecast for Carbon Robotics or FieldAI. Re-estimate costs, operating windows and regulatory assumptions for the actual customer.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-srt-h",
+    "title": "SRT-H: hierarchy and correction on variable tissue",
+    "category": "niche",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Ji Woong Kim and collaborators",
+    "summary": "Study a concrete attempt to sustain autonomous surgical steps through tissue variability and execution errors.",
+    "why": "A technically revealing setting where precision and recovery are inseparable. Language-level planning and corrective instructions show how hierarchy can connect general reasoning to a tightly bounded physical procedure.",
+    "learn": "Read the planner/trajectory-policy split, corrective instructions and ablations. Then compare eight unseen ex vivo gallbladder trials with the much broader evidence needed for an intended clinical use.",
+    "prerequisite": "Imitation learning and basic manipulation; surgical terminology can be learned from the paper figures.",
+    "time": "60–90 min",
+    "url": "https://arxiv.org/abs/2505.10251",
+    "tags": [
+      "Surgical robotics",
+      "Hierarchy",
+      "Soft tissue",
+      "Failure recovery"
+    ],
+    "related": [
+      "niche-clinical",
+      "cmr-surgical",
+      "general-recovery",
+      "general-contact"
+    ],
+    "sources": [
+      {
+        "title": "SRT-H primary research",
+        "url": "https://arxiv.org/abs/2505.10251",
+        "type": "paper",
+        "note": "Reports step-level autonomy in ex vivo experiments, including eight unseen gallbladders."
+      },
+      {
+        "title": "FDA September 2026 premarket draft",
+        "url": "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/robotically-assisted-surgical-devices-premarket-submissions",
+        "type": "report",
+        "note": "Different evidence lens: nonclinical testing, clinical data and labeling for a defined intended use; still draft guidance."
+      }
+    ],
+    "caveat": "Ex vivo tissue results do not establish autonomous operations on patients. CMR Surgical is linked as related application context, not as the developer or deployer of SRT-H.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-mujoco-contact",
+    "title": "MuJoCo contact: understand what the solver really assumes",
+    "category": "simulation",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "MuJoCo developers · Google DeepMind",
+    "summary": "Read the contact and soft-constraint model before trusting a simulator's grasp, foot contact or differentiable result.",
+    "why": "It reveals exactly where a convincing simulation can encode the wrong physics: friction dimensions, compliance, collision geometry and solver settings are modeling choices.",
+    "learn": "Study Contact, Friction Cones and Soft Contact Model in Computation, then the parameter guidance in Modeling. Change one contact parameter and timestep in a tiny scene and explain the resulting forces and slip.",
+    "prerequisite": "Rigid-body dynamics and basic numerical optimization; Python/XML for experiments.",
+    "time": "90–150 min",
+    "url": "https://mujoco.readthedocs.io/en/stable/computation/",
+    "tags": [
+      "Contact physics",
+      "MuJoCo",
+      "Solver assumptions",
+      "Calibration"
+    ],
+    "related": [
+      "simulation-contact",
+      "contact-gradient-audit",
+      "latency-trap",
+      "general-contact"
+    ],
+    "sources": [
+      {
+        "title": "MuJoCo computation reference",
+        "url": "https://mujoco.readthedocs.io/en/stable/computation/",
+        "type": "docs",
+        "note": "Primary equations and assumptions for constraints, contact dimensionality and friction."
+      },
+      {
+        "title": "MuJoCo modeling reference",
+        "url": "https://mujoco.readthedocs.io/en/stable/modeling.html",
+        "type": "docs",
+        "note": "Parameter semantics and modeling guidance connect the equations to actual model settings."
+      }
+    ],
+    "caveat": "Stable documentation changes with releases, so record the engine version. Parameter tuning can match one task without identifying the true material or validating a different contact regime.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-isaaclab",
+    "title": "Isaac Lab: design the task before training the policy",
+    "category": "simulation",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Isaac Lab project developers · NVIDIA and contributors",
+    "summary": "Make observations, actions, rewards, resets and randomization inspectable parts of one vectorized robot-learning task.",
+    "why": "A useful way to learn where benchmark behavior comes from. Modular task definitions let you change the physical assumption or reward and test whether the agent learned the intended behavior.",
+    "learn": "Start with a supplied task, inspect each manager and the reset logic, then alter one observation delay or physics parameter. Compare manager-based modularity with the direct workflow before building a larger environment.",
+    "prerequisite": "Python and basic RL; check the selected physics/rendering backend's supported hardware.",
+    "time": "1–2 days",
+    "url": "https://github.com/isaac-sim/IsaacLab",
+    "tags": [
+      "Isaac Lab",
+      "RL environments",
+      "Domain randomization",
+      "Synthetic data"
+    ],
+    "related": [
+      "nvidia",
+      "simulation-transfer",
+      "simulation-validation",
+      "randomization-frontier",
+      "latency-trap"
+    ],
+    "sources": [
+      {
+        "title": "Isaac Lab implementation",
+        "url": "https://github.com/isaac-sim/IsaacLab",
+        "type": "code",
+        "note": "Current official project; inspect environment definitions and supported backends, not only demo speed."
+      },
+      {
+        "title": "Versioned task-design workflow",
+        "url": "https://isaac-sim.github.io/IsaacLab/v3.0.0-EA/source/concepts/task_workflows.html",
+        "type": "docs",
+        "note": "Primary comparison of manager-based and direct RL task workflows; early-access snapshot."
+      },
+      {
+        "title": "Isaac Lab technical paper",
+        "url": "https://arxiv.org/abs/2511.04831",
+        "type": "paper",
+        "note": "Framework architecture and multi-modal GPU-learning rationale; paper capabilities depend on its version."
+      }
+    ],
+    "caveat": "The cited v3.0.0-EA guide is early access. Pin a compatible release and documentation; hardware and rendering support vary by backend. A fast rollout is not evidence of valid physical transfer.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-polaris",
+    "title": "PolaRiS: turn a scan into a test of policy generalization",
+    "category": "simulation",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Arhan Jain, Mingtong Zhang and collaborators",
+    "summary": "A bridge from real-scene scans through splats and collision meshes to paired, physically grounded policy evaluation.",
+    "why": "It forces the useful question: does reconstructed simulation predict which policies work on the real robot? The co-training step is as instructive as the photorealistic reconstruction.",
+    "learn": "Run the supplied environment and random-policy example first. Inspect 2DGS appearance, collision meshes, metric calibration and policy adapters; then read the paired real/sim evaluation and simulation co-training ablation.",
+    "prerequisite": "Python, robot-learning basics and a compatible NVIDIA/CUDA setup; 24 GB GPU for the documented π0.5 example.",
+    "time": "1–3 days",
+    "url": "https://github.com/arhanjain/polaris",
+    "tags": [
+      "Real to sim",
+      "Gaussian splatting",
+      "Policy evaluation",
+      "Co-training"
+    ],
+    "related": [
+      "simulation-validation",
+      "foundation-evaluation",
+      "spatial-geometry",
+      "articulated-splat",
+      "splat-collision-gap"
+    ],
+    "sources": [
+      {
+        "title": "PolaRiS runnable framework",
+        "url": "https://github.com/arhanjain/polaris",
+        "type": "code",
+        "note": "README verified: supplied environments, random actions and a π0.5 example tested on an RTX 3090 with 24 GB."
+      },
+      {
+        "title": "PolaRiS primary paper",
+        "url": "https://arxiv.org/abs/2512.16881",
+        "type": "paper",
+        "note": "December 2025 work on neural reconstruction, sim-data co-training and paired evaluation correlation."
+      },
+      {
+        "title": "Reconstruction and evaluation project",
+        "url": "https://polaris-evals.github.io/",
+        "type": "demo",
+        "note": "Shows metric scaling, 2DGS appearance, collision mesh extraction and articulated insertion."
+      }
+    ],
+    "caveat": "The README currently defaults to CUDA 13; compatible PyTorch/toolkit versions matter. Paired correlation is scoped to tested tasks, and splat appearance does not independently determine contact physics.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-learning-dexterity",
+    "title": "Learning Dexterity: read the sim-to-real ablations",
+    "category": "simulation",
+    "format": "Read",
+    "level": "Foundational",
+    "author": "OpenAI and collaborators",
+    "summary": "A foundational physical-robot study of randomized simulation, recurrent control and dexterous object reorientation.",
+    "why": "It helps distinguish robust transfer from photorealism. Read what was randomized, what information the controller used and how the authors checked the actual hand, rather than only watching dexterity videos.",
+    "learn": "Focus on dynamics/appearance randomization, control observations, recurrent policy design and sim-to-real ablations. Map each randomized quantity to a real uncertainty and separate object-reorientation evidence from broader manipulation.",
+    "prerequisite": "Basic reinforcement learning, control and probability; no hardware needed for reading.",
+    "time": "60–90 min",
+    "url": "https://arxiv.org/abs/1808.00177",
+    "tags": [
+      "Sim to real",
+      "Domain randomization",
+      "Dexterous hands",
+      "RL"
+    ],
+    "related": [
+      "simulation-transfer",
+      "general-contact",
+      "randomization-frontier",
+      "latency-trap"
+    ],
+    "sources": [
+      {
+        "title": "Learning Dexterous In-Hand Manipulation",
+        "url": "https://arxiv.org/abs/1808.00177",
+        "type": "paper",
+        "note": "Primary 2018 work on vision-based reorientation with a physical Shadow Hand after simulation training."
+      },
+      {
+        "title": "Official research explanation and demonstrations",
+        "url": "https://openai.com/index/learning-dexterity/",
+        "type": "company",
+        "note": "Companion hardware context and demonstration; treated as developer disclosure, not independent evaluation."
+      }
+    ],
+    "caveat": "Historical research with substantial compute and specialized hardware. The evidence concerns object reorientation under the studied conditions, not general dexterity or cheap replication.",
+    "reviewed": "2026-10-07"
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "nvidia": {
+    "focus": "Simulation infrastructure · synthetic sensors · world models",
+    "edge": "A connected GPU stack spanning robotics simulation, data generation and learned world models.",
+    "summary": "Connects GPU robotics simulation, synthetic sensor data, policy learning and open world models into a physical AI development stack."
+  },
+  "applied-intuition": {
+    "focus": "Autonomy validation · neural reconstruction · vehicle software",
+    "edge": "Driving logs become virtual test environments inside a broader vehicle development and validation stack.",
+    "summary": "Builds autonomy simulation and vehicle software, with neural reconstruction turning fleet logs into virtual test environments."
+  },
+  "parallel-domain": {
+    "focus": "Sensor-log reconstruction · synthetic perception datasets",
+    "edge": "Reconstructs logged environments to test perception against synchronized, controllable synthetic sensor views.",
+    "summary": "Reconstructs fleet environments and generates synchronized synthetic sensor data for perception training and autonomy regression tests."
+  },
+  "bifrost": {
+    "focus": "Rare perception conditions · maritime · simulation evaluation",
+    "edge": "Targets hard-to-collect sensing conditions and extends synthetic-data workflows into policy evaluation.",
+    "summary": "Generates labeled maritime, aerial and geospatial sensor datasets, with a newer product evaluating robot policies in simulation."
+  },
+  "world-labs": {
+    "focus": "Persistent 3D generation · spatial representation · world APIs",
+    "edge": "Persistent explorable 3D worlds, with shipping creator tools and a separate research path toward dynamics.",
+    "summary": "Generates persistent explorable 3D worlds from text, images and videos, with public Marble tools and a newer Atlas research model."
+  },
+  "odyssey": {
+    "focus": "Action-conditioned dynamics · multi-agent worlds · policy learning",
+    "edge": "Live interactive prediction, shared worlds and model-based policy learning form one research trajectory.",
+    "summary": "Develops action-conditioned models for live interaction, shared multi-agent worlds and learning policies for virtual and physical systems."
+  },
+  "waabi": {
+    "focus": "Closed-loop driving simulation · neural sensors · trucking",
+    "edge": "An integrated autonomy-and-simulator loop grounded in driving logs, controllable scenarios and sensor models.",
+    "summary": "Builds autonomous driving around Waabi World, a learned simulator of roads, sensors and traffic for closed-loop training and evaluation."
+  },
+  "general-intuition": {
+    "focus": "Gameplay actions · multi-agent prediction · agent learning",
+    "edge": "Action-labeled gameplay at scale, with an open multiplayer dynamics model to test shared-world consistency.",
+    "summary": "Builds world and action models from gameplay, combining Medal data with open research on action-conditioned multiplayer dynamics."
+  },
+  "physicsx": {
+    "focus": "Engineering prediction · design optimization · physics AI",
+    "edge": "Engineering simulation becomes a data engine for fast geometry-conditioned prediction and optimization.",
+    "summary": "Trains models on engineering simulations and experiments to predict performance quickly and explore industrial hardware designs."
+  },
+  "duality-ai": {
+    "focus": "System-specific simulation · digital environments · sensor data",
+    "edge": "Combines configurable environments, sensors and system behavior into autonomy test and data-generation loops.",
+    "summary": "Builds Falcon, a configurable digital-twin simulator for synthetic sensor data and autonomy testing with system-specific physics."
+  },
+  "cognite": {
+    "focus": "Industrial data context · asset graphs · operational workflows",
+    "edge": "Contextualized industrial data gives operational twins a trustworthy connection to assets and measurements.",
+    "summary": "Connects sensor, engineering and enterprise data into asset models for maintenance, operational digital twins and industrial AI."
+  },
+  "wandelbots": {
+    "focus": "Robot software · virtual controllers · industrial cells",
+    "edge": "Robot-independent software connects simulated cells, virtual controllers and physical industrial robots.",
+    "summary": "Builds robot-independent software connecting virtual controllers, simulation, motion planning and physical industrial robot cells."
+  }
+}

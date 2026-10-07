@@ -1,0 +1,787 @@
+[
+  {
+    "id": "resource-dreamerv3",
+    "title": "DreamerV3: learning control in imagination",
+    "category": "world",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Danijar Hafner, Jurgis Pasukonis, Jimmy Ba & Timothy Lillicrap",
+    "summary": "Understand how a learned latent dynamics model becomes a training environment for a policy.",
+    "why": "A concrete bridge between representation learning and control. Its recurrent state, imagined rollouts and stability techniques explain a different meaning of “world model” from video generation.",
+    "learn": "Trace observation encoding → recurrent state-space model → imagined actor/critic updates. Study symlog transforms and loss balancing, then ask how rollout error changes with horizon and partial observability.",
+    "prerequisite": "Reinforcement learning, variational inference and basic recurrent networks.",
+    "time": "90–150 min with notes",
+    "url": "https://arxiv.org/abs/2301.04104",
+    "tags": [
+      "Latent dynamics",
+      "Model-based RL",
+      "Imagination",
+      "Evaluation"
+    ],
+    "related": [
+      "dreamer-horizon",
+      "world-causality",
+      "world-evaluation",
+      "general-intuition"
+    ],
+    "sources": [
+      {
+        "title": "DreamerV3 research paper",
+        "url": "https://arxiv.org/abs/2301.04104",
+        "type": "paper",
+        "note": "Primary account of the recurrent world model, imagined control and cross-domain experiments."
+      },
+      {
+        "title": "Author's DreamerV3 reimplementation",
+        "url": "https://github.com/danijar/dreamerv3",
+        "type": "code",
+        "note": "Author-maintained code; README explicitly calls this a reimplementation and requires Python 3.11+."
+      },
+      {
+        "title": "Hafner's release thread",
+        "url": "https://twitter.com/danijarh/status/1613161946223677441",
+        "type": "x",
+        "note": "Exact thread linked by the author's README; direct X retrieval returned 403, so no factual claim relies on reading it."
+      },
+      {
+        "title": "Practitioner debate about reconstruction objectives",
+        "url": "https://www.reddit.com/r/reinforcementlearning/comments/1lic56s/benchmarks_fooling_reconstruction_based_world/",
+        "type": "reddit",
+        "note": "Read discussion of task-relevant representations and distractors; its opening post misclassifies some methods, so treat it as debate."
+      }
+    ],
+    "caveat": "Benchmark control results do not establish a general-purpose physical simulator. The current repository is a reimplementation; reproducibility depends on its commit, environment and compute budget.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-jepa-planning",
+    "title": "What actually makes JEPA planning work?",
+    "category": "world",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Basile Terver, Tsung-Yen Yang, Jean Ponce, Adrien Bardes & Yann LeCun",
+    "summary": "A systematic study of latent world-model design choices, with released models, datasets and planning code.",
+    "why": "Read this before treating a beautiful decoded rollout as evidence of physical understanding. It separates encoder quality, action conditioning, rollout training and planner behavior through ablations.",
+    "learn": "Compare image versus video encoders, proprioception, context length, multi-step rollout losses and CEM/gradient planning. Check which metric is simulated task success and which is offline action agreement.",
+    "prerequisite": "Transformers, model predictive control and goal-conditioned planning.",
+    "time": "90–150 min",
+    "url": "https://arxiv.org/abs/2512.24497",
+    "tags": [
+      "JEPA",
+      "Latent planning",
+      "Ablations",
+      "Physical reasoning",
+      "Open weights"
+    ],
+    "related": [
+      "world-causality",
+      "world-evaluation",
+      "foundation-evaluation",
+      "physical-intelligence",
+      "skild-ai"
+    ],
+    "sources": [
+      {
+        "title": "JEPA-WM paper, revised September 2026",
+        "url": "https://arxiv.org/abs/2512.24497",
+        "type": "paper",
+        "note": "Primary paper; full HTML read for evaluation protocol, design ablations and limitations."
+      },
+      {
+        "title": "JEPA-WM code, data and checkpoints",
+        "url": "https://github.com/facebookresearch/jepa-wms",
+        "type": "code",
+        "note": "Official implementation exposes models for DROID/RoboCasa, MetaWorld, Push-T, PointMaze and Wall."
+      },
+      {
+        "title": "Pretrained checkpoint collection",
+        "url": "https://huggingface.co/facebook/jepa-wms",
+        "type": "demo",
+        "note": "Model collection linked by the official repository; permits studying trained predictors before expensive retraining."
+      }
+    ],
+    "caveat": "Real-robot DROID evaluation uses action agreement on recorded Franka videos; it is not live robot deployment success. Simulated tasks are limited. Code is CC-BY-NC 4.0, with environment-specific setup requirements.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-diamond",
+    "title": "DIAMOND: play inside a diffusion world model",
+    "category": "world",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Eloi Alonso & collaborators",
+    "summary": "Inspect a controllable video world model and the RL agent trained inside it, using released checkpoints.",
+    "why": "Provides a usable counterpoint to latent abstraction: preserving small visual details can matter for control. The interactive player makes compounding errors and action responsiveness tangible.",
+    "learn": "Read the denoising formulation, then compare real and imagined Atari trajectories in the player. Distinguish teacher-forced next-frame quality from free-running behavior and changes in policy return.",
+    "prerequisite": "Python/PyTorch; diffusion and RL basics help. A compatible GPU is preferable for interactive inference.",
+    "time": "1–3 h to explore; training is separate",
+    "url": "https://github.com/eloialonso/diamond",
+    "tags": [
+      "Diffusion",
+      "Interactive worlds",
+      "Action conditioning",
+      "Open weights",
+      "Model-based RL"
+    ],
+    "related": [
+      "diamond-consistency",
+      "world-causality",
+      "world-persistence",
+      "odyssey",
+      "world-labs"
+    ],
+    "sources": [
+      {
+        "title": "Official DIAMOND repository",
+        "url": "https://github.com/eloialonso/diamond",
+        "type": "code",
+        "note": "Verified player and pretrained-model instructions; Atari is on main, CSGO world-model demo uses the csgo branch."
+      },
+      {
+        "title": "Diffusion for World Modeling: Visual Details Matter in Atari",
+        "url": "https://arxiv.org/abs/2405.12399",
+        "type": "paper",
+        "note": "Primary NeurIPS 2024 paper; control result is evaluated on Atari rather than robotics."
+      },
+      {
+        "title": "Project demonstrations",
+        "url": "https://diamond-wm.github.io/",
+        "type": "demo",
+        "note": "Author project visualizes generated rollouts and the separate CSGO demonstration."
+      },
+      {
+        "title": "Alonso's Atari release thread",
+        "url": "https://x.com/EloiAlonso1/status/1793916382779982120",
+        "type": "x",
+        "note": "Exact author thread anchored in repository; direct retrieval was blocked, so paper/code supply the factual evidence."
+      }
+    ],
+    "caveat": "Action-conditioned video is not a validated physics engine. Main and CSGO branches differ, and Atari dependencies download ROMs with licensing requirements. Inference exploration does not reproduce full training results.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-twin-foundations",
+    "title": "Digital twins: the model–data–decision loop",
+    "category": "twins",
+    "format": "Read",
+    "level": "Foundational",
+    "author": "National Academies of Sciences, Engineering, and Medicine",
+    "summary": "A rigorous definition and research agenda for twins that update from a physical counterpart and inform decisions.",
+    "why": "A useful lens for judging vendor claims: what is observed, what is inferred, what is predicted, and what decision changes? It makes fidelity and computational cost depend on the intended use.",
+    "learn": "Start with the summary's feedback-loop diagram. Follow the chapters on data acquisition, assimilation and fit-for-purpose models; distinguish a 3D scene, a simulator and an operational predictive twin.",
+    "prerequisite": "No specialist background for the summary; estimation and numerical modeling help with later chapters.",
+    "time": "45–60 min for summary; book as reference",
+    "url": "https://www.nationalacademies.org/read/26894/chapter/2",
+    "tags": [
+      "Digital twins",
+      "Data assimilation",
+      "Research agenda",
+      "Decision support",
+      "Physical reasoning"
+    ],
+    "related": [
+      "twins-synchronization",
+      "twins-credibility",
+      "twin-identifiability",
+      "cognite",
+      "physicsx"
+    ],
+    "sources": [
+      {
+        "title": "Foundational Research Gaps and Future Directions for Digital Twins",
+        "url": "https://www.nationalacademies.org/read/26894/chapter/2",
+        "type": "report",
+        "note": "Primary 2024 consensus report; summary read for definition, feedback flows, fidelity and research gaps."
+      },
+      {
+        "title": "The physical counterpart: acquisition and integration",
+        "url": "https://www.nationalacademies.org/read/26894/chapter/6",
+        "type": "report",
+        "note": "Book chapter read for undersampling, evolving measurement sources and uncertainty."
+      },
+      {
+        "title": "NIST twin validation research overview",
+        "url": "https://www.nist.gov/digital-twins/validating-and-advancement",
+        "type": "report",
+        "note": "Independent standards-lab companion emphasizing continuous validation and links to technical papers."
+      }
+    ],
+    "caveat": "A consensus research agenda is not a benchmark or a certification standard. Different industries use different twin definitions; use the stated decision and update loop to make comparisons explicit.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-openusd",
+    "title": "OpenUSD: compose an inspectable world",
+    "category": "twins",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Pixar Animation Studios & OpenUSD contributors",
+    "summary": "Learn scene layers, references, variants and transforms by authoring a small world with the official tutorials.",
+    "why": "The practical foundation underneath many robot simulators and industrial scene pipelines. Understanding composition explains how geometry, configuration and runtime state can coexist without flattening everything.",
+    "learn": "Build a referenced asset, override it in a stronger layer and inspect the resolved stage. Learn prim paths, edit targets, variants, session layers and transform order before connecting telemetry or simulation.",
+    "prerequisite": "Basic Python and 3D transforms; USD imaging/viewer dependencies are additional to core authoring.",
+    "time": "2–4 h for selected tutorials",
+    "url": "https://openusd.org/release/tut_usd_tutorials.html",
+    "tags": [
+      "OpenUSD",
+      "Scene composition",
+      "Interoperability",
+      "Layers",
+      "Digital twins"
+    ],
+    "related": [
+      "live-usd-twin",
+      "twins-semantics",
+      "twins-synchronization",
+      "nvidia",
+      "wandelbots"
+    ],
+    "sources": [
+      {
+        "title": "Official OpenUSD tutorials",
+        "url": "https://openusd.org/release/tut_usd_tutorials.html",
+        "type": "docs",
+        "note": "Tutorial index links source examples and states the tested USD version for each."
+      },
+      {
+        "title": "Introduction to USD",
+        "url": "https://openusd.org/release/intro.html",
+        "type": "docs",
+        "note": "Primary conceptual overview of interchange, assembly, overrides and extension boundaries."
+      },
+      {
+        "title": "OpenUSD source and build dependencies",
+        "url": "https://github.com/PixarAnimationStudios/OpenUSD",
+        "type": "code",
+        "note": "Official repository; core, Python bindings and usdview imaging dependencies are explicitly separated."
+      },
+      {
+        "title": "USD terms and concepts",
+        "url": "https://openusd.org/release/glossary.html",
+        "type": "docs",
+        "note": "Primary reference for stages, layers, composition, session layers and time samples."
+      }
+    ],
+    "caveat": "Scene description alone does not supply telemetry transport, system identification or validated physics. Match tutorials to your USD release; a core Python package does not automatically include usdview.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-fmi",
+    "title": "FMI: where model exchange meets real dynamics",
+    "category": "twins",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Modelica Association FMI Project; FMPy contributors",
+    "summary": "Study how executable dynamic models move between tools, then inspect a reference FMU in Python.",
+    "why": "Complements OpenUSD's scene representation with a standard for dynamic models. The key engineering question becomes who advances time, owns the solver and handles events when systems are coupled.",
+    "learn": "Read FMI 3.0.2's interface overview, then inspect BouncingBall or VanDerPol reference models. Compare model exchange with co-simulation, event handling and communication-step sensitivity using a supported importer.",
+    "prerequisite": "Basic ODEs and Python; C/CMake only if compiling reference FMUs.",
+    "time": "2–4 h; specification as reference",
+    "url": "https://fmi-standard.org/docs/3.0.2/",
+    "tags": [
+      "FMI",
+      "Co-simulation",
+      "Hybrid systems",
+      "Interoperability",
+      "Digital twins"
+    ],
+    "related": [
+      "twins-semantics",
+      "simulation-validation",
+      "twin-identifiability",
+      "physicsx",
+      "duality-ai"
+    ],
+    "sources": [
+      {
+        "title": "FMI 3.0.2 specification",
+        "url": "https://fmi-standard.org/docs/3.0.2/",
+        "type": "docs",
+        "note": "Primary standard read for Model Exchange, Co-Simulation, Scheduled Execution and solver/time ownership."
+      },
+      {
+        "title": "Official reference FMUs",
+        "url": "https://github.com/modelica/Reference-FMUs",
+        "type": "code",
+        "note": "Hand-coded BouncingBall, VanDerPol, Dahlquist and other models for testing and debugging interfaces."
+      },
+      {
+        "title": "FMPy importer",
+        "url": "https://github.com/CATIA-Systems/FMPy",
+        "type": "code",
+        "note": "README documents FMI 1/2/3, Model Exchange and Co-Simulation, with cross-platform example FMUs."
+      }
+    ],
+    "caveat": "Interface compliance does not establish model accuracy or coupling stability. FMU binaries must match the platform; importer support varies by FMI feature, and FMPy's overview does not promise full Scheduled Execution support.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-twin-credibility",
+    "title": "Can you trust a twin's prediction?",
+    "category": "twins",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Guodong Shao, Joe Hightower & William Schindel; NIST",
+    "summary": "An engineering framework for verifying, validating and quantifying uncertainty throughout a twin's lifetime.",
+    "why": "Essential before using a twin to optimize expensive physical decisions. It turns “looks accurate” into evidence about the intended use, uncertainty sources, changing data and consequences of model error.",
+    "learn": "Separate verification of implementation from validation against reality and uncertainty quantification. Identify the prediction of interest, its operating domain, calibration evidence and what requires revalidation after a change.",
+    "prerequisite": "Basic statistics and simulation; no OpenUSD or graphics knowledge required.",
+    "time": "45–75 min",
+    "url": "https://www.nist.gov/publications/credibility-consideration-digital-twins-manufacturing",
+    "tags": [
+      "VVUQ",
+      "Model credibility",
+      "Uncertainty",
+      "Validation",
+      "Digital twins"
+    ],
+    "related": [
+      "twins-credibility",
+      "simulation-validation",
+      "twin-identifiability",
+      "cognite",
+      "physicsx"
+    ],
+    "sources": [
+      {
+        "title": "Credibility consideration for digital twins in manufacturing",
+        "url": "https://www.nist.gov/publications/credibility-consideration-digital-twins-manufacturing",
+        "type": "paper",
+        "note": "Primary NIST publication page and abstract verified; journal version is Manufacturing Letters 35 (2023), 24–28."
+      },
+      {
+        "title": "NIST validation and advancement overview",
+        "url": "https://www.nist.gov/digital-twins/validating-and-advancement",
+        "type": "report",
+        "note": "Current lab overview corroborates ongoing validation and gives the journal DOI."
+      },
+      {
+        "title": "2026 NIST report on harmonizing UQ and metrology",
+        "url": "https://www.nist.gov/publications/methods-uncertainty-quantification-computational-modeling-and-simulation-harmonizing",
+        "type": "report",
+        "note": "Publisher page/abstract read: risk-based credibility scales effort with model influence and decision consequence; full PDF could not be fetched."
+      }
+    ],
+    "caveat": "This is a credibility framework, not a certificate for any product. Publisher abstracts and the lab overview were accessible; direct PDFs were unavailable to the research tool, so detailed derivations were not audited.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-3dgs",
+    "title": "3D Gaussian Splatting: the original mechanism",
+    "category": "spatial",
+    "format": "Read",
+    "level": "Foundational",
+    "author": "Bernhard Kerbl, Georgios Kopanas, Thomas Leimkühler & George Drettakis",
+    "summary": "The foundational paper connecting explicit Gaussian primitives, adaptive density and fast differentiable rendering.",
+    "why": "The shortest route to understanding the representation behind much of today's spatial reconstruction tooling. It makes later work on surfaces, camera models, compression and dynamics easier to evaluate.",
+    "learn": "Follow sparse SfM initialization, anisotropic covariance, spherical harmonics, cloning/splitting and visibility-aware rasterization. Ask which parameters explain appearance and which actually constrain geometry.",
+    "prerequisite": "Camera projection, gradients and basic graphics; spherical harmonics can be learned alongside it.",
+    "time": "60–90 min",
+    "url": "https://arxiv.org/abs/2308.04079",
+    "tags": [
+      "3D Gaussian Splatting",
+      "Radiance fields",
+      "Densification",
+      "Rendering",
+      "SfM"
+    ],
+    "related": [
+      "spatial-geometry",
+      "spatial-scale",
+      "gsplat-efficiency",
+      "xgrids",
+      "niantic-spatial",
+      "volinga"
+    ],
+    "sources": [
+      {
+        "title": "Original 3DGS paper",
+        "url": "https://arxiv.org/abs/2308.04079",
+        "type": "paper",
+        "note": "Primary 2023 description of representation, optimization, density control and renderer."
+      },
+      {
+        "title": "Official implementation",
+        "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+        "type": "code",
+        "note": "Reference implementation, pretrained scenes, evaluation data and hardware/licensing notes."
+      },
+      {
+        "title": "Author project and visual demonstrations",
+        "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+        "type": "demo",
+        "note": "Primary project gives paired images and rendered views to inspect the paper's claims."
+      }
+    ],
+    "caveat": "Radiance reconstruction does not establish watertight geometry, material properties or collision safety. The reference repository now contains later improvements; use an appropriate commit for paper comparisons and check its license.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-gsplat",
+    "title": "gsplat: the working research substrate",
+    "category": "spatial",
+    "format": "Build",
+    "level": "Practical",
+    "author": "Nerfstudio / gsplat contributors",
+    "summary": "A maintained PyTorch/CUDA library for inspecting rasterization, optimization and splat training tradeoffs.",
+    "why": "Read the equations next to the implementation. Its modular API and benchmark examples let you isolate renderer efficiency from densification strategy, camera model and training settings.",
+    "learn": "Inspect rasterization inputs and outputs, trainer strategies and the mathematical supplement. Compare a fixed scene and configuration using held-out image quality, peak memory, runtime and primitive count.",
+    "prerequisite": "Python, PyTorch, calibrated images and a compatible CUDA environment.",
+    "time": "2–4 h for first example; reference thereafter",
+    "url": "https://github.com/nerfstudio-project/gsplat",
+    "tags": [
+      "gsplat",
+      "CUDA",
+      "PyTorch",
+      "Benchmarking",
+      "Open source"
+    ],
+    "related": [
+      "gsplat-efficiency",
+      "spatial-scale",
+      "spatial-geometry",
+      "playcanvas",
+      "xgrids"
+    ],
+    "sources": [
+      {
+        "title": "gsplat repository",
+        "url": "https://github.com/nerfstudio-project/gsplat",
+        "type": "code",
+        "note": "Current README separates unreleased main changes from the latest PyPI release; main requires PyTorch 2.7+."
+      },
+      {
+        "title": "gsplat paper and mathematical supplement",
+        "url": "https://arxiv.org/abs/2409.06765",
+        "type": "paper",
+        "note": "Primary library paper describes CUDA implementation and scoped memory/time comparisons."
+      },
+      {
+        "title": "Official API and example documentation",
+        "url": "https://docs.gsplat.studio/main/",
+        "type": "docs",
+        "note": "Reference for rasterization, strategies, cameras and examples; main docs can lead released packages."
+      }
+    ],
+    "caveat": "Version matters: v1.6.0 changes were documented on main but not yet on PyPI when checked. Pin code/docs/Torch/CUDA together; paper speed and memory numbers are benchmark-specific, not universal guarantees.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-mip-splatting",
+    "title": "Mip-Splatting: what happens when you zoom?",
+    "category": "spatial",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Zehao Yu, Anpei Chen, Binbin Huang, Torsten Sattler & Andreas Geiger",
+    "summary": "An unusually clear case study in how sampling theory changes the quality of a learned 3D representation.",
+    "why": "A scene can look excellent near its training cameras and break under a different focal length or distance. This paper identifies the frequency and filter choices behind those artifacts.",
+    "learn": "Distinguish the 3D smoothing filter from the 2D Mip filter. Study single-scale training with multi-scale evaluation, and relate camera sampling density to primitive size and screen-space filtering.",
+    "prerequisite": "Original 3DGS, camera projection and basic sampling/aliasing concepts.",
+    "time": "45–75 min",
+    "url": "https://arxiv.org/abs/2311.16493",
+    "tags": [
+      "Anti-aliasing",
+      "Sampling theory",
+      "Mip-Splatting",
+      "Camera scale",
+      "Rendering"
+    ],
+    "related": [
+      "spatial-scale",
+      "spatial-geometry",
+      "gsplat-efficiency",
+      "volinga",
+      "jawset"
+    ],
+    "sources": [
+      {
+        "title": "Mip-Splatting paper",
+        "url": "https://arxiv.org/abs/2311.16493",
+        "type": "paper",
+        "note": "Primary analysis of 3D frequency constraints, 2D dilation and multi-scale artifacts."
+      },
+      {
+        "title": "Official Mip-Splatting code",
+        "url": "https://github.com/autonomousvision/mip-splatting",
+        "type": "code",
+        "note": "Includes multi-scale evaluation scripts and an explicit later update to its densification metric."
+      }
+    ],
+    "caveat": "Alias-free is the method's title and tested claim, not a guarantee for every capture. Current code adds a later densification change; its legacy Python 3.8/Torch 1.12/CUDA 11.3 recipe may need an isolated environment.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-3dgut",
+    "title": "3DGUT: beyond ideal pinhole cameras",
+    "category": "spatial",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Qi Wu, Janick Martinez Esturo, Ashkan Mirzaei, Nicolas Moenne-Loccoz & Zan Gojcic",
+    "summary": "Learn why Gaussian projection is difficult for fisheye, rolling-shutter and secondary-ray rendering.",
+    "why": "Connects robot sensor realism with graphics. The unscented-transform formulation replaces a local projection approximation and aligns rasterization with tracing, exposing what each rendering path can represent.",
+    "learn": "Trace Gaussian sigma-point projection through a nonlinear camera model. Separate 3DGUT rasterization from 3DGRT ray tracing and their hybrid 3DGRUT; inspect distorted cameras and secondary-ray examples.",
+    "prerequisite": "3DGS, covariance propagation and camera distortion; basic ray tracing helps.",
+    "time": "60–90 min",
+    "url": "https://arxiv.org/abs/2412.12507",
+    "tags": [
+      "3DGUT",
+      "Fisheye",
+      "Rolling shutter",
+      "Ray tracing",
+      "Sensor simulation"
+    ],
+    "related": [
+      "simulation-validation",
+      "spatial-geometry",
+      "spatial-scale",
+      "nvidia",
+      "parallel-domain",
+      "xgrids"
+    ],
+    "sources": [
+      {
+        "title": "3DGUT paper",
+        "url": "https://arxiv.org/abs/2412.12507",
+        "type": "paper",
+        "note": "Primary CVPR 2025 paper on unscented projection and alignment with particle tracing."
+      },
+      {
+        "title": "Official 3DGRUT implementations",
+        "url": "https://github.com/nv-tlabs/3dgrut",
+        "type": "code",
+        "note": "README separates 3DGUT, 3DGRT and hybrid 3DGRUT; current v2 includes additional 2026 features and platform instructions."
+      },
+      {
+        "title": "NVIDIA implementation explainer",
+        "url": "https://developer.nvidia.com/blog/revolutionizing-neural-reconstruction-and-rendering-in-gsplat-with-3dgut/",
+        "type": "report",
+        "note": "Technical companion explaining integration with gsplat; vendor-authored rather than independent validation."
+      },
+      {
+        "title": "Practitioner pipeline and limitations discussion",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1su92sf/built_an_opensource_onescript_pipeline_video_3d/",
+        "type": "reddit",
+        "note": "Read both a successful video pipeline and critiques of speed, viewer compatibility and capture quality; anecdotes are version-specific."
+      }
+    ],
+    "caveat": "Secondary rays use tracing/hybrid components; rasterization alone is not a general material simulator. Suitable NVIDIA hardware and compatible CUDA are required, and current 3DGRUT includes features beyond the 2025 paper.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-2dgs",
+    "title": "2DGS: appearance is not a surface",
+    "category": "spatial",
+    "format": "Read",
+    "level": "Deep dive",
+    "author": "Binbin Huang, Zehao Yu, Anpei Chen, Andreas Geiger & Shenghua Gao",
+    "summary": "Oriented surface disks reveal why excellent novel views can coexist with weak reconstructed geometry.",
+    "why": "A critical bridge from splat rendering to meshes, robot contact and simulation assets. Its representation and regularizers explicitly target multi-view surface consistency rather than image quality alone.",
+    "learn": "Compare volumetric ellipsoids with oriented 2D surfels and perspective-correct rasterization. Understand depth-distortion and normal regularization, then inspect bounded/unbounded TSDF mesh extraction.",
+    "prerequisite": "Original 3DGS, surface normals and multi-view geometry.",
+    "time": "60–90 min",
+    "url": "https://arxiv.org/abs/2403.17888",
+    "tags": [
+      "2D Gaussian Splatting",
+      "Surfaces",
+      "Mesh extraction",
+      "Geometry",
+      "Collision"
+    ],
+    "related": [
+      "splat-collision-gap",
+      "spatial-geometry",
+      "articulated-splat",
+      "xgrids",
+      "niantic-spatial"
+    ],
+    "sources": [
+      {
+        "title": "2D Gaussian Splatting paper",
+        "url": "https://arxiv.org/abs/2403.17888",
+        "type": "paper",
+        "note": "Primary paper describing surface elements, regularization and geometry evaluation."
+      },
+      {
+        "title": "Official 2DGS implementation",
+        "url": "https://github.com/hbb1/2d-gaussian-splatting",
+        "type": "code",
+        "note": "Verified mesh extraction, depth-ratio/regularization parameters, bug fixes and dataset/evaluation caveats."
+      },
+      {
+        "title": "Practitioner implementation discussion",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1fv1tc9/2d_gaussian_splatting_implementations/",
+        "type": "reddit",
+        "note": "Read discussion locating the gsplat 2DGS trainer; useful discovery, not a current compatibility or quality guarantee."
+      }
+    ],
+    "caveat": "Improved reconstruction geometry is not certified collision geometry. TSDF choices, missing observations, masks and evaluation code affect results; unknown or unseen space needs explicit treatment.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-colmap",
+    "title": "COLMAP + Nerfstudio: the coordinate contract",
+    "category": "spatial",
+    "format": "Build",
+    "level": "Foundational",
+    "author": "COLMAP maintainers & Nerfstudio contributors",
+    "summary": "Learn camera recovery and data conventions before diagnosing failures in NeRFs, splats or robot scene alignment.",
+    "why": "Many apparent model failures begin with blurred input, weak overlap, wrong intrinsics or inverted transforms. This workflow makes camera poses, sparse geometry, units and conventions inspectable.",
+    "learn": "Reconstruct a small static image set in COLMAP and inspect registration before training a renderer. Follow SfM versus MVS, world-to-camera versus camera-to-world transforms and Nerfstudio's OpenGL/COLMAP axis difference.",
+    "prerequisite": "Basic linear algebra, camera projection and a static overlapping photo set.",
+    "time": "2–4 h for a small capture; compute varies",
+    "url": "https://colmap.github.io/tutorial.html",
+    "tags": [
+      "COLMAP",
+      "Nerfstudio",
+      "SfM",
+      "Camera calibration",
+      "Coordinate frames"
+    ],
+    "related": [
+      "laptop-splat",
+      "splat-collision-gap",
+      "articulated-splat",
+      "spatial-geometry",
+      "xgrids"
+    ],
+    "sources": [
+      {
+        "title": "COLMAP reconstruction tutorial",
+        "url": "https://colmap.github.io/tutorial.html",
+        "type": "docs",
+        "note": "Official guide read for capture requirements, matching, geometric verification, sparse reconstruction and MVS."
+      },
+      {
+        "title": "COLMAP source and current installation options",
+        "url": "https://github.com/colmap/colmap",
+        "type": "code",
+        "note": "Canonical implementation; current README distinguishes CPU/CUDA bindings and source-build hardware options."
+      },
+      {
+        "title": "Nerfstudio data conventions",
+        "url": "https://docs.nerf.studio/quickstart/data_conventions.html",
+        "type": "docs",
+        "note": "Primary documentation explicitly distinguishes its OpenGL camera axes from COLMAP/OpenCV conventions."
+      },
+      {
+        "title": "Nerfstudio custom capture workflow",
+        "url": "https://docs.nerf.studio/quickstart/custom_dataset.html",
+        "type": "docs",
+        "note": "Companion for moving images/video and recovered camera data into a neural-rendering pipeline."
+      }
+    ],
+    "caveat": "Monocular reconstruction has an arbitrary similarity scale until anchored. Dynamic objects, reflections and textureless surfaces can defeat matching; CPU SfM and accelerated dense reconstruction have different requirements.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-bundle-adjustment",
+    "title": "Bundle adjustment, before splatting",
+    "category": "spatial",
+    "format": "Watch",
+    "level": "Foundational",
+    "author": "Cyrill Stachniss / StachnissLab",
+    "summary": "A university lecture explaining how many images jointly determine camera poses and 3D structure.",
+    "why": "Provides the geometric intuition behind COLMAP and SLAM instead of treating pose recovery as a black box. It explains why adding views can help, and why an apparently plausible map can still be wrong.",
+    "learn": "Understand reprojection residuals, joint camera/point optimization, gauge freedom and outliers. Continue to the numerical lecture and connect sparse optimization to the camera estimates consumed by splat trainers.",
+    "prerequisite": "Camera projection, least squares and basic matrix algebra; the course also supplies prerequisite lectures.",
+    "time": "1–2 h with notes; optional course thereafter",
+    "url": "https://www.youtube.com/watch?v=sobyKHwgB0Y",
+    "tags": [
+      "Multi-view geometry",
+      "Bundle adjustment",
+      "Photogrammetry",
+      "SLAM",
+      "Lectures"
+    ],
+    "related": [
+      "splat-slam-loop",
+      "spatial-geometry",
+      "resource-colmap",
+      "niantic-spatial"
+    ],
+    "sources": [
+      {
+        "title": "The Basics about Bundle Adjustment — author lecture",
+        "url": "https://www.youtube.com/watch?v=sobyKHwgB0Y",
+        "type": "demo",
+        "note": "Exact author video verified by YouTube metadata and lab course; lecture playback/transcript was not fully audited."
+      },
+      {
+        "title": "Author's photogrammetric computer-vision course",
+        "url": "https://www.ipb.uni-bonn.de/online-training-pcv/index.html",
+        "type": "docs",
+        "note": "Lab page provides prerequisite camera/triangulation lessons and the two-part bundle-adjustment sequence."
+      },
+      {
+        "title": "Photogrammetry I & II slides and lecture index",
+        "url": "https://www.ipb.uni-bonn.de/photo12-2021/index.html",
+        "type": "docs",
+        "note": "University-hosted course links camera models, calibration and bundle-adjustment slides."
+      },
+      {
+        "title": "Practitioner recommendation",
+        "url": "https://www.reddit.com/r/computervision/comments/m0upgi/3_d_computer_vision_lectures/",
+        "type": "reddit",
+        "note": "Read recommendation of the course and companion geometry references; selection relies on the actual lab material."
+      }
+    ],
+    "caveat": "These are classical geometry foundations, not a tutorial for the latest splat stack. The lab index and video metadata were verified; suggested study time includes notes rather than an exact measured runtime.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "resource-aras",
+    "title": "Follow Aras: the cost of a rendered world",
+    "category": "spatial",
+    "format": "Follow",
+    "level": "Practical",
+    "author": "Aras Pranckevičius",
+    "summary": "Concrete graphics engineering notes on splat data, compression, GPU locality and measurable tradeoffs.",
+    "why": "A valuable practitioner lens after reading papers: an impressive scene still needs a memory budget, usable asset format and a renderer. His compression series exposes the representation by rebuilding and measuring it.",
+    "learn": "Start with “Making Gaussian Splats smaller” and its follow-up: Morton ordering, per-chunk quantization, quaternion packing and spherical-harmonic codebooks. Distinguish transfer size, runtime memory and visual error.",
+    "prerequisite": "Basic graphics/GPU concepts; C# or shader knowledge helps with the companion Unity code.",
+    "time": "Ongoing; 45–90 min for the splat series",
+    "url": "https://aras-p.info/tags/rendering/",
+    "tags": [
+      "Practitioner",
+      "Compression",
+      "GPU performance",
+      "Spherical harmonics",
+      "Rendering"
+    ],
+    "related": [
+      "spatial-scale",
+      "gsplat-efficiency",
+      "laptop-splat",
+      "playcanvas",
+      "gracia"
+    ],
+    "sources": [
+      {
+        "title": "Aras' rendering posts",
+        "url": "https://aras-p.info/tags/rendering/",
+        "type": "report",
+        "note": "Author's topic archive opened; contains current 2026 rendering work and the 2023 splat series."
+      },
+      {
+        "title": "Making Gaussian Splats smaller",
+        "url": "https://aras-p.info/blog/2023/09/13/Making-Gaussian-Splats-smaller/",
+        "type": "report",
+        "note": "Primary engineering post read for locality, chunking, quantization and memory/quality tradeoffs."
+      },
+      {
+        "title": "Making Gaussian Splats more smaller",
+        "url": "https://aras-p.info/blog/2023/09/27/Making-Gaussian-Splats-more-smaller/",
+        "type": "report",
+        "note": "Follow-up opened; develops spherical-harmonic compression and compares settings."
+      },
+      {
+        "title": "Unity Gaussian Splatting playground",
+        "url": "https://github.com/aras-p/UnityGaussianSplatting",
+        "type": "code",
+        "note": "Author implementation links the posts, supports compressed assets and explicitly limits its scope and future development."
+      }
+    ],
+    "caveat": "The Unity playground targets original 3DGS and its author planned no major further development after December 2023. Follow the engineering reasoning; do not assume current trainer, mobile or web compatibility.",
+    "reviewed": "2026-10-07"
+  }
+]

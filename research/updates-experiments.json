@@ -1,0 +1,5 @@
+{
+  "gsplat-efficiency": {
+    "resources": "One small scene takes roughly 1–10 GPU-hours for multiple runs and comparisons; large scenes need more. Current gsplat main requires PyTorch 2.7+ and documents unreleased v1.6.0 changes; use a pinned release or explicit commit and matching docs/Torch/CUDA. Compilation time belongs in the setup budget."
+  }
+}

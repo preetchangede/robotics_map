@@ -1,0 +1,320 @@
+[
+  {
+    "id": "nvidia",
+    "name": "NVIDIA",
+    "website": "https://www.nvidia.com/en-us/industries/robotics/",
+    "category": "simulation",
+    "subcategory": "Physical AI infrastructure",
+    "summary": "Connects GPU robotics simulation, synthetic sensor data, policy learning, and open world models into a widely used physical AI development stack.",
+    "thesis": "The important bet is the connection between tools: a robot can train in Isaac Lab, see randomized scenes from Isaac Sim, and use Cosmos to extend its data distribution. This infrastructure anchor helps explain dependencies throughout the map, rather than serving as another generic AI-company entry.",
+    "technology": "Isaac Sim is an Omniverse application for physically based robot simulation, with ROS integration and synthetic data generation. Isaac Lab provides accelerated robot-learning workflows. Cosmos adds learned world models; its 2026 technical report describes a mixture-of-transformers architecture processing language, images, video, audio, and actions. These components have different jobs: the physics simulator executes an explicit environment, while learned generation and prediction augment observations or policies.",
+    "problem": "Robot teams need reproducible environments, labeled sensor data, and inexpensive policy rollouts. Building separate graphics, physics, data, and learning infrastructure consumes effort that could go into robotics research.",
+    "stage": "Platform",
+    "tags": ["GPU simulation", "Synthetic data", "World models", "Open code", "ROS 2"],
+    "related": ["applied-intuition", "wandelbots", "world-labs", "bifrost"],
+    "evidence": [
+      {"label": "Public tooling", "text": "NVIDIA made Isaac Sim 5.0 and Isaac Lab 2.2 generally available in 2025, including Isaac Sim-specific source code and synthetic-data extensions.", "url": "https://developer.nvidia.com/blog/isaac-sim-and-isaac-lab-are-now-available-for-early-developer-preview/"},
+      {"label": "Research release", "text": "The June 2026 Cosmos 3 report describes released code, checkpoints, synthetic datasets, and evaluation benchmarks; benchmark leadership claims are the authors' results at publication time.", "url": "https://arxiv.org/abs/2606.02800"}
+    ],
+    "sources": [
+      {"title": "Isaac Sim and Isaac Lab general availability", "url": "https://developer.nvidia.com/blog/isaac-sim-and-isaac-lab-are-now-available-for-early-developer-preview/", "type": "company", "note": "Technical release details; the page title reflects GA despite its older URL slug."},
+      {"title": "Isaac Sim source", "url": "https://github.com/isaac-sim/IsaacSim", "type": "code", "note": "Official application repository, build requirements, and supported integrations."},
+      {"title": "Cosmos 3 technical report", "url": "https://arxiv.org/abs/2606.02800", "type": "paper", "note": "Architecture and the scope of omnimodal generation, reasoning, and action prediction."},
+      {"title": "Cosmos models and cookbooks", "url": "https://github.com/NVIDIA/cosmos", "type": "code", "note": "Official model entry point; check model-specific hardware and license requirements."},
+      {"title": "Where simulation falls short in deployment", "url": "https://www.reddit.com/r/robotics/comments/1ro7vjq/for_those_deploying_robots_irl_where_does/", "type": "reddit", "note": "Practitioner discussion about fidelity and transfer; anecdotes, not proof of NVIDIA performance."}
+    ],
+    "caveat": "Rendered realism and physics accuracy are different. Cosmos output is not a safety certificate, and local Isaac workflows require suitable GPUs; check each component's license and compatibility separately.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "applied-intuition",
+    "name": "Applied Intuition",
+    "website": "https://www.appliedintuition.com/",
+    "category": "simulation",
+    "subcategory": "Autonomy validation and data engines",
+    "summary": "Builds simulation, validation, vehicle software, and autonomy systems for automotive and industrial fleets, with neural reconstruction turning driving logs into virtual test environments.",
+    "thesis": "Its differentiation is engineering workflow integration: reconstructed scenes become repeatable, closed-loop tests tied to coverage, failure triage, and release decisions. The expansion into mining is economically interesting because the same development loop can serve valuable industrial machines operating in tightly specified environments.",
+    "technology": "Neural Sim converts fleet logs into dynamic 3D scenes, using radiance fields and Gaussian splatting for rendering and tracking actors such as vehicles and pedestrians. Sensor-level scenarios connect to the Data Engine and verification tooling, with reconstruction, open-loop perception, and closed-loop behavior metrics. The broader platform combines simulation with Vehicle OS and autonomy stacks; neural scene generation is one part of an engineering system.",
+    "problem": "Autonomy teams cannot safely collect every rare failure on public roads, and log replay cannot reveal what happens when a vehicle chooses a different action. Manual scenario construction also limits test coverage.",
+    "stage": "Platform",
+    "tags": ["Closed-loop", "Validation", "Neural reconstruction", "Gaussian splatting", "Industrial autonomy"],
+    "related": ["parallel-domain", "waabi", "nvidia", "physicsx"],
+    "evidence": [
+      {"label": "Funding", "text": "Closed a $600M Series F fundraise and tender offer at a $15B valuation in June 2025; the figure combines financing and secondary liquidity.", "url": "https://www.appliedintuition.com/press-releases/series-f"},
+      {"label": "Industrial partner", "text": "Announced a multi-year Komatsu partnership in September 2025 covering vehicle software, autonomous haulage, collision avoidance, and AI development tools.", "url": "https://www.appliedintuition.com/press-releases/applied-intuition-komatsu-partnership"}
+    ],
+    "sources": [
+      {"title": "Neural Sim technical deep dive", "url": "https://www.appliedintuition.com/blog/neural-sim-end-to-end-sds-validation", "type": "company", "note": "Explains dynamic reconstruction, sensor rendering, and upstream/downstream realism evaluation."},
+      {"title": "Series F announcement", "url": "https://www.appliedintuition.com/press-releases/series-f", "type": "company", "note": "Primary funding record and company-reported automaker adoption."},
+      {"title": "Komatsu partnership scope", "url": "https://www.appliedintuition.com/press-releases/applied-intuition-komatsu-partnership", "type": "company", "note": "Separates the announced industrial program from claims about completed fleet deployments."},
+      {"title": "Reuters funding coverage", "url": "https://www.reuters.com/business/autos-transportation/applied-intuition-valued-15-billion-latest-fund-raise-2025-06-17/", "type": "report", "note": "Independent corroboration of financing and named automotive customers."}
+    ],
+    "caveat": "Public simulation throughput and adoption figures are company-reported. A partnership announcement does not establish the number of autonomous mining vehicles deployed or validate safety across every operating domain.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "parallel-domain",
+    "name": "Parallel Domain",
+    "website": "https://paralleldomain.com/",
+    "category": "simulation",
+    "subcategory": "Real-to-sim and sensor testing",
+    "summary": "Reconstructs real operating environments from fleet sensor logs and generates synchronized synthetic sensor data for training and regression testing of autonomous systems.",
+    "thesis": "A reconstruction is valuable when it becomes a controllable test fixture. Parallel Domain focuses on that bridge: teams can reuse their actual routes, vary dangerous conditions, and inspect changes across model versions. Its emphasis on camera, lidar, and radar together makes it especially relevant to deployed perception stacks.",
+    "technology": "PD Replica turns drive or flight logs into simulation-ready environments, including geometry, reconstructed actors, collision meshes, annotations, and maps. PD Sim renders synchronized camera, lidar, and radar observations and connects to autonomy workflows through a Python interface. Neural reconstruction, including radiance-field techniques, recovers visual structure; deterministic simulation supplies repeatable variations. Current documentation also describes pose recovery for imperfect fleet captures and quantitative reconstruction reports.",
+    "problem": "Autonomous systems need rare-weather, rare-object, and sensor-failure examples. Repeatedly collecting them is costly or unsafe, while generic hand-authored environments may differ materially from the routes actually used.",
+    "stage": "Platform",
+    "tags": ["Real-to-sim", "Sensor simulation", "Deterministic tests", "Neural reconstruction", "Synthetic data"],
+    "related": ["applied-intuition", "waabi", "duality-ai", "nvidia"],
+    "evidence": [
+      {"label": "Research testbed", "text": "University of Michigan's Mcity announced a Parallel Domain partnership in January 2025 to simulate its test facility using a PD Replica digital twin.", "url": "https://mcity.umich.edu/parallel-domain-joins-mcity-to-power-simulations-on-a-high-fidelity-digital-twin-of-the-mcity-test-facility/"}
+    ],
+    "sources": [
+      {"title": "PD reconstruction and simulation FAQ", "url": "https://paralleldomain.com/faq", "type": "company", "note": "Detailed current product boundaries, sensors, determinism, and sim-to-real measurement; vendor claims need task-specific validation."},
+      {"title": "Mcity partnership", "url": "https://mcity.umich.edu/parallel-domain-joins-mcity-to-power-simulations-on-a-high-fidelity-digital-twin-of-the-mcity-test-facility/", "type": "report", "note": "External university confirmation of a named digital-twin application."},
+      {"title": "Parallel Domain SDK reference", "url": "https://parallel-domain.github.io/pd-sdk/", "type": "code", "note": "Public API reference for scenario generation, sensors, behaviors, and data handling; documentation may lag current products."},
+      {"title": "Drone perception workflows", "url": "https://paralleldomain.com/industries/drone", "type": "company", "note": "Explains flight-log reconstruction and configurable drone sensor scenarios."}
+    ],
+    "caveat": "Bit reproducibility is a vendor-stated property, not an independent certification. Matching a recorded scene does not guarantee fidelity far beyond observed viewpoints or for unseen actor interactions.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "bifrost",
+    "name": "Bifrost AI",
+    "website": "https://www.bifrost.ai/",
+    "category": "simulation",
+    "subcategory": "Rare-domain synthetic data and policy evaluation",
+    "summary": "Creates labeled sensor datasets for maritime, aerial, geospatial, space, and off-road perception; its newer Manifold product evaluates robot policies across simulation benchmarks.",
+    "thesis": "Bifrost is interesting where ordinary internet imagery is least useful: satellite viewpoints, water reflections, sparse lunar terrain, and unusual sensors. The newer evaluation harness moves the company closer to the robot research loop, but its established synthetic-data products and early-access policy evaluation should be assessed separately.",
+    "technology": "Stardust assembles controllable 3D assets, environments, lighting, and sensor settings into synchronized RGB, infrared, depth, and segmentation outputs with automatic annotations. Domain templates support maritime, aerial, geospatial, space, and off-road scenarios. Manifold orchestrates parallel policy evaluations across simulators and benchmarks, decomposing task success into subgoals and analyzing failure clusters. Its public pages name tools such as MuJoCo, Isaac Sim, and LIBERO rather than claiming a new physics engine.",
+    "problem": "Perception teams lack labeled examples of the rare conditions that determine field reliability. Robot researchers also spend substantial time configuring benchmarks and examining failures before they can compare approaches fairly.",
+    "stage": "Platform",
+    "tags": ["Synthetic data", "Maritime", "Geospatial", "Multimodal sensors", "Policy evaluation"],
+    "related": ["duality-ai", "parallel-domain", "nvidia"],
+    "evidence": [
+      {"label": "Customer-side evidence", "text": "NTT DATA's 2025 satellite white paper describes a three-month Bifrost proof of concept comparing real-only and mixed synthetic/real training for object and change detection.", "url": "https://www.nttdata.com/jp/ja/-/media/nttdatajapan/files/services/carbon-neutral/carbon-neutral-wp-20251224.pdf"},
+      {"label": "Product boundary", "text": "The current website offers Manifold in early access; Stardust is its synthetic-data product, with radar marked as coming soon on the product page.", "url": "https://www.bifrost.ai/stardust/"}
+    ],
+    "sources": [
+      {"title": "Manifold and product overview", "url": "https://www.bifrost.ai/", "type": "company", "note": "Current policy-evaluation scope and early-access status."},
+      {"title": "Stardust sensors and scenarios", "url": "https://www.bifrost.ai/stardust/", "type": "company", "note": "Current modalities, parameterized environments, and interactive maritime scene viewer."},
+      {"title": "NTT DATA satellite white paper", "url": "https://www.nttdata.com/jp/ja/-/media/nttdatajapan/files/services/carbon-neutral/carbon-neutral-wp-20251224.pdf", "type": "report", "note": "Japanese customer-side account; page 19 describes methods and object/change-detection results."},
+      {"title": "NTT DATA collaboration account", "url": "https://www.bifrost.ai/blog/ntt-data-november-2025/", "type": "company", "note": "English explanation of the pilot; explicitly says some figures use Bifrost's own verification."},
+      {"title": "Dataset gallery", "url": "https://www.bifrost.ai/blog/dataset-gallery/", "type": "company", "note": "Concrete examples of reusable scenarios for UAV tracking, ship detection, and inspection."}
+    ],
+    "caveat": "The NTT DATA evaluation is a proof of concept. Large iteration-speed and cost-saving figures are vendor estimates, and Manifold's early-access status is not evidence of broad production adoption.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "world-labs",
+    "name": "World Labs",
+    "website": "https://www.worldlabs.ai/",
+    "category": "world",
+    "subcategory": "Spatial world generation and reconstruction",
+    "summary": "Builds spatial models that turn text, images, and videos into persistent explorable 3D worlds, with public Marble tools and a newer Atlas research model.",
+    "thesis": "Its most useful distinction is explicit space: output worlds can be revisited, exported, and rendered from different camera poses. That connects generative AI to 3D workflows and real-to-sim infrastructure. The key research question is how much of the generated space is metrically and physically trustworthy, especially in unobserved regions.",
+    "technology": "Marble generates 3D environments from multimodal prompts and exposes them through a public World API. Atlas, announced in September 2026, uses a multimodal autoregressive diffusion transformer with camera poses and depth grounded in a shared spatial context; it can generate new views and explicit point-cloud or Gaussian-splat outputs. Spark, the company's open renderer, integrates splats with Three.js. Atlas's robotics simulation examples remain distinct from general proof of dynamics accuracy.",
+    "problem": "Creating usable 3D environments requires expensive capture or manual modeling. Robotics and creative teams need controllable viewpoints and reusable geometry, rather than attractive video that cannot be spatially queried.",
+    "stage": "Platform",
+    "tags": ["Spatial intelligence", "3D generation", "Gaussian splatting", "Real-to-sim", "Public API"],
+    "related": ["odyssey", "general-intuition", "parallel-domain", "nvidia"],
+    "evidence": [
+      {"label": "Public product", "text": "Launched the public World API in January 2026 for generating explorable 3D worlds using Marble through a programmable interface.", "url": "https://www.worldlabs.ai/blog/announcing-the-world-api"},
+      {"label": "Company status", "text": "AMD announced an approximately $8.2B all-stock acquisition agreement on September 28, 2026, with closing expected by year-end subject to approvals and other conditions.", "url": "https://ir.amd.com/news-events/press-releases/detail/1299/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute"}
+    ],
+    "sources": [
+      {"title": "Marble model and public product", "url": "https://www.worldlabs.ai/blog/marble-world-model", "type": "company", "note": "Original product scope, persistent 3D output, and intended workflows."},
+      {"title": "World API announcement", "url": "https://www.worldlabs.ai/blog/announcing-the-world-api", "type": "company", "note": "Public programmable access; does not establish public availability of Atlas."},
+      {"title": "Atlas architecture and evaluations", "url": "https://www.worldlabs.ai/blog/atlas", "type": "company", "note": "September 2026 technical announcement, model design, benchmarks, and early-access status."},
+      {"title": "AMD acquisition agreement", "url": "https://ir.amd.com/news-events/press-releases/detail/1299/amd-to-acquire-world-labs-to-advance-the-future-of-ai-compute", "type": "company", "note": "Acquirer's primary announcement of the $8.2B all-stock agreement and closing conditions."},
+      {"title": "Spark renderer", "url": "https://github.com/sparkjsdev/spark", "type": "code", "note": "Official open Three.js Gaussian-splat renderer; useful for exploring exported worlds."},
+      {"title": "Measuring Marble's unseen walkable area", "url": "https://www.reddit.com/r/GaussianSplatting/comments/1wx3vhq/im_building_a_game_in_the_part_of_a_marble_world/", "type": "reddit", "note": "Concrete practitioner test of navigation geometry and collider holes; single-world anecdote with linked code."}
+    ],
+    "caveat": "Atlas is in selective early access. Generated unseen geometry can be plausible rather than measured. AMD's acquisition was announced but subject to closing conditions at this review date.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "odyssey",
+    "name": "Odyssey",
+    "website": "https://odyssey.systems/",
+    "category": "world",
+    "subcategory": "Interactive dynamics and multi-agent worlds",
+    "summary": "Develops action-conditioned world models for live interaction, multi-agent simulation, and transfer from broad visual pretraining into policies for physical and virtual systems.",
+    "thesis": "Odyssey tests an ambitious route from learned visual dynamics to useful agents, rather than treating world models solely as scene generators. Its shared multi-agent state is especially interesting: different participants must see compatible consequences of their actions. Public interactive previews make failure modes inspectable instead of hiding them behind edited videos.",
+    "technology": "Odyssey-3 is described as an autoregressive diffusion transformer pretrained on diverse visual observations. A learned action decoder translates its representations into system-specific controls using paired observation/action demonstrations. Agora-2 separately maintains shared state for multi-agent interaction, with a playable research preview. The API supports streamed interactive simulation. These are learned predictive environments and policies, not an explicit rigid-body simulator or a guarantee that every generated interaction conserves physical quantities.",
+    "problem": "Physical agents need to anticipate the consequences of actions and adapt with limited task data. Ordinary video generation does not provide reliable interactive feedback or consistent state across multiple agents.",
+    "stage": "Demonstrated",
+    "tags": ["Action-conditioned", "Interactive simulation", "Multi-agent", "Diffusion", "Policy transfer"],
+    "related": ["world-labs", "general-intuition", "waabi", "nvidia"],
+    "evidence": [
+      {"label": "Physical-agent demos", "text": "The September 15, 2026 Odyssey-3 release shows robot-control and other system demos and describes a benchmarking collaboration; these are demonstrations, not fleet deployments.", "url": "https://odyssey.systems/introducing-odyssey-3"},
+      {"label": "Playable research", "text": "Agora-2 was released as a playable research preview on September 21, 2026, supporting a shared generated environment for up to 20 human and AI participants.", "url": "https://odyssey.systems/introducing-agora-2"}
+    ],
+    "sources": [
+      {"title": "Odyssey-3 and action decoders", "url": "https://odyssey.systems/introducing-odyssey-3", "type": "company", "note": "Current architecture, robot demos, and the limits of the company's generalization evidence."},
+      {"title": "Agora-2 shared simulation", "url": "https://odyssey.systems/introducing-agora-2", "type": "company", "note": "Explicit shared-state approach and research-preview scope."},
+      {"title": "Odyssey developer documentation", "url": "https://documentation.api.odyssey.ml/", "type": "demo", "note": "Official API entry point for interactive world-model applications; account and access conditions apply."},
+      {"title": "Production usefulness discussion", "url": "https://www.reddit.com/r/LocalLLaMA/comments/1ssfrqy/world_models_how_close_are_we_to_something_usable/", "type": "reddit", "note": "Builders discuss persistent structure, compute, and whether a learned world is the right product primitive; sentiment only."}
+    ],
+    "caveat": "Broad physical intelligence claims are company interpretations of demos. Published cross-embodiment reliability and production economics remain limited; a coherent video rollout is not proof of an accurate dynamics model.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "waabi",
+    "name": "Waabi",
+    "website": "https://waabi.ai/",
+    "category": "world",
+    "subcategory": "Task-grounded neural driving worlds",
+    "summary": "Develops autonomous driving with Waabi World, a learned closed-loop simulator that reconstructs roads, models sensors and traffic, and generates training and evaluation scenarios.",
+    "thesis": "Waabi offers a useful counterpoint to general visual world models: learned simulation is tied to a valuable, measurable driving task and a real autonomy stack. It must reproduce what sensors observe and how traffic responds after the ego vehicle changes course. That makes downstream driving behavior the test of simulator usefulness.",
+    "technology": "Waabi World reconstructs digital environments from camera and lidar logs, combines neural methods with simplified physical rendering for sensor observations, and models reactive traffic. UniSim describes conversion of a recorded drive into closed-loop multi-sensor simulation, permitting viewpoint changes and altered actors. Scenario generation and learning connect this environment to Waabi Driver. The research pipeline is narrower than a universal video world model but grounded in actual vehicle inputs and actions.",
+    "problem": "Autonomous vehicles must handle dangerous interactions that cannot be deliberately collected at scale. Passive log replay misses feedback between vehicle decisions, other road users, and future sensor observations.",
+    "stage": "Pilot",
+    "tags": ["Closed-loop", "Neural simulation", "Driving", "Digital twins", "Reactive traffic"],
+    "related": ["parallel-domain", "applied-intuition", "odyssey", "nvidia"],
+    "evidence": [
+      {"label": "Customer operations", "text": "Volvo and Waabi announced freight operations for Warp on Dallas–Houston on October 5, 2026. The primary announcement explicitly says an observer remains in the driver's seat.", "url": "https://www.waabi.ai/insights/volvo-and-waabi-kick-off-customer-operations-in-texas-starting-with-warp"},
+      {"label": "Financing boundary", "text": "January 2026 financing comprised a closed $750M Series C plus additional milestone-based future Uber capital; the advertised $1B total is not all unconditional cash raised.", "url": "https://waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution"}
+    ],
+    "sources": [
+      {"title": "How Waabi World works", "url": "https://waabi.ai/insights/how-waabi-world-works", "type": "company", "note": "Primary explanation of reconstruction, neural sensor rendering, traffic, and feedback."},
+      {"title": "UniSim research", "url": "https://waabi.ai/research/unisim", "type": "paper", "note": "CVPR 2023 neural closed-loop sensor simulator; separates published research from marketing."},
+      {"title": "Warp customer operations", "url": "https://www.waabi.ai/insights/volvo-and-waabi-kick-off-customer-operations-in-texas-starting-with-warp", "type": "company", "note": "Fresh October 2026 deployment scope, route, customer, and observer requirement."},
+      {"title": "Series C and Uber milestones", "url": "https://waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution", "type": "company", "note": "Primary funding breakdown and planned robotaxi partnership."},
+      {"title": "Waabi on world-model testing", "url": "https://x.com/Waabi_ai/status/1973075324645863607", "type": "x", "note": "Direct company post indexed in search; X loading is restricted. Discovery context cross-checked against primary simulator material."}
+    ],
+    "caveat": "Current named customer operations retain an in-seat observer. Planned Uber robotaxis and milestone funding are future commitments; company simulator realism scores do not establish universal safety.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "general-intuition",
+    "name": "General Intuition",
+    "website": "https://www.generalintuition.com/",
+    "category": "world",
+    "subcategory": "Game-grounded world and action models",
+    "summary": "Builds models that predict and act from gameplay experience, combining Medal's data advantage with research on action-conditioned dynamics and shared multiplayer worlds.",
+    "thesis": "Gameplay offers repeated, varied examples of intent, controls, and consequences at a scale robot demonstrations struggle to reach. General Intuition's thesis is that this teaches transferable spatial behavior. Its MIRA collaboration provides a concrete test: all players' actions must cause mutually consistent changes in a fast interactive world.",
+    "technology": "The company develops both world models, which predict action outcomes, and action models, which choose controls. MIRA, built with Kyutai and Epic Games, is a five-billion-parameter latent diffusion model of four-player Rocket League. It conditions on synchronized player action streams and uses a representation autoencoder. The released dataset includes video, keyboard controls, and game state, allowing physical-consistency evaluation beyond appearance. General transfer from gameplay to robotics remains a separate hypothesis.",
+    "problem": "Agents need interactive experience with actions and consequences, not merely unconditioned video. Collecting diverse real robot experience is slow; multiplayer dynamics also expose failures hidden in single-agent generation.",
+    "stage": "Research",
+    "tags": ["Game data", "Action models", "Multi-agent", "Open code", "Latent diffusion"],
+    "related": ["odyssey", "world-labs", "nvidia"],
+    "evidence": [
+      {"label": "Open research", "text": "The July 2026 MIRA technical report releases code, data, and a live demo. It reports four-player generation at 20 fps on a single NVIDIA B200, not consumer-hardware performance.", "url": "https://arxiv.org/abs/2607.05352"},
+      {"label": "Commercial status", "text": "The current company page reports over $650M raised in the preceding year and a small number of commercial API partners, with wider access through a waitlist.", "url": "https://www.generalintuition.com/"}
+    ],
+    "sources": [
+      {"title": "General Intuition research and current access", "url": "https://www.generalintuition.com/", "type": "company", "note": "Current funding statement, distinction between action/world models, and limited API-partner access."},
+      {"title": "MIRA technical report", "url": "https://arxiv.org/abs/2607.05352", "type": "paper", "note": "Multiplayer conditioning, physical-understanding tests, scaling, and persisting failure modes."},
+      {"title": "MIRA training and inference code", "url": "https://github.com/mira-wm/mira", "type": "code", "note": "Official collaboration repository, dataset loader, evaluation entry points, and dependencies."},
+      {"title": "MIRA project and playable demo", "url": "https://mira-wm.com/", "type": "demo", "note": "Direct way to inspect whether shared action-conditioned scenes remain coherent."},
+      {"title": "Medal spinout reporting", "url": "https://www.theverge.com/column/801370/ai-world-models-general-intuition-medal", "type": "report", "note": "Independent 2025 context for the Medal data thesis and initial $133.7M seed; not the latest total funding."}
+    ],
+    "caveat": "MIRA demonstrates game-domain dynamics, not general real-world manipulation. Current funding totals and unnamed API partners are company-reported; game data rights and transfer quality require separate scrutiny.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "physicsx",
+    "name": "PhysicsX",
+    "website": "https://www.physicsx.ai/",
+    "category": "twins",
+    "subcategory": "Predictive engineering and physics surrogates",
+    "summary": "Trains physics models on engineering simulations and experiments to predict performance rapidly, explore designs, and support predictive digital twins across industrial hardware lifecycles.",
+    "thesis": "PhysicsX is compelling because a digital twin becomes economically powerful when it can answer a design or operations question quickly enough to change a decision. Its public research tackles a real obstacle to that promise: surrogate models often fail on unfamiliar geometries or different numerical solvers despite strong random-split benchmarks.",
+    "technology": "Large Physics Models learn mappings from geometry and boundary conditions to fields such as pressure, velocity, and structural response. In automotive aerodynamics, PhysicsX describes adapted point-cloud transformers and neural-operator formulations trained on diverse CFD datasets, then fine-tuned for customer designs and solver setups. Its data factory automates geometry, meshing, simulation, and validation. These predictive models complement expensive numerical solvers; they are not photorealistic scene renderers or automatically trustworthy replacements for physical testing.",
+    "problem": "Engineering simulation can take hours or days per design. Fast surrogates permit many more candidates, but industrial adoption depends on reliable predictions outside training geometries and solver settings.",
+    "stage": "Platform",
+    "tags": ["Physics AI", "Neural operators", "CFD", "Predictive twins", "Design optimization"],
+    "related": ["cognite", "nvidia", "duality-ai", "applied-intuition"],
+    "evidence": [
+      {"label": "Financing", "text": "Announced a $300M Series C led by Temasek at an approximately $2.4B valuation in June 2026; revenue growth figures in the release are company-reported.", "url": "https://www.physicsx.ai/newsroom/physicsx-announces-300m-series-c-to-accelerate-physics-ai-for-industrial-engineering"},
+      {"label": "Technical evidence", "text": "Its March 2026 aerodynamics study uses 20,000-plus CFD simulations across over 250 baseline designs and explicitly tests geometry and cross-solver generalization.", "url": "https://www.physicsx.ai/newsroom/scaling-physics-ai-for-automotive-aerodynamics"}
+    ],
+    "sources": [
+      {"title": "Aerodynamics: data and generalization", "url": "https://www.physicsx.ai/newsroom/scaling-physics-ai-for-automotive-aerodynamics", "type": "company", "note": "Detailed primary technical study of geometry diversity, random-split leakage, neural operators, and solver variation."},
+      {"title": "PX-Car-Aero-v1 adaptation", "url": "https://www.physicsx.ai/newsroom/scaling-physics-ai-for-automotive-aerodynamics-part-ii-meet-px-car-aero-v1", "type": "company", "note": "August 2026 follow-up with target-domain fine-tuning and current platform availability."},
+      {"title": "Series C and platform scope", "url": "https://www.physicsx.ai/newsroom/physicsx-announces-300m-series-c-to-accelerate-physics-ai-for-industrial-engineering", "type": "company", "note": "Primary financing announcement and distinction between engineering models and operational twins."},
+      {"title": "Siemens simulation collaboration", "url": "https://www.physicsx.ai/newsroom/siemens-physicsx-collaborate-to-build-ai-based-deep-physics-simulation", "type": "company", "note": "Explains the high-fidelity CAE training pipeline behind LGM-Aero and Ai.rplane."},
+      {"title": "GB1 engineering partnership", "url": "https://www.physicsx.ai/newsroom/engineering-at-the-speed-of-ai-inside-the-physicsx-and-gb1-partnership", "type": "company", "note": "Named demanding engineering application; partnership does not prove a shipped competitive advantage."}
+    ],
+    "caveat": "Generalization depends on geometry, boundary conditions, and solver fidelity. Platform deployment and growth claims do not provide independently audited accuracy or ROI for every customer program.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "duality-ai",
+    "name": "Duality AI",
+    "website": "https://www.duality.ai/",
+    "category": "twins",
+    "subcategory": "Sensor and behavior twins for autonomy",
+    "summary": "Builds Falcon, a digital-twin simulation platform for generating sensor data and testing autonomy software in configurable environments with system-specific physics and behaviors.",
+    "thesis": "Duality's useful niche is combining visual assets with functional system models and unusual sensors. A terrain scene becomes more valuable when the actual flight controller can run inside it, observations are synchronized, and scenarios enter a regression pipeline. Its SAR work expands synthetic data beyond ordinary RGB computer vision.",
+    "technology": "Falcon composes environments and robotic-system twins with configurable sensors, deterministic simulation, ground-truth output, and Python control. It supports co-simulation with customer controllers and models, including PX4, C, and MATLAB workflows, plus ROS interfaces and common 3D formats. Its virtual synthetic-aperture radar models radiometry and sensor parameters. FalconEditor, FalconSim, and FalconCloud address authoring, automated runs, and collaboration; simulated physical parameters still need grounding and validation.",
+    "problem": "Autonomy teams need controllable, labeled observations and software-in-the-loop testing before risking real hardware. Specialized sensor datasets and dangerous operating conditions are especially hard to collect and annotate.",
+    "stage": "Platform",
+    "tags": ["Digital twins", "Sensor simulation", "Co-simulation", "SAR", "Synthetic data"],
+    "related": ["bifrost", "parallel-domain", "physicsx", "wandelbots"],
+    "evidence": [
+      {"label": "Named program", "text": "Duality announced a 2025 contract award from the U.S. Army XM30 Program Office for a digital-first AI counter-drone development effort with Army Research Laboratory.", "url": "https://www.duality.ai/news/pioneering-a-digital-first-approach-u-s-army-contracts-digital-twin-simulation-company-duality-ai-for-development-of-ai-based-anti-drone-system"},
+      {"label": "Technical expansion", "text": "The March 2026 SAR article describes the virtual SAR sensor's evolution to terrestrial and marine scenarios and control of antenna gain and beam-lobe attenuation.", "url": "https://www.duality.ai/blog/sar-virtual-world"}
+    ],
+    "sources": [
+      {"title": "Falcon product and integrations", "url": "https://www.duality.ai/product", "type": "company", "note": "Sensor library, controller co-simulation, deterministic runs, and differences between predictive and monitoring twins."},
+      {"title": "Army digital-first development contract", "url": "https://www.duality.ai/news/pioneering-a-digital-first-approach-u-s-army-contracts-digital-twin-simulation-company-duality-ai-for-development-of-ai-based-anti-drone-system", "type": "company", "note": "Concrete named development program; describes staged model validation rather than fielded deployment."},
+      {"title": "SAR simulation technical account", "url": "https://www.duality.ai/blog/sar-virtual-world", "type": "company", "note": "Explains sensor physics and synthetic multimodal data beyond RGB imagery."},
+      {"title": "Aerial autonomy capabilities", "url": "https://www.duality.ai/capabilities/aerial-autonomy", "type": "company", "note": "Controller-in-the-loop testing and flight-environment workflows."}
+    ],
+    "caveat": "A development contract is not evidence of an operationally fielded AI system. Public accuracy percentages lack enough common benchmark detail to compare across customers or simulators.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "cognite",
+    "name": "Cognite",
+    "website": "https://www.cognite.com/",
+    "category": "twins",
+    "subcategory": "Operational data and semantic twins",
+    "summary": "Connects industrial sensor, engineering, and enterprise data into contextualized asset models, enabling maintenance, operational digital twins, and industrial AI workflows across existing plants.",
+    "thesis": "Cognite represents the unglamorous but essential layer of digital twins: identifying which time series, drawings, equipment records, and observations describe the same physical asset. Without that foundation, a 3D plant model is only a viewer. Its customer-side oilfield evidence makes this a strong operational counterweight to generative scene companies.",
+    "technology": "Cognite Data Fusion integrates and contextualizes operational, engineering, and IT data using industrial data models and a knowledge graph. Asset information and real-time measurements can feed applications, 3D workspaces, analysis, and Atlas AI agents. Public SDKs expose data and modeling interfaces. This is a semantic and operational twin layer, frequently used with other software for visualization; it is not primarily a physics engine or a standalone 3D reconstruction system.",
+    "problem": "Industrial assets generate abundant data, but inconsistent identifiers and disconnected applications make it difficult to find the right evidence for maintenance, root-cause analysis, and reliable operational decisions.",
+    "stage": "Deployed",
+    "tags": ["Industrial data", "Knowledge graph", "Operational twins", "Maintenance", "Asset context"],
+    "related": ["physicsx", "wandelbots", "duality-ai"],
+    "evidence": [
+      {"label": "Customer-side use", "text": "Aker BP describes Cognite Data Fusion contextualizing field data for its operational digital twin with Aize, including sensor measurements and equipment information.", "url": "https://akerbp.com/en/digital-twins-streamline-operations/"},
+      {"label": "Company status", "text": "Schneider Electric announced a $3.1B agreement to acquire Cognite in June 2026. The primary release makes completion conditional on approvals and other closing conditions.", "url": "https://resources.cognite.com/en/company/newsroom/schneider-electric-announces-agreement-to-acquire-cognite"}
+    ],
+    "sources": [
+      {"title": "Aker BP on operational twins", "url": "https://akerbp.com/en/digital-twins-streamline-operations/", "type": "report", "note": "Customer-authored explanation of CDF's role and the distinction between data foundation and Aize workspace."},
+      {"title": "Aker BP expands Atlas AI use", "url": "https://www.cognite.com/en/company/newsroom/aker-bp-leverages-cognite-atlas-ai-tm-to-pioneer-an-ai-first-future-in-exploration-and", "type": "company", "note": "Named industrial workflow examples; the reported RCA time saving is a vendor/customer case-study figure."},
+      {"title": "Cognite Python SDK", "url": "https://github.com/cognitedata/cognite-sdk-python", "type": "code", "note": "Official API tooling for data scientists and developers working with contextualized industrial data."},
+      {"title": "Schneider acquisition agreement", "url": "https://resources.cognite.com/en/company/newsroom/schneider-electric-announces-agreement-to-acquire-cognite", "type": "company", "note": "Primary agreement terms, data/AI architecture, and closing conditions; no closing confirmation located."}
+    ],
+    "caveat": "A contextualized asset graph does not itself predict physics or prove safe autonomous operation. The Schneider transaction was announced conditionally; a closing confirmation was not located in this review.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "wandelbots",
+    "name": "Wandelbots",
+    "website": "https://www.wandelbots.com/",
+    "category": "twins",
+    "subcategory": "Executable robot-cell twins",
+    "summary": "Builds NOVA, a robot-independent software platform that connects virtual controllers, simulation, motion planning, and physical industrial robot cells through a common programming interface.",
+    "thesis": "The interesting opportunity is turning a digital twin into executable automation software. NOVA abstracts across robot brands so application logic can move from a virtual cell to physical controllers. Its documentation is unusually useful because it also states where simulated and physical motion differ, making the transfer boundary visible.",
+    "technology": "NOVA exposes physical and virtual robot controllers through a unified API, supporting brands including ABB, FANUC, KUKA, Universal Robots, and Yaskawa. Configurations can be cloned for development; Isaac Sim integration adds 3D environments, tooling, and simulation workflows. Applications switch controller identifiers when moving to hardware. Motion planning, collision-world modeling, and industrial communication interfaces connect this abstraction to real cells, whose latency, inertia, and manufacturer safety behavior remain distinct.",
+    "problem": "Robot-cell development often waits for hardware and repeats vendor-specific integration work. Executable virtual cells can shorten iteration and expose application errors before installation, while preserving connections to real production controllers.",
+    "stage": "Platform",
+    "tags": ["Robot agnostic", "Executable twins", "Industrial robotics", "Virtual commissioning", "Isaac Sim"],
+    "related": ["nvidia", "cognite", "duality-ai"],
+    "evidence": [
+      {"label": "Named industrial use", "text": "The June 2025 Schaeffler collaboration describes simulation in NVIDIA Omniverse followed by execution through NOVA, with a live demonstration and plans to scale into production.", "url": "https://www.wandelbots.com/blog/wandelbots-collaboration-with-nvidia-and-schaeffler"},
+      {"label": "Transfer boundary", "text": "NOVA's documentation explicitly distinguishes idealized virtual motion from physical controller latency, inertia, cycle times, and safety systems.", "url": "https://docs.wandelbots.io/26.5/nova-concepts/platform-architecture"}
+    ],
+    "sources": [
+      {"title": "NOVA platform architecture", "url": "https://docs.wandelbots.io/26.5/nova-concepts/platform-architecture", "type": "company", "note": "Controller abstraction, configuration cloning, and explicit differences between virtual and physical motion."},
+      {"title": "Official Isaac Sim extension", "url": "https://github.com/wandelbotsgmbh/wandelbots-isaacsim-extension", "type": "code", "note": "Concrete integration code linking simulated robot cells to NOVA."},
+      {"title": "Schaeffler and NVIDIA collaboration", "url": "https://www.wandelbots.com/blog/wandelbots-collaboration-with-nvidia-and-schaeffler", "type": "company", "note": "Named application and virtual-to-physical workflow; separates live demo from intended production scaling."},
+      {"title": "NOVA product scope", "url": "https://www.wandelbots.com/nova-platform", "type": "company", "note": "Current product overview and boundaries of the industrial automation platform."}
+    ],
+    "caveat": "A shared API does not make simulated and physical dynamics identical. Real-cell commissioning, manufacturer-specific constraints, and validated safety functions remain necessary; public deployment counts are limited.",
+    "reviewed": "2026-10-07"
+  }
+]

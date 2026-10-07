@@ -1,0 +1,1262 @@
+{
+  "nvidia": {
+    "founders": [
+      {
+        "name": "Jensen Huang",
+        "role": "Co-founder; President and CEO",
+        "roleSource": "https://nvidianews.nvidia.com/bios/jensen-huang",
+        "channels": [
+          {
+            "label": "NVIDIA biography",
+            "url": "https://nvidianews.nvidia.com/bios/jensen-huang",
+            "kind": "profile",
+            "provenance": "https://nvidianews.nvidia.com/bios/jensen-huang",
+            "note": "Official corporate biography; not a personal contact form.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://www.nvidia.com/en-us/contact/",
+            "kind": "company",
+            "provenance": "https://www.nvidia.com/en-us/contact/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Chris Malachowsky",
+        "role": "Co-founder",
+        "roleSource": "https://www.nvidia.com/en-gb/about-nvidia/corporate-timeline/",
+        "channels": [
+          {
+            "label": "Company contact",
+            "url": "https://www.nvidia.com/en-us/contact/",
+            "kind": "company",
+            "provenance": "https://www.nvidia.com/en-us/contact/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Curtis Priem",
+        "role": "Co-founder (historical)",
+        "roleSource": "https://www.nvidia.com/en-gb/about-nvidia/corporate-timeline/",
+        "channels": [
+          {
+            "label": "Company contact",
+            "url": "https://www.nvidia.com/en-us/contact/",
+            "kind": "company",
+            "provenance": "https://www.nvidia.com/en-us/contact/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The official timeline verifies all three 1993 founders. No founder-direct professional inbox was verified. The corporate route does not imply that historical founders remain operating contacts.",
+    "reviewed": "2026-10-07"
+  },
+  "applied-intuition": {
+    "founders": [
+      {
+        "name": "Qasar Younis",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.appliedintuition.com/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/qasar",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/qasar",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://www.appliedintuition.com/contact",
+            "kind": "company",
+            "provenance": "https://www.appliedintuition.com/about",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Peter Ludwig",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://www.appliedintuition.com/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/peterwludwig",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/peterwludwig",
+            "note": "Own public profile was readable during research and matched Applied Intuition; later fetches returned 999. Messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://www.appliedintuition.com/contact",
+            "kind": "company",
+            "provenance": "https://www.appliedintuition.com/about",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Founder roles are from the current official about page. Profile identities were matched to company affiliations; no direct founder email was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "parallel-domain": {
+    "founders": [
+      {
+        "name": "Kevin McNamara",
+        "role": "Founder and Chief Product Officer",
+        "roleSource": "https://paralleldomain.com/company/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/kgmcnamara",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/kgmcnamara",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://paralleldomain.com/contact-us",
+            "kind": "company",
+            "provenance": "https://paralleldomain.com/company/about",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Current official page identifies Kevin as CPO, not CEO; Zack Novak is CEO. The founder profile discusses that transition. Company form is the verified public inquiry route.",
+    "reviewed": "2026-10-07"
+  },
+  "bifrost": {
+    "founders": [
+      {
+        "name": "Charles Wong",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.capvista.com.sg/stories/bifrost/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/charles-wzx",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/charles-wzx",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Aravind Kandiah",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://www.capvista.com.sg/stories/bifrost/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/sk-ara",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/sk-ara",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Primary investor Cap Vista verifies founder roles; Peak XV also lists full names Charles Wong Zheng Xun and Aravind Satkunasingam Kandiah. Public self-profile affiliations were matched, but automated profile access is restricted. No verified direct founder email was found.",
+    "reviewed": "2026-10-07"
+  },
+  "world-labs": {
+    "founders": [
+      {
+        "name": "Fei-Fei Li",
+        "role": "Co-founder",
+        "roleSource": "https://www.worldlabs.ai/about",
+        "channels": [
+          {
+            "label": "Stanford professional profile",
+            "url": "https://profiles.stanford.edu/fei-fei-li",
+            "kind": "profile",
+            "provenance": "https://profiles.stanford.edu/fei-fei-li",
+            "note": "Public institutional profile and research route; not a company sales contact.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Justin Johnson",
+        "role": "Co-founder",
+        "roleSource": "https://www.worldlabs.ai/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/justin-johnson-41b43664",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/justin-johnson-41b43664",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Ben Mildenhall",
+        "role": "Co-founder",
+        "roleSource": "https://www.worldlabs.ai/about",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://bmild.github.io/",
+            "kind": "website",
+            "provenance": "https://bmild.github.io/",
+            "note": "Public professional research website.",
+            "verification": "primary"
+          },
+          {
+            "label": "Public professional email",
+            "url": "mailto:me@bmild.com",
+            "kind": "email",
+            "provenance": "https://bmild.github.io/",
+            "note": "Explicitly published on his own research website; no deliverability or response test was performed.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Christoph Lassner",
+        "role": "Co-founder; advisor",
+        "roleSource": "https://www.linkedin.com/posts/christoph-lassner-475a669b_after-25-remarkable-years-building-world-activity-7471306144087633921-CjHd",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://christophlassner.de/",
+            "kind": "website",
+            "provenance": "https://christophlassner.de/",
+            "note": "Public professional research website.",
+            "verification": "primary"
+          },
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/christoph-lassner-475a669b",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/christoph-lassner-475a669b_after-25-remarkable-years-building-world-activity-7471306144087633921-CjHd",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Founding identities are on World Labs. Lassner explicitly announced stepping away from his operating role and continuing as advisor; his older personal biography alone would miss this change. The published Mildenhall address is professional, not inferred. Acquisition announcement status is separate from contact verification.",
+    "reviewed": "2026-10-07"
+  },
+  "odyssey": {
+    "founders": [
+      {
+        "name": "Oliver Cameron",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://odyssey.systems/careers",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/olivercameron",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/olivercameron",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://odyssey.systems/contact",
+            "kind": "company",
+            "provenance": "https://odyssey.systems/careers",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Jeff Hawke",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://odyssey.systems/careers",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/jeffrey-hawke",
+            "kind": "profile",
+            "provenance": "https://uk.linkedin.com/in/jeffrey-hawke",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://odyssey.systems/contact",
+            "kind": "company",
+            "provenance": "https://odyssey.systems/careers",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Official careers page verifies the two founders and current roles. Profiles were matched through public company-related posts/indexed affiliation; direct automated profile requests were restricted. Contact form is general company routing.",
+    "reviewed": "2026-10-07"
+  },
+  "waabi": {
+    "founders": [
+      {
+        "name": "Raquel Urtasun",
+        "role": "Founder and CEO",
+        "roleSource": "https://www.cs.toronto.edu/~urtasun/",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://www.cs.toronto.edu/~urtasun/",
+            "kind": "website",
+            "provenance": "https://www.cs.toronto.edu/~urtasun/",
+            "note": "Public professional research website.",
+            "verification": "primary"
+          },
+          {
+            "label": "Public research email",
+            "url": "mailto:urtasun@cs.toronto.edu",
+            "kind": "email",
+            "provenance": "https://www.cs.toronto.edu/~urtasun/",
+            "note": "Published on her University of Toronto research website. Academic professional route, not a Waabi sales inbox; no deliverability test was performed.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Her own institutional website explicitly identifies the Waabi founder/CEO role and publishes the research address. Private phone details were excluded.",
+    "reviewed": "2026-10-07"
+  },
+  "general-intuition": {
+    "founders": [
+      {
+        "name": "Pim de Witte",
+        "role": "Co-founder",
+        "roleSource": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/pimdw",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company partner waitlist",
+            "url": "https://partners.generalintuition.com/",
+            "kind": "company",
+            "provenance": "https://www.generalintuition.com/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Eloi Alonso",
+        "role": "Co-founder",
+        "roleSource": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/eloialonso",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company partner waitlist",
+            "url": "https://partners.generalintuition.com/",
+            "kind": "company",
+            "provenance": "https://www.generalintuition.com/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Vincent Micheli",
+        "role": "Co-founder",
+        "roleSource": "https://vmicheli.github.io/",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://vmicheli.github.io/",
+            "kind": "website",
+            "provenance": "https://vmicheli.github.io/",
+            "note": "Public professional research website.",
+            "verification": "primary"
+          },
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/vincent-micheli",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company partner waitlist",
+            "url": "https://partners.generalintuition.com/",
+            "kind": "company",
+            "provenance": "https://www.generalintuition.com/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Adam Jelley",
+        "role": "Co-founder",
+        "roleSource": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/adamjelley",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/eloialonso_on-a-random-saturday-last-october-pim-de-activity-7384602388789145601-QMEt",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company partner waitlist",
+            "url": "https://partners.generalintuition.com/",
+            "kind": "company",
+            "provenance": "https://www.generalintuition.com/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Eloi's public founding post names Pim, Vincent and Adam and links their exact profiles; Vincent also independently identifies himself as co-founder on his own website. The company partner waitlist is verified. Its obfuscated Email the team link returned a broken Cloudflare placeholder, so no guessed email is included.",
+    "reviewed": "2026-10-07"
+  },
+  "physicsx": {
+    "founders": [
+      {
+        "name": "Jacomo Corbo",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.physicsx.ai/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/jacomo-corbo",
+            "kind": "profile",
+            "provenance": "https://uk.linkedin.com/in/jacomo-corbo",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company customer email",
+            "url": "mailto:sales@physicsx.ai",
+            "kind": "company",
+            "provenance": "https://www.physicsx.ai/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Robin Tuluie",
+        "role": "Co-founder and Chairman",
+        "roleSource": "https://www.physicsx.ai/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/robin-tuluie-ph-d-195b7533b",
+            "kind": "profile",
+            "provenance": "https://uk.linkedin.com/in/robin-tuluie-ph-d-195b7533b",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company customer email",
+            "url": "mailto:sales@physicsx.ai",
+            "kind": "company",
+            "provenance": "https://www.physicsx.ai/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Nico Haag",
+        "role": "Co-founder and Director of Simulation Engineering",
+        "roleSource": "https://www.physicsx.ai/about",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/nico-haag-47ba13165",
+            "kind": "profile",
+            "provenance": "https://uk.linkedin.com/in/nico-haag-47ba13165",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company customer email",
+            "url": "mailto:sales@physicsx.ai",
+            "kind": "company",
+            "provenance": "https://www.physicsx.ai/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The current official team page explicitly identifies three co-founders, including Nico Haag. Public profile affiliations were matched, but profile endpoints blocked automated reading. Sales inbox is published by the company and is not founder-direct.",
+    "reviewed": "2026-10-07"
+  },
+  "duality-ai": {
+    "founders": [
+      {
+        "name": "Apurva Shah",
+        "role": "Co-founder",
+        "roleSource": "https://www.duality.ai/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/apuzinio",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/apuzinio",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@duality.ai",
+            "kind": "company",
+            "provenance": "https://www.duality.ai/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Mike Taylor",
+        "role": "Co-founder",
+        "roleSource": "https://www.duality.ai/about-us",
+        "channels": [
+          {
+            "label": "Company email",
+            "url": "mailto:info@duality.ai",
+            "kind": "company",
+            "provenance": "https://www.duality.ai/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Official about page identifies Apurva Shah and Mike Taylor (also named Michael Taylor in company announcements). Apurva's public professional profile was matched to Duality. No confidently matched founder-direct route for Mike was verified; his row offers the company inbox.",
+    "reviewed": "2026-10-07"
+  },
+  "cognite": {
+    "founders": [
+      {
+        "name": "John Markus Lervik",
+        "role": "Founder",
+        "roleSource": "https://resources.cognite.com/en/company/leadership",
+        "channels": [
+          {
+            "label": "Company contact",
+            "url": "https://resources.cognite.com/en/contact",
+            "kind": "company",
+            "provenance": "https://resources.cognite.com/en/company/leadership",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Geir Engdahl",
+        "role": "Co-founder; Chief Technology Officer, AI",
+        "roleSource": "https://resources.cognite.com/en/company/leadership",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://no.linkedin.com/in/geir-k-engdahl",
+            "kind": "profile",
+            "provenance": "https://no.linkedin.com/in/geir-k-engdahl",
+            "note": "Own profile was readable and explicitly identified Cognite CTO/co-founder; messaging may require sign-in.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://resources.cognite.com/en/contact",
+            "kind": "company",
+            "provenance": "https://resources.cognite.com/en/company/leadership",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Stein Danielsen",
+        "role": "Co-founder",
+        "roleSource": "https://www.cognite.com/en/customers/equinor",
+        "channels": [
+          {
+            "label": "Company contact",
+            "url": "https://resources.cognite.com/en/contact",
+            "kind": "company",
+            "provenance": "https://resources.cognite.com/en/company/leadership",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Current leadership verifies Lervik and Engdahl; the official Equinor customer resource explicitly identifies Stein Danielsen as co-founder. No unverified personal email was added. Announced Schneider ownership changes require a separate closing-status check.",
+    "reviewed": "2026-10-07"
+  },
+  "wandelbots": {
+    "founders": [
+      {
+        "name": "Christian Piechnick",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.wandelbots.com/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/christian-piechnick/",
+            "kind": "profile",
+            "provenance": "https://www.wandelbots.com/about-us",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@wandelbots.com",
+            "kind": "company",
+            "provenance": "https://www.wandelbots.com/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Maria Piechnick",
+        "role": "Co-founder",
+        "roleSource": "https://www.wandelbots.com/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/mpiechnick/",
+            "kind": "profile",
+            "provenance": "https://www.wandelbots.com/about-us",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@wandelbots.com",
+            "kind": "company",
+            "provenance": "https://www.wandelbots.com/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Georg Püschel",
+        "role": "Co-founder",
+        "roleSource": "https://www.wandelbots.com/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/gpuesch/",
+            "kind": "profile",
+            "provenance": "https://www.wandelbots.com/about-us",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@wandelbots.com",
+            "kind": "company",
+            "provenance": "https://www.wandelbots.com/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Christoph Biering",
+        "role": "Co-founder",
+        "roleSource": "https://www.wandelbots.com/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/bieringch/",
+            "kind": "profile",
+            "provenance": "https://www.wandelbots.com/about-us",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@wandelbots.com",
+            "kind": "company",
+            "provenance": "https://www.wandelbots.com/contact",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "These four founder identities and exact LinkedIn routes are linked by the current official about page. This is the primary-verified public founder list, not an assertion that it exhausts every historical founding participant. General company email is separately published on the contact page.",
+    "reviewed": "2026-10-07"
+  },
+  "rendered-ai": {
+    "founders": [
+      {
+        "name": "Nathan Kundtz",
+        "role": "Co-founder; Executive Chairman",
+        "roleSource": "https://rendered.ai/about/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/nathan-kundtz-b2605726",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/in/nathan-kundtz-b2605726",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company sales route",
+            "url": "https://rendered.ai/talk-to-sales/",
+            "kind": "company",
+            "provenance": "https://rendered.ai/about/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Duane Harkness",
+        "role": "Co-founder and Chief Architect",
+        "roleSource": "https://rendered.ai/about/",
+        "channels": [
+          {
+            "label": "Company sales route",
+            "url": "https://rendered.ai/talk-to-sales/",
+            "kind": "company",
+            "provenance": "https://rendered.ai/about/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Ethan Sharratt",
+        "role": "Co-founder and Director of Engineering",
+        "roleSource": "https://rendered.ai/about/",
+        "channels": [
+          {
+            "label": "Company sales route",
+            "url": "https://rendered.ai/talk-to-sales/",
+            "kind": "company",
+            "provenance": "https://rendered.ai/about/",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Current official team page verifies these co-founders and identifies Ario Sanchez as CEO, with Kundtz now executive chairman. No direct inbox for Harkness or Sharratt was verified. A historical independent report also names Kyu Hwang as a founder, but a primary role source/current route was not verified, so he is not presented as a verified operating contact.",
+    "reviewed": "2026-10-07"
+  },
+  "aves-reality": {
+    "founders": [
+      {
+        "name": "Florian Albert",
+        "role": "Co-founder",
+        "roleSource": "https://avesreality.com/about/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://de.linkedin.com/in/florianalbert",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/markusgick_seedround-deeptech-physicalai-activity-7417101955522789376-ttP2",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@avesreality.com",
+            "kind": "company",
+            "provenance": "https://avesreality.com/site-notice/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Severin Knebel",
+        "role": "Co-founder",
+        "roleSource": "https://avesreality.com/about/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://de.linkedin.com/in/severin-knebel-136a36181",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/markusgick_seedround-deeptech-physicalai-activity-7417101955522789376-ttP2",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@avesreality.com",
+            "kind": "company",
+            "provenance": "https://avesreality.com/site-notice/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Matthias Heger",
+        "role": "Co-founder",
+        "roleSource": "https://avesreality.com/about/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://de.linkedin.com/in/matthias-heger",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/markusgick_seedround-deeptech-physicalai-activity-7417101955522789376-ttP2",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@avesreality.com",
+            "kind": "company",
+            "provenance": "https://avesreality.com/site-notice/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "All three founders are named on the company about page and legal notice. Investor Markus Gick's public post links the exact profiles and describes CEO/CTO/CPO titles; the rows use only the primary company-verified co-founder role. The legal notice publishes the general company email.",
+    "reviewed": "2026-10-07"
+  },
+  "luminary": {
+    "founders": [
+      {
+        "name": "Juan Alonso",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://luminary.ai/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/juanalonso2/",
+            "kind": "profile",
+            "provenance": "https://luminary.ai/company/",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Jason Lango",
+        "role": "Co-founder; former CEO",
+        "roleSource": "https://luminary.ai/resources/welcome-pete-schlampp-luminary-clouds-new-ceo/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/jasonlango",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/jasonlango_im-incredibly-proud-of-the-company-ive-activity-7233870993016938496-PqlT",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "The 2024 official leadership transition verifies both founders and Jason's CEO handoff to Pete Schlampp. Current company page lists Juan as CTO/co-founder. Jason's earlier board/advisor description is dated and is not asserted as his present operating role. Exact public LinkedIn routes were corroborated; automated access is restricted.",
+    "reviewed": "2026-10-07"
+  },
+  "akselos": {
+    "founders": [
+      {
+        "name": "Thomas Leurent",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://akselos.com/about/our-story/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/thomasleurent/",
+            "kind": "profile",
+            "provenance": "https://akselos.com/about/our-story/",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@akselos.com",
+            "kind": "company",
+            "provenance": "https://akselos.com/about/our-story/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "David Knezevic",
+        "role": "Co-founder; Chief Scientific Officer",
+        "roleSource": "https://akselos.com/akselos-deploys-digital-twin-of-shells-bonga-fpso/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/david-k-288bb344/",
+            "kind": "profile",
+            "provenance": "https://akselos.com/about/our-story/",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@akselos.com",
+            "kind": "company",
+            "provenance": "https://akselos.com/about/our-story/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Phuong Huynh",
+        "role": "Co-founder; VP of Engineering",
+        "roleSource": "https://meche.mit.edu/sites/default/files/Spring_2026.pdf",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/phuong-h-76609452/",
+            "kind": "profile",
+            "provenance": "https://akselos.com/about/our-story/",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:info@akselos.com",
+            "kind": "company",
+            "provenance": "https://akselos.com/about/our-story/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Current company leadership supplies the roles and exact professional profile links. The Shell deployment announcement identifies Knezevic as co-founder; MIT Mechanical Engineering's Spring 2026 founder interview traces the founding collaboration with Huynh and Knezevic. Public company email is generic. Profile access was blocked, not evidence of a broken URL.",
+    "reviewed": "2026-10-07"
+  },
+  "emmi-ai": {
+    "founders": [
+      {
+        "name": "Johannes Brandstetter",
+        "role": "Co-founder; Chief Scientist at Emmi before Mistral integration",
+        "roleSource": "https://www.emmi.ai/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://at.linkedin.com/in/johannes-brandstetter-55741b116",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/miks-mikelsons_some-milestones-mark-the-beginning-of-activity-7321427824853041153-sYwL",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://www.emmi.ai/contact-us",
+            "kind": "company",
+            "provenance": "https://www.emmi.ai/about-us",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Dennis Just",
+        "role": "Co-founder; CEO at Emmi before Mistral integration",
+        "roleSource": "https://www.emmi.ai/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://de.linkedin.com/in/dennisjust",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/miks-mikelsons_some-milestones-mark-the-beginning-of-activity-7321427824853041153-sYwL",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://www.emmi.ai/contact-us",
+            "kind": "company",
+            "provenance": "https://www.emmi.ai/about-us",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Miks Mikelsons",
+        "role": "Co-founder; COO at Emmi before Mistral integration",
+        "roleSource": "https://www.emmi.ai/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://lt.linkedin.com/in/miks-mikelsons",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/miks-mikelsons_some-milestones-mark-the-beginning-of-activity-7321427824853041153-sYwL",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact",
+            "url": "https://www.emmi.ai/contact-us",
+            "kind": "company",
+            "provenance": "https://www.emmi.ai/about-us",
+            "note": "General company route; this is not a founder-direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Official about page verifies the founding roles. Mistral announced the acquisition agreement/team integration; Emmi's unchanged about page should not be read as an independent-company status update. Miks's own public founding post links all three exact profiles. No current direct email was verified after the organizational transition.",
+    "reviewed": "2026-10-07"
+  },
+  "decart": {
+    "founders": [
+      {
+        "name": "Dean Leitersdorf",
+        "role": "Co-founder",
+        "roleSource": "https://sequoiacap.com/article/partnering-with-decart-the-future-of-ai-generated-experiences",
+        "channels": [
+          {
+            "label": "Company collaboration email",
+            "url": "mailto:contact@decart.ai",
+            "kind": "company",
+            "provenance": "https://oasis-model.github.io/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Moshe Shalev",
+        "role": "Co-founder",
+        "roleSource": "https://sequoiacap.com/article/partnering-with-decart-the-future-of-ai-generated-experiences",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://il.linkedin.com/in/moshe-shalev",
+            "kind": "profile",
+            "provenance": "https://il.linkedin.com/in/moshe-shalev",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company collaboration email",
+            "url": "mailto:contact@decart.ai",
+            "kind": "company",
+            "provenance": "https://oasis-model.github.io/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Sequoia's first-party investment account verifies Dean and Moshe as co-founders. The Oasis technical report explicitly publishes the collaboration inbox. Some later secondary reports include Orian Leitersdorf as a third founder; no unambiguous primary founding-role source was verified, so this record does not claim an exhaustive legal founder list.",
+    "reviewed": "2026-10-07"
+  },
+  "ami-labs": {
+    "founders": [
+      {
+        "name": "Alex LeBrun",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://nabla.com/press-release/nabla-appoints-brian-manning-as-chief-executive-officer-to-lead-next-phase-of-growth",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://fr.linkedin.com/in/alexandrelebrun",
+            "kind": "profile",
+            "provenance": "https://fr.linkedin.com/in/alexandrelebrun",
+            "note": "Own public profile explicitly identifies AMI co-founder and CEO; messaging may require sign-in.",
+            "verification": "primary"
+          },
+          {
+            "label": "Professional website",
+            "url": "https://leb.run/",
+            "kind": "website",
+            "provenance": "https://fr.linkedin.com/in/alexandrelebrun",
+            "note": "Personal professional blog, linked by his own LinkedIn profile.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Laurent Solly",
+        "role": "Co-founder; COO",
+        "roleSource": "https://www.greycroft.com/perspectives/investing-in-ami/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://fr.linkedin.com/in/laurent-solly",
+            "kind": "profile",
+            "provenance": "https://fr.linkedin.com/in/laurent-solly",
+            "note": "Public professional profile. Automated access was restricted; messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Michael (Mike) Rabbat",
+        "role": "Co-founder and VP World Models",
+        "roleSource": "https://mila.quebec/en/directory/michael-rabbat",
+        "channels": [
+          {
+            "label": "Mila professional profile",
+            "url": "https://mila.quebec/en/directory/michael-rabbat",
+            "kind": "profile",
+            "provenance": "https://mila.quebec/en/directory/michael-rabbat",
+            "note": "Institutional page explicitly identifies the AMI founder role and links his professional profile.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Min Lin",
+        "role": "Founding team member",
+        "roleSource": "https://amilabs.xyz/",
+        "channels": [
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Pascale Fung",
+        "role": "Co-founder and Chief Research & Innovation Officer",
+        "roleSource": "https://pascalefung.com/",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://pascalefung.com/",
+            "kind": "website",
+            "provenance": "https://pascalefung.com/",
+            "note": "Public professional research website.",
+            "verification": "primary"
+          },
+          {
+            "label": "Public professional email",
+            "url": "mailto:pascale@amilabs.xyz",
+            "kind": "email",
+            "provenance": "https://pascalefung.com/",
+            "note": "Explicitly published, in obfuscated form, on her own professional website. No deliverability test or outreach was performed.",
+            "verification": "primary"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Saining Xie",
+        "role": "Co-founder and Chief Science Officer",
+        "roleSource": "https://www.sainingxie.com/",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://www.sainingxie.com/",
+            "kind": "website",
+            "provenance": "https://www.sainingxie.com/",
+            "note": "Public professional research website.",
+            "verification": "primary"
+          },
+          {
+            "label": "X profile",
+            "url": "https://x.com/sainingxie",
+            "kind": "profile",
+            "provenance": "https://www.sainingxie.com/",
+            "note": "Exact X handle linked from his own professional site. Reading or messaging may require sign-in.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Yann LeCun",
+        "role": "Co-founder",
+        "roleSource": "https://amilabs.xyz/",
+        "channels": [
+          {
+            "label": "Company email",
+            "url": "mailto:contact@amilabs.xyz",
+            "kind": "company",
+            "provenance": "https://amilabs.xyz/",
+            "note": "Public company inbox; this is not a founder-direct address.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The official primary domain lists this seven-person founding team. Where role titles are absent, they are not invented; Min Lin is labeled founding team member. Pascale's AMI email is directly self-published. Personal academic papers without AMI affiliation are not attributed to the company. All company email routes are generic, not guaranteed founder access.",
+    "reviewed": "2026-10-07"
+  }
+}

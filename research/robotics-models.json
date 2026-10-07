@@ -1,0 +1,286 @@
+[
+  {
+    "id": "physical-intelligence",
+    "name": "Physical Intelligence",
+    "website": "https://www.pi.website/",
+    "category": "foundation",
+    "subcategory": "Generalist vision-language-action models",
+    "summary": "Builds reusable robot-control models that combine visual understanding, language instructions, and continuous actions across different machines and manipulation tasks.",
+    "thesis": "An unusually useful reference point for the field: ambitious generalization research plus runnable earlier models. Its research asks whether a shared policy can compose skills and operate unfamiliar appliances; openpi lets practitioners test how much of that promise survives a change of robot, camera, or dataset.",
+    "technology": "The π family couples vision-language representations to action generation; openpi includes flow-matching and FAST autoregressive variants. π0.5 co-trains on heterogeneous robot, semantic, and web data. The April 2026 π0.7 report adds rich context conditioning, including subgoal images and performance metadata, so one model can learn from demonstrations, imperfect autonomous rollouts, and non-robot data while being steered toward a particular strategy.",
+    "problem": "Robotic skills usually require collecting a new dataset and training a specialist policy. PI aims to make adaptation and transfer cheaper without losing dexterity or instruction following.",
+    "stage": "Research",
+    "tags": ["VLA", "flow matching", "open weights", "cross-embodiment", "compositional generalization"],
+    "related": ["generalist", "skild-ai", "x-square", "sunday"],
+    "evidence": [
+      {"label": "Published research", "text": "The π0.7 technical report, submitted April 16, 2026, evaluates language following, dexterity, and compositional generalization across multiple robot platforms. These are author-run experiments, not an independent deployment audit.", "url": "https://arxiv.org/abs/2604.15483"},
+      {"label": "Runnable earlier models", "text": "openpi provides π0, π0-FAST, and π0.5 checkpoints pretrained on more than 10,000 hours of robot data, with DROID, ALOHA, and LIBERO workflows. The repository explicitly warns that transfer to a user's setup may fail.", "url": "https://github.com/Physical-Intelligence/openpi"}
+    ],
+    "sources": [
+      {"title": "π0.7: steerable robotic foundation model", "url": "https://arxiv.org/abs/2604.15483", "type": "paper", "note": "April 2026 preprint; primary method and evaluation claims. Public research does not imply released π0.7 weights."},
+      {"title": "π0.5: open-world generalization", "url": "https://arxiv.org/abs/2504.16054", "type": "paper", "note": "April 2025 preprint describing heterogeneous co-training and unseen-environment manipulation."},
+      {"title": "openpi models, checkpoints, and adaptation guides", "url": "https://github.com/Physical-Intelligence/openpi", "type": "code", "note": "README inspected. π0.5 release supports its flow head; do not equate this with every capability in later papers."},
+      {"title": "π0.7 demos and technical overview", "url": "https://www.pi.website/blog/pi07", "type": "company", "note": "Official URL corroborated by arXiv and Reddit; browser fetch returned 403. Methods verified through the paper."},
+      {"title": "Physical Intelligence's π0.7 announcement thread", "url": "https://x.com/physical_int/status/2044841263254638862", "type": "x", "note": "Exact thread linked in the Reddit discussion. Direct X fetch blocked; use for videos and discovery, not independent verification."},
+      {"title": "Practitioner discussion: generalization versus repeatability", "url": "https://www.reddit.com/r/robotics/comments/1snwg6f/physical_intelligence_unveiled_%CF%8007_their_latest/", "type": "reddit", "note": "Read comments about hardware wear, calibration, recovery, and repeated trials. Anonymous experience is a question generator, not verified company evidence."}
+    ],
+    "caveat": "The open release inspected remains earlier than π0.7. A successful unseen-task demonstration does not establish production reliability, safe failure behavior, or zero adaptation on arbitrary hardware. Important results are evaluated by the authors.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "skild-ai",
+    "name": "Skild AI",
+    "website": "https://www.skild.ai/",
+    "category": "foundation",
+    "subcategory": "Cross-embodiment control and in-context learning",
+    "summary": "Builds a shared intelligence layer for diverse robot bodies, with locomotion, manipulation, and task learning from video demonstrations.",
+    "thesis": "Its interesting bet is independence from the robot body, paired with the operational infrastructure to deploy that brain. S1 turns a demonstration into a task specification, while the Fetch acquisition adds warehouse hardware, integration, and support. The combination tests whether adaptable intelligence can become a repeatable industrial product.",
+    "technology": "Skild combines robot teleoperation, handheld capture, human video, and simulation rather than choosing a single data source. Its August 2026 S1 report describes pretraining with tasks specified by in-context demonstrations, requiring the policy to infer intent across viewpoints and embodiments. Its locomotion research separately uses long-context adaptation. The goal is to change tasks through a prompt while keeping model weights fixed.",
+    "problem": "Robot software is commonly rebuilt for each body, facility, and workflow. Skild targets the recurring integration and retraining cost that makes flexible automation hard to scale.",
+    "stage": "Deployed",
+    "tags": ["cross-embodiment", "in-context learning", "video imitation", "sim-to-real", "industrial manipulation"],
+    "related": ["generalist", "physical-intelligence", "dyna", "agility"],
+    "evidence": [
+      {"label": "Commercial claim, attributed", "text": "On September 10, 2026, Skild reported more than 60 paying customers, over $100 million ARR, and $50 million recognized revenue since its first deployment. These are company disclosures; no audited financial validation was found.", "url": "https://www.skild.ai/blogs/skild-crosses-100m-arr"},
+      {"label": "Transaction corroboration", "text": "Zebra confirmed on April 15, 2026 that Skild acquired its Robotics Automation business, formerly Fetch Robotics. This independently supports the transaction, not the breadth of Skild's autonomy claims.", "url": "https://www.zebra.com/us/en/about-zebra/newsroom/press-releases/2026/skild-ai-acquires-zebra-technologies--robotics-automation-busine.html"},
+      {"label": "Research result, qualified", "text": "S1 reports 66% on its unseen-task cumulative per-step metric at 100,000 pretraining hours, versus 9% for a matched language-conditioned baseline. Human recovery is used during benchmark rollouts, so this is not a 66% end-to-end autonomous completion rate.", "url": "https://www.skild.ai/blogs/s1"}
+    ],
+    "sources": [
+      {"title": "S1: in-context learning for robotics", "url": "https://www.skild.ai/blogs/s1", "type": "company", "note": "August 2026 technical report with training recipe, long-horizon demos, and evaluation definitions."},
+      {"title": "Building the general-purpose robotic brain", "url": "https://www.skild.ai/blogs/building-the-general-purpose-robotic-brain", "type": "company", "note": "July 2025 explanation of the shared-control thesis and different training sources."},
+      {"title": "The hidden pillar: deployment and reported revenue", "url": "https://www.skild.ai/blogs/skild-crosses-100m-arr", "type": "company", "note": "September 2026 company disclosure; distinguishes speed, accuracy, integration, and ongoing adaptation."},
+      {"title": "Zebra confirms sale of its robotics business", "url": "https://www.zebra.com/us/en/about-zebra/newsroom/press-releases/2026/skild-ai-acquires-zebra-technologies--robotics-automation-busine.html", "type": "report", "note": "Seller's primary announcement is indexed and corroborates the April 2026 acquisition; direct fetching returned a tool error rather than an explicit missing-page response."},
+      {"title": "Learning by watching: demo thread", "url": "https://x.com/SkildAI/status/2010823204588208570", "type": "x", "note": "January 2026 six-video thread linked by Reddit. X is access-blocked here; demos are company-selected."},
+      {"title": "Practitioner discussion: robustness and safe stopping", "url": "https://www.reddit.com/r/robotics/comments/1qck1pn/skild_ai_has_unveiled_new_demos_learning_by/", "type": "reddit", "note": "Read debate about adversarial perturbations versus safe behavior around people; commentary does not verify performance."}
+    ],
+    "caveat": "S1's controlled-study metric includes recovery interventions and differs from complete-task success. Training detail and public reproducibility remain limited. Revenue and customer-count claims are self-reported, and acquisition-driven deployments should not be confused with newly proven general autonomy.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "generalist",
+    "name": "Generalist",
+    "website": "https://generalistai.com/",
+    "category": "foundation",
+    "subcategory": "Native physical-interaction pretraining",
+    "summary": "Trains large embodied models on a dedicated physical-interaction data engine, aiming for robots that learn new manipulation tasks from very little demonstration.",
+    "thesis": "A strong counterpoint to adapting pretrained language or video models: Generalist builds the physical dataset and most of the model itself. Its most useful research question is whether enough diverse interaction produces rapid task learning as an emergent property, making adaptation closer to prompting than another bespoke training project.",
+    "technology": "GEN-0 introduced asynchronous sensing and action streams under the company's Harmonic Reasoning approach, trained on sensorimotor data collected with dedicated devices and robots. Generalist reports training roughly 99% of GEN-1 parameters from scratch. GEN-1.5 uses a 30-second context containing video, sensor, language, and proprioceptive inputs and produces 100 Hz trajectories; demonstrations can enter this context as physical prompts or support a few gradient updates.",
+    "problem": "New robotic tasks still demand expensive demonstrations, lengthy optimization, and specialist engineering. Generalist wants a general physical prior that reduces the task-specific data and compute needed for competence.",
+    "stage": "Demonstrated",
+    "tags": ["physical pretraining", "scaling laws", "in-context learning", "human data", "cross-embodiment"],
+    "related": ["skild-ai", "physical-intelligence", "sunday", "dyna"],
+    "evidence": [
+      {"label": "Research result, attributed", "text": "The August 19, 2026 GEN-1.5 report gives 59% mean success across 10 short-horizon tasks with one 3–12 second prompt; five minutes of data and 10 gradient steps raise this to 83%. Neither number implies general deployment reliability.", "url": "https://generalistai.com/blog/gen-1.5"},
+      {"label": "Data engine", "text": "The November 2025 GEN-0 report described more than 270,000 hours of diverse manipulation data and experiments on 6-, 7-, and 16-plus-degree-of-freedom robots. Corpus size is company-reported and not a public dataset release.", "url": "https://generalistai.com/blog/gen-0"},
+      {"label": "Funding announcement", "text": "Generalist announced $400 million in new funding on June 4, 2026, led by Radical Ventures. This dated announcement demonstrates resources, not proven commercial rollout or an independently measured model advantage.", "url": "https://generalistai.com/blog/accelerating-the-next-phase-of-physical-ai"}
+    ],
+    "sources": [
+      {"title": "GEN-1.5: embodied foundation models are one-shot learners", "url": "https://generalistai.com/blog/gen-1.5", "type": "company", "note": "August 2026 technical report; explicitly calls tasks simple, short-horizon, and success rates modest."},
+      {"title": "GEN-0: physical data and scaling experiments", "url": "https://generalistai.com/blog/gen-0", "type": "company", "note": "November 2025 primary architecture/data overview; measured scaling is specific to its recipe and evaluations."},
+      {"title": "Going beyond world models and VLAs", "url": "https://generalistai.com/blog/beyond-world-models", "type": "company", "note": "April 2026 explains the mostly-from-scratch approach. The superiority argument is a company thesis, not settled evidence."},
+      {"title": "June 2026 funding and development plans", "url": "https://generalistai.com/blog/accelerating-the-next-phase-of-physical-ai", "type": "company", "note": "Dated primary funding announcement, not a claim that this is its latest financing."},
+      {"title": "GEN-1.5 research thread", "url": "https://x.com/GeneralistAI/status/2090161968665731569", "type": "x", "note": "Exact post content surfaced through indexed X mirrors; direct X fetch blocked. Primary blog verifies the technical facts."},
+      {"title": "Discussion: one-shot learning and recovery", "url": "https://www.reddit.com/r/singularity/comments/1vt155o/introducing_gen15_a_oneshot_learner/", "type": "reddit", "note": "Read discussion of what the demonstration specifies and where prior knowledge and recovery enter. Many comments are speculative."}
+    ],
+    "caveat": "Models and the large corpus are not openly reproducible. GEN-1.5's emerging one-shot capabilities remain brittle and are tested mainly on short tasks. Published high reliability for selected fine-tuned GEN-1 tasks should not be transferred to its broader one-shot results.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "dyna",
+    "name": "Dyna Robotics",
+    "website": "https://www.dyna.co/",
+    "category": "foundation",
+    "subcategory": "World-action models with commercial manipulation",
+    "summary": "Builds robot foundation models and deploys them on commercial tasks, using large-scale human video pretraining to improve dexterity, throughput, and task transfer.",
+    "thesis": "Dyna is compelling because it binds a model thesis to a concrete economic test. Its restaurant folding reports expose quality-adjusted throughput, bin placement, uptime, and integration: the details that decide whether automation saves work. It is also a useful bridge between foundation models and the world-model landscape.",
+    "technology": "Dyna-2 uses a video-diffusion backbone and coupled video/action transformers trained with flow matching to predict future video and actions. Human egocentric video supplies the large pretraining corpus; robot data adapts the model to particular machines. Dyna-2.1 adds a physical-agent stack for Taku, a wheeled semi-humanoid, to combine reasoning, movement, manipulation, and recovery over complete workflows.",
+    "problem": "An impressive manipulation policy can still be too slow, produce unacceptable outputs, or leave staff to finish the job. Dyna targets repeatable, economically useful end-to-end work.",
+    "stage": "Deployed",
+    "tags": ["world-action model", "human video", "flow matching", "deployment economics", "deformable objects"],
+    "related": ["generalist", "skild-ai", "sunday", "x-square"],
+    "evidence": [
+      {"label": "Research scale, company-reported", "text": "The August 2026 Dyna-2 report describes pretraining on over one million hours of egocentric human video and human-to-robot scaling experiments. Its strongest comparisons use matched internal baselines, not a universal independent leaderboard.", "url": "https://www.dyna.co/dyna-2"},
+      {"label": "Operational detail", "text": "Dyna reports Din Tai Fung is expanding its restaurant deployment. Its August report says Dyna-2 folds 95 napkins/hour with 93% passing the restaurant quality bar, versus about 35/hour and 75% previously. Customer-wide ROI and rollout scale remain company-reported.", "url": "https://www.dyna.co/research/scaling-customer-deployments"},
+      {"label": "New research demonstration", "text": "The September 28, 2026 Dyna-2.1 release describes Taku performing long laundry workflows. Treat this as a new research demonstration, distinct from existing fixed-station commercial tasks.", "url": "https://www.dyna.co/dyna-2.1"}
+    ],
+    "sources": [
+      {"title": "Dyna-2: million-hour world-action modeling", "url": "https://www.dyna.co/dyna-2", "type": "company", "note": "August 2026 technical report; method, scaling experiments, matched VLA comparison, and adaptation demos."},
+      {"title": "Not just a model, but a product", "url": "https://www.dyna.co/research/scaling-customer-deployments", "type": "company", "note": "August 2026 operational report with named restaurant, quality-adjusted throughput, and integration details."},
+      {"title": "Dyna-2.1: physical agents and end-to-end workflows", "url": "https://www.dyna.co/dyna-2.1", "type": "company", "note": "September 2026 research release; demonstrates Taku and recovery rather than proving scaled field deployment."},
+      {"title": "Training Dyna-2 at million-hour scale", "url": "https://www.dyna.co/research/dyna-2-infrastructure", "type": "company", "note": "Primary technical account of ingestion, curation, data loading, distributed training, and reliability infrastructure."},
+      {"title": "Lessons from ten months in production", "url": "https://www.dyna.co/news/robotics-bubble", "type": "company", "note": "May 2026 first-person account of the deployment gap; informative but commercially interested."},
+      {"title": "Taku / Dyna-2.1 demonstration thread", "url": "https://x.com/DynaRobotics/status/2104970523726033387", "type": "x", "note": "Direct post discovered through an indexed video source. X fetch blocked; prefer the linked technical release for claims."}
+    ],
+    "caveat": "Detailed public reports are mostly first-party; independent customer confirmation, audited economics, and open model reproduction are limited. Million-hour pretraining describes video volume, not one million hours of robot interaction. Research demos and forecast fleet growth are not completed rollouts.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "rlwrld",
+    "name": "RLWRLD",
+    "website": "https://www.rlwrld.ai/",
+    "category": "foundation",
+    "subcategory": "Contact-rich dexterity and multimodal control",
+    "summary": "Develops robot foundation models for high-degree-of-freedom hands, adding contact sensing, temporal context, and industrial skill data to visual and language understanding.",
+    "thesis": "An unusually specific challenge to vision-only scaling: pouring, moving conveyors, and in-hand manipulation require information that cameras cannot fully supply. RLWRLD treats torque, touch, motion, and memory as native model inputs. Its published architecture, benchmark protocol, and released code make that claim more inspectable than a polished demo alone.",
+    "technology": "RLDX-1 combines a robot-specialized vision-language backbone with a Multi-Stream Action Transformer. Separate modality streams communicate through attention rather than being flattened immediately into one representation. Motion features encode changes across frames; physics streams process torque and tactile data; memory tracks prior events. Post-training uses corrective demonstrations and progress-aware reinforcement learning. The public stack includes pretrained and benchmark-specific checkpoints.",
+    "problem": "Fine physical work depends on hidden contact forces, fast-moving targets, and remembered task state. Generic visual policies can fail even when they identify the right object and goal.",
+    "stage": "Research",
+    "tags": ["dexterous hands", "tactile sensing", "torque sensing", "memory", "open code"],
+    "related": ["physical-intelligence", "figure", "sunday", "x-square"],
+    "evidence": [
+      {"label": "Published evaluation", "text": "The May 2026 RLDX-1 report gives 86.8% success on its ALLEX task evaluation versus roughly 40% for π0.5 and GR00T N1.6. This is an author-run comparison on particular tasks and adaptation settings.", "url": "https://arxiv.org/abs/2605.03269"},
+      {"label": "Open artifacts", "text": "The official repository publishes training/inference code and links pretrained, mid-trained, and benchmark-specific model checkpoints, including LIBERO, SimplerEnv, and RoboCasa workflows.", "url": "https://github.com/RLWRLD/RLDX-1"},
+      {"label": "Industrial data partnership", "text": "A June 2026 AWS/RLWRLD coauthored case study documents on-site task assessment and skill-data capture at LOTTE HOTEL & RESORT. It places full-scale live-hotel deployment as a 2030 aim, not an achieved outcome.", "url": "https://aws.amazon.com/blogs/physical-ai/putting-dexterous-robots-to-work-how-rlwrld-builds-physical-ai-with-aws/"}
+    ],
+    "sources": [
+      {"title": "RLDX-1 technical report", "url": "https://arxiv.org/abs/2605.03269", "type": "paper", "note": "May 2026 preprint. Compare tasks, sensors, and post-training before interpreting headline baseline gains."},
+      {"title": "RLDX-1 architecture and dexterity regimes", "url": "https://www.rlwrld.ai/en/rldx-1", "type": "company", "note": "Detailed primary overview with sensor ablations, motion/memory modules, failure recovery, and stated future directions."},
+      {"title": "RLDX-1 code and released checkpoints", "url": "https://github.com/RLWRLD/RLDX-1", "type": "code", "note": "README inspected. Check individual model licenses; code availability does not mean unrestricted commercial weight use."},
+      {"title": "AWS case study: dexterity, data, and LOTTE", "url": "https://aws.amazon.com/blogs/physical-ai/putting-dexterous-robots-to-work-how-rlwrld-builds-physical-ai-with-aws/", "type": "report", "note": "Coauthored by RLWRLD and AWS employees; useful primary partner evidence, not independent benchmark reproduction."}
+    ],
+    "caveat": "The company explicitly leaves zero-shot generalization and substantially longer temporal contexts open. Its strong dexterity comparisons depend on sensors and post-training. Public checkpoints may have noncommercial restrictions, and hotel data collection should not be read as an autonomous hotel workforce deployment.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "x-square",
+    "name": "X Square Robot",
+    "website": "https://x2robot.com/en",
+    "category": "foundation",
+    "subcategory": "Open VLAs and event-grounded world-action models",
+    "summary": "Builds embodied robot models and an open training stack, investigating directly executable VLA pretraining and joint future-video/action learning.",
+    "thesis": "Worth following for what it makes testable: Wall-OSS-0.5 evaluates the pretrained checkpoint on real hardware before task-specific tuning. Its co-training analysis separates the objective that teaches the backbone from the continuous interface used at deployment. WALL-WM explores semantic event boundaries as a better unit for connecting visual futures and actions.",
+    "technology": "Wall-OSS-0.5 is a 4B vision-language-action model with a 3B vision-language backbone. It combines discrete action prediction, grounded multimodal prediction, and continuous flow matching: different losses serve adaptation, semantic retention, and deployment. The Wall-X repository exposes training, serving, and evaluation utilities. The related WALL-WM project couples future video and actions around semantically coherent events rather than only fixed-length chunks.",
+    "problem": "VLA results often conflate pretraining with heavy task-specific tuning. X Square asks what capability exists before adaptation and how to preserve grounded semantics while learning useful robot actions.",
+    "stage": "Research",
+    "tags": ["VLA", "open weights", "gradient-bridged training", "world-action model", "real-robot evaluation"],
+    "related": ["physical-intelligence", "dyna", "rlwrld", "generalist"],
+    "evidence": [
+      {"label": "Pretraining evaluation", "text": "The May 2026 Wall-OSS-0.5 report describes training across over 20 embodiments and testing the pretrained checkpoint on 17 real-robot tasks. Its fine-tuned result is 60.5% mean task progress on 15 tasks; progress is not complete-task success.", "url": "https://arxiv.org/abs/2605.30877"},
+      {"label": "Inspectable code", "text": "The official Wall-X repository includes flow and FAST action branches, LeRobot data preparation, serving/evaluation utilities, and June 2026 stack updates. WALL-WM separately releases its model/training stack; its README says pretrained checkpoints are forthcoming.", "url": "https://github.com/X-Square-Robot/wall-x"}
+    ],
+    "sources": [
+      {"title": "Wall-OSS-0.5 technical report", "url": "https://arxiv.org/abs/2605.30877", "type": "paper", "note": "May 2026 preprint with directly tested pretrained capability and objective/gradient analysis."},
+      {"title": "Wall-X open training and inference stack", "url": "https://github.com/X-Square-Robot/wall-x", "type": "code", "note": "README and linked model references inspected; public runtime includes real-robot adaptation and simulation evaluation."},
+      {"title": "WALL-WM paper", "url": "https://arxiv.org/abs/2606.01955", "type": "paper", "note": "June 2026 report on semantic-event world-action modeling, revised September 2026."},
+      {"title": "WALL-WM code", "url": "https://github.com/X-Square-Robot/wall-wm", "type": "code", "note": "README inspected. Code is available; the pretrained-checkpoint entry is marked coming soon."},
+      {"title": "X Square research index", "url": "https://x2robot.com/en/research", "type": "company", "note": "Primary release index links WALL-OSS-0.5 and the embodied-model program."},
+      {"title": "Practitioner question: which loss teaches the VLM?", "url": "https://www.reddit.com/r/deeplearning/comments/1ts0sc9/in_vla_cotraining_how_much_of_the_backbone/", "type": "reddit", "note": "Read original post on objective gradients and action-space supervision. No substantive replies or independent reproduction were found; this is a technical question, not community consensus."}
+    ],
+    "caveat": "Research is predominantly company-authored. Task progress and complete-task success are different measures. Open code should not be mistaken for every latest checkpoint being downloadable; hardware calibration and task adaptation still matter, and independent reproduction is limited.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "figure",
+    "name": "Figure",
+    "website": "https://www.figure.ai/",
+    "category": "general",
+    "subcategory": "Humanoid whole-body manipulation",
+    "summary": "Builds humanoid robots and learned whole-body control for manufacturing logistics and household manipulation, integrating sensing, hardware, training data, and model development.",
+    "thesis": "The interesting engineering problem is coupling legs, arms, balance, and dexterity rather than stitching a walking controller to a grasping demo. Figure provides both an industrial customer reference and increasingly explicit generalization evaluations. Its current results expose how much remains between transferring a behavior to a new house and reliably finishing every job.",
+    "technology": "Helix 02 describes a hierarchy from scene/language reasoning through a 200 Hz visuomotor policy to a 1 kHz learned whole-body controller trained with human motion and sim-to-real reinforcement learning. Figure 03 adds palm cameras and fingertip touch. September 2026 Helix 2.5 is pretrained from scratch on Index human-behavior data, then adapted to specific whole-body behaviors before testing in unfamiliar homes.",
+    "problem": "Human-built factories and homes need robots that perceive, reposition, manipulate, and recover simultaneously. Fixed automation struggles with varying object placement and work that continuously couples movement with contact.",
+    "stage": "Pilot",
+    "tags": ["humanoid", "whole-body control", "tactile sensing", "human pretraining", "manufacturing"],
+    "related": ["agility", "1x", "sunday", "rlwrld"],
+    "evidence": [
+      {"label": "Customer corroboration", "text": "BMW confirms that its 2025 Figure 02 pilot assisted production of more than 30,000 BMW X3s over ten months. This supports a specific factory role, not autonomous manufacture of entire cars.", "url": "https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html"},
+      {"label": "Generalization, company evaluation", "text": "Figure's September 17, 2026 report tests three behaviors in 30 unseen homes. Index pretraining raises complete-task success from 9% to 56% versus its controlled baseline; tasks had been fine-tuned elsewhere.", "url": "https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization"},
+      {"label": "Next industrial demonstration", "text": "Figure reports Figure 03 arrived at BMW Spartanburg on June 30, 2026 and demonstrates sequencing parts and pulling a cart under Helix 02. This is distinct from the earlier Figure 02 sheet-metal task.", "url": "https://www.figure.ai/news/f-03-at-bmw"}
+    ],
+    "sources": [
+      {"title": "Helix 02: full-body autonomy and architecture", "url": "https://www.figure.ai/news/helix-02", "type": "company", "note": "January 2026 primary technical overview, control rates, sensing, simulation training, and selected autonomous demos."},
+      {"title": "Helix 2.5: zero-shot testing across 30 homes", "url": "https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization", "type": "company", "note": "September 2026 report with success definitions, a controlled pretraining comparison, and safety interventions counted as failure."},
+      {"title": "BMW's account of humanoid production pilots", "url": "https://www.bmwgroup.com/en/news/general/2026/humanoid-robot-in-leipzig.html", "type": "report", "note": "Customer source corroborates Figure 02's ten-month US pilot; the separate Leipzig AEON project is Hexagon's robot."},
+      {"title": "Figure 03 arrives at BMW", "url": "https://www.figure.ai/news/f-03-at-bmw", "type": "company", "note": "June 2026 first-party report of a different logistics sequencing workflow."},
+      {"title": "Helix 02 launch demonstration thread", "url": "https://x.com/Figure_robot/status/2016207013236375661", "type": "x", "note": "Exact January 2026 post found in an indexed roundup; direct X fetch blocked. Technical claims verified on Figure's site."},
+      {"title": "Discussion of Helix 02 kitchen autonomy", "url": "https://www.reddit.com/r/singularity/comments/1qpp4jq/figureai_helix_02_doing_kitchen_stuff_autonomously/", "type": "reddit", "note": "Public discussion of embodiment and bimanual behavior. Useful context, not an independent autonomy audit."}
+    ],
+    "caveat": "BMW corroborates a bounded industrial pilot, while home results are company-run research. Helix 2.5's 56% completion leaves a substantial reliability gap. Zero-shot means unseen homes/objects, not untrained tasks; system code, weights, and datasets remain proprietary.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "1x",
+    "name": "1X",
+    "website": "https://www.1x.tech/",
+    "category": "general",
+    "subcategory": "Home humanoids and learned-world training",
+    "summary": "Develops tendon-driven home humanoids and learned world models, combining basic autonomy with remote expert assistance while working toward more general household capability.",
+    "thesis": "A distinctive hardware-and-learning loop: soft, quiet actuation for homes, real household data, video-based world modeling, and human assistance to cover missing skills. It is worth tracking as an experiment in how consumer robots could accumulate experience, while separating manufacturing capacity and preorders from demonstrated autonomous usefulness.",
+    "technology": "NEO uses tendon-driven actuation and onboard compute; the April 2026 factory account specifies NVIDIA Jetson Thor. 1X's learned-world approach predicts visual futures from robot experience rather than manually authoring every object and interaction. Its January 2026 system generates task-conditioned video, then an inverse-dynamics model translates predicted movement into actions. Redwood supplies generalist control, with scheduled human Expert Mode for tasks the initial robot cannot perform alone.",
+    "problem": "Homes contain deformable objects, changing layouts, and interactions too diverse to hand-script. 1X targets safe, useful household work while finding a scalable path from assistance to autonomy.",
+    "stage": "Demonstrated",
+    "tags": ["humanoid", "world models", "tendon actuation", "teleoperation", "home robotics"],
+    "related": ["figure", "sunday", "physical-intelligence", "dyna"],
+    "evidence": [
+      {"label": "Product terms", "text": "The order page lists $20,000 early-access ownership or a $499/month subscription and says US deliveries start in 2026. It explicitly describes basic initial autonomy and remote supervision for unfamiliar complex tasks.", "url": "https://www.1x.tech/order"},
+      {"label": "Manufacturing, company-reported", "text": "The April 30, 2026 factory account says Hayward production has begun and initial robots are prioritized for internal testing. Production-capacity targets and reserved preorders are not verified consumer deliveries.", "url": "https://www.1x.tech/discover/neo-factory"},
+      {"label": "Accessible research lineage", "text": "Its 2024 World Model Challenge released over 100 hours of vector-quantized robot video, starter models, and evaluation code. This earlier challenge is useful research material, not the latest NEO product model.", "url": "https://www.1x.tech/discover/1x-world-model"}
+    ],
+    "sources": [
+      {"title": "NEO product terms, autonomy, and Expert Mode", "url": "https://www.1x.tech/order", "type": "company", "note": "Primary order page checked; pricing and delivery timing are offers/promises, not evidence of fulfillment."},
+      {"title": "January 2026 world model: video to action", "url": "https://www.1x.tech/discover/world-model-self-learning", "type": "company", "note": "Primary research/product update. Selected new-task demonstrations do not establish general safe autonomy."},
+      {"title": "NEO factory and internal testing", "url": "https://www.1x.tech/discover/neo-factory", "type": "company", "note": "April 2026 manufacturing account; future annual capacities are targets, not shipped counts."},
+      {"title": "1X World Model Challenge and failure modes", "url": "https://www.1x.tech/discover/1x-world-model", "type": "company", "note": "September 2024 research baseline; openly discusses object coherence and physical-law failures and links starter code."},
+      {"title": "Independent hands-on: NEO is still partly human-operated", "url": "https://www.wsj.com/tech/personal-tech/i-tried-the-robot-thats-coming-to-live-with-you-its-still-part-human-68515d44", "type": "report", "note": "October 2025 hands-on reporting; the accessible introduction and indexed excerpts document human assistance in the tested demonstration. The full article is subscription restricted."},
+      {"title": "Practitioner discussion of NEO's initial capability", "url": "https://www.reddit.com/r/robotics/comments/1onbnwz/cannot_believe_that_1x_targets_valuation_of_10b/", "type": "reddit", "note": "Critical discussion linking the independent hands-on test; criticism is not proof that later autonomous research fails."}
+    ],
+    "caveat": "Consumer shipping plans are not proof of completed deliveries. Initial Expert Mode involves a human watching through robot cameras. No independently verified fleet-wide autonomy/intervention rate was found; the public world-model challenge predates the current product stack.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "agility",
+    "name": "Agility Robotics",
+    "website": "https://www.agilityrobotics.com/",
+    "category": "general",
+    "subcategory": "Industrial humanoid logistics",
+    "summary": "Builds Digit humanoids and the Arc fleet platform for moving goods through existing industrial facilities, with documented commercial logistics operations.",
+    "thesis": "A necessary anchor for judging the general-purpose robotics story against actual work. Digit's first commercial wedge is repetitive logistics rather than all household tasks at once. Arc, deployment processes, and an independent safety controller show why the valuable system includes integration, operations, and predictable human interaction as well as the robot.",
+    "technology": "Digit is a bipedal mobile manipulator orchestrated through Agility Arc, which supports facility mapping, workflow configuration, fleet operations, and troubleshooting. September 2026 Digit 5 adds a safety architecture with human detection, visual/audio intent cues, and an independent motion-safety controller. Agility describes integration with NVIDIA IGX Thor and Halos infrastructure; these announced capabilities should be distinguished from the installed Digit 4 fleet.",
+    "problem": "Human-built warehouses have repetitive lifting and tote-transfer jobs that are hard to staff and awkward for fixed automation. Agility seeks deployable automation within existing workflows and equipment.",
+    "stage": "Deployed",
+    "tags": ["humanoid", "logistics", "fleet orchestration", "industrial safety", "robots as a service"],
+    "related": ["figure", "skild-ai", "dyna"],
+    "evidence": [
+      {"label": "Customer-confirmed deployment", "text": "GXO's June 27, 2024 announcement confirms a multi-year Robots-as-a-Service agreement at its SPANX facility, where Digit transfers totes from cobots to conveyors under Arc orchestration.", "url": "https://gxo.com/news_article/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics/"},
+      {"label": "Operational scale, attributed", "text": "Agility's September 15, 2026 Digit 5 announcement reports over 65,000 operational hours for Digit 4 across customer sites and more than $300 million in multi-year orders. Operating hours, orders, revenue, and delivered Digit 5 units are different measures.", "url": "https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale"},
+      {"label": "Safety collaboration", "text": "On October 1, 2026 Agility and FORT announced a memorandum of understanding on Digit 5 safety infrastructure. An MOU supports a collaboration, not completed certification or all promised features in service.", "url": "https://www.agilityrobotics.com/content/agility-and-fort-robotics-announce-strategic-partnership-to-advance-humanoid-robot-safety"}
+    ],
+    "sources": [
+      {"title": "GXO confirms multi-year commercial deployment", "url": "https://gxo.com/news_article/gxo-signs-industry-first-multi-year-agreement-with-agility-robotics/", "type": "report", "note": "Primary customer statement; specific tote-transfer workflow and contract, not a broad autonomy benchmark."},
+      {"title": "Digit 5 launch, operational hours, and orders", "url": "https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale", "type": "company", "note": "September 2026 first-party disclosure. Existing Digit 4 fleet evidence is separate from next-generation product promises."},
+      {"title": "Digit 5 product and safety architecture", "url": "https://www.agilityrobotics.com/solutions/digit-5", "type": "company", "note": "Current primary product overview; useful for intended system architecture, not blanket proof of safety in every facility."},
+      {"title": "Agility and FORT safety collaboration", "url": "https://www.agilityrobotics.com/content/agility-and-fort-robotics-announce-strategic-partnership-to-advance-humanoid-robot-safety", "type": "company", "note": "October 2026 MOU; follow implementation and independent evaluation rather than treating the agreement as certification."}
+    ],
+    "caveat": "The well-supported commercial role is bounded logistics. Agility states Digit 5 remains in development; its orders and announced safety design are not delivered fleet counts or unrestricted operation around people. Public evidence does not establish net customer ROI across the fleet.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "sunday",
+    "name": "Sunday Robotics",
+    "website": "https://www.sunday.ai/",
+    "category": "general",
+    "subcategory": "Wheeled home manipulation and matched human data",
+    "summary": "Builds Memo, a wheeled home robot, and ACT models trained using gloves designed to capture human skills in a robot-compatible form.",
+    "thesis": "One of the most instructive alternatives to a bipedal home humanoid. Memo uses stable wheels and a height-changing body, while matching its hands and sensors to a wearable capture interface. The central insight is to design the data-collection device and robot together, reducing the translation problem rather than simply collecting more teleoperation.",
+    "technology": "The Skill Capture Glove mirrors Memo's hand geometry and sensing; Skill Transform aligns human kinematic and visual observations to the robot. ACT-1 learns mobile manipulation and map-conditioned navigation without teleoperation trajectories in its reported training recipe. ACT-2 combines diverse sensorized human pretraining with targeted post-training and recovery data, aiming to transfer reliability improvements from in-house robots to unfamiliar homes.",
+    "problem": "Household manipulation data is expensive to collect with robots, and reliability gains often overfit to one home. Sunday targets scalable human data and useful dexterity across real household variation.",
+    "stage": "Demonstrated",
+    "tags": ["home robotics", "wearable data capture", "deformable objects", "mobile manipulation", "hardware co-design"],
+    "related": ["1x", "figure", "generalist", "dyna"],
+    "evidence": [
+      {"label": "Scoped evaluation", "text": "ACT-2's July 2026 report records 778 successful folds in 785 autonomous attempts across nine garment types, or 99.1%. The declared scope excludes socks, bras, underwear, and accessories; this is not success across arbitrary chores.", "url": "https://www.sunday.ai/blog/act-2-preview"},
+      {"label": "Independent observation", "text": "WIRED's November 2025 reporter watched Memo make espresso, clear glasses, and load a dishwasher. This supports witnessed demonstrations while the article explicitly questions reliability across homes without engineers nearby.", "url": "https://www.wired.com/story/memo-sunday-robotics-home-robot/"},
+      {"label": "Funding and product stage", "text": "Sunday announced a $165 million Series B at a $1.15 billion valuation on March 12, 2026. Its site describes 2026 beta testing before general purchase; a funding round is not evidence of broad customer deployment.", "url": "https://www.sunday.ai/blog/series-b"}
+    ],
+    "sources": [
+      {"title": "ACT-1: robot foundation model without teleoperation data", "url": "https://www.sunday.ai/blog/no-robot-data", "type": "company", "note": "November 2025 primary description of matched gloves, Skill Transform, navigation maps, and manipulation demos."},
+      {"title": "ACT-2: generalizing reliability", "url": "https://www.sunday.ai/blog/act-2-preview", "type": "company", "note": "July 2026 report with a declared garment scope, fixed-checkpoint evaluation, quality rubric, and linked attempt videos."},
+      {"title": "Memo technology and passive stability", "url": "https://www.sunday.ai/technology", "type": "company", "note": "Primary explanation of the hardware/data approach; marketing safety claims are not an independent certification."},
+      {"title": "Sunday's Series B and beta plans", "url": "https://www.sunday.ai/blog/series-b", "type": "company", "note": "March 2026 funding announcement; deployment objectives are forward-looking."},
+      {"title": "WIRED watches Memo make coffee and handle dishes", "url": "https://www.wired.com/story/memo-sunday-robotics-home-robot/", "type": "report", "note": "Independent, in-person November 2025 account; not a long-term household trial."},
+      {"title": "Tony Zhao's ACT-2 technical thread", "url": "https://x.com/tonyzzhao/status/2077806003308179802", "type": "x", "note": "Exact announcement content retrieved through an indexed X mirror; direct X fetch blocked. Full evaluation is on Sunday's site."}
+    ],
+    "caveat": "ACT-2's high result is a declared laundry-folding distribution, evaluated by the company. It does not establish fast, unattended performance across household chores, navigation constraints, pets, and children. Model weights and training data are proprietary, and broad beta deployment was not independently verified.",
+    "reviewed": "2026-10-07"
+  }
+]
