@@ -438,48 +438,12 @@ summary:focus-visible {
 .search-box input::placeholder {
   color: var(--muted);
 }
-.theme-control {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.theme-toggle {
   flex-shrink: 0;
-  height: 34px;
-  padding: 0 9px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--muted);
-  background: var(--surface);
+  padding: 0;
 }
-.theme-control:hover {
-  border-color: var(--hover-line);
-}
-.theme-control:focus-within {
-  outline: 2px solid var(--indigo);
-  outline-offset: 3px;
-}
-.theme-control select {
-  appearance: none;
-  cursor: pointer;
-  border: 0;
-  outline: none;
-  background: transparent;
-  color: var(--ink);
-  font-size: 11px;
-  width: 67px;
-  padding: 0 14px 0 0;
-}
-.theme-control select:focus-visible {
-  outline: none;
-}
-.theme-control select option {
-  color: var(--ink);
-  background: var(--surface);
-}
-.theme-control > svg:last-child {
-  position: absolute;
-  right: 9px;
-  pointer-events: none;
+.theme-toggle[aria-pressed="true"] {
+  color: var(--indigo);
 }
 .search-box kbd {
   display: flex;
@@ -2241,25 +2205,6 @@ footer small {
   }
 }
 @media (max-width: 740px) {
-  .theme-control {
-    width: 34px;
-    padding: 0;
-    justify-content: center;
-  }
-  .theme-control select {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    color: transparent;
-  }
-  .theme-control > svg {
-    pointer-events: none;
-  }
-  .theme-control > svg:last-child {
-    display: none;
-  }
   .sidebar {
     width: 264px;
     padding: 28px 21px 22px;

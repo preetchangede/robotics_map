@@ -49,9 +49,11 @@ Automated accessibility scans are not certification, and local browser tests do 
 
 ### Appearance update
 
-Light, Dark, and System choices are available in the header. System is the default and follows live device changes. Explicit choices persist in browser storage and synchronize between tabs. The palette is set before the application JavaScript loads, including the browser theme colour. Invalid or unavailable storage falls back safely.
+One moon button in the header switches between light and dark. Device appearance is the default and follows live changes until an explicit choice is made. Explicit choices persist in browser storage and synchronize between tabs. The palette is set before the application JavaScript loads, including the browser theme colour. Invalid or unavailable storage falls back safely.
 
-The existing 30 browser checks still pass. A separate theme audit passed 23 focused checks, including 17 dark-theme axe scans with no reported violations in the scanned states. Coverage includes every main view, filters, all four profile kinds, founder provenance, source badges, the methodology drawer, mobile navigation, and 320px keyboard control. Preference persistence, cross-tab synchronization, pre-render initialization, and storage recovery were checked in real browser contexts. Desktop and mobile screenshots were inspected. Both theme previews are included in the README.
+The existing 30 browser checks passed for the palette update. Its theme audit passed 23 focused checks, including 17 dark-theme axe scans with no reported violations in the scanned states. Coverage included every main view, filters, all four profile kinds, founder provenance, source badges, the methodology drawer, mobile navigation, and 320px keyboard control. Preference persistence, cross-tab synchronization, pre-render initialization, and storage recovery were checked in real browser contexts.
+
+The single moon button was then checked for pointer and keyboard toggling, accessible pressed state, persisted choices, device-default behavior, and 320px layout. Four additional light/dark desktop/mobile axe scans reported no violations. Screenshots were inspected, and both README previews reflect the current control.
 
 ## Hosting
 

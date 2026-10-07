@@ -62,7 +62,7 @@ The syllabus has three starting paths:
 
 Save anything worth revisiting to your reading list. Bookmarks stay in your browser; profile and reading-path links can be shared.
 
-Choose **Light**, **Dark**, or **System** from the theme control in the header. System follows your device's appearance; your choice is remembered in this browser.
+Click the moon in the header to switch between light and dark. The site starts with your device's appearance and remembers your choice in this browser.
 
 ## What is in a company profile?
 

@@ -26,9 +26,7 @@ import {
   GraduationCap,
   Play,
   Mail,
-  Sun,
   Moon,
-  Monitor,
 } from "lucide-react";
 import {
   THEME_STORAGE_KEY,
@@ -483,12 +481,8 @@ function App() {
   const [systemDark, setSystemDark] = useState(
     () => window.matchMedia("(prefers-color-scheme: dark)").matches,
   );
-  const ThemeIcon =
-    themePreference === "system"
-      ? Monitor
-      : themePreference === "dark"
-        ? Moon
-        : Sun;
+  const isDark =
+    themePreference === "dark" || (themePreference === "system" && systemDark);
   useEffect(() => {
     const system = window.matchMedia("(prefers-color-scheme: dark)");
     const updateSystem = (event) => setSystemDark(event.matches);
@@ -1025,19 +1019,16 @@ function App() {
               </kbd>
             )}
           </div>
-          <label className="theme-control" title="Color theme">
-            <ThemeIcon size={16} aria-hidden="true" />
-            <select
-              aria-label="Color theme"
-              value={themePreference}
-              onChange={(event) => setThemePreference(event.target.value)}
-            >
-              <option value="system">System</option>
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-            </select>
-            <ChevronDown size={12} aria-hidden="true" />
-          </label>
+          <button
+            type="button"
+            className="icon-button theme-toggle"
+            aria-label="Dark mode"
+            aria-pressed={isDark}
+            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            onClick={() => setThemePreference(isDark ? "light" : "dark")}
+          >
+            <Moon size={18} aria-hidden="true" />
+          </button>
         </header>
         <main id="main-content" tabIndex="-1">
           <div className="page-intro">
