@@ -2,6 +2,8 @@
 
 A selective research map of robotics, embodied AI, simulation, world models, digital twins, and Gaussian splatting. Built only in `preetchangede/robotics_map`.
 
+[Production site](https://robotics-map-puce.vercel.app) — Vercel sign-in protection remains enabled.
+
 **Edition 01 — reviewed 7 October 2026:** 36 company profiles, 21 critical problems, 16 proposed experiments, and 312 distinct source URLs. The research includes 34 Reddit discussions and 13 exact X permalinks, with access limitations recorded.
 
 ## Explore

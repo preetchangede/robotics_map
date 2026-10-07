@@ -42,3 +42,7 @@ The website build and exploration flows are tested. The scientific experiments a
 - Local navigation timing was approximately 262ms in the audit environment; this is a local measurement, not a promise about a visitor's network/device.
 
 The new Vercel project retains its default sign-in protection. A requested preview-only protection setting was rejected by automatic approval review because public production access was not explicitly authorized. No security-setting workaround was applied.
+
+## Production verification
+
+Vercel reported `READY` for the production build of commit `e825455` and confirmed all 36 companies, 21 problems, and 16 experiments in its build log. Authenticated HTTP checks returned 200 for the homepage, JavaScript bundle, and stylesheet; served bundle filenames, lengths, and FNV digests matched the tested local build. Asset responses initially required revalidation, so the final hosting configuration gives fingerprinted JS, CSS, and font assets a one-year immutable browser cache. The production alias is https://robotics-map-puce.vercel.app. Sign-in protection remains enabled; the ordinary URL, rather than an authentication bypass link, is the handoff.
