@@ -26,7 +26,16 @@ import {
   GraduationCap,
   Play,
   Mail,
+  Sun,
+  Moon,
+  Monitor,
 } from "lucide-react";
+import {
+  THEME_STORAGE_KEY,
+  isThemePreference,
+  readThemePreference,
+  applyTheme,
+} from "./theme";
 import data from "./data/atlas.json";
 import {
   categories,
@@ -183,7 +192,7 @@ function Glyph({ category = "general", large = false }) {
             <circle cx="40" cy="40" r="23" />
             <ellipse cx="40" cy="40" rx="10" ry="23" />
             <path d="M19 31h42M17 42h46M21 52h38" />
-            <circle cx="57" cy="24" r="5" fill="var(--glyph-bg,#f2f0e9)" />
+            <circle cx="57" cy="24" r="5" fill="var(--glyph-bg)" />
           </>
         ) : category === "twins" ? (
           <>
@@ -470,6 +479,41 @@ function Card({
 }
 
 function App() {
+  const [themePreference, setThemePreference] = useState(readThemePreference);
+  const [systemDark, setSystemDark] = useState(
+    () => window.matchMedia("(prefers-color-scheme: dark)").matches,
+  );
+  const ThemeIcon =
+    themePreference === "system"
+      ? Monitor
+      : themePreference === "dark"
+        ? Moon
+        : Sun;
+  useEffect(() => {
+    const system = window.matchMedia("(prefers-color-scheme: dark)");
+    const updateSystem = (event) => setSystemDark(event.matches);
+    const syncPreference = (event) => {
+      if (event.key === THEME_STORAGE_KEY || event.key === null) {
+        setThemePreference(
+          isThemePreference(event.newValue) ? event.newValue : "system",
+        );
+      }
+    };
+    system.addEventListener("change", updateSystem);
+    window.addEventListener("storage", syncPreference);
+    return () => {
+      system.removeEventListener("change", updateSystem);
+      window.removeEventListener("storage", syncPreference);
+    };
+  }, []);
+  useEffect(() => {
+    applyTheme(themePreference, systemDark);
+  }, [themePreference, systemDark]);
+  useEffect(() => {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, themePreference);
+    } catch {}
+  }, [themePreference]);
   const [route, setRoute] = useState(getRoute);
   const [query, setQuery] = useState("");
   const [tag, setTag] = useState("all");
@@ -981,6 +1025,19 @@ function App() {
               </kbd>
             )}
           </div>
+          <label className="theme-control" title="Color theme">
+            <ThemeIcon size={16} aria-hidden="true" />
+            <select
+              aria-label="Color theme"
+              value={themePreference}
+              onChange={(event) => setThemePreference(event.target.value)}
+            >
+              <option value="system">System</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+            <ChevronDown size={12} aria-hidden="true" />
+          </label>
         </header>
         <main id="main-content" tabIndex="-1">
           <div className="page-intro">

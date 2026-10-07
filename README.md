@@ -10,6 +10,13 @@ The hosted site currently requires Vercel sign-in.
 
 ![MORPH's landscape view, with its connected map and seven research fields](docs/assets/site-preview.png)
 
+<details>
+<summary>See the dark theme</summary>
+
+![MORPH's dark theme, with ink surfaces, soft indigo accents, and the same connected landscape](docs/assets/site-preview-dark.png)
+
+</details>
+
 **Edition 02 · reviewed 7 October 2026**
 
 | Companies | Open problems | Experiments | Essential resources | Sources |
@@ -54,6 +61,8 @@ The syllabus has three starting paths:
 | [Capture a space](https://robotics-map-puce.vercel.app/#resources?path=capture) | Geometry, radiance, reconstruction, and their limits      |
 
 Save anything worth revisiting to your reading list. Bookmarks stay in your browser; profile and reading-path links can be shared.
+
+Choose **Light**, **Dark**, or **System** from the theme control in the header. System follows your device's appearance; your choice is remembered in this browser.
 
 ## What is in a company profile?
 

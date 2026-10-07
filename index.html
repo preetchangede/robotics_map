@@ -3,7 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#292d44" />
+    <meta name="theme-color" content="#f4f2ec" />
+    <style>
+      html {
+        background: var(--paper, #f4f2ec);
+        color-scheme: light;
+      }
+      html[data-theme="dark"] {
+        background: var(--paper, #131620);
+        color-scheme: dark;
+      }
+    </style>
+    <script>
+      (() => {
+        let preference = "system";
+        try {
+          const saved = localStorage.getItem("morph-theme");
+          if (["system", "light", "dark"].includes(saved)) preference = saved;
+        } catch {}
+        const dark =
+          preference === "dark" ||
+          (preference === "system" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+        document.querySelector('meta[name="theme-color"]').content = dark
+          ? "#131620"
+          : "#f4f2ec";
+      })();
+    </script>
     <meta
       name="description"
       content="MORPH maps exceptional robotics and physical AI companies, their technologies, founders and evidence. Explore world models, simulation, digital twins, 3D reconstruction, experiments and essential resources."
@@ -18,7 +45,10 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://robotics-map-puce.vercel.app/" />
-    <meta property="og:image" content="https://robotics-map-puce.vercel.app/social-card.png" />
+    <meta
+      property="og:image"
+      content="https://robotics-map-puce.vercel.app/social-card.png"
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://robotics-map-puce.vercel.app/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
