@@ -3092,3 +3092,14 @@ footer small,
 .primary-link {
   color: #4f6b37;
 }
+/* Hide the skip link fully, including when narrow screens wrap controls. */
+.skip-link {
+  top: 10px;
+  left: 20px;
+  transform: translateY(-200%);
+  white-space: nowrap;
+}
+.skip-link:focus {
+  top: 10px;
+  transform: translateY(0);
+}
