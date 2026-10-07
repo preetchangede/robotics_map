@@ -1,0 +1,120 @@
+{
+  "general-recovery": {
+    "approaches": "Combine fast action-consistency monitors with slower task-progress checks, a verified state estimate and explicit recovery plans. Training must include states reached by the learned policy after mistakes, rather than only expert successes; DAgger formalizes that distribution-shift issue. Hierarchical skills and bounded retries help, but a monitor that only stops execution still delegates recovery to an operator. Evaluate unreset sequences and intervention cost.",
+    "sources": [
+      {
+        "title": "Sentinel: monitoring consistency and progress",
+        "url": "https://arxiv.org/abs/2410.04640",
+        "type": "paper",
+        "note": "Distinguishes erratic action failures from confident failures to make task progress; monitoring does not itself solve recovery."
+      },
+      {
+        "title": "RoboCasa task environments",
+        "url": "https://robocasa.ai/",
+        "type": "demo",
+        "note": "Household task sequences and foundational skills provide concrete environments for probing compounding errors."
+      },
+      {
+        "title": "Industrial automation practitioners discuss the demo-to-floor gap",
+        "url": "https://www.reddit.com/r/robotics/comments/1siej3f/people_with_10_years_in_industrial_automation_is/",
+        "type": "reddit",
+        "note": "Practitioner sentiment and discovery; comments are not an audited measure of industrial reliability."
+      },
+      {
+        "title": "DAgger: dataset aggregation for sequential prediction",
+        "url": "https://arxiv.org/abs/1011.0686",
+        "type": "paper",
+        "note": "Formalizes distribution shift from expert states to learner-induced states. A bounded human correction experiment does not automatically inherit the full theoretical guarantee."
+      }
+    ]
+  },
+  "foundation-data": {
+    "why": "More frames are not automatically more useful experience. Real action data carries controller, sensor and outcome semantics; autonomous rollouts may contain recoverable mistakes rather than expert actions worth copying. DROID documents diversity and collection burden. π0.7 explores performance-conditioned learning from mixed-quality experience, illustrating why provenance and outcome labels matter alongside coverage.",
+    "approaches": "Audit task, object, scene and failure coverage before scaling collection. Preserve timestamps, action conventions, calibration, intervention provenance and outcome quality. Target missing states through demonstrations and autonomous rollouts, while separating poor actions from successful corrections. Performance-conditioned training is one approach to mixed-quality experience. Hold out whole scenes and robot setups, and report gains by failure mode rather than dataset volume.",
+    "sources": [
+      {
+        "title": "DROID in-the-wild manipulation dataset",
+        "url": "https://arxiv.org/abs/2403.12945",
+        "type": "paper",
+        "note": "Details the logistical, safety and hardware cost of collecting diverse robot data and reports improved generalization."
+      },
+      {
+        "title": "DROID collection workflow",
+        "url": "https://droid-dataset.github.io/droid/example-workflows/data-collection.html",
+        "type": "code",
+        "note": "Documents calibration and collection procedures; useful for understanding the effort behind raw trajectory counts."
+      },
+      {
+        "title": "DROID dataset visualizer",
+        "url": "https://droid-dataset.github.io/visualizer/",
+        "type": "demo",
+        "note": "Allows direct inspection of a sample's scene, object and task distribution rather than relying only on aggregate size."
+      },
+      {
+        "title": "π0.7 performance-conditioned mixed-quality learning",
+        "url": "https://arxiv.org/abs/2604.15483",
+        "type": "paper",
+        "note": "April 2026 primary report uses rich context, including performance metadata, to learn from demonstrations and potentially suboptimal autonomous experience. Author evaluations do not establish arbitrary deployment reliability."
+      }
+    ]
+  },
+  "simulation-validation": {
+    "why": "A simulator can reward artifacts, misrepresent controls or omit the variations that cause physical failures. SIMPLER validates paired policy behavior for specific setups. PolaRiS extends reconstructed evaluation with explicit simulation-data co-training, showing that photorealistic geometry alone may leave a policy-input gap. Predictive validity must be rechecked across policies, tasks, embodiments and changes in the training recipe.",
+    "approaches": "Run matched policies in paired simulated and physical tasks; compare rankings, failure modes and uncertainty. Separate visual reconstruction, collision geometry, controller alignment and any simulation-data adaptation. PolaRiS makes the co-training contribution explicit, so report results both with and without that step. Use physical failures as regression scenarios and state the conditions under which simulation can credibly predict deployment behavior.",
+    "sources": [
+      {
+        "title": "SIMPLER evaluation research",
+        "url": "https://arxiv.org/abs/2405.05941",
+        "type": "paper",
+        "note": "Paired physical and simulated tests support scoped predictive validity, not a blanket claim for all simulations."
+      },
+      {
+        "title": "SIMPLER methods and ranking metric",
+        "url": "https://simpler-env.github.io/",
+        "type": "demo",
+        "note": "Explains system identification, visual matching and Mean Maximum Rank Violation for policy ranking."
+      },
+      {
+        "title": "Benchmarking perspective on sim-to-real policy evaluation",
+        "url": "https://arxiv.org/abs/2508.11117",
+        "type": "paper",
+        "note": "Recommends perturbation, visual fidelity and measured alignment between simulated and real-world performance."
+      },
+      {
+        "title": "PolaRiS reconstructed policy evaluation",
+        "url": "https://arxiv.org/abs/2512.16881",
+        "type": "paper",
+        "note": "Primary paired sim/real evaluation and simulation-data co-training contribution; useful evidence that reconstruction and policy-domain alignment are distinct."
+      }
+    ]
+  },
+  "world-evaluation": {
+    "approaches": "Test whether the learned state contains the information needed for control, including hidden contact state and uncertainty. Combine controlled physics, counterfactual actions, long-horizon interaction and held-out physical decisions. Audit automated judges against measurable ground truth. Compare model-based planning or training with a matched-compute baseline, and evaluate unfamiliar conditions: accurate prediction of irrelevant visual detail is not the same as a useful control model.",
+    "sources": [
+      {
+        "title": "WorldModelBench",
+        "url": "https://arxiv.org/abs/2502.20694",
+        "type": "paper",
+        "note": "Adds physics-adherence and instruction-following labels beyond generic video-quality assessment."
+      },
+      {
+        "title": "Physion reproducible physical prediction",
+        "url": "https://arxiv.org/abs/2106.08261",
+        "type": "paper",
+        "note": "Primary dataset comparing prediction across controlled physical scenarios and human judgments."
+      },
+      {
+        "title": "PlayWorld benchmark code",
+        "url": "https://github.com/hku-sail/PlayWorld",
+        "type": "code",
+        "note": "Objective-driven interactive evaluation complements single-clip quality; it does not itself certify physical transfer."
+      },
+      {
+        "title": "System identification: models useful for control",
+        "url": "https://underactuated.mit.edu/sysid.html",
+        "type": "docs",
+        "note": "Control foundations emphasize task-relevant dynamics, observability and controllability rather than modeling all visual variation."
+      }
+    ]
+  }
+}

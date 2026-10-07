@@ -1,0 +1,42 @@
+{
+  "monumental": {
+    "focus": "Onsite robotic masonry",
+    "edge": "A mobile robot crew handles brick supply, mortar, and placement directly on conventional construction sites.",
+    "summary": "Mobile construction robots coordinate bricklaying and material supply, operating as a masonry subcontractor on ordinary building sites."
+  },
+  "mytra": {
+    "focus": "Three-dimensional material flow",
+    "edge": "Self-moving payload robots navigate a dense 3D storage lattice without dedicated lifts and conveyors.",
+    "summary": "Robots move heavy materials through a modular three-dimensional storage lattice, simplifying warehouse storage and retrieval infrastructure."
+  },
+  "gecko-robotics": {
+    "focus": "Industrial asset integrity",
+    "edge": "Wall-climbing sensor robots connect dense inspection measurements to operational asset decisions.",
+    "summary": "Wall-climbing robots collect dense industrial inspection data; software connects measurements to maintenance and asset decisions."
+  },
+  "anybotics": {
+    "focus": "Autonomous industrial inspection",
+    "edge": "Legged inspection robots integrate sensing, repeatable routes, and industrial maintenance workflows.",
+    "summary": "Autonomous quadrupeds inspect industrial facilities, combining rugged mobility with visual, thermal, acoustic, and gas sensing."
+  },
+  "carbon-robotics": {
+    "focus": "Precision laser weeding",
+    "edge": "Real-time plant recognition directs lasers at weeds while protecting crops across variable farm conditions.",
+    "summary": "Vision-guided laser systems destroy weeds close to crops, reducing herbicide use and manual weeding in suitable field operations."
+  },
+  "exotec": {
+    "focus": "Modular warehouse retrieval",
+    "edge": "Rack-climbing robots decouple storage capacity from retrieval throughput in a modular warehouse system.",
+    "summary": "Rack-climbing robots retrieve goods from dense storage, with coordinated software and stations for scalable warehouse fulfillment."
+  },
+  "cmr-surgical": {
+    "focus": "Modular surgical assistance",
+    "edge": "Small separate robotic units and an open surgeon console fit robotic assistance into existing operating rooms.",
+    "summary": "Modular surgeon-controlled robots provide precise instruments and flexible operating-room layouts for minimally invasive surgery."
+  },
+  "field-ai": {
+    "focus": "Autonomy for changing sites",
+    "edge": "Risk-aware onboard robot software handles uncertain industrial sites without preconfigured maps or routes.",
+    "summary": "Risk-aware autonomy software guides mobile robots through changing industrial sites, collecting inspection and 3D documentation data."
+  }
+}

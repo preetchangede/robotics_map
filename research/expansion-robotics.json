@@ -1,0 +1,519 @@
+[
+  {
+    "id": "genesis-ai",
+    "name": "Genesis AI",
+    "website": "https://www.genesis.ai/",
+    "category": "foundation",
+    "subcategory": "Human skill capture + dexterous manipulation",
+    "summary": "Builds robot intelligence, human-matched hands, and simulation together, aiming to transfer everyday human skills onto its wheeled Eno robot.",
+    "edge": "Matches the human hand, capture glove, and robot hand to reduce the data-transfer gap.",
+    "focus": "Dexterous skill capture",
+    "thesis": "A distinctive bet on aligning the data source with the machine: human-scale robot hands and sensorized gloves share a geometry, while an in-house model and company-supported simulator close the development loop. Eno's wheeled, height-adjustable body also questions whether dexterous general-purpose work needs a bipedal chassis.",
+    "technology": "The May 2026 GENE-26.5 release combines glove-captured human skills, egocentric footage, and internet video. The company describes a one-to-one mapping among human hand, tactile glove, and robot hand. Eno puts these hands on a wheeled platform with an articulated, height-adjustable tower. Genesis also officially supports the formerly academic Genesis-World engine: coupled rigid and deformable physics, rendering, heterogeneous parallel environments, and Python-based GPU compilation. The public simulator is inspectable; the production GENE model and training corpus are not.",
+    "problem": "Human manipulation data is abundant but usually mismatched to robot geometry and sensing. Industrial jobs also demand dexterity, reach, and adaptation that fixed automation struggles to provide.",
+    "stage": "Demonstrated",
+    "tags": [
+      "dexterous hands",
+      "human demonstrations",
+      "tactile sensing",
+      "simulation",
+      "mobile manipulation",
+      "hardware–model co-design"
+    ],
+    "related": [
+      "generalist",
+      "sunday",
+      "1x",
+      "physical-intelligence",
+      "galaxea"
+    ],
+    "evidence": [
+      {
+        "label": "Model + capture system",
+        "text": "Its May 6, 2026 release introduces GENE-26.5 and shows cooking, laboratory, wiring, and piano tasks. These are company demonstrations, not independently measured general-purpose reliability.",
+        "url": "https://www.prnewswire.com/news-releases/genesis-ai-unveils-gene-26-5--the-first-ai-brain-to-enable-robots-with-human-level-physical-manipulation-capabilities-302763638.html"
+      },
+      {
+        "label": "Enterprise validation plan",
+        "text": "The June 16 LG CNS announcement describes evaluation, workflow selection, and a subsequent pilot/rollout plan. It does not establish a completed LG production deployment.",
+        "url": "https://www.prnewswire.com/news-releases/genesis-ai-and-lg-cns-enter-industry-first-strategic-partnership-to-scale-general-purpose-robotics-across-enterprise-operations-302801102.html"
+      },
+      {
+        "label": "Inspectable simulation stack",
+        "text": "Genesis-World's README explicitly identifies Genesis AI as its current official supporter and publishes runnable physics and robot examples under Apache 2.0.",
+        "url": "https://github.com/Genesis-Embodied-AI/genesis-world"
+      }
+    ],
+    "sources": [
+      {
+        "title": "GENE-26.5 model, human-matched hands, and data capture",
+        "url": "https://www.prnewswire.com/news-releases/genesis-ai-unveils-gene-26-5--the-first-ai-brain-to-enable-robots-with-human-level-physical-manipulation-capabilities-302763638.html",
+        "type": "company",
+        "note": "Read the May 6, 2026 company release. Architecture and demonstrations are company-reported; its human-level headline and comparative efficiency claims are not independently verified."
+      },
+      {
+        "title": "Eno: wheeled, articulated general-purpose robot",
+        "url": "https://www.prnewswire.com/news-releases/introducing-eno-genesis-ais-first-general-purpose-robot-is-challenging-traditional-humanoid-design-302801103.html",
+        "type": "company",
+        "note": "Read June 16, 2026 announcement. Initial industrial customer deployments are targeted for the end of 2026; later domestic uses are a roadmap."
+      },
+      {
+        "title": "Genesis-World source and examples",
+        "url": "https://github.com/Genesis-Embodied-AI/genesis-world",
+        "type": "code",
+        "note": "Read README, solver/renderer interfaces, examples, and explicit company-support statement. Apache 2.0 simulator access does not imply access to GENE weights or data."
+      },
+      {
+        "title": "LG CNS partnership and phased validation",
+        "url": "https://www.prnewswire.com/news-releases/genesis-ai-and-lg-cns-enter-industry-first-strategic-partnership-to-scale-general-purpose-robotics-across-enterprise-operations-302801102.html",
+        "type": "company",
+        "note": "Read the evaluation → pilot → potential rollout sequence; avoid treating a partnership announcement as an installed robot fleet."
+      },
+      {
+        "title": "GENE-26.5 demo discussion and original X source",
+        "url": "https://www.reddit.com/r/singularity/comments/1t5lxmh/genesis_ais_gene265/",
+        "type": "reddit",
+        "note": "Read thread and its original company X backlink. Useful questions about autonomy, selective demos, and task economics; anonymous comments are not technical validation."
+      },
+      {
+        "title": "Original GENE-26.5 company demo post",
+        "url": "https://x.com/gs_ai_/status/2052050956272230577",
+        "type": "x",
+        "note": "Exact post recovered from the opened Reddit thread's source link. Direct X access was unavailable in this research environment; the post was not independently viewed."
+      }
+    ],
+    "caveat": "Published demos do not establish human-level manipulation or dependable unattended operation. End-2026 deployment targets remain prospective on this review date. The open simulator is separate from the closed production model; glove-transfer and sim-to-real benefits need independent evaluation.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "galaxea",
+    "name": "Galaxea Dynamics",
+    "website": "https://galaxea-dynamics.com/",
+    "category": "foundation",
+    "subcategory": "Unified reasoning/action models + mobile manipulation data",
+    "summary": "Builds manipulation robots, open research datasets, and G0.5, a model that emits reasoning and actions through one autoregressive stream.",
+    "edge": "One autoregressive decoder reasons and acts across a shared, embodiment-aware action vocabulary.",
+    "focus": "Unified reasoning and actions",
+    "thesis": "An unusually inspectable alternative to proprietary robot-brain claims. Galaxea pairs its own mobile manipulators with an annotated everyday-world dataset and publishes checkpoints, training paths, and benchmark protocols. Its move from a dual-system G0 architecture to G0.5's unified autoregressive stream makes an important architectural tradeoff directly testable.",
+    "technology": "G0.5 uses a Qwen3.5-2B backbone to generate reasoning and discrete actions in one decoder, with a learned residual-quantized action tokenizer spanning different bodies and control modes. Spatial reasoning, action hints, and a multi-second visual memory support closed-loop execution. The repository provides LIBERO, RoboTwin, DROID, Franka, SO101, and R1 Pro entry points. Its earlier G0 work separates planning from execution; the companion Fast-WAM project tests whether video/action co-training can retain benefits without generating future video during control.",
+    "problem": "Robot models need transferable action interfaces, temporal context, and diverse everyday interaction data. Separate reasoning and control systems can lose information at the boundary between them.",
+    "stage": "Research",
+    "tags": [
+      "autoregressive actions",
+      "VLA",
+      "reasoning",
+      "memory",
+      "open weights",
+      "mobile manipulation",
+      "world-action models"
+    ],
+    "related": [
+      "physical-intelligence",
+      "x-square",
+      "generalist",
+      "dyna",
+      "limx"
+    ],
+    "evidence": [
+      {
+        "label": "Current architecture",
+        "text": "The August 12, 2026 G0.5 preprint reports 76.7% average success in its post-trained R1 Pro-Lite real-world evaluation. This is an author-run protocol, not an independent fleet reliability measure.",
+        "url": "https://arxiv.org/abs/2608.11739"
+      },
+      {
+        "label": "Reusable real-world data",
+        "text": "The public dataset card describes 500+ hours captured with one R1-Lite embodiment, bilingual subtask labels, and residential, kitchen, retail, and office settings. Downloading requires account-based agreement and sharing contact information.",
+        "url": "https://huggingface.co/datasets/OpenGalaxea/Galaxea-Open-World-Dataset"
+      },
+      {
+        "label": "Reproduction paths",
+        "text": "The released repository includes a base checkpoint and training/inference recipes for multiple simulation benchmarks and physical robot interfaces. Access is governed by the G0.5 noncommercial community license.",
+        "url": "https://github.com/OpenGalaxea/GalaxeaVLA"
+      },
+      {
+        "label": "Hardware and model integration, attributed",
+        "text": "Its August 2026 release reports 900 full-cycle dark-store orders during WRC and introduces Nexo alongside Lemo and Kengo hardware. These are company-reported exhibition counts, not independently measured production-fleet throughput or economics.",
+        "url": "https://www.prnewswire.com/apac/news-releases/galaxea-ai-demonstrated-fullstack-capabilities-and-embodied-ai-generalization-at-its-wrc-2026-productivity-awakening-exhibition-302857785.html"
+      }
+    ],
+    "sources": [
+      {
+        "title": "G0.5: One Autoregressive Stream for Robot Reasoning and Action",
+        "url": "https://arxiv.org/abs/2608.11739",
+        "type": "paper",
+        "note": "Read August 2026 abstract and architecture/results descriptions; numerical comparisons are author-reported and protocol-specific."
+      },
+      {
+        "title": "GalaxeaVLA code, checkpoints, and robot entry points",
+        "url": "https://github.com/OpenGalaxea/GalaxeaVLA",
+        "type": "code",
+        "note": "Read current G0.5 README, tokenization, memory, deployment routes, hardware requirements, and license boundaries. Earlier Apache licensing does not apply to the current release."
+      },
+      {
+        "title": "Galaxea Open-World Dataset",
+        "url": "https://huggingface.co/datasets/OpenGalaxea/Galaxea-Open-World-Dataset",
+        "type": "code",
+        "note": "Read dataset card and schema. CC BY-NC-SA 4.0; downloads are gated on sharing contact information. Data files were not downloaded."
+      },
+      {
+        "title": "G0 dual-system model and dataset lineage",
+        "url": "https://arxiv.org/abs/2509.00576",
+        "type": "paper",
+        "note": "Read August 2025 preprint abstract; useful historical comparison, not the architecture of the newer G0.5."
+      },
+      {
+        "title": "Fast-WAM: future imagination as an inference choice",
+        "url": "https://github.com/yuantianyuan01/FastWAM",
+        "type": "code",
+        "note": "Read training/evaluation README and optional-IDM versus first-frame modes. Linked directly from Galaxea's official site; a companion research project, not evidence of customer deployments."
+      },
+      {
+        "title": "G0.5 community license",
+        "url": "https://github.com/OpenGalaxea/GalaxeaVLA/blob/main/LICENSE-G0.5",
+        "type": "code",
+        "note": "Opened license and read accompanying README explanation. Current model code, weights, and workflows permit noncommercial use; production commercialization needs separate permission. Section 6.5 also restricts customer/partner demos and hosted endpoints even without a fee."
+      },
+      {
+        "title": "WRC 2026 full-stack demonstrations",
+        "url": "https://www.prnewswire.com/apac/news-releases/galaxea-ai-demonstrated-fullstack-capabilities-and-embodied-ai-generalization-at-its-wrc-2026-productivity-awakening-exhibition-302857785.html",
+        "type": "company",
+        "note": "August 24 company release, read in full. Links model/hardware product lines and reports event order/pick counts. Exhibition throughput is attributed, not verified unattended customer operation."
+      }
+    ],
+    "caveat": "Open research access is not unrestricted commercial access: customer/partner demos and hosted endpoints need separate permission even when free. Benchmark results require the specified post-training and differ from zero-shot everyday autonomy. No independently verified production-fleet economics were established. Exact substantial G0.5 X/Reddit threads were not recovered in this pass.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "fauna",
+    "name": "Fauna Robotics",
+    "website": "https://faunarobotics.com/",
+    "category": "general",
+    "subcategory": "Human-interactive humanoid developer platforms",
+    "summary": "Sells Sprout, a small, compliant and expressive humanoid development platform for research and human interaction; joined Amazon in March 2026.",
+    "edge": "A lightweight, expressive developer humanoid with a published control stack; now part of Amazon.",
+    "focus": "Human interaction platforms",
+    "thesis": "Sprout is interesting because it targets the engineering friction between an impressive humanoid and a useful experimental platform. A lightweight body, expressive face, integrated grippers, modular SDK, and working locomotion give researchers a place to test interaction and embodied intelligence without first constructing an entire robot stack.",
+    "technology": "The Creator Edition combines a 22.7 kg, 1.07 m body with compliant motor control, software torque limits, a soft exterior, whole-body policies, and Meta Quest-based VR teleoperation. Onboard depth/vision sensing and compute support navigation and application development. Its 29 degrees of freedom include facial expression; its single-degree-of-freedom grippers are not dexterous five-finger hands. The platform exposes hardware and software interfaces so developers can combine existing movement capabilities with their own perception, interaction, and policy modules.",
+    "problem": "Most humanoids are closed industrial systems or fragile laboratory prototypes. Researchers need a deployable platform with predictable controls and lower physical barriers for studying long-term interaction around humans.",
+    "stage": "Platform",
+    "tags": [
+      "humanoids",
+      "developer platform",
+      "compliant control",
+      "human–robot interaction",
+      "teleoperation",
+      "expressivity"
+    ],
+    "related": [
+      "1x",
+      "sunday",
+      "limx",
+      "generative-bionics"
+    ],
+    "evidence": [
+      {
+        "label": "Platform release",
+        "text": "Fauna introduced Sprout Creator Edition on January 27, 2026 and published a technical report the previous day. Its current site advertises shipping hardware and full SDK access.",
+        "url": "https://faunarobotics.com/news/fauna-robotics-launches-sprout-the-easiest-way-to-build-with-humanoids"
+      },
+      {
+        "label": "Ownership status",
+        "text": "Fauna announced joining Amazon on March 24, 2026 and explicitly said sales of Creator Edition and support for existing customers would continue.",
+        "url": "https://faunarobotics.com/news/fauna-robotics-joins-amazon"
+      },
+      {
+        "label": "Practitioner experience",
+        "text": "A Reddit poster identifying as a Salk Institute researcher described quick setup, whole-body VR control, and robust out-of-box movement. The account's affiliation and observations were not independently audited.",
+        "url": "https://www.reddit.com/r/robotics/comments/1qoio9e/sprout_robot_from_fauna_robotics/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Fauna Sprout technical report",
+        "url": "https://arxiv.org/abs/2601.18963",
+        "type": "paper",
+        "note": "Read January 2026 abstract. Documents compliance, torque limits, soft exterior, expression, integrated control, and teleoperation; does not certify general safety."
+      },
+      {
+        "title": "Creator Edition hardware and developer interfaces",
+        "url": "https://faunarobotics.com/product",
+        "type": "company",
+        "note": "Read product specifications, sensors, battery, compute, grippers, control, and SDK positioning. Product capabilities are company-specified."
+      },
+      {
+        "title": "January 2026 Sprout release",
+        "url": "https://faunarobotics.com/news/fauna-robotics-launches-sprout-the-easiest-way-to-build-with-humanoids",
+        "type": "company",
+        "note": "Read full announcement, including founder roles and examples of research use. Partner quotations are included in company publicity, not independent benchmarks."
+      },
+      {
+        "title": "Fauna joins Amazon",
+        "url": "https://faunarobotics.com/news/fauna-robotics-joins-amazon",
+        "type": "company",
+        "note": "Read March 24, 2026 ownership announcement and commitment to ongoing product sales/support. Treat as an Amazon company rather than an independent startup."
+      },
+      {
+        "title": "Sprout academic-lab setup and VR-control discussion",
+        "url": "https://www.reddit.com/r/robotics/comments/1qoio9e/sprout_robot_from_fauna_robotics/",
+        "type": "reddit",
+        "note": "Read the self-described lab user's account and price/capability discussion. Useful practitioner sentiment; identity, pricing comments, and safety impressions remain unverified."
+      }
+    ],
+    "caveat": "Sprout is a developer platform, not evidence that general household labor is solved. Compliant construction and a user feeling safe are not certification. Amazon ownership is verified, but future product strategy and broad autonomous application reliability remain uncertain.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "limx",
+    "name": "LimX Dynamics",
+    "website": "https://www.limxdynamics.com/en",
+    "category": "general",
+    "subcategory": "Whole-body robot platforms + cognitive/motion integration",
+    "summary": "Builds humanoids and reconfigurable robot platforms, joining task reasoning to whole-body control and releasing a practical VLA engineering stack.",
+    "edge": "Separates slow task understanding from fast actions and a reusable, onboard whole-body tracker.",
+    "focus": "Whole-body control",
+    "thesis": "LimX deserves attention for the control interface below the foundation model. Its humanoid stack treats reaching, bending, walking, and balancing as a coupled problem, while the TRON family explores multiple bodies from shared hardware. The open FluxVLA toolchain addresses the tedious engineering work required to compare and deploy robot policies.",
+    "technology": "COSA/V³ uses asynchronous slow visual-language understanding and a fast policy to propose whole-body motion targets. LimX-WBT, a compact onboard Transformer tracker, turns those references into coordinated commands while maintaining balance; both policies and teleoperators use the same interface. Its higher agent layer schedules skills and context. Separately, Apache-licensed FluxVLA standardizes dataset handling, model configuration, training, simulation evaluation, remote inference, and physical-robot adapters across several existing VLA and world-action model families. Public platform software should not be confused with open access to every production controller.",
+    "problem": "A language-conditioned action prediction is not yet a stable moving humanoid. Coupled body dynamics and fragmented software interfaces make it expensive to reproduce policies and test different robot forms.",
+    "stage": "Platform",
+    "tags": [
+      "whole-body control",
+      "humanoids",
+      "VLA infrastructure",
+      "sim-to-real",
+      "modular hardware",
+      "teleoperation",
+      "open source"
+    ],
+    "related": [
+      "figure",
+      "skild-ai",
+      "galaxea",
+      "fauna",
+      "generative-bionics"
+    ],
+    "evidence": [
+      {
+        "label": "Concrete control architecture",
+        "text": "Its COSA 0.5 technical description explains a shared whole-body tracker for VLA control and teleoperation, with onboard balance execution. Comparative tracking numbers use the company's own Oli evaluation set.",
+        "url": "https://www.limxdynamics.com/cosa05v3/"
+      },
+      {
+        "label": "Released engineering toolchain",
+        "text": "FluxVLA was open-sourced in April 2026. A September 15 technical report and public repository document training, simulation, and multiple real-robot deployment paths under Apache 2.0.",
+        "url": "https://arxiv.org/abs/2609.17210"
+      },
+      {
+        "label": "Financing and hardware progress",
+        "text": "The company announced a US$200 million Pre-IPO round on July 14, 2026, following its February Series B, and reported Luna deliveries beginning. Its order counts are company claims and do not measure autonomous labor delivered.",
+        "url": "https://www.limxdynamics.com/en/news/BK000064"
+      }
+    ],
+    "sources": [
+      {
+        "title": "COSA 0.5 / V³-0 whole-body architecture",
+        "url": "https://www.limxdynamics.com/cosa05v3/",
+        "type": "company",
+        "note": "Read English and Chinese technical sections on asynchronous reasoning/action, LimX-WBT, full-body teleoperation, and real-robot updates. Internal baseline comparisons are not independent evaluations."
+      },
+      {
+        "title": "FluxVLA source, configurations, and deployment workflows",
+        "url": "https://github.com/FluxVLA/FluxVLA",
+        "type": "code",
+        "note": "Read README, release history, simulation/physical-robot paths, and Apache 2.0 license. Some demo videos use accelerated playback, explicitly disclosed in the README."
+      },
+      {
+        "title": "FluxVLA Engine technical report",
+        "url": "https://arxiv.org/abs/2609.17210",
+        "type": "paper",
+        "note": "Read September 2026 abstract documenting the engineering-platform contribution; it is not a claim to have invented all supported models."
+      },
+      {
+        "title": "US$200 million Pre-IPO announcement",
+        "url": "https://www.limxdynamics.com/en/news/BK000064",
+        "type": "company",
+        "note": "Read July 2026 financing, product-delivery, and orders statements. Funding and orders are attributed; orders are distinct from fulfilled, productive deployments."
+      },
+      {
+        "title": "Founder interview: TRON, COSA, and commercialization",
+        "url": "https://kr-asia.com/limx-dynamics-founder-says-embodied-intelligence-is-just-getting-started-despite-bubble-concerns",
+        "type": "report",
+        "note": "Read February 6, 2026 translated 36Kr interview linked by the official company site. Reveals design rationale and founder's forecasts, not verification of those forecasts."
+      }
+    ],
+    "caveat": "Research hardware delivery, finance, and orders are stronger evidence of a platform business than of unattended general-purpose work. Control comparisons are in-house. FluxVLA openness does not establish that COSA's complete production model stack is publicly reproducible; no substantial exact X/Reddit technical thread was recovered.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "persona-ai",
+    "name": "Persona AI",
+    "website": "https://persona.ai/",
+    "category": "general",
+    "subcategory": "Tool-using humanoids for skilled industrial work",
+    "summary": "Builds rugged tool-using humanoids for shipyard welding and heavy industry, starting with expert teleoperation and learned balance.",
+    "edge": "Targets scarce skilled welding labor with legged tool use and an explicit teleoperation-to-autonomy path.",
+    "focus": "Shipyard humanoids",
+    "thesis": "A compelling economic wedge inside general-purpose humanoids: long linear shipyard welds constrain speed, reward consistent motion, and sit on the critical path of high-value production. Persona explicitly starts with human experts controlling the work while the robot manages its body, collecting demonstrations rather than implying every video shows full autonomy.",
+    "technology": "The industrial humanoid combines learned balance and footing with motion-capture teleoperation, low-latency XR views, and tooling designed for hot-work environments. Current expert operators guide task intent while on-robot systems coordinate low-level motion. Persona says today's force-control feedback is primarily visual; bilateral haptic force reflection is a future direction. Its partner POSCO describes NASA-derived hand technology, multi-axis tactile sensing, and adaptive force/position control. Simulation and digital twins support development and facility planning; the GTC shipyard reveal included cinematic rendering rather than a production trial.",
+    "problem": "Shipyards and heavy fabrication need scarce skilled workers in awkward, hazardous environments. Fixed welding automation fits repetitive cells; brownfield sites require tools, mobility, judgment, and adaptable physical access.",
+    "stage": "Demonstrated",
+    "tags": [
+      "industrial humanoids",
+      "welding",
+      "tool use",
+      "teleoperation",
+      "tactile sensing",
+      "skilled labor",
+      "digital twins"
+    ],
+    "related": [
+      "agility",
+      "figure",
+      "generative-bionics",
+      "rlwrld",
+      "limx"
+    ],
+    "evidence": [
+      {
+        "label": "Offsite hot-work demonstration",
+        "text": "Persona's July 8, 2026 First Spark post shows a humanoid welding off-gantry at ARC Specialties and explicitly identifies expert teleoperation. This establishes a demonstration, not autonomous shift-length welding.",
+        "url": "https://persona.ai/robot-welding-in-a-real-industrial-environment/"
+      },
+      {
+        "label": "Partner-side corroboration",
+        "text": "POSCO's December 29, 2025 announcement documents US$3 million combined group investment and plans for joint development and field application. Planned applications are distinct from completed production deployments.",
+        "url": "https://newsroom.posco.com/en/posco-group-expands-humanoid-robots-specialized-in-heavy-duty-industrial-sites/"
+      },
+      {
+        "label": "Independent economic scrutiny",
+        "text": "IEEE Spectrum's 2026 founder interview explains the linear-weld shipbuilding thesis and HD Hyundai/POSCO partnerships while emphasizing the remaining data collection, testing, and commercial viability work.",
+        "url": "https://spectrum.ieee.org/persona-ai-humanoid-robot-welding"
+      }
+    ],
+    "sources": [
+      {
+        "title": "First Spark: teleoperated welding at ARC Specialties",
+        "url": "https://persona.ai/robot-welding-in-a-real-industrial-environment/",
+        "type": "demo",
+        "note": "Read July 8, 2026 post and linked demonstration description. The post calls the robot Gen 1; another company recap calls it Gen 2. Avoid relying on that inconsistent generation label."
+      },
+      {
+        "title": "Teleoperation, learned balance, and planned haptics",
+        "url": "https://persona.ai/teleoperation-preceeds-automony/",
+        "type": "company",
+        "note": "Read August 6 technical account by the teleoperation lead. Distinguishes current visual feedback and shared low-level autonomy from future bilateral force feedback."
+      },
+      {
+        "title": "Is shipyard welding the right first job for humanoids?",
+        "url": "https://spectrum.ieee.org/persona-ai-humanoid-robot-welding",
+        "type": "report",
+        "note": "Read independent founder interview and its limitations. Economic rationale and partner interest are supported; sustained commercially viable performance remains to be proved."
+      },
+      {
+        "title": "POSCO investment and industrial technical direction",
+        "url": "https://newsroom.posco.com/en/posco-group-expands-humanoid-robots-specialized-in-heavy-duty-industrial-sites/",
+        "type": "company",
+        "note": "Read partner's announcement of investment, hand/sensor/control approach, and prospective collaboration. Partner description is not an independent safety or autonomy evaluation."
+      },
+      {
+        "title": "Simulation and the GTC shipyard digital twin",
+        "url": "https://persona.ai/news/simulations-digital-twins-the-commercial-engine-for-physical-ai/",
+        "type": "company",
+        "note": "Read CAD-to-USD and Isaac Lab/motion-capture workflow. The keynote rendering should not be mistaken for three physical humanoids welding in an operating shipyard."
+      },
+      {
+        "title": "Welding-demo discussion: fitting, variability, and teleoperation",
+        "url": "https://www.reddit.com/r/PowerfulJRE/comments/1v7v4bn/the_first_american_robot_just_laid_down_a_weld/",
+        "type": "reddit",
+        "note": "Read July discussion. A self-described fabrication practitioner raises part variability and fitting; identity is unverified and the post's first-American-robot headline is unsupported."
+      }
+    ],
+    "caveat": "The publicly documented weld was teleoperated. No independently verified full-shift throughput, weld quality acceptance, fall-risk certification, or unit economics were established. Planned partner applications, simulated scenes, and force-feedback roadmaps must remain separate from deployed capabilities.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "generative-bionics",
+    "name": "Generative Bionics",
+    "website": "https://gbionics.ai/",
+    "category": "general",
+    "subcategory": "Tactile humanoids + biomechanics-informed co-design",
+    "summary": "Builds Gene.01 humanoids with whole-body tactile sensing, designing mechanics and control together using its IIT human-collaboration research lineage.",
+    "edge": "Optimizes body and control jointly around human ergonomics, contact sensing, and stable collaboration.",
+    "focus": "Tactile body co-design",
+    "thesis": "An unusual European humanoid thesis grounded in the body as part of the intelligence system. Generative Bionics carries IIT's iCub/ergoCub work into an industrial platform, emphasizing distributed touch, force, human biomechanics, and mechanically informed control. Publishing Gene.01's robot model gives researchers a concrete artifact to inspect before wider commercial availability.",
+    "technology": "Gene.01 combines distributed tactile, force, proximity, and temperature sensing with vision. The company describes optimizing mechanics, sensing, and motion intelligence together and customizing task-specific AI, exterior design, and end effectors. Its scientific lineage includes ergoCub: a coupled human–robot model used to optimize limb geometry and control against ergonomic load and walking objectives. The released URDF and package tools expose Gene.01's model for Rerun, ROS, and other robot software, although closed-loop mechanisms are represented as simplified serial equivalents.",
+    "problem": "Humanoids working beside people must handle contact, share loads comfortably, and stay stable. Purely visual policies and independently designed hardware/control can miss forces and human ergonomic costs.",
+    "stage": "Demonstrated",
+    "tags": [
+      "humanoids",
+      "whole-body tactile sensing",
+      "co-design",
+      "human–robot collaboration",
+      "biomechanics",
+      "robot models",
+      "industrial robotics"
+    ],
+    "related": [
+      "persona-ai",
+      "rlwrld",
+      "fauna",
+      "limx",
+      "figure"
+    ],
+    "evidence": [
+      {
+        "label": "Sensorized platform announcement",
+        "text": "The July 20, 2026 launch introduces a working sensorized Gene.01 and an initial Fincantieri shipyard collaboration. It describes adapting the platform for welding, not a verified operating shipyard fleet.",
+        "url": "https://www.prnewswire.com/news-releases/generative-bionics-introduces-gene01-a-fully-functional-smart-skin-humanoid-robot-platform-designed-for-safe-human-collaboration-302829062.html"
+      },
+      {
+        "label": "Peer-reviewed research lineage",
+        "text": "The July 13, 2026 Nature Machine Intelligence paper tests human-aware hardware/control optimization on ergoCub. These results support the methodological lineage; they are not a field trial of commercial Gene.01.",
+        "url": "https://www.nature.com/articles/s42256-026-01272-2"
+      },
+      {
+        "label": "Inspectable robot description",
+        "text": "The public package includes Gene.01 URDF models and visualization examples. Its README explicitly discloses simplified mechanisms, CC BY-NC 4.0 licensing, and pending ROS apt packaging.",
+        "url": "https://github.com/gbionics/gb-robot-models"
+      },
+      {
+        "label": "Historical financing",
+        "text": "The company announced a €70 million round on December 9, 2025 led by CDP Venture Capital's AI fund with AMD Ventures and other investors. The release also documents IIT technology licenses.",
+        "url": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Gene.01 sensing and open-platform direction",
+        "url": "https://gbionics.ai/gene01/",
+        "type": "company",
+        "note": "Read current product page and its official link to the robot-model repository; application and safety language is company positioning."
+      },
+      {
+        "title": "Gene.01 URDF, package tools, and limitations",
+        "url": "https://github.com/gbionics/gb-robot-models",
+        "type": "code",
+        "note": "Read model paths, serial-equivalent mechanism disclosure, Rerun/RViz examples, licensing, and ROS distribution warning. A URDF is not a fully calibrated physical digital twin."
+      },
+      {
+        "title": "Human-aware ergoCub hardware and control optimization",
+        "url": "https://www.nature.com/articles/s42256-026-01272-2",
+        "type": "paper",
+        "note": "Read open-access July 2026 paper, coupled biomechanical models, geometry/control optimization, and real ergoCub validation. Publisher adds a cookie-error query but article text remains readable."
+      },
+      {
+        "title": "July 2026 Gene.01 launch and Fincantieri collaboration",
+        "url": "https://www.prnewswire.com/news-releases/generative-bionics-introduces-gene01-a-fully-functional-smart-skin-humanoid-robot-platform-designed-for-safe-human-collaboration-302829062.html",
+        "type": "company",
+        "note": "Read sensor, platform, research-lineage, and prospective industrial application sections. Do not repeat first-ever/fastest-ever claims; README supersedes its broad ROS-installation claim."
+      },
+      {
+        "title": "€70 million funding, founders, and IIT technology transfer",
+        "url": "https://gbionics.ai/downloads/PRESS_RELEASE.pdf",
+        "type": "company",
+        "note": "Read both pages of December 9, 2025 official release. Historical funding and licenses are documented; its future deployment language is not proof that deployments occurred."
+      }
+    ],
+    "caveat": "Peer-reviewed research evaluates ergoCub's methodology, not Gene.01's industrial economics or general autonomy. Full-body sensing does not establish certified safety. The published model is simplified and noncommercial; industrial collaborations and manufacturing plans should not be presented as completed deployments.",
+    "reviewed": "2026-10-07"
+  }
+]

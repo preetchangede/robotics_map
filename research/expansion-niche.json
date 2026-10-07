@@ -1,0 +1,384 @@
+[
+  {
+    "id": "bedrock-ocean",
+    "name": "Bedrock Ocean Exploration",
+    "category": "niche",
+    "subcategory": "Subsea mapping",
+    "website": "https://www.bedrockocean.com/",
+    "focus": "Ocean survey fleets",
+    "edge": "Near-seafloor robots plus cloud survey infrastructure turn expensive ship campaigns into repeatable data.",
+    "summary": "Autonomous underwater survey vehicles collect detailed seabed data, with cloud tools for mission coordination, processing, and customer delivery.",
+    "thesis": "The interesting wedge is the complete survey operation: mobilization, reliable navigation, data quality, and usable deliverables. Bedrock couples its own underwater vehicles to survey software and trained regional operators. Multi-vehicle coverage could change the economics of repeatedly monitoring offshore energy assets, cables, and coastal infrastructure.",
+    "technology": "Bedrock combines inertial navigation and Doppler velocity measurements with onboard data preprocessing and quality checks. Trident coordinates and monitors fleet missions; Mosaic processes, stores, and distributes geospatial survey data. Its published two-vehicle trial shows overlapping bathymetry and side-scan mosaics collected over adjacent survey sections. The scaling challenge includes launch and recovery, operator supervision, and cross-vehicle data consistency as much as robot autonomy.",
+    "problem": "Detailed, repeatable seabed surveys require expensive vessel mobilization, specialist crews, reliable underwater positioning, and lengthy data processing. Offshore infrastructure needs current inspection-quality information rather than occasional coarse maps.",
+    "stage": "Deployed",
+    "tags": [
+      "Marine robotics",
+      "Autonomous underwater vehicles",
+      "Sonar",
+      "Fleet coordination",
+      "Geospatial data",
+      "Infrastructure inspection"
+    ],
+    "related": [
+      "gecko-robotics",
+      "field-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Technical field test",
+        "text": "A company-published December 2023 two-AUV trial produced overlapping bathymetry and side-scan products; relative agreement in that test is not universal positioning accuracy.",
+        "url": "https://www.bedrockocean.com/insights/bedrocks-breakthrough-multi-auv-capability"
+      },
+      {
+        "label": "Regional operations",
+        "text": "August 6, 2026 announcement names First Marine Solutions as a multi-year partner, with an Aberdeen AUV hub and training for local survey operations.",
+        "url": "https://www.bedrockocean.com/insights/bedrock-ocean-exploration-and-first-marine-solutions-announce-strategic-partnership-to-expand-autonomous-subsea-survey-capabilities-across-the-uk-and-europe"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Bedrock — navigation, edge processing, and cloud architecture",
+        "url": "https://www.bedrockocean.com/technology",
+        "type": "company",
+        "note": "Primary product description. IHO quality and efficiency are company claims; post-mission upload and experienced operators remain part of the workflow."
+      },
+      {
+        "title": "Bedrock — multi-AUV field trial",
+        "url": "https://www.bedrockocean.com/insights/bedrocks-breakthrough-multi-auv-capability",
+        "type": "company",
+        "note": "Concrete two-vehicle survey and data-overlap example, written by Bridgit Boulahanis and Charles Chiau; not an independent benchmark."
+      },
+      {
+        "title": "Bedrock and First Marine Solutions — Aberdeen operations",
+        "url": "https://www.bedrockocean.com/insights/bedrock-ocean-exploration-and-first-marine-solutions-announce-strategic-partnership-to-expand-autonomous-subsea-survey-capabilities-across-the-uk-and-europe",
+        "type": "company",
+        "note": "August 2026 named-partner announcement distinguishes hardware, local operators, maintenance, and data delivery. Planned hub capacity is not a completed-survey count."
+      },
+      {
+        "title": "Bedrock — April 2026 leadership and operations update",
+        "url": "https://www.bedrockocean.com/insights/bedrock-appoints-former-satellogic-exec-as-ceo-to-drive-growth-in-autonomous-maritime-intelligence",
+        "type": "company",
+        "note": "Matthew Tirman becomes CEO; founder Charles Chiau remains CTO. Geographic activity is vendor-reported."
+      },
+      {
+        "title": "TechCrunch — 2025 survey tradeoffs",
+        "url": "https://techcrunch.com/2025/06/10/bedrock-ocean-dredges-up-25m-to-map-the-seafloor-with-robots/",
+        "type": "report",
+        "note": "Dated positioning limitations."
+      }
+    ],
+    "caveat": "Dense sample grids and relative overlap agreement do not establish absolute map accuracy. TechCrunch reported 1–2m georeferencing in 2025. Today’s IHO-quality positioning statement remains company-reported. Survey acceptance, vehicle recovery, weather, operator load, and mission economics need project-specific evidence; a public global ocean map is an ambition.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "rocsys",
+    "name": "Rocsys",
+    "category": "niche",
+    "subcategory": "Robotic fleet charging",
+    "website": "https://www.rocsys.com/",
+    "focus": "Fleet charging infrastructure",
+    "edge": "Compliant connector handling automates the physical handoff between electric vehicles and charging systems.",
+    "summary": "Vision-guided compliant robots plug electric port equipment and vehicle fleets into chargers, automating an infrastructure bottleneck.",
+    "thesis": "A vehicle can drive itself and still need someone to connect its charging cable. Rocsys attacks this narrow but consequential physical interface. Heavy-duty terminal deployments create a practical entry point; its shared overhead robot for multiple robotaxi bays tests whether infrastructure automation can scale without one expensive arm per parking space.",
+    "technology": "The S2 design combines a seven-axis motion architecture, camera-based six-degree-of-freedom inlet localization, compliance for vehicle movement, and electromagnetic connector locking. Industrial controls, APIs, and charging-service monitoring integrate the robot with fleet operations. The M1 uses an overhead rail and long-reach arm to serve multiple bays. This is precision connector manipulation under weather, alignment variation, and repeated high-duty-cycle operation.",
+    "problem": "Manual cable connection interrupts electrified fleet operations and prevents unattended depot workflows. Port equipment and robotaxis need reliable charging without repeated labor, connector damage, or excessive idle time.",
+    "stage": "Deployed",
+    "tags": [
+      "Soft robotics",
+      "Computer vision",
+      "EV charging",
+      "Robotaxi infrastructure",
+      "Ports",
+      "Industrial integration"
+    ],
+    "related": [
+      "field-ai",
+      "anybotics"
+    ],
+    "evidence": [
+      {
+        "label": "Named operational site",
+        "text": "April 2026 company case names International Transportation Service at the Port of Long Beach, charging a human-operated electric Taylor container handler.",
+        "url": "https://www.rocsys.com/rocsys-and-its-deploy-hands-free-charging-at-the-port-of-long-beach-to-expand-scalable-zero-emission-operations/"
+      },
+      {
+        "label": "Pilot versus deployment",
+        "text": "M1 was announced April 29, 2026 for up to ten bays; the announcement describes pilots and targets large-scale deployment in 2027.",
+        "url": "https://www.rocsys.com/rocsys-unveils-worlds-first-multi-bay-hands-free-charging-solution-to-help-robotaxi-fleets-scale-and-raises-13m-series-a-extension/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Rocsys S2 — mechanical and sensing architecture",
+        "url": "https://www.rocsys.com/rocsys-s2/",
+        "type": "company",
+        "note": "Primary engineering description: compliant suspension, pose localization, weather-protected cameras, connector locking, and industrial control."
+      },
+      {
+        "title": "Rocsys — Long Beach terminal deployment",
+        "url": "https://www.rocsys.com/rocsys-and-its-deploy-hands-free-charging-at-the-port-of-long-beach-to-expand-scalable-zero-emission-operations/",
+        "type": "company",
+        "note": "Named operator and vehicle; opportunity charging supports human-operated equipment as well as future autonomy."
+      },
+      {
+        "title": "Rocsys M1 — multibay architecture and pilot status",
+        "url": "https://www.rocsys.com/rocsys-unveils-worlds-first-multi-bay-hands-free-charging-solution-to-help-robotaxi-fleets-scale-and-raises-13m-series-a-extension/",
+        "type": "company",
+        "note": "April 2026 release also announces $13m funding extension. Plug-success, cost-saving, and productivity figures are vendor claims, not independent fleet audits."
+      },
+      {
+        "title": "UNIIQ — founding technical thesis",
+        "url": "https://www.uniiq.nl/en/rocsys-secures-uniiq-investment-for-automated-fast-charging-technology/",
+        "type": "report",
+        "note": "2019 investor account names all three founders and explains soft-arm compliance; historical technical context."
+      },
+      {
+        "title": "Rocsys — leadership and deployment map",
+        "url": "https://www.rocsys.com/company/",
+        "type": "company",
+        "note": "Current company-reported 40+ field deployments; inspection and interior cleaning explicitly remain in development. Product-launch dates differ across company pages."
+      },
+      {
+        "title": "Reddit — charging-depot economics discussion",
+        "url": "https://www.reddit.com/r/SelfDrivingCars/comments/1szeavz/this_ev_charging_robot_actually_makes_a_ton_of/",
+        "type": "reddit",
+        "note": "Practitioner-sentiment discussion questions amortization, shared labor for cleaning/inspection, wireless charging, and depot utilization. Anonymous comments do not verify costs."
+      }
+    ],
+    "caveat": "Deployed port charging and pilot-stage M1 robotaxi infrastructure have different maturity. Charging automation does not drive the vehicle or remove depot cleaning, inspection, and maintenance work. Published savings require utilization and labor assumptions; mixed connectors, reach limits, uptime, and exception handling must be validated at each site.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "kodama-systems",
+    "name": "Kodama Systems",
+    "category": "niche",
+    "subcategory": "Forestry teleoperation",
+    "website": "https://www.kodama.ai/",
+    "focus": "Remote forestry operations",
+    "edge": "Retrofit skidders combine satellite teleoperation and local perception to move skilled operators offsite.",
+    "summary": "Retrofit controls let skilled operators run forestry skidders remotely, with edge perception and assisted autonomy for difficult logging sites.",
+    "thesis": "Kodama targets the operational bottleneck around a specific forestry machine rather than trying to automate an entire forest immediately. Retrofitting established skidders preserves contractors’ equipment investments, while remote operation reduces commuting and cab exposure. Supervised autonomy could eventually let scarce skilled operators manage more equipment, but that economic step needs separate proof.",
+    "technology": "RS1 adds satellite video and telemetry links, HDR cameras, LiDAR, rugged onboard computing, localization, and machine-state monitoring to existing equipment. A separate emergency-stop and hold-to-run circuit sits outside application software. Remote operators retain the machine’s core controls and local crews handle servicing. Published field accounts cover remote skidding; current product material and Weyerhaeuser reporting describe AI-assisted navigation and terrain mapping toward supervised autonomy.",
+    "problem": "Logging contractors face scarce equipment operators, remote job sites, strenuous cab work, and dangerous terrain. Forest restoration and timber extraction need more productive machine hours without worsening operator exposure or fatigue.",
+    "stage": "Deployed",
+    "tags": [
+      "Forestry",
+      "Teleoperation",
+      "Retrofit autonomy",
+      "LiDAR",
+      "Satellite connectivity",
+      "Heavy equipment"
+    ],
+    "related": [
+      "field-ai",
+      "carbon-robotics",
+      "monumental"
+    ],
+    "evidence": [
+      {
+        "label": "Field-tested retrofit",
+        "text": "Company accounts describe two seasons on a CAT 525C in the Stanislaus National Forest and subsequent Weiler S340 operations; these are vendor-reported field deployments.",
+        "url": "https://www.kodama.ai/news/skidders-on-autopilot"
+      },
+      {
+        "label": "Named industrial pilot",
+        "text": "April 23, 2026 WSJ reporting describes a Weyerhaeuser pilot using remote operation with AI-assisted navigation; full autonomy remains a goal.",
+        "url": "https://www.wsj.com/tech/ai/americas-largest-landowner-is-using-ai-to-digitize-the-forest-bd3eec86"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Kodama RS1 — communications, perception, controls, and safety",
+        "url": "https://www.kodama.ai/technology",
+        "type": "company",
+        "note": "Current primary architecture description. The separate stop circuit is described by the vendor; no independent safety certification is inferred."
+      },
+      {
+        "title": "Kodama — skidders on Autopilot",
+        "url": "https://www.kodama.ai/news/skidders-on-autopilot",
+        "type": "company",
+        "note": "December 2024 field account explains original retrofit, operator adaptation, service contracts, and local maintenance. A 98% remote-operation target is not an achieved rate."
+      },
+      {
+        "title": "Kodama — commercial logging demonstration",
+        "url": "https://www.kodama.ai/news/kodama-systems-shows-off-roboskidder",
+        "type": "demo",
+        "note": "August 2025 Weiler S340 demonstration and sensor stack. Reported throughput depends on site conditions; no controlled productivity comparison is published."
+      },
+      {
+        "title": "Kodama — remote operator Kaleb Shird interview",
+        "url": "https://www.kodama.ai/news/meet-kaleb-shird-remote-skidder-operator",
+        "type": "company",
+        "note": "First-person operator account discusses visibility, physical fatigue, controls, and learning the remote workflow; hosted by his employer."
+      },
+      {
+        "title": "Forest Invest — founder technical interview",
+        "url": "https://shows.acast.com/forest-invest/episodes/tele-operated-forestry-operations-with-merritt-jenkins",
+        "type": "report",
+        "note": "March 2026 episode description and chapter guide cover Starlink, LiDAR, GPS, safety, and contractor economics. Description reviewed; full audio was not transcribed."
+      },
+      {
+        "title": "WSJ — Weyerhaeuser forestry pilot",
+        "url": "https://www.wsj.com/tech/ai/americas-largest-landowner-is-using-ai-to-digitize-the-forest-bd3eec86",
+        "type": "report",
+        "note": "April 2026 reporting, with customer quotations; full article is subscription restricted. Available indexed report supports pilot status, not fleet-wide autonomy."
+      }
+    ],
+    "caveat": "Commercial teleoperation is better established than independent many-to-one autonomous operation. Operators and local crews still matter; radio/satellite reliability, terrain feedback, recovery, and machine servicing affect economics. Company demonstration throughput is not a universal benchmark, and forest carbon-storage ambitions are separate from verified logging productivity.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "verity",
+    "name": "Verity",
+    "category": "niche",
+    "subcategory": "Autonomous warehouse inventory",
+    "website": "https://www.verity.net/",
+    "focus": "Physical inventory intelligence",
+    "edge": "Small indoor drone fleets reconcile the warehouse’s physical stock with its digital system of record.",
+    "summary": "GPS-free indoor drones scan warehouse inventory and reconcile physical stock with warehouse systems, exposing misplaced pallets and record errors.",
+    "thesis": "Verity’s valuable output is inventory certainty, not drone flight. Lightweight robots reach high storage locations and continuously collect observations that reconcile with warehouse records. Its live-events robotics lineage has translated into customer-confirmed logistics deployments, making it an unusually concrete example of embodied sensing becoming an operational data product.",
+    "technology": "Onboard perception, motion planning, obstacle avoidance, cameras, and lighting support autonomous indoor flights without GPS. Drones scan barcodes and return to charging stations while a cloud platform coordinates fleet operations and integrates observations into warehouse management systems. Physical-to-digital reconciliation identifies missing or misplaced goods. IKEA describes scheduled missions and newer flights alongside workers; the commercial navigation and fleet stack remain proprietary.",
+    "problem": "Warehouse databases drift from physical reality as pallets move, barcodes are missed, and items are misplaced. Manual high-rack checks consume labor, create ergonomic strain, and discover errors too late for fulfillment.",
+    "stage": "Deployed",
+    "tags": [
+      "Inventory drones",
+      "Indoor autonomy",
+      "Warehouse management",
+      "Physical-to-digital reconciliation",
+      "Fleet coordination",
+      "Edge perception"
+    ],
+    "related": [
+      "exotec",
+      "mytra",
+      "gecko-robotics",
+      "fulfil"
+    ],
+    "evidence": [
+      {
+        "label": "Customer-verified scale",
+        "text": "IKEA’s August 2024 account reported 250+ drones at 73 locations in nine countries and tested operation alongside workers. These counts describe that dated snapshot.",
+        "url": "https://www.ingka.com/newsroom/ikea-is-elevating-human-ai-powered-drone-collaboration/"
+      },
+      {
+        "label": "Current industry recognition",
+        "text": "June 2026 IFR/IEEE IERA award material describes about 200 warehouse deployments, onboard autonomy, barcode integration, and fleet learning.",
+        "url": "https://ifr.org/news/iera-award-2026-goes-to-flying-warehouse-robots-by-verity/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "IKEA — warehouse drone collaboration",
+        "url": "https://www.ingka.com/newsroom/ikea-is-elevating-human-ai-powered-drone-collaboration/",
+        "type": "report",
+        "note": "Primary customer source describes scale, missions, obstacle rerouting, and a one-year Belgian test. The planned US rollout is distinct from achieved deployment."
+      },
+      {
+        "title": "IFR — 2026 IERA robotics award",
+        "url": "https://ifr.org/news/iera-award-2026-goes-to-flying-warehouse-robots-by-verity/",
+        "type": "report",
+        "note": "Industry award body describes current system and about 200 warehouses. Operational numbers are reported award evidence, not a disclosed independent audit."
+      },
+      {
+        "title": "Maersk — Performance Team Miami implementation",
+        "url": "https://innovation.maersk.com/innovations/verity-autonomous-drones",
+        "type": "report",
+        "note": "Primary customer documents a launch, WMS/API integration, and initial estimates. Potential savings are not universal ROI; one section requires an account."
+      },
+      {
+        "title": "ETH Zurich — from aerial research to warehouse robotics",
+        "url": "https://ethz.ch/en/news-and-events/eth-news/news/2021/08/verity-drones-warehouse.html",
+        "type": "report",
+        "note": "Research institution describes technical lineage, barcode capture, charging, and commercialization; historical 2021 context."
+      },
+      {
+        "title": "Raffaello D’Andrea — founding and engineering account",
+        "url": "https://www.linkedin.com/pulse/making-science-fiction-happen-legacy-future-raffaello-d-andrea-43irf",
+        "type": "report",
+        "note": "December 2024 first-person founder essay names Markus Hehn and Markus Waibel, and explains autonomy, reliability, data economics, and cloud architecture. Self-reported performance remains attributed."
+      },
+      {
+        "title": "Reddit — inventory-worker perspective on IKEA drones",
+        "url": "https://www.reddit.com/r/technology/comments/1etrnrs/ikeas_stockcounting_warehouse_drones_will_fly/",
+        "type": "reddit",
+        "note": "A self-identified former shipping/receiving worker describes inventory-counting pain; other comments raise noise and job concerns. Identity and claims are not independently verified."
+      }
+    ],
+    "caveat": "Inventory sensing does not pick products or repair an inaccurate workflow automatically. Barcode visibility, occlusions, configuration, integration, and battery replacement still matter. Dated IKEA fleet counts differ from company-wide warehouse counts. Vendor ROI and reliability claims need customer-specific baselines; the commercial stack is not open source.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "fulfil",
+    "name": "Fulfil Solutions",
+    "category": "niche",
+    "subcategory": "Grocery picking and packing",
+    "website": "https://www.fulfil.com/",
+    "focus": "Grocery micro-fulfillment",
+    "edge": "Engineered trays and fixed dispensers simplify variable grocery handling before mobile robots collect bags.",
+    "summary": "Purpose-built trays, dispensers, and mobile ShopBots assemble grocery orders across ambient, refrigerated, and frozen storage zones.",
+    "thesis": "The differentiated bet is to redesign storage and handling together rather than make a general robot pick arbitrary shelves. Item-level tracking and controlled dispensing can make delicate produce, expiry management, and mixed-temperature grocery orders tractable. A customer-confirmed Whole Foods installation makes the systems architecture more interesting than an isolated picking demo.",
+    "technology": "Dense item-level trays stack in vertical storage towers. Fixed dispense stations retrieve trays and use custom actuators, vision, and sensor fusion to place items into bags carried by mobile ShopBots. Routing and packing order reduce damage while station inventory redistribution balances load. Refrigerated enclosures handle fresh and frozen goods. Published patents explain tray, carousel, inspection, and dispensing embodiments; those embodiments are not proof of every deployed mechanism.",
+    "problem": "Online grocery fulfillment combines thin margins with fragile, variable-shaped goods, expiry constraints, and multiple temperature zones. Manual picking and unsuitable general warehouse automation make reliable, affordable order assembly difficult.",
+    "stage": "Deployed",
+    "tags": [
+      "Grocery robotics",
+      "Robots-to-goods",
+      "Item-level inventory",
+      "Cold chain",
+      "Specialized manipulation",
+      "Micro-fulfillment"
+    ],
+    "related": [
+      "exotec",
+      "mytra",
+      "verity"
+    ],
+    "evidence": [
+      {
+        "label": "Customer-confirmed installation",
+        "text": "Amazon’s May 12, 2026 update describes Fulfil ShopBots in a 10,000-square-foot Plymouth Meeting Whole Foods facility supporting approximately 12,000 items.",
+        "url": "https://www.aboutamazon.com/news/retail/whole-foods-household-essentials-amazon"
+      },
+      {
+        "label": "Human workflow boundary",
+        "text": "The same customer account says employees finalize orders at handoff. Automated picking and packing do not establish an entirely labor-free store or delivery operation.",
+        "url": "https://www.aboutamazon.com/news/retail/whole-foods-household-essentials-amazon"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Fulfil — trays, dispense stations, and ShopBots",
+        "url": "https://www.fulfil.com/technology",
+        "type": "company",
+        "note": "Primary system architecture and integrated vision/inventory description; universal-item and zero-labor language are marketing claims."
+      },
+      {
+        "title": "Amazon — Whole Foods micro-fulfillment deployment",
+        "url": "https://www.aboutamazon.com/news/retail/whole-foods-household-essentials-amazon",
+        "type": "report",
+        "note": "Primary customer update dated May 12, 2026 confirms site, approximately 12,000 items, temperature zones, and employee handoff. Expansion remains planned."
+      },
+      {
+        "title": "US10543942B2 — product handling and packaging system",
+        "url": "https://patents.google.com/patent/US10543942B2/en",
+        "type": "report",
+        "note": "Granted patent assigned to Fulfil Solutions. Technical disclosure of inspection, tray storage, carousels, and dispensing; a patent is not peer review or a deployed-product specification."
+      },
+      {
+        "title": "DCVC — Whole Foods deployment architecture",
+        "url": "https://www.dcvc.com/news-insights/fulfils-robot-revolution-comes-to-whole-foods/",
+        "type": "report",
+        "note": "November 2025 investor account explains the robots-to-goods approach. Its 100% accuracy and average packing time are interested-party claims."
+      },
+      {
+        "title": "Fulfil — company and operating leadership",
+        "url": "https://www.fulfil.com/company",
+        "type": "company",
+        "note": "Current team and board context: Mir Aamir is CEO; Gilad Almogy’s displayed founder/CEO title refers to Ultima Genomics, not current Fulfil management."
+      }
+    ],
+    "caveat": "A named grocery deployment does not prove profitable economics across store formats. Restocking, exceptions, cleaning, maintenance, handoff, and delivery still require consideration. Investor accuracy figures lack public test denominators. Patent embodiments exceed demonstrated functionality, and Fulfil Solutions should not be confused with the unrelated fulfil.io ERP company.",
+    "reviewed": "2026-10-07"
+  }
+]

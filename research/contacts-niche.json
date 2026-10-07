@@ -1,0 +1,683 @@
+{
+  "monumental": {
+    "founders": [
+      {
+        "name": "Salar al Khafaji",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.monumental.co/blog/we-raised-32-million-to-put-more/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/salark",
+            "kind": "profile",
+            "provenance": "https://www.monumental.co/about/",
+            "note": "Exact profile linked from Monumental’s official founder biography. LinkedIn direct access is restricted; profile messaging may require login.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Sebastiaan Visser",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://www.monumental.co/blog/we-raised-32-million-to-put-more/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/sebastiaan-visser-443b91190/",
+            "kind": "profile",
+            "provenance": "https://www.monumental.co/about/",
+            "note": "Exact profile linked as “Sebas” from Monumental’s official founder biography. Direct LinkedIn access is restricted.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Official company page names and links both founders. No direct founder business email was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "mytra": {
+    "founders": [
+      {
+        "name": "Chris Walti",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.linkedin.com/posts/chriswalti_mytra-unveils-breakthrough-robotics-and-ai-activity-7221513017258078208-LUoQ",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/chriswalti",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/chriswalti_mytra-unveils-breakthrough-robotics-and-ai-activity-7221513017258078208-LUoQ",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Ahmad Baitalmal",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://www.mehmetcto.show/videos/413-ahmad-baitalmal-from-tesla-to-redefining-warehousing-with-ai-and-robots/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/baitalmal/",
+            "kind": "profile",
+            "provenance": "https://www.mehmetcto.show/videos/413-ahmad-baitalmal-from-tesla-to-redefining-warehousing-with-ai-and-robots/",
+            "note": "Founder interview publishes this exact professional profile; Mytra’s official company page confirms the CTO role. Direct LinkedIn reader access is restricted.",
+            "verification": "corroborated"
+          }
+        ]
+      }
+    ],
+    "note": "Founder launch post and public CTO interview corroborate identities; current management is shown at https://mytra.ai/company. No direct founder email was verified. The interview’s general info@mytra.com address was not assumed to be a founder inbox.",
+    "reviewed": "2026-10-07"
+  },
+  "gecko-robotics": {
+    "founders": [
+      {
+        "name": "Jake Loosararian",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.geckorobotics.com/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/jake-loosararian-23981350",
+            "kind": "profile",
+            "provenance": "https://www.geckorobotics.com/about-us",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact route",
+            "url": "mailto:info@geckorobotics.com",
+            "kind": "company",
+            "provenance": "https://www.geckorobotics.com/about-us",
+            "note": "Official general company email; not Jake’s personal or direct business inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Troy Demmer",
+        "role": "Co-founder",
+        "roleSource": "https://www.geckorobotics.com/about-us",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/troy-demmer-27037526",
+            "kind": "profile",
+            "provenance": "https://www.geckorobotics.com/about-us",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Official founding story names both founders; YC also confirms founder identities. Troy’s older COO title was not assumed to remain current. General email is explicitly a company route.",
+    "reviewed": "2026-10-07"
+  },
+  "anybotics": {
+    "founders": [
+      {
+        "name": "Péter Fankhauser",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.anybotics.com/about-us/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/peterfankhauser",
+            "kind": "profile",
+            "provenance": "https://www.anybotics.com/about-us/company/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Marco Hutter",
+        "role": "Co-founder and vice-chairman",
+        "roleSource": "https://www.anybotics.com/about-us/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/marco-hutter",
+            "kind": "profile",
+            "provenance": "https://www.anybotics.com/about-us/company/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Hanspeter Fässler",
+        "role": "Co-founder and chairman",
+        "roleSource": "https://www.anybotics.com/about-us/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/hanspeter-f%C3%A4ssler-59023246",
+            "kind": "profile",
+            "provenance": "https://www.anybotics.com/about-us/company/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Christian Gehring",
+        "role": "Co-founder",
+        "roleSource": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/chgehring",
+            "kind": "profile",
+            "provenance": "https://www.anybotics.com/news/anybotics-anymal-first-research-meet-up-japan/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Andreas Lauber",
+        "role": "Co-founder",
+        "roleSource": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/lauberandreas",
+            "kind": "profile",
+            "provenance": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Remo Diethelm",
+        "role": "Co-founder; public Kindr maintainer contact",
+        "roleSource": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+        "channels": [
+          {
+            "label": "Published project email",
+            "url": "mailto:rdiethelm@anybotics.com",
+            "kind": "email",
+            "provenance": "https://github.com/ANYbotics/kindr",
+            "note": "Explicitly published in ANYbotics’ Kindr README and official documentation for project questions. It is a legacy maintainer address; current employment and deliverability were not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/remo-diethelm-3054b3159",
+            "kind": "profile",
+            "provenance": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+            "note": "Indexed profile connects this person to ANYbotics and 42hacks; distinguish it from the same-name Holcim profile. Direct access is restricted.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Samuel Bachmann",
+        "role": "Co-founder and robotics software engineer",
+        "roleSource": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+        "channels": [
+          {
+            "label": "XING professional profile",
+            "url": "https://www.xing.com/profile/Samuel_Bachmann",
+            "kind": "profile",
+            "provenance": "https://www.xing.com/profile/Samuel_Bachmann",
+            "note": "Public profile explicitly states ANYbotics co-founder and robotics software engineer. Some entries and messaging require login.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Roland Siegwart",
+        "role": "Co-founder and advisor",
+        "roleSource": "https://www.anybotics.com/about-us/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/roland-siegwart-85466912",
+            "kind": "profile",
+            "provenance": "https://rsl.ethz.ch/partnership/spinoff/anybotics.html",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Full eight-person founding roster is published by ETH’s Robotic Systems Lab. Roles are limited to verified company biographies or the professional profile; historic founders are not all asserted to be current employees. The only founder email included is actually published as a project-maintainer route.",
+    "reviewed": "2026-10-07"
+  },
+  "carbon-robotics": {
+    "founders": [
+      {
+        "name": "Paul Mikesell",
+        "role": "Founder and CEO",
+        "roleSource": "https://carbonrobotics.com/company",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/paul-mikesell-4b63a9/",
+            "kind": "profile",
+            "provenance": "https://carbonrobotics.com/leadership",
+            "note": "Exact professional profile is linked from Carbon Robotics’ official leadership page. Direct profile retrieval returned a LinkedIn restriction.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Carbon’s company page identifies Paul as founder; its leadership page confirms CEO and provides the profile link. No direct founder email was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "exotec": {
+    "founders": [
+      {
+        "name": "Romain Moulin",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.exotec.com/news/exotec-opens-new-global-headquarters-imaginarium/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://fr.linkedin.com/in/romain-moulin-1064084",
+            "kind": "profile",
+            "provenance": "https://www.exotec.com/news/exotec-celebrates-10-years-of-innovation-driving-a-new-era-of-warehouse-technology/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Renaud Heitz",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://www.exotec.com/news/exotec-opens-new-global-headquarters-imaginarium/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://fr.linkedin.com/in/renaudheitz",
+            "kind": "profile",
+            "provenance": "https://www.exotec.com/news/exotec-celebrates-10-years-of-innovation-driving-a-new-era-of-warehouse-technology/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Official 2025 anniversary and February 2026 headquarters accounts name both founders and their CEO/CTO roles. Direct LinkedIn reads are restricted/rate limited; this is an access limitation, not evidence of broken profiles. No direct founder email was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "cmr-surgical": {
+    "founders": [
+      {
+        "name": "Luke Hares",
+        "role": "Co-founder; advisory role from 2026, former CTO",
+        "roleSource": "https://www.linkedin.com/posts/cmrsurgical_medtech-roboticsurgery-cmrsurgical-activity-7488628551538196480-XopT",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/luke-hares-70545ab",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/cmrsurgical_medtech-roboticsurgery-cmrsurgical-activity-7488628551538196480-XopT",
+            "note": "CMR’s official August 2026 update links Luke and announces an advisory role; indexed profile says former CTO. Direct profile access is restricted.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Mark Slack",
+        "role": "Co-founder; advisory role from 2026",
+        "roleSource": "https://www.linkedin.com/posts/cmrsurgical_medtech-roboticsurgery-cmrsurgical-activity-7488628551538196480-XopT",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/mark-slack-3b8a2139",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/cmrsurgical_medtech-roboticsurgery-cmrsurgical-activity-7488628551538196480-XopT",
+            "note": "Official company update links Mark and announces an advisory role. His indexed own profile specifies the change effective 1 September 2026; old CMO biographies are historical.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Keith Marshall",
+        "role": "Co-founder",
+        "roleSource": "https://www.businessleader.co.uk/insights/how-mark-slack-built-a-multi-billion-business",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/keith-marshall-9aa4a84",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/keith-marshall-9aa4a84_another-important-achievement-for-the-amazing-activity-6401872432176644097-u5yl",
+            "note": "His indexed professional post connects this exact profile to CMR. Founder identity comes from Mark Slack’s founding interview; no current executive role is inferred.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Paul Roberts",
+        "role": "Co-founder; former CMR executive",
+        "roleSource": "https://www.businessleader.co.uk/insights/how-mark-slack-built-a-multi-billion-business",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/paul-roberts-babb4b1a",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/paul-roberts-babb4b1a_cmrsurgical-versius-activity-7075035786168913920-meOs",
+            "note": "Public first-person post describes co-founding CMR and leaving in 2023. Profile is now associated with Lupin Dental; no current CMR operating role is inferred.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Martin Frost",
+        "role": "Co-founder and former CEO",
+        "roleSource": "https://www.businessleader.co.uk/insights/how-mark-slack-built-a-multi-billion-business",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://uk.linkedin.com/in/martin-frost-cmr1",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/cmrsurgical_today-our-ceo-and-co-founder-martin-frost-activity-6544912391166050304-ccOZ",
+            "note": "Historical official company post verifies founder/CEO identity. Indexed current profile is associated with Monumo; he is not presented as CMR’s current CEO.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "All five founders are named in Mark Slack’s 2024 founding interview. Current/historical roles are separated, including the 2026 advisory transition for Hares and Slack. CMR regional management URLs redirect in the web reader; these are not proof of current executive roles. No direct founder email was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "field-ai": {
+    "founders": [
+      {
+        "name": "Ali Agha",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://aliagha.site/",
+        "channels": [
+          {
+            "label": "Professional website",
+            "url": "https://aliagha.site/",
+            "kind": "website",
+            "provenance": "https://aliagha.site/",
+            "note": "Own public research biography explicitly confirms FieldAI co-founder/CEO and links talks and papers. No direct email is published in the reviewed page.",
+            "verification": "primary"
+          },
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/ali-agha-7aa5212a/",
+            "kind": "profile",
+            "provenance": "https://www.fieldai.com/team",
+            "note": "Exact profile linked from FieldAI’s official team page; direct LinkedIn reader access is restricted.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Shayegan Omidshafiei",
+        "role": "Co-founder; AI and science lead",
+        "roleSource": "https://research-2.vercel.app/company/fieldai",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/shayegan/",
+            "kind": "profile",
+            "provenance": "https://www.fieldai.com/team",
+            "note": "Exact profile linked from FieldAI’s official team page, which verifies the science-lead identity. Founder status is corroborated by Contrary’s founding report. Direct profile reading is restricted.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "David D. Fan",
+        "role": "Co-founder; technical lead",
+        "roleSource": "https://research-2.vercel.app/company/fieldai",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/david-d-fan-8157a797/",
+            "kind": "profile",
+            "provenance": "https://www.fieldai.com/team",
+            "note": "Exact profile linked from FieldAI’s official team page, which verifies technical-lead identity. Founder status is corroborated by Contrary’s report. Direct LinkedIn access is restricted.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Justin Saeheng",
+        "role": "Reported co-founder and former COO",
+        "roleSource": "https://research-2.vercel.app/company/fieldai",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/justinsaeheng/",
+            "kind": "profile",
+            "provenance": "https://research-2.vercel.app/company/fieldai",
+            "note": "Exact profile linked by Contrary’s founding account. That secondary report says he departed in 2024; he is absent from the current company team page. Founder/current-role verification is limited.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Ali’s own site and official team profiles establish identity. Contrary’s public Vercel-hosted report names the wider founding team; Justin’s historical role is explicitly reported rather than treated as current primary-company confirmation. No direct founder email was verified.",
+    "reviewed": "2026-10-07"
+  },
+  "bedrock-ocean": {
+    "founders": [
+      {
+        "name": "Charles Chiau",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://www.bedrockocean.com/insights/bedrock-appoints-former-satellogic-exec-as-ceo-to-drive-growth-in-autonomous-maritime-intelligence",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/charleschiau",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/charleschiau_im-excited-to-announce-that-i-will-be-stepping-activity-7186371408980054016-re0e",
+            "note": "Public first-person founder post and April 2026 company appointment verify identity. The 2024 CEO title was superseded by Matthew Tirman’s 2026 appointment; direct profile access may require login.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Anthony DiMare",
+        "role": "Co-founder and former CEO",
+        "roleSource": "https://www.linkedin.com/posts/charleschiau_im-excited-to-announce-that-i-will-be-stepping-activity-7186371408980054016-re0e",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/anthonydimare",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/posts/charleschiau_im-excited-to-announce-that-i-will-be-stepping-activity-7186371408980054016-re0e",
+            "note": "Charles’ 2024 public post names Anthony as co-founder and announces a chairman transition. Current chairman status was not separately verified; direct LinkedIn access is restricted.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Matthew Tirman is the current CEO, not an original founder. Charles remains CTO; Anthony’s CEO/chairmanship descriptions are date-qualified. Company press@bedrockocean.com is public but is a media route, so it was not presented as a founder inbox.",
+    "reviewed": "2026-10-07"
+  },
+  "rocsys": {
+    "founders": [
+      {
+        "name": "Crijn Bouman",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.rocsys.com/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://nl.linkedin.com/in/crijn-bouman-01103a1",
+            "kind": "profile",
+            "provenance": "https://www.rocsys.com/company/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Joost van de Weijde",
+        "role": "Co-founder and head of technology & IP",
+        "roleSource": "https://www.rocsys.com/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://nl.linkedin.com/in/joostvanderweijde",
+            "kind": "profile",
+            "provenance": "https://www.rocsys.com/company/",
+            "note": "Exact indexed professional profile corroborates Rocsys identity. Official materials vary between “van de” and “van der Weijde”; profile slug is retained exactly. Direct access is restricted.",
+            "verification": "restricted"
+          }
+        ]
+      },
+      {
+        "name": "Kanter van Deurzen",
+        "role": "Co-founder and head of development",
+        "roleSource": "https://www.rocsys.com/company/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://nl.linkedin.com/in/kanter-van-deurzen-b455193",
+            "kind": "profile",
+            "provenance": "https://www.rocsys.com/company/",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "Current company leadership and the 2019 UNIIQ investment account verify all three founders. No direct founder email was verified; the public PR agency address was not mistaken for a founder address.",
+    "reviewed": "2026-10-07"
+  },
+  "kodama-systems": {
+    "founders": [
+      {
+        "name": "Merritt Jenkins",
+        "role": "Co-founder and CEO",
+        "roleSource": "https://www.kodama.ai/news/skidders-on-autopilot",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/merrittjenkins",
+            "kind": "profile",
+            "provenance": "https://www.kodama.ai/news/skidders-on-autopilot",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact route",
+            "url": "https://www.kodama.ai/contact",
+            "kind": "company",
+            "provenance": "https://www.kodama.ai/contact",
+            "note": "Official general and sales inquiry form; company route, not Merritt’s direct inbox.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Matt Verminski",
+        "role": "Co-founder",
+        "roleSource": "https://www.kodama.ai/news/skidders-on-autopilot",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/mverminski",
+            "kind": "profile",
+            "provenance": "https://www.kodama.ai/news/skidders-on-autopilot",
+            "note": "Public professional profile; messaging may require a LinkedIn account. Direct reader access returned a login/bot restriction; identity was corroborated by indexed profile content and the cited founder source.",
+            "verification": "restricted"
+          }
+        ]
+      }
+    ],
+    "note": "The company’s field account explicitly names both founders; current CEO interviews corroborate Merritt. No direct founder email was verified. Published general@kodama.ai and sales@kodama.ai are company routes, not founder contacts.",
+    "reviewed": "2026-10-07"
+  },
+  "verity": {
+    "founders": [
+      {
+        "name": "Raffaello D’Andrea",
+        "role": "Co-founder and ETH professor",
+        "roleSource": "https://www.linkedin.com/pulse/making-science-fiction-happen-legacy-future-raffaello-d-andrea-43irf",
+        "channels": [
+          {
+            "label": "Published ETH professional email",
+            "url": "mailto:rdandrea@ethz.ch",
+            "kind": "email",
+            "provenance": "https://www.vvz.ethz.ch/Vorlesungsverzeichnis/dozent.view?ansicht=3&dozide=10023242&lang=en&semkez=2026W",
+            "note": "ETH’s Autumn 2026 faculty/course listing publishes this academic professional email. It is not Verity sales or a guaranteed commercial intake route; deliverability was not tested.",
+            "verification": "primary"
+          },
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/raffaello-d-andrea",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/pulse/making-science-fiction-happen-legacy-future-raffaello-d-andrea-43irf",
+            "note": "Exact professional profile linked from his first-person founding essay. Public rendering was available once and restricted on retry; messaging may require login.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Markus Hehn",
+        "role": "Co-founder and CTO",
+        "roleSource": "https://ifr.org/news/iera-award-2026-goes-to-flying-warehouse-robots-by-verity/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/markushehn",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/pulse/making-science-fiction-happen-legacy-future-raffaello-d-andrea-43irf",
+            "note": "Exact profile linked in the founder’s essay. The June 2026 IFR award account confirms co-founder and CTO; direct profile retrieval is restricted.",
+            "verification": "primary"
+          }
+        ]
+      },
+      {
+        "name": "Markus Waibel",
+        "role": "Co-founder",
+        "roleSource": "https://www.linkedin.com/pulse/making-science-fiction-happen-legacy-future-raffaello-d-andrea-43irf",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://ch.linkedin.com/in/mwaibel",
+            "kind": "profile",
+            "provenance": "https://www.linkedin.com/pulse/making-science-fiction-happen-legacy-future-raffaello-d-andrea-43irf",
+            "note": "Exact profile linked in Raffaello’s first-person founding essay and indexed as Verity. Older COO titles are not assumed current; direct profile access is restricted.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "The founder’s 2024 account names all three co-founders. Current CTO role is supported by the June 2026 award account; corporate COO/strategy titles were not inferred from older material. D’Andrea’s published 2026 ETH listing confirms his academic professional route; no Verity founder business email was found.",
+    "reviewed": "2026-10-07"
+  },
+  "fulfil": {
+    "founders": [
+      {
+        "name": "Gilad Almogy",
+        "role": "Founder and board member; current CEO of Ultima Genomics",
+        "roleSource": "https://www.genengnews.com/topics/omics/ultima-genomics-bursts-onto-ngs-scene-targeting-the-100-genome/",
+        "channels": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/gilad-almogy-36644276",
+            "kind": "profile",
+            "provenance": "https://www.fulfil.com/company",
+            "note": "GEN’s founder biography and Fulfil’s board page corroborate identity. Public profile is associated with Ultima Genomics. Direct reading is restricted; no founder email was verified.",
+            "verification": "restricted"
+          },
+          {
+            "label": "Company contact route",
+            "url": "https://www.fulfil.com/contact",
+            "kind": "company",
+            "provenance": "https://www.fulfil.com/contact",
+            "note": "Official Fulfil Solutions general inquiry form; not Gilad’s direct inbox. The published info@fulfil.com/info@fulfil.ai routes are company-wide.",
+            "verification": "primary"
+          }
+        ]
+      }
+    ],
+    "note": "Gilad’s historical founder status is supported by GEN’s 2022 biography; Fulfil currently lists him on its board and Mir Aamir as CEO. Other purported co-founders, including Jason Kalus, appeared in company databases or inventor lists but were not confirmed by sufficiently strong founding provenance, so they are not asserted here. Inventor does not mean founder.",
+    "reviewed": "2026-10-07"
+  }
+}

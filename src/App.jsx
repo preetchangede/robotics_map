@@ -23,14 +23,25 @@ import {
   Cpu,
   ChevronRight,
   Network,
+  GraduationCap,
+  Play,
+  Mail,
 } from "lucide-react";
 import data from "./data/atlas.json";
-import { categories, relations, catById, views, typeLabels } from "./data/meta";
+import {
+  categories,
+  relations,
+  catById,
+  views,
+  typeLabels,
+  resourcePaths,
+} from "./data/meta";
 
 const allEntries = [
   ...data.companies.map((e) => ({ ...e, kind: "company" })),
   ...data.problems.map((e) => ({ ...e, kind: "problem" })),
   ...data.experiments.map((e) => ({ ...e, kind: "experiment" })),
+  ...(data.resources || []).map((e) => ({ ...e, kind: "resource" })),
 ];
 const entryMap = new Map(allEntries.map((e) => [e.kind + ":" + e.id, e]));
 const sourcesMap = new Map();
@@ -56,6 +67,7 @@ function getRoute() {
       "companies",
       "problems",
       "experiments",
+      "resources",
       "sources",
       "saved",
       "search",
@@ -64,7 +76,67 @@ function getRoute() {
       : "overview",
     category: catById[p.get("category")] ? p.get("category") : "all",
     entry: p.get("entry"),
+    path: resourcePaths.some((r) => r.id === p.get("path"))
+      ? p.get("path")
+      : null,
   };
+}
+function BrandMark({ className = "" }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 48 48"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M7 35V13l17 17 17-17v22"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7 35l17-10 17 10M24 25V9"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        opacity=".6"
+      />
+      <circle cx="24" cy="9" r="3" fill="currentColor" />
+    </svg>
+  );
+}
+function IntroFigure() {
+  return (
+    <svg
+      className="intro-figure"
+      viewBox="0 0 220 128"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g stroke="currentColor" strokeWidth=".8">
+        <ellipse
+          cx="110"
+          cy="64"
+          rx="84"
+          ry="38"
+          transform="rotate(-20 110 64)"
+        />
+        <ellipse
+          cx="110"
+          cy="64"
+          rx="84"
+          ry="38"
+          transform="rotate(20 110 64)"
+        />
+        <ellipse cx="110" cy="64" rx="38" ry="55" />
+        <path d="M18 64h184M110 5v118" strokeDasharray="2 5" opacity=".6" />
+        <path d="M38 44l72 40 72-40M38 84l72-40 72 40" opacity=".4" />
+      </g>
+      <circle cx="110" cy="64" r="5" fill="currentColor" />
+      <circle cx="182" cy="44" r="4" fill="var(--signal)" />
+      <circle cx="38" cy="84" r="4" fill="var(--signal)" />
+    </svg>
+  );
 }
 function Glyph({ category = "general", large = false }) {
   return (
@@ -217,7 +289,7 @@ function AtlasMap({ category, onCategory }) {
                 key={i}
                 d={`M ${a[0]} ${a[1]} C ${a[0] + (b[0] - a[0]) * 0.6} ${a[1]},${b[0] - (b[0] - a[0]) * 0.6} ${b[1]},${b[0]} ${b[1]}`}
                 fill="none"
-                stroke={active && visible ? "#dce9bd" : "#738c7e"}
+                stroke={active && visible ? "#e2e7a3" : "#9199bb"}
                 opacity={visible ? 0.6 : 0.1}
                 strokeWidth={active && visible ? 1.6 : 1}
                 markerEnd="url(#arrow)"
@@ -329,21 +401,33 @@ function Card({
         {e.kind !== "company" && (
           <>
             <span className="card-kicker">
-              {e.kind === "experiment" ? (
+              {e.kind === "resource" ? (
+                <BookOpen size={16} />
+              ) : e.kind === "experiment" ? (
                 <FlaskConical size={16} />
               ) : (
                 <GitBranch size={16} />
               )}{" "}
-              {e.kind === "experiment" ? "PROPOSED BUILD" : "RESEARCH FRONTIER"}
+              {e.kind === "resource"
+                ? `${e.format.toUpperCase()} / ${e.author}`
+                : e.kind === "experiment"
+                  ? "PROPOSED BUILD"
+                  : "RESEARCH FRONTIER"}
             </span>
             <h3>{e.title}</h3>
           </>
         )}
-        <p>{e.summary}</p>
-        {e.kind === "company" && (
-          <div className="thesis-preview">
-            <span>WHY IT MATTERS</span>
-            <p>{e.thesis}</p>
+        <p>{e.displaySummary || e.summary}</p>
+        {e.kind === "company" && e.edge && (
+          <div className="card-edge">
+            <span>EDGE</span>
+            <p>{e.edge}</p>
+          </div>
+        )}
+        {e.kind === "resource" && (
+          <div className="resource-meta">
+            <span>{e.level}</span>
+            <span>{e.time}</span>
           </div>
         )}
         {e.kind === "experiment" && (
@@ -360,7 +444,7 @@ function Card({
         )}
       </button>
       <div className="card-tags">
-        {(e.tags || []).slice(0, 3).map((t) => (
+        {(e.tags || []).slice(0, 2).map((t) => (
           <button
             key={t}
             onClick={() => {
@@ -375,7 +459,7 @@ function Card({
       <div className="card-foot">
         <span className="stage">
           <i />
-          {e.stage || e.difficulty || "Open question"}
+          {e.stage || e.difficulty || e.format || "Open question"}
         </span>
         <button onClick={() => openDetail(e)}>
           {e.sources?.length || 0} sources <ArrowRight size={14} />
@@ -396,6 +480,7 @@ function App() {
   const [mobile, setMobile] = useState(false);
   const [sourceType, setSourceType] = useState("all");
   const [guide, setGuide] = useState(false);
+  const [newOnly, setNewOnly] = useState(false);
   const [saved, setSaved] = useState(() => {
     try {
       const value = JSON.parse(
@@ -410,12 +495,27 @@ function App() {
   });
   const searchRef = useRef(null);
   const dialogRef = useRef(null);
+  const routeRef = useRef(route);
+  routeRef.current = route;
   const { view, category } = route;
   const detail = entryMap.get(route.entry);
   const dialogOpen = !!detail || guide;
   useEffect(() => {
     const update = () => {
-      setRoute(getRoute());
+      const next = getRoute();
+      if (
+        next.view !== routeRef.current.view ||
+        next.category !== routeRef.current.category
+      ) {
+        setFocus("all");
+        setStage("all");
+        setTag("all");
+        setNewOnly(false);
+        setSourceType("all");
+        setQuery("");
+      }
+      routeRef.current = next;
+      setRoute(next);
       setMobile(false);
     };
     window.addEventListener("hashchange", update);
@@ -522,9 +622,12 @@ function App() {
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   }, []);
-  function navigate(next, cat = category, entry) {
+  function navigate(next, cat = category, entry, path = null) {
     setMobile(false);
     if (next !== view) {
+      setNewOnly(false);
+      setSourceType("all");
+      if (next !== "search") setQuery("");
       setTag("all");
       setStage("all");
       setFocus("all");
@@ -532,16 +635,19 @@ function App() {
     const p = new URLSearchParams();
     if (cat !== "all") p.set("category", cat);
     if (entry) p.set("entry", entry);
+    if (path) p.set("path", path);
     window.location.hash = next + (p.size ? "?" + p.toString() : "");
-    setRoute(getRoute());
+    const nextRoute = getRoute();
+    routeRef.current = nextRoute;
+    setRoute(nextRoute);
   }
   function openDetail(e) {
     setGuide(false);
-    navigate(view, category, e.kind + ":" + e.id);
+    navigate(view, category, e.kind + ":" + e.id, route.path);
   }
   function closeDetail() {
     setGuide(false);
-    navigate(view, category);
+    navigate(view, category, undefined, route.path);
   }
   function save(e) {
     const key = e.kind + ":" + e.id;
@@ -566,6 +672,7 @@ function App() {
     );
   }
   function clearFilters() {
+    setNewOnly(false);
     setFocus("all");
     setQuery("");
     setTag("all");
@@ -574,10 +681,20 @@ function App() {
     navigate(view, "all");
   }
   const matches = (e) =>
+    (!(newOnly && ["companies", "overview"].includes(view)) || e.added) &&
     (category === "all" || e.category === category) &&
     (focus === "all" || e.focus === focus) &&
     (tag === "all" || e.tags?.includes(tag)) &&
-    (stage === "all" || e.stage === stage || e.difficulty === stage) &&
+    (stage === "all" ||
+      e.stage === stage ||
+      e.difficulty === stage ||
+      e.format === stage ||
+      e.level === stage) &&
+    (view !== "resources" ||
+      !route.path ||
+      resourcePaths
+        .find((r) => r.id === route.path)
+        .categories.includes(e.category)) &&
     (!query ||
       normalize(
         [
@@ -591,6 +708,10 @@ function App() {
           e.problem,
           e.why,
           e.hypothesis,
+          e.edge,
+          e.author,
+          e.learn,
+          e.contacts?.founders?.map((f) => f.name).join(" "),
         ].join(" "),
       ).includes(normalize(query)));
   const visible = useMemo(() => {
@@ -599,13 +720,15 @@ function App() {
         ? allEntries.filter((e) => e.kind === "problem")
         : view === "experiments"
           ? allEntries.filter((e) => e.kind === "experiment")
-          : view === "saved"
-            ? allEntries.filter((e) => saved.includes(e.kind + ":" + e.id))
-            : view === "search"
-              ? allEntries
-              : allEntries.filter((e) => e.kind === "company");
+          : view === "resources"
+            ? allEntries.filter((e) => e.kind === "resource")
+            : view === "saved"
+              ? allEntries.filter((e) => saved.includes(e.kind + ":" + e.id))
+              : view === "search"
+                ? allEntries
+                : allEntries.filter((e) => e.kind === "company");
     return entries.filter(matches);
-  }, [view, category, query, tag, stage, focus, saved]);
+  }, [view, category, query, tag, stage, focus, saved, route.path, newOnly]);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [view, category]);
@@ -629,6 +752,7 @@ function App() {
                 (category === "all" || e.category === category) &&
                 ((view === "problems" && e.kind === "problem") ||
                   (view === "experiments" && e.kind === "experiment") ||
+                  (view === "resources" && e.kind === "resource") ||
                   (["overview", "companies"].includes(view) &&
                     e.kind === "company") ||
                   ["saved", "search"].includes(view)),
@@ -653,6 +777,17 @@ function App() {
         ).includes(normalize(query))),
   );
   const activeCat = catById[category];
+  const fieldCount = (id) =>
+    (view === "resources"
+      ? data.resources
+      : view === "problems"
+        ? data.problems
+        : view === "experiments"
+          ? data.experiments
+          : view === "saved"
+            ? allEntries.filter((e) => saved.includes(e.kind + ":" + e.id))
+            : data.companies
+    ).filter((e) => e.category === id).length;
 
   return (
     <>
@@ -675,23 +810,29 @@ function App() {
         <a
           href="#overview"
           className="brand"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setQuery("");
             setTag("all");
             setStage("all");
+            setFocus("all");
+            setNewOnly(false);
+            setSourceType("all");
+            navigate("overview", "all");
           }}
         >
           <span className="brand-mark">
-            <Glyph />
+            <BrandMark />
           </span>
           <span>
-            field<span className="brand-serif">atlas</span>
-            <small>EMBODIED INTELLIGENCE</small>
+            MORPH
+            <small>PHYSICAL INTELLIGENCE INDEX</small>
           </span>
         </a>
         <div className="sidebar-section">
           <span className="eyebrow">RESEARCH INDEX</span>
           <button
+            aria-current={view === "overview" ? "page" : undefined}
             className={
               "side-overview " + (view === "overview" ? "selected" : "")
             }
@@ -706,6 +847,7 @@ function App() {
           <div className="category-nav">
             {categories.map((c) => (
               <button
+                aria-pressed={category === c.id}
                 className={category === c.id ? "selected" : ""}
                 key={c.id}
                 onClick={() => selectCategory(c.id)}
@@ -715,9 +857,7 @@ function App() {
                   style={{ background: c.color }}
                 />
                 <span>{c.short}</span>
-                <small>
-                  {data.companies.filter((e) => e.category === c.id).length}
-                </small>
+                <small>{fieldCount(c.id)}</small>
               </button>
             ))}
           </div>
@@ -727,11 +867,23 @@ function App() {
           <button
             onClick={() => {
               setQuery("");
+              navigate("resources", "all");
+            }}
+            className={view === "resources" ? "selected" : ""}
+            aria-current={view === "resources" ? "page" : undefined}
+          >
+            <GraduationCap size={17} />
+            Essentials<span>{data.resources?.length || 0}</span>
+          </button>
+          <button
+            onClick={() => {
+              setQuery("");
               setTag("all");
               setStage("all");
               navigate("problems", "all");
             }}
             className={view === "problems" ? "selected" : ""}
+            aria-current={view === "problems" ? "page" : undefined}
           >
             <GitBranch size={17} />
             Open problems<span>{data.problems.length}</span>
@@ -744,6 +896,7 @@ function App() {
               navigate("experiments", "all");
             }}
             className={view === "experiments" ? "selected" : ""}
+            aria-current={view === "experiments" ? "page" : undefined}
           >
             <FlaskConical size={17} />
             Experiments<span>{data.experiments.length}</span>
@@ -756,6 +909,7 @@ function App() {
               navigate("saved", "all");
             }}
             className={view === "saved" ? "selected" : ""}
+            aria-current={view === "saved" ? "page" : undefined}
           >
             <Bookmark size={17} />
             Reading list<span>{saved.length}</span>
@@ -765,14 +919,14 @@ function App() {
           <div className="edition">
             <span className="edition-dot" />
             <span>
-              RESEARCH EDITION 01<small>Reviewed 7 October 2026</small>
+              RESEARCH EDITION 02<small>Reviewed 7 October 2026</small>
             </span>
           </div>
           <button className="method-link" onClick={() => setGuide(true)}>
             How to read this map <ArrowUpRight size={15} />
           </button>
           <a
-            href="https://github.com/preetchangede/robotics_map"
+            href="https://github.com/preetchangede/robotics_map/tree/work"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -799,7 +953,7 @@ function App() {
             <Menu size={21} />
           </button>
           <div className="breadcrumb">
-            THE RESEARCH ATLAS <span>/</span>
+            MORPH INDEX <span>/</span>
             <strong>
               {activeCat?.short ||
                 (view === "saved" ? "Reading list" : "All fields")}
@@ -840,8 +994,8 @@ function App() {
               <h1>
                 {view === "overview" ? (
                   <>
-                    Intelligence,
-                    <br className="desktop-break" /> <em>out in the world.</em>
+                    Intelligence
+                    <br className="desktop-break" /> <em>takes shape.</em>
                   </>
                 ) : view === "saved" ? (
                   <>
@@ -850,6 +1004,10 @@ function App() {
                 ) : view === "sources" ? (
                   <>
                     Follow the <em>evidence.</em>
+                  </>
+                ) : view === "resources" ? (
+                  <>
+                    The essential <em>syllabus.</em>
                   </>
                 ) : view === "experiments" ? (
                   <>
@@ -870,49 +1028,32 @@ function App() {
                   </>
                 ) : (
                   <>
-                    Exceptional companies.
-                    <br />
-                    <em>Deeper context.</em>
+                    Meet the <em>builders.</em>
                   </>
                 )}
               </h1>
               <p className="intro-description">
                 {view === "overview"
-                  ? "A selective map of the companies, ideas, and unsolved problems shaping embodied intelligence. Follow the connections. Go a layer deeper."
+                  ? "Exceptional builders. Critical questions. Ideas to try. A connected map of intelligence in the physical world."
                   : view === "saved"
-                    ? "Keep the companies, problems, and experiments you want to return to. Saved in this browser."
+                    ? "Your trail through the index. Bookmarks stay in this browser."
                     : view === "sources"
-                      ? "Primary research, technical resources, and practitioner discussions. Every source leads back to the entries it informs."
-                      : view === "experiments"
-                        ? "Test a real hypothesis. Build something small. Learn where the technology breaks. Each proposed experiment has controls, resources, and a measurable outcome."
-                        : view === "problems"
-                          ? "The gap between an impressive demonstration and a dependable system. Concrete research questions, with evidence and approaches worth watching."
-                          : view === "search"
-                            ? `Search companies, critical problems, and experiments together.${query ? " Results for “" + query + "”." : ""}`
-                            : activeCat
-                              ? activeCat.question
-                              : "Selected for technical ambition, meaningful differentiation, and a credible path to value. Read the evidence and its limits together."}
+                      ? "Papers, code, technical posts, and practitioner discussions — linked to the ideas they inform."
+                      : view === "resources"
+                        ? "A small shelf with a large payoff. Read the mechanisms, watch the reasoning, build your intuition."
+                        : view === "experiments"
+                          ? "Test a real hypothesis. Build something small. Learn where the technology breaks. Each proposed experiment has controls, resources, and a measurable outcome."
+                          : view === "problems"
+                            ? "The gap between an impressive demonstration and a dependable system. Concrete research questions, with evidence and approaches worth watching."
+                            : view === "search"
+                              ? `Search companies, critical problems, and experiments together.${query ? " Results for “" + query + "”." : ""}`
+                              : activeCat
+                                ? activeCat.question
+                                : "Technical ambition, a valuable problem, and evidence worth following."}
               </p>
             </div>
             <div className="intro-aside">
-              <span className="eyebrow">A MAP, NOT A LEADERBOARD</span>
-              <p>
-                {view === "overview" ? (
-                  <>
-                    The interesting work happens
-                    <br />
-                    between the categories.
-                  </>
-                ) : activeCat ? (
-                  activeCat.description
-                ) : (
-                  <>
-                    Technical substance.
-                    <br />
-                    Sources you can follow.
-                  </>
-                )}
-              </p>
+              <IntroFigure />
               <div className="atlas-stats">
                 <span>
                   <strong>{data.companies.length}</strong>companies
@@ -931,6 +1072,7 @@ function App() {
               <button
                 key={id}
                 className={view === id ? "active" : ""}
+                aria-current={view === id ? "page" : undefined}
                 onClick={() => {
                   setQuery("");
                   setTag("all");
@@ -943,6 +1085,40 @@ function App() {
               </button>
             ))}
           </nav>
+          {view === "resources" && (
+            <section
+              className="resource-paths"
+              aria-label="Essential reading paths"
+            >
+              {resourcePaths.map((p, i) => (
+                <button
+                  key={p.id}
+                  className={route.path === p.id ? "selected" : ""}
+                  aria-pressed={route.path === p.id}
+                  onClick={() => {
+                    setQuery("");
+                    setTag("all");
+                    setStage("all");
+                    navigate(
+                      "resources",
+                      "all",
+                      undefined,
+                      route.path === p.id ? null : p.id,
+                    );
+                  }}
+                >
+                  <span className="eyebrow">
+                    PATH {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <strong>
+                    {p.title}
+                    <ArrowUpRight size={17} />
+                  </strong>
+                  <p>{p.description}</p>
+                </button>
+              ))}
+            </section>
+          )}
           {view === "overview" && (
             <section
               className="landscape-section"
@@ -1111,11 +1287,14 @@ function App() {
                       ? "Saved for later"
                       : view === "experiments"
                         ? "The experimental notebook"
-                        : view === "problems"
-                          ? "Research frontiers"
-                          : view === "search"
-                            ? "Research results"
-                            : "The company index"}
+                        : view === "resources"
+                          ? resourcePaths.find((p) => p.id === route.path)
+                              ?.title || "The essential shelf"
+                          : view === "problems"
+                            ? "Research frontiers"
+                            : view === "search"
+                              ? "Research results"
+                              : "The company index"}
                   <span>
                     {view === "overview"
                       ? data.companies.length
@@ -1157,6 +1336,29 @@ function App() {
                   </div>
                 </div>
               </div>
+              {view === "companies" && (
+                <div
+                  className="discovery-switch"
+                  aria-label="Company discovery"
+                >
+                  <button
+                    aria-pressed={!newOnly}
+                    className={!newOnly ? "selected" : ""}
+                    onClick={() => setNewOnly(false)}
+                  >
+                    All builders
+                  </button>
+                  <button
+                    aria-pressed={newOnly}
+                    className={newOnly ? "selected" : ""}
+                    onClick={() => setNewOnly(true)}
+                  >
+                    New bearings
+                    <span>{data.companies.filter((e) => e.added).length}</span>
+                  </button>
+                  <small>Selected in this edition</small>
+                </div>
+              )}
               {filters && (
                 <div id="research-filters" className="filters-panel">
                   <label>
@@ -1206,31 +1408,51 @@ function App() {
                   </label>
                   {view !== "problems" && (
                     <label>
-                      {view === "experiments"
-                        ? "Build difficulty"
-                        : "Evidence stage"}
+                      {view === "resources"
+                        ? "Resource format"
+                        : view === "experiments"
+                          ? "Build difficulty"
+                          : "Evidence stage"}
                       <select
                         aria-label={
-                          view === "experiments"
-                            ? "Build difficulty"
-                            : "Evidence stage"
+                          view === "resources"
+                            ? "Resource format"
+                            : view === "experiments"
+                              ? "Build difficulty"
+                              : "Evidence stage"
                         }
                         value={stage}
                         onChange={(e) => setStage(e.target.value)}
                       >
-                        <option value="all">All stages</option>
-                        {(view === "experiments"
-                          ? ["Starter", "Intermediate", "Advanced"]
-                          : [
-                              "Demonstrated",
-                              "Pilot",
-                              "Deployed",
-                              "Research",
-                              "Platform",
-                              ...(["saved", "search"].includes(view)
-                                ? ["Starter", "Intermediate", "Advanced"]
-                                : []),
-                            ]
+                        <option value="all">
+                          {view === "resources"
+                            ? "All formats"
+                            : view === "experiments"
+                              ? "All difficulties"
+                              : "All stages"}
+                        </option>
+                        {(view === "resources"
+                          ? ["Read", "Watch", "Build", "Follow"]
+                          : view === "experiments"
+                            ? ["Starter", "Intermediate", "Advanced"]
+                            : [
+                                "Demonstrated",
+                                "Pilot",
+                                "Deployed",
+                                "Research",
+                                "Platform",
+                                ...(["saved", "search"].includes(view)
+                                  ? [
+                                      "Starter",
+                                      "Intermediate",
+                                      "Advanced",
+                                      "Read",
+                                      "Watch",
+                                      "Build",
+                                      "Follow",
+                                    ]
+                                  : []),
+                              ]
                         ).map((s) => (
                           <option key={s}>{s}</option>
                         ))}
@@ -1281,20 +1503,16 @@ function App() {
               >
                 {(view === "overview"
                   ? visible.filter((e) =>
-                      [
-                        "physical-intelligence",
-                        "monumental",
-                        "world-labs",
-                        "playcanvas",
-                      ].includes(e.id),
+                      ["galaxea", "bedrock-ocean", "arrival-space"].includes(
+                        e.id,
+                      ),
                     ).length >= 3
                     ? visible
                         .filter((e) =>
                           [
-                            "physical-intelligence",
-                            "monumental",
-                            "world-labs",
-                            "playcanvas",
+                            "galaxea",
+                            "bedrock-ocean",
+                            "arrival-space",
                           ].includes(e.id),
                         )
                         .slice(0, 3)
@@ -1337,13 +1555,13 @@ function App() {
           )}
           <footer>
             <span className="footer-brand">
-              field<em>atlas</em>
+              <BrandMark /> MORPH
             </span>
-            <p>Curated research. Verifiable sources. Room for uncertainty.</p>
+            <p>Physical intelligence, with context.</p>
             <button onClick={() => setGuide(true)}>
               Methodology & limitations <ArrowUpRight size={14} />
             </button>
-            <small>Edition 01 · 7 Oct 2026</small>
+            <small>Edition 02 · 7 Oct 2026</small>
           </footer>
         </main>
       </div>
@@ -1365,7 +1583,7 @@ function App() {
               <span className="eyebrow">
                 {guide
                   ? "THE RESEARCH LENS"
-                  : `${detail.kind === "company" ? "COMPANY PROFILE" : detail.kind === "problem" ? "OPEN PROBLEM" : "EXPERIMENT NOTE"} / ${catById[detail.category].short}`}
+                  : `${detail.kind === "company" ? "COMPANY PROFILE" : detail.kind === "problem" ? "OPEN PROBLEM" : detail.kind === "resource" ? "ESSENTIAL RESOURCE" : "EXPERIMENT NOTE"} / ${catById[detail.category].short}`}
               </span>
               <div>
                 {!guide && (
@@ -1409,6 +1627,8 @@ function App() {
                     <span className="detail-subcategory">
                       {detail.subcategory ||
                         detail.difficulty ||
+                        (detail.kind === "resource" &&
+                          `${detail.format} · ${detail.author}`) ||
                         "Critical research question"}
                     </span>
                     <h2 id="detail-title">{detail.name || detail.title}</h2>
@@ -1428,7 +1648,59 @@ function App() {
                         Company website <ArrowUpRight size={16} />
                       </a>
                     )}
+                    {detail.kind === "resource" && (
+                      <a
+                        className="primary-link resource-launch"
+                        href={detail.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {detail.format === "Watch" ? (
+                          <Play size={16} />
+                        ) : (
+                          <BookOpen size={16} />
+                        )}{" "}
+                        {detail.format === "Build"
+                          ? "Open the project"
+                          : detail.format === "Follow"
+                            ? "Follow the work"
+                            : `Start ${detail.format.toLowerCase()}ing`}
+                        <ArrowUpRight size={16} />
+                      </a>
+                    )}
                   </div>
+                  {detail.kind === "company" && (
+                    <nav
+                      className="profile-jumps"
+                      aria-label="Company profile sections"
+                    >
+                      {[
+                        ["technology", "Technology"],
+                        ["evidence", "Evidence"],
+                        ["founders", "Founders"],
+                        ["entry-sources", "Sources"],
+                      ].map(([id, label]) => (
+                        <button
+                          key={id}
+                          onClick={() => {
+                            const target = document.getElementById(id);
+                            target?.focus({ preventScroll: true });
+                            target?.scrollIntoView({
+                              behavior: window.matchMedia(
+                                "(prefers-reduced-motion: reduce)",
+                              ).matches
+                                ? "instant"
+                                : "smooth",
+                              block: "start",
+                            });
+                          }}
+                        >
+                          {label}
+                          <ChevronDown size={12} />
+                        </button>
+                      ))}
+                    </nav>
+                  )}
                   {detail.kind === "company" ? (
                     <>
                       <DetailSection
@@ -1437,6 +1709,7 @@ function App() {
                         text={detail.thesis}
                       />
                       <DetailSection
+                        id="technology"
                         label="UNDER THE HOOD"
                         title="Core technology & approach"
                         text={detail.technology}
@@ -1446,7 +1719,12 @@ function App() {
                         title="The problem it solves"
                         text={detail.problem}
                       />
-                      <section className="detail-section">
+                      <section
+                        id="evidence"
+                        tabIndex="-1"
+                        aria-label="Evidence"
+                        className="detail-section"
+                      >
                         <span className="eyebrow">EVIDENCE, WITH CONTEXT</span>
                         <h3>What is verifiable</h3>
                         <div className="evidence-list">
@@ -1468,6 +1746,10 @@ function App() {
                           ))}
                         </div>
                       </section>
+                      <FounderContacts
+                        key={detail.id}
+                        contacts={detail.contacts}
+                      />
                     </>
                   ) : detail.kind === "problem" ? (
                     <>
@@ -1485,6 +1767,38 @@ function App() {
                         label="A USEFUL SIGNAL"
                         title="What to watch"
                         text={detail.whatToWatch}
+                      />
+                    </>
+                  ) : detail.kind === "resource" ? (
+                    <>
+                      <div className="build-specs">
+                        <div>
+                          <span>FORMAT</span>
+                          <strong>{detail.format}</strong>
+                        </div>
+                        <div>
+                          <span>DEPTH</span>
+                          <strong>{detail.level}</strong>
+                        </div>
+                        <div>
+                          <span>TIME</span>
+                          <strong>{detail.time}</strong>
+                        </div>
+                      </div>
+                      <DetailSection
+                        label="THE PAYOFF"
+                        title="Why this earns a place"
+                        text={detail.why}
+                      />
+                      <DetailSection
+                        label="TAKE AWAY"
+                        title="What you will understand"
+                        text={detail.learn}
+                      />
+                      <DetailSection
+                        label="BEFORE YOU START"
+                        title="Prerequisites"
+                        text={detail.prerequisite}
                       />
                     </>
                   ) : (
@@ -1538,7 +1852,12 @@ function App() {
                       <p>{detail.caveat}</p>
                     </aside>
                   )}
-                  <section className="detail-section">
+                  <section
+                    id="entry-sources"
+                    tabIndex="-1"
+                    aria-label="Sources"
+                    className="detail-section"
+                  >
                     <div className="sources-heading">
                       <div>
                         <span className="eyebrow">GO DEEPER</span>
@@ -1563,12 +1882,115 @@ function App() {
     </>
   );
 }
-function DetailSection({ label, title, text }) {
+function DetailSection({ label, title, text, id }) {
   return (
-    <section className="detail-section">
+    <section
+      id={id}
+      tabIndex={id ? "-1" : undefined}
+      aria-label={id ? title : undefined}
+      className="detail-section"
+    >
       <span className="eyebrow">{label}</span>
       <h3>{title}</h3>
       <p>{Array.isArray(text) ? text.join(" ") : text}</p>
+    </section>
+  );
+}
+function FounderContacts({ contacts }) {
+  const [expanded, setExpanded] = useState(false);
+  if (!contacts) return null;
+  const labels = {
+    primary: "Primary-linked",
+    corroborated: "Corroborated",
+    restricted: "Access limited",
+  };
+  return (
+    <section
+      id="founders"
+      tabIndex="-1"
+      aria-label="Founders and contact routes"
+      className="detail-section founder-section"
+    >
+      <span className="eyebrow">THE PEOPLE</span>
+      <h3>Founders & contact routes</h3>
+      <p className="founder-intro">
+        Public professional channels. Each route has its own provenance.
+      </p>
+      {(expanded ? contacts.founders : contacts.founders.slice(0, 3)).map(
+        (f) => (
+          <article className="founder-card" key={f.name}>
+            <header>
+              <div>
+                <h4>{f.name}</h4>
+                <p>{f.role}</p>
+              </div>
+              <a href={f.roleSource} target="_blank" rel="noopener noreferrer">
+                Role source
+                <ArrowUpRight size={13} />
+              </a>
+            </header>
+            <div className="founder-channels">
+              {f.channels.map((ch, i) => (
+                <a
+                  key={ch.url + ":" + i}
+                  href={ch.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {ch.kind === "email" ? (
+                    <Mail size={14} />
+                  ) : (
+                    <ArrowUpRight size={14} />
+                  )}
+                  <span>{ch.label}</span>
+                  {ch.kind === "company" && <small>Company route</small>}
+                </a>
+              ))}
+            </div>
+            <details>
+              <summary>
+                Where found & how checked <ChevronDown size={13} />
+              </summary>
+              <div className="contact-provenance">
+                {f.channels.map((ch, i) => (
+                  <div key={ch.url + ":" + i}>
+                    <span className="contact-status">
+                      {labels[ch.verification] || ch.verification}
+                    </span>
+                    <strong>{ch.label}</strong>
+                    <p>{ch.note}</p>
+                    <a
+                      href={ch.provenance}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View provenance
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </details>
+          </article>
+        ),
+      )}
+      {contacts.founders.length > 3 && (
+        <button
+          className="more-founders"
+          aria-expanded={expanded}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded
+            ? "Show fewer founders"
+            : `Show all ${contacts.founders.length} founders`}
+          <ChevronDown size={14} />
+        </button>
+      )}
+      {contacts.note && <p className="contact-note">{contacts.note}</p>}
+      <small className="contact-reviewed">
+        Contact provenance reviewed {contacts.reviewed}. Profile links identify
+        a channel; they do not establish inbox availability.
+      </small>
     </section>
   );
 }
@@ -1605,7 +2027,7 @@ function Related({ detail, onOpen }) {
         (e.kind !== detail.kind ? 1 : 0),
     }))
     .sort((a, b) => b.score - a.score);
-  const diversified = ["company", "problem", "experiment"]
+  const diversified = ["company", "problem", "experiment", "resource"]
     .map((kind) => related.find((item) => item.e.kind === kind))
     .filter(Boolean);
   return (
@@ -1627,7 +2049,9 @@ function Related({ detail, onOpen }) {
                 ? "Company"
                 : e.kind === "problem"
                   ? "Open problem"
-                  : "Experiment"}{" "}
+                  : e.kind === "resource"
+                    ? "Essential resource"
+                    : "Experiment"}{" "}
               · {catById[e.category].short}
             </small>
             <strong>{e.name || e.title}</strong>
@@ -1641,7 +2065,7 @@ function Related({ detail, onOpen }) {
 function Guide() {
   return (
     <div className="guide">
-      <span className="intro-kicker">EDITION 01 / RESEARCH METHOD</span>
+      <span className="intro-kicker">EDITION 02 / RESEARCH METHOD</span>
       <h2 id="detail-title">
         A useful map has
         <br />
@@ -1676,6 +2100,16 @@ function Guide() {
         label="THE BUILDS"
         title="Experiments are proposals, not completed benchmarks"
         text="Each experiment describes a testable hypothesis, controls, practical requirements, and an evaluation metric. Setup and run time are estimates. Licenses, GPU requirements, checkpoints, archived repositories, platform support, and paid features need checking before you invest in a build. Start with a small baseline and record failures as carefully as successes."
+      />
+      <DetailSection
+        label="THE PEOPLE"
+        title="Contact provenance, not guessed addresses"
+        text="Founder roles and contact channels have separate provenance. We use publicly published professional emails, primary-linked profiles, or corroborated professional pages. Restricted profiles are marked; a company contact route is a fallback, not a direct founder inbox. Historical founders, advisory roles, and acquisition status remain explicit. Verification establishes the published route and identity, not whether someone will receive or answer a message."
+      />
+      <DetailSection
+        label="THE SYLLABUS"
+        title="Read for mechanisms and judgment"
+        text="Essentials earn a place by explaining a mechanism, exposing an important limitation, or providing a practical learning loop. The paths group related fields; read the prerequisites and version notes before a build. Study-time estimates include inspection and notes. Videos were verified through primary indexes and available metadata; playback and every full transcript were not audited."
       />
       <DetailSection
         label="KEEPING IT CURRENT"

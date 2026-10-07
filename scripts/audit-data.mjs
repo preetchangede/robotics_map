@@ -23,7 +23,12 @@ const sourceTypes = [
   "x",
   "reddit",
 ];
-const all = [...data.companies, ...data.problems, ...data.experiments];
+const all = [
+  ...data.companies,
+  ...data.problems,
+  ...data.experiments,
+  ...data.resources,
+];
 const ids = new Set();
 const sources = new Map();
 function url(v) {
@@ -90,6 +95,49 @@ for (const e of data.companies) {
     ),
   );
   assert(e.evidence.length >= 1);
+  text(e, "edge");
+  assert(e.edge.length <= 130, `${e.id}: card edge too long`);
+  const contact = e.contacts;
+  assert(
+    contact && Array.isArray(contact.founders) && contact.founders.length,
+    `${e.id}: missing founder provenance`,
+  );
+  assert.equal(contact.reviewed, "2026-10-07");
+  text(contact, "note");
+  for (const f of contact.founders) {
+    text(f, "name");
+    text(f, "role");
+    url(f.roleSource);
+    assert(
+      f.channels.length,
+      `${e.id}: no verified route or explicit company fallback`,
+    );
+    for (const ch of f.channels) {
+      for (const k of ["label", "note", "provenance"]) text(ch, k);
+      url(ch.provenance);
+      assert(["email", "profile", "website", "company"].includes(ch.kind));
+      if (ch.kind === "email")
+        assert(
+          ch.url.startsWith("mailto:"),
+          `${e.id}: individual email must use an explicitly published address`,
+        );
+      assert(
+        ["primary", "corroborated", "restricted"].includes(ch.verification),
+      );
+      if (ch.url.startsWith("mailto:")) {
+        assert(["email", "company"].includes(ch.kind));
+        assert(
+          /^mailto:[^\s?]+@[^\s?]+$/.test(ch.url),
+          `${e.id}: malformed published email`,
+        );
+        assert.equal(
+          ch.verification,
+          "primary",
+          `${e.id}: email not verified from readable primary publication`,
+        );
+      } else url(ch.url);
+    }
+  }
   for (const v of e.evidence) {
     text(v, "label");
     text(v, "text");
@@ -99,6 +147,29 @@ for (const e of data.companies) {
       `${e.id}: evidence URL missing from source library`,
     );
   }
+}
+for (const e of data.resources) {
+  for (const k of [
+    "title",
+    "author",
+    "why",
+    "learn",
+    "prerequisite",
+    "time",
+    "url",
+    "caveat",
+  ])
+    text(e, k);
+  url(e.url);
+  assert(["Read", "Watch", "Build", "Follow"].includes(e.format));
+  assert(["Foundational", "Deep dive", "Practical"].includes(e.level));
+  assert(e.summary.length <= 160);
+  assert(e.why.length <= 250);
+  assert(e.learn.length <= 300);
+  assert(
+    e.sources.some((s) => s.url === e.url),
+    `${e.id}: main resource absent from evidence`,
+  );
 }
 for (const e of data.problems) {
   for (const k of ["title", "why", "approaches", "whatToWatch"]) text(e, k);
@@ -123,10 +194,12 @@ for (const c of categories) {
   assert(data.companies.some((e) => e.category === c));
   assert.equal(data.problems.filter((e) => e.category === c).length, 3);
   assert(data.experiments.some((e) => e.category === c));
+  assert(data.resources.some((e) => e.category === c));
 }
-assert.equal(data.companies.length, 36);
+assert(data.companies.length > 36);
 assert.equal(data.problems.length, 21);
 assert.equal(data.experiments.length, 16);
+assert(data.resources.length >= 21);
 console.log(
   `Data audit passed: ${all.length} entries, ${sources.size} distinct sources, 7 complete categories, no dangling relationships.`,
 );

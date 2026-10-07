@@ -1,48 +1,54 @@
-# Edition 01 integration audit
+# Edition 02 integration audit
 
-Reviewed 7 October 2026. The six research workstreams used primary sites, papers, repositories, technical documentation, credible reporting, direct Reddit discussions, and exact X permalinks. Detailed source/access records remain in their corresponding notes files.
+Reviewed 7 October 2026. MORPH expands the original Field Atlas with deeper company selection, public professional contact provenance, an essential syllabus, and a new visual identity. The six research workstreams and independent cross-workstream reviews used primary websites, papers, code, technical documentation, founder accounts, customer material, credible reporting, Reddit and exact X references.
 
-## Scope and selection
+## Coverage
 
-36 companies across seven fields: 4 general-purpose robotics, 6 foundation models, 8 niche applications, 4 simulation/synthetic-data providers, 4 world-model companies, 4 digital-twin providers, 6 reconstruction/splatting companies. There are 21 critical problems (three per category) and 16 proposed experiments spanning every category. Infrastructure anchors and specialist companies are included for different reasons; inclusion is not a ranked endorsement.
+60 companies: 8 general-purpose robotics, 8 foundation models, 13 applied robotics, 6 simulation/data, 7 world models, 7 digital twins, and 11 spatial reconstruction providers. The 24 additions cover all seven fields. Selected technical wedges include human-matched skill capture, unified reasoning/action tokens, tactile body co-design, underwater mapping, charging connector manipulation, remote forestry, sensor radiometry, reduced-order structural models, browser reconstruction, and building-to-CAD capture.
 
-## Content corrections preserved
+There are 21 critical problems, 16 proposed experiments and 30 essential Read/Watch/Build/Follow resources. Four existing problem profiles gained deeper primary evidence, including learner-state shift, outcome/provenance of imperfect rollouts, paired reconstructed-scene evaluation, and control-relevant representations.
 
-- World Labs/AMD and Cognite/Schneider: announced agreements, closing not established at review.
-- FieldAI: later financing report describes a term sheet; do not substitute it for confirmed closed capital.
-- Gecko's Navy IDIQ: a ceiling, not realized revenue.
-- Skild S1: cumulative per-step metric with recoveries; X Square: task-progress metric; Figure: complete-task metric. These are not comparable percentages.
-- Sunday: scoped garment-folding result; 1X: demonstrated autonomy plus remote expert assistance and delivery plans, not independently established broad consumer delivery.
-- Agility Digit 5 remains development rather than the basis of its existing deployments.
-- Scaniverse belongs to Niantic Spatial. SuperSplat belongs to PlayCanvas. Postshot belongs to Jawset. Academic simulators and research projects appear as resources, not fictitious companies.
-- Gracia examples/documentation licensing does not imply an open reconstruction/runtime stack.
-- Splat rendering, collision geometry, spatial localization, and physically calibrated twins remain distinct capabilities.
+Founder provenance covers every company, with 155 named founder/founding-team/operator records and 240 channels. These are record counts, not unique people. The 19 unique individual professional emails are explicitly published on company, institutional, personal professional or official project pages. Delivery and response were not tested. Public company inboxes remain company routes, including their mailto URLs. Private phones/addresses, guesses, and broker-derived emails were excluded; no outreach occurred.
 
-## Source and integration checks
+## Material distinctions and corrections
 
-312 distinct source URLs after deduplication. Source notes are retained per entry; the library combines annotations when one URL informs several entries. Official docs and patents have separate types. Important claims cite their supporting URL, and every company evidence URL is present in its source list.
+- World Labs/AMD and Cognite/Schneider remain announced agreements without verified legal closing.
+- Fauna belongs to Amazon; Emmi announced its Mistral agreement and team integration, without an invented closing event.
+- Niantic Spatial's founder John Hanke is executive chairman; Inhi Cho Suh became CEO in March 2026. Parallel Domain's Kevin McNamara is CPO. Rendered's Nathan Kundtz is executive chairman. World Labs' Christoph Lassner is an advisor. Historical founders and changed executive roles stay explicit.
+- Genesis-World's academic origin/current company support do not expose Genesis AI's production model or training corpus.
+- Galaxea's G0.5 has noncommercial terms and restricts customer/partner demos and hosted endpoints even when free; dataset access requests contact sharing. Gene.01 has a simplified, noncommercial robot model; academic ergoCub evidence is not proof of Gene.01 industrial reliability.
+- Persona's documented welding demonstration is teleoperated, with robot-managed balance. Kodama's teleoperated field operations and autonomy roadmap have different evidence. Rocsys's port deployments and multibay pilot have different maturity.
+- Fulfil's customer confirms employee handoff; automated pick/pack is not an entirely labor-free grocery operation.
+- Rendered's crane study required adapted-synthetic pretraining followed by real-data training; naive mixing could lower AP. Its IoU evaluation and below-deployment scores are stated. Luminary's intervals concern reference-CFD error and average calibration-distribution coverage, not every-point certification or physical truth.
+- AMI LeVJEPA is a representation component, not a deployed action planner. Min Lin remains labeled a founding team member where primary individual titles were not established.
+- SpAItial reserves dynamics/physical reasoning for future work. Splatica's physics preparation is vendor-described, without independent transfer validation. Solaya robotics is coming soon. Amrax's enterprise building capture is a public beta. KIRI's splat/mesh/measured-surface distinctions remain clear.
+- FieldAI term-sheet reports, Gecko contract ceilings, task-progress versus complete-task metrics, scoped garment folding, remote assistance and prospective consumer deliveries retain the original qualification.
+- Rendering appearance, collision geometry, localization, synchronized operational state and validated physical twins remain separate capabilities.
 
-Company/source URLs were reviewed by the research agents through browser reads and indexed primary material. Some X posts and a small number of JS-heavy or access-controlled primary pages could not be read directly; those cases are documented, and no essential technical claim depends solely on an unread social post. Shell HTTP requests to most external domains are blocked by this cloud environment's network policy, so those 403 responses were not misreported as broken websites.
+## Sources and verification scope
 
-An independent cross-workstream review rechecked acquisition disclosures, selected financial/research metrics, source classification, category boundaries, and cross-category gaps. The integration normalized duplicate tag spellings, added subcategories and curated problem/experiment relationships, diversified related suggestions across entity kinds, and surfaced technical edge explanations.
+509 deduplicated source-library URLs, including 50 Reddit discussions and 15 exact X permalinks. Founder role and contact-provenance URLs are separately available in profiles; they are not artificially counted as additional source-library entries. Source annotations remain attached to the actual entry and are combined in the library when a URL is reused.
 
-## Verification scope
+Research notes enumerate actual primary reads, exact social discovery, exclusions and access limitations. New company source URLs and all main syllabus URLs were opened/attempted; blocked X, LinkedIn 999/login restrictions, paywalls, JS-heavy pages and failed automated retrieval are disclosed. A restricted fetch does not establish a dead website. Every important technical assertion relies on primary or stronger corroborating evidence rather than an unread social post. An independent audit checked the critical boundaries in all four company expansion shards and sampled published emails against their actual provenance.
 
-The application data audit checks 73 entries, complete category coverage, unique IDs, valid HTTPS URLs, source/evidence consistency, recognized stages, proposed experiment status, and all relationship targets. Browser flow checks cover filtering, search, bookmarks, deep links, scroll/focus behavior, responsive navigation, detail content, and source navigation. Automated accessibility checks are paired with screenshot inspection; they do not substitute for a full accessibility certification.
+The syllabus prioritizes mechanisms, constraints and practical learning loops. Resource caveats distinguish offline DROID action agreement from live robot performance, current reimplementations from historic code, scene composition from dynamic-model exchange, rendering from surfaces, and uncertainty frameworks from product certification. Videos were checked through primary indexes and available metadata; not every full transcript/playback was audited. Scientific experiments and Build resources were not execution-tested.
 
-The website build and exploration flows are tested. The scientific experiments and company benchmark results are not reproduced by this project.
+## Application verification
 
-## Final verification results
+- Production build: passes preparation and the integrated data audit (127 entries, seven complete categories, no dangling relationships).
+- Browser audit: 30 passing checks, including 11 axe scans with no reported WCAG A/AA violations in the scanned states; no runtime errors.
+- Regression coverage includes home-filter reset, new-company discovery, browser Back clearing incompatible formats, current navigation semantics, and keyboard section jumps moving focus into the target section.
+- Resource paths survive reload; format filters, learning-payoff details, direct project links, related suggestions and reading-list integration work.
+- Founder channels reveal separate role evidence and channel provenance, with restricted/primary/corroborated labels and explicit company fallbacks.
+- Desktop/mobile screenshots inspected. Additional 320px checks cover founder provenance, resource details and company grids without document/drawer overflow. Closed mobile navigation is excluded from keyboard interaction; navigation scrolls at short heights.
+- Existing Field Atlas bookmarks remain compatible. Invalid storage recovers safely; filtered-empty and truly empty reading lists are distinct.
+- npm dependency audit: zero known vulnerabilities at review.
+- JavaScript: approximately 233 kB gzipped, separated into UI (~15 kB), vendor (~63 kB), and reviewed research (~155 kB). Fonts are self-hosted; fingerprinted assets retain immutable caching.
 
-- `npm run audit`: passed — 73 entries, 312 distinct sources, seven complete categories, no dangling relationships.
-- `npm run build`: passed on Vite 7.3.7; the production JS is approximately 154 kB gzipped, including the research data.
-- `npm test`: passed against the production preview — 23 flow checks, including eight desktop/mobile axe scans with no reported WCAG A/AA violations in those scanned states, and no browser runtime errors.
-- `npm audit`: zero known dependency vulnerabilities after updating Vite to 7.3.7.
-- Screenshots inspected for desktop landscape, profile drawers, mobile company listings, and mobile details; 320px navigation and bookmark-storage recovery verified.
-- Local navigation timing was approximately 262ms in the audit environment; this is a local measurement, not a promise about a visitor's network/device.
+Automated accessibility scans are not certification, and local browser tests do not reproduce scientific or company benchmark outcomes.
 
-The new Vercel project retains its default sign-in protection. A requested preview-only protection setting was rejected by automatic approval review because public production access was not explicitly authorized. No security-setting workaround was applied.
+## Hosting
 
-## Production verification
+Deploy only the reviewed commit to the existing Vercel project and check READY plus authenticated homepage/assets against the local production output. The ordinary production alias is https://robotics-map-puce.vercel.app.
 
-Vercel reported `READY` for the production build of commit `e825455` and confirmed all 36 companies, 21 problems, and 16 experiments in its build log. Authenticated HTTP checks returned 200 for the homepage, JavaScript bundle, and stylesheet; served bundle filenames, lengths, and FNV digests matched the tested local build. Asset responses initially required revalidation, so the final hosting configuration gives fingerprinted JS, CSS, and font assets a one-year immutable browser cache. The production alias is https://robotics-map-puce.vercel.app. Sign-in protection remains enabled; the ordinary URL, rather than an authentication bypass link, is the handoff.
+Vercel sign-in protection remains enabled. Automatic approval review previously rejected making production public without explicit authorization. No protection-setting retry, bypass publication, or security-setting workaround was used in this edition.

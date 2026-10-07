@@ -9,6 +9,20 @@ const files = [
   "simulation-worlds.json",
   "spatial.json",
 ];
+const optional = (file, fallback) =>
+  fs.existsSync(new URL("../research/" + file, import.meta.url))
+    ? read(file)
+    : fallback;
+const shards = ["robotics", "niche", "worlds", "spatial"];
+const contacts = Object.assign(
+  {},
+  ...shards.map((s) => optional(`contacts-${s}.json`, {})),
+);
+const updates = Object.assign(
+  {},
+  ...shards.map((s) => optional(`updates-${s}.json`, {})),
+);
+const editorial = optional("editorial.json", {});
 const taxonomy = read("taxonomy.json");
 const relationships = read("relationships.json");
 const focusById = Object.fromEntries(
@@ -59,7 +73,8 @@ const source = (s) => {
     u.hostname.includes("readthedocs") ||
     u.hostname.includes("cdn-docs.") ||
     u.pathname.startsWith("/docs/") ||
-    u.hostname === "openusd.org"
+    u.hostname === "openusd.org" ||
+    u.hostname === "colmap.github.io"
   )
     type = "docs";
   return { ...s, type };
@@ -73,9 +88,29 @@ const normalize = (e) => ({
 const data = {
   companies: files
     .flatMap(read)
-    .map((e) => normalize({ ...e, focus: focusById[e.id] })),
-  problems: read("problems.json").map(normalize),
-  experiments: read("experiments.json").map(normalize),
+    .concat(
+      shards
+        .flatMap((s) => optional(`expansion-${s}.json`, []))
+        .map((e) => ({ ...e, added: true })),
+    )
+    .map((e) =>
+      normalize({
+        ...e,
+        ...updates[e.id],
+        ...editorial[e.id],
+        focus: focusById[e.id] || e.focus,
+        contacts: contacts[e.id],
+      }),
+    ),
+  problems: read("problems.json").map((e) =>
+    normalize({ ...e, ...optional("updates-problems.json", {})[e.id] }),
+  ),
+  experiments: read("experiments.json").map((e) =>
+    normalize({ ...e, ...optional("updates-experiments.json", {})[e.id] }),
+  ),
+  resources: ["robotics", "spatial"]
+    .flatMap((s) => optional(`resources-${s}.json`, []))
+    .map(normalize),
 };
 fs.mkdirSync(new URL("../src/data", import.meta.url), { recursive: true });
 fs.writeFileSync(
@@ -83,5 +118,5 @@ fs.writeFileSync(
   JSON.stringify(data),
 );
 console.log(
-  `Prepared ${data.companies.length} companies, ${data.problems.length} problems, ${data.experiments.length} experiments.`,
+  `Prepared ${data.companies.length} companies, ${data.problems.length} problems, ${data.experiments.length} experiments, ${data.resources.length} essential resources.`,
 );

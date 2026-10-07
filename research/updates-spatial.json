@@ -1,0 +1,122 @@
+{
+  "niantic-spatial": {
+    "focus": "Geographically anchored capture and localization",
+    "edge": "Connects reconstruction to persistent coordinates and camera localization.",
+    "summary": "Combines 3D capture, reconstruction and visual localization to give machines a geographically anchored understanding of real places.",
+    "related": [
+      "xgrids",
+      "playcanvas",
+      "splatica",
+      "arrival-space"
+    ],
+    "sources": [
+      {
+        "title": "Reconstruct product and capture modes",
+        "url": "https://nianticspatial.com/products/reconstruct",
+        "type": "company",
+        "note": "Current primary product description; distinguishes on-device and enterprise reconstruction."
+      },
+      {
+        "title": "Day One for Niantic Spatial",
+        "url": "https://www.nianticspatial.com/en/blog/niantic-spatial-day-one",
+        "type": "company",
+        "note": "May 2025 separation, initial capital and enterprise ambitions."
+      },
+      {
+        "title": "Niantic Spatial and Snap partnership",
+        "url": "https://www.nianticspatial.com/blog/vps-snap-investment",
+        "type": "company",
+        "note": "Named mapping partnership; company-reported plans and investment."
+      },
+      {
+        "title": "SPZ compression library",
+        "url": "https://github.com/nianticlabs/spz",
+        "type": "code",
+        "note": "MIT source, coordinate-system conversions, format details and browser utility."
+      },
+      {
+        "title": "Cross-View Splatter",
+        "url": "https://nianticspatial.github.io/cross-view-splatter/",
+        "type": "paper",
+        "note": "Primary project page for feed-forward ground/satellite view synthesis; research, not a shipped-product guarantee."
+      },
+      {
+        "title": "Practitioner questions about on-device Scaniverse",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1mdjscn/",
+        "type": "reddit",
+        "note": "Discussion of phone reconstruction speed and quality tradeoffs; practitioner observations, not benchmarks."
+      },
+      {
+        "title": "Current company scope and leadership",
+        "url": "https://nianticspatial.com/about",
+        "type": "company",
+        "note": "Primary company boundary, current leadership and reconstruction/localization products; semantic Understand capability is described as being built."
+      },
+      {
+        "title": "Inhi Cho Suh appointed CEO",
+        "url": "https://www.nianticspatial.com/blog/welcome-inhi-cho-suh",
+        "type": "company",
+        "note": "March 23, 2026 announcement, effective March 30: John Hanke becomes Executive Chairman. Corrects historical CEO references."
+      }
+    ]
+  },
+  "xgrids": {
+    "focus": "SLAM capture hardware and large-scene reconstruction",
+    "edge": "Measured LiDAR structure and camera tracking stabilize capture-to-splat workflows.",
+    "summary": "Builds portable scanners and reconstruction software that fuse LiDAR, motion tracking and imagery into point clouds and Gaussian-splat scenes.",
+    "related": [
+      "volinga",
+      "playcanvas",
+      "niantic-spatial",
+      "amrax",
+      "splatica"
+    ]
+  },
+  "volinga": {
+    "focus": "Production rendering and Unreal interoperability",
+    "edge": "Makes captured radiance fields usable in color-managed film and industrial workflows.",
+    "summary": "Turns captures and splat files into editable assets for color-managed production rendering and interactive Unreal Engine scenes.",
+    "related": [
+      "xgrids",
+      "jawset",
+      "gracia",
+      "solaya"
+    ]
+  },
+  "jawset": {
+    "focus": "Local reconstruction and artist control",
+    "edge": "An inspectable local tracking, training and editing workflow for captured radiance fields.",
+    "summary": "Makes Postshot, a desktop application for local radiance-field reconstruction from photos or video and professional rendering handoffs.",
+    "related": [
+      "volinga",
+      "playcanvas",
+      "kiri-innovations",
+      "arrival-space",
+      "solaya"
+    ]
+  },
+  "playcanvas": {
+    "focus": "Open web editing, compression and delivery",
+    "edge": "Open renderer, editor and formats make captured spaces distributable and hackable.",
+    "summary": "Develops an open web engine and SuperSplat tools for editing, compressing, publishing and embedding Gaussian-splat scenes.",
+    "related": [
+      "niantic-spatial",
+      "xgrids",
+      "gracia",
+      "jawset",
+      "arrival-space",
+      "solaya",
+      "splatica"
+    ]
+  },
+  "gracia": {
+    "focus": "Dynamic reconstruction and volumetric streaming",
+    "edge": "Turns synchronized captures into view-controllable moving scenes for web and XR.",
+    "summary": "Builds capture-to-playback tools for dynamic Gaussian-splat video, letting viewers move around recorded performances.",
+    "related": [
+      "playcanvas",
+      "volinga",
+      "spaitial"
+    ]
+  }
+}

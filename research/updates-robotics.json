@@ -1,0 +1,110 @@
+{
+  "physical-intelligence": {
+    "summary": "Builds robot-control models that combine visual understanding, language, and continuous actions across different machines and manipulation tasks.",
+    "edge": "Rich context steers one action model through strategies, demonstrations, and imperfect rollouts."
+  },
+  "skild-ai": {
+    "summary": "Builds shared intelligence for diverse robot bodies, learning locomotion and manipulation from teleoperation, human video, and simulation.",
+    "edge": "Prompts new tasks with video demonstrations while keeping policy weights fixed."
+  },
+  "generalist": {
+    "summary": "Trains embodied models on a dedicated interaction-data engine, studying new robot skills from short demonstrations and little adaptation.",
+    "edge": "Physical prompts enter a 30-second context; GEN-1.5 emits 100 Hz action trajectories."
+  },
+  "dyna": {
+    "summary": "Builds robot foundation models and commercial task systems, using human-video pretraining to improve dexterity and transfer.",
+    "edge": "Couples future-video and action prediction, then checks progress against real customer quality bars."
+  },
+  "rlwrld": {
+    "summary": "Develops foundation models for dexterous robots, combining visual and language inputs with torque, touch, temporal context, and industrial skill data.",
+    "edge": "Separate action streams integrate torque, tactile sensing, motion, and memory before skill refinement."
+  },
+  "x-square": {
+    "summary": "Builds embodied models and open training tools, investigating executable VLA pretraining and joint future-video/action learning.",
+    "edge": "Combines discrete actions, grounded prediction, and continuous flow objectives in one VLA."
+  },
+  "figure": {
+    "summary": "Builds humanoids and learned whole-body control for factory logistics and home tasks, integrating hardware, sensing, data collection, and model training.",
+    "edge": "Pairs a customer-corroborated factory pilot with explicit unfamiliar-home generalization tests."
+  },
+  "1x": {
+    "summary": "Develops tendon-driven home humanoids and learned world models, combining initial autonomy with scheduled remote expert assistance.",
+    "edge": "Backdrivable tendon hands sense contact; learned visual futures become actions through inverse dynamics.",
+    "technology": "NEO uses tendon-driven actuation and onboard NVIDIA Jetson Thor. Its July 2026 hand report describes 25 force-controlled degrees of freedom, low-ratio backdrivable tendons, and tactile/shear sensing, so the hand supplies contact observations as well as movement. The January world-model system generates task-conditioned visual futures, then an inverse-dynamics model translates predicted movement into actions. Redwood supplies generalist control, with scheduled human Expert Mode for tasks the initial robot cannot perform alone.",
+    "sources": [
+      {
+        "title": "NEO product terms, autonomy, and Expert Mode",
+        "url": "https://www.1x.tech/order",
+        "type": "company",
+        "note": "Primary order page checked; pricing and delivery timing are offers/promises, not evidence of fulfillment."
+      },
+      {
+        "title": "January 2026 world model: video to action",
+        "url": "https://www.1x.tech/discover/world-model-self-learning",
+        "type": "company",
+        "note": "Primary research/product update. Selected new-task demonstrations do not establish general safe autonomy."
+      },
+      {
+        "title": "NEO factory and internal testing",
+        "url": "https://www.1x.tech/discover/neo-factory",
+        "type": "company",
+        "note": "April 2026 manufacturing account; future annual capacities are targets, not shipped counts."
+      },
+      {
+        "title": "1X World Model Challenge and failure modes",
+        "url": "https://www.1x.tech/discover/1x-world-model",
+        "type": "company",
+        "note": "September 2024 research baseline; openly discusses object coherence and physical-law failures and links starter code."
+      },
+      {
+        "title": "Independent hands-on: NEO is still partly human-operated",
+        "url": "https://www.wsj.com/tech/personal-tech/i-tried-the-robot-thats-coming-to-live-with-you-its-still-part-human-68515d44",
+        "type": "report",
+        "note": "October 2025 hands-on reporting; the accessible introduction and indexed excerpts document human assistance in the tested demonstration. The full article is subscription restricted."
+      },
+      {
+        "title": "Practitioner discussion of NEO's initial capability",
+        "url": "https://www.reddit.com/r/robotics/comments/1onbnwz/cannot_believe_that_1x_targets_valuation_of_10b/",
+        "type": "reddit",
+        "note": "Critical discussion linking the independent hands-on test; criticism is not proof that later autonomous research fails."
+      },
+      {
+        "title": "NEO’s Hands: an API to the physical world",
+        "url": "https://www.1x.tech/discover/neos-hands",
+        "type": "company",
+        "note": "July 9, 2026 engineering account: 25 DoF, force transparency, tactile/shear sensing and manufacturing claims. Body text read; comparisons and lifecycle claims are company-reported."
+      }
+    ],
+    "evidence": [
+      {
+        "label": "Product terms",
+        "text": "The order page lists $20,000 early-access ownership or a $499/month subscription and says US deliveries start in 2026. It explicitly describes basic initial autonomy and remote supervision for unfamiliar complex tasks.",
+        "url": "https://www.1x.tech/order"
+      },
+      {
+        "label": "Manufacturing, company-reported",
+        "text": "The April 30, 2026 factory account says Hayward production has begun and initial robots are prioritized for internal testing. Production-capacity targets and reserved preorders are not verified consumer deliveries.",
+        "url": "https://www.1x.tech/discover/neo-factory"
+      },
+      {
+        "label": "Accessible research lineage",
+        "text": "Its 2024 World Model Challenge released over 100 hours of vector-quantized robot video, starter models, and evaluation code. This earlier challenge is useful research material, not the latest NEO product model.",
+        "url": "https://www.1x.tech/discover/1x-world-model"
+      },
+      {
+        "label": "Hand engineering, attributed",
+        "text": "The July 2026 account specifies 22 actuated finger/palm degrees of freedom plus three wrist degrees, approximately 5:1–15:1 transmission ratios, and tactile/shear sensing. It reports hundreds of hands manufactured; this is component production, not confirmed consumer robot deliveries.",
+        "url": "https://www.1x.tech/discover/neos-hands"
+      }
+    ],
+    "caveat": "Consumer shipping plans are not proof of completed deliveries. Initial Expert Mode involves a human watching through robot cameras. No independently verified fleet-wide autonomy/intervention rate was found; the public world-model challenge predates the current product stack. Hand performance, reliability-cycle counts, and production capacity are company claims; dexterity demos do not isolate model autonomy."
+  },
+  "agility": {
+    "summary": "Builds Digit humanoids and the Arc fleet platform for moving goods through industrial facilities, with customer-confirmed logistics operations.",
+    "edge": "Commercial tote handling gives a concrete baseline; Digit 5 adds independent motion-safety control."
+  },
+  "sunday": {
+    "summary": "Builds Memo, a wheeled home robot, and ACT models trained with gloves that capture human skills in robot-compatible form.",
+    "edge": "Robot-matched gloves align human skill capture with the hands and observations used at inference."
+  }
+}

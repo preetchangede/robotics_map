@@ -1,0 +1,489 @@
+[
+  {
+    "id": "splatica",
+    "name": "Splatica",
+    "website": "https://splatica.com/",
+    "category": "spatial",
+    "subcategory": "360° capture & simulation-asset preparation",
+    "focus": "360° video → reconstructed environments",
+    "edge": "Consumer 360° capture plus semantic USD export for real environments.",
+    "summary": "Converts consumer 360° video into Gaussian-splat environments, with a separate pipeline for preparing semantic assets for robotic simulation.",
+    "thesis": "The valuable bet is removing capture friction: one walk-through records the entire viewing sphere, while a managed pipeline handles reconstruction and delivery. Its robotics opportunity sits further downstream, in turning captured appearance into useful simulation assets. That makes export quality and physical validation more revealing than a beautiful fly-through.",
+    "technology": "A proprietary cloud pipeline processes full-sphere Insta360 or Antigravity footage into 3D Gaussian splats for web and engine delivery. The company describes a physical-AI workflow with object segmentation, collision meshes, USD export and replacement of captured objects with USD assets. It also advertises VLM-inferred physical properties. These are separate layers: a radiance-field reconstruction represents appearance, whereas geometry, materials and collision behavior require additional estimation and validation.",
+    "problem": "Capturing varied real environments for visualization or robot development usually requires specialist equipment and several disconnected processing tools. Consumer 360° capture can reduce that overhead if downstream assets remain usable.",
+    "stage": "Platform",
+    "tags": [
+      "Gaussian splatting",
+      "360° capture",
+      "Cloud reconstruction",
+      "USD",
+      "Physical AI",
+      "Simulation assets"
+    ],
+    "related": [
+      "niantic-spatial",
+      "xgrids",
+      "nvidia",
+      "duality-ai",
+      "playcanvas"
+    ],
+    "evidence": [
+      {
+        "label": "Named capture partnership",
+        "text": "Insta360 announced its Splatica partnership on April 24, 2026, describing consumer 360° footage reconstruction and exports into Unity, Unreal and NVIDIA workflows.",
+        "url": "https://www.insta360.com/blog/enterprise/insta360-splatica-gaussian-splatting-partnership.html"
+      },
+      {
+        "label": "Early commercial signal",
+        "text": "Splatica’s current press page reports more than 3,000 processed scenes and paying robotics customers. The customers and robot-training outcomes are not named or independently verified.",
+        "url": "https://splatica.com/media/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "360° capture and physical-AI workflow",
+        "url": "https://splatica.com/",
+        "type": "company",
+        "note": "Primary description of reconstruction, semantic processing and USD assets; physics statements remain company claims."
+      },
+      {
+        "title": "Splatica founders and commercial status",
+        "url": "https://splatica.com/media/",
+        "type": "company",
+        "note": "Current primary founder identities, named partners and explicitly company-reported traction."
+      },
+      {
+        "title": "Insta360 × Splatica partnership",
+        "url": "https://www.insta360.com/blog/enterprise/insta360-splatica-gaussian-splatting-partnership.html",
+        "type": "company",
+        "note": "April 2026 primary partner announcement; explains capture inputs and delivery integrations."
+      },
+      {
+        "title": "Founder interview: 360° drones versus handheld capture",
+        "url": "https://www.xraispotlight.com/can-a-360-drone-beat-insta360-for-gaussian-splatting/",
+        "type": "report",
+        "note": "June 2026 interview with co-founder Andrey Shelomentsev about capture and the robot-training gap."
+      },
+      {
+        "title": "Three reconstruction pipelines from one 360° drone flight",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1tjn3be/i_compared_3_pipelines_to_reconstruct_3dgs_from_a/",
+        "type": "reddit",
+        "note": "Independent practitioner compares Splatica, Scaniverse and Mipmap; includes direct scenes and file-size observations, not a controlled benchmark."
+      },
+      {
+        "title": "Andrey Shelomentsev: physical-AI work and public contact",
+        "url": "https://shelomentsev.com/",
+        "type": "company",
+        "note": "Founder's own account of Splatica's focus; commercial and physical-accuracy statements are first-party."
+      }
+    ],
+    "caveat": "Simulation-ready is a vendor description, not proof of calibrated contact physics or sim-to-real transfer. Validate geometry, inferred material properties, export rights and processing terms; unnamed customers do not establish deployment scale.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "arrival-space",
+    "name": "Arrival.Space / Stratum1",
+    "website": "https://arrival.space/",
+    "category": "spatial",
+    "subcategory": "Browser reconstruction & spatial publishing",
+    "focus": "Local browser SfM, splat training and delivery",
+    "edge": "Open WebGPU pipeline trains splats in-browser without uploading raw photos.",
+    "summary": "Stratum1 builds Arrival.Space and an open browser pipeline that reconstructs camera poses and trains Gaussian splats locally from photos or video.",
+    "thesis": "Its unusual contribution is moving the full reconstruction chain into the browser, rather than merely displaying a cloud-produced splat. That makes privacy, setup friction and algorithm inspectability tangible advantages. The surrounding publishing platform adds editing and navigation, connecting a research-friendly local pipeline to shareable spatial experiences.",
+    "technology": "The MIT-licensed splat.js repository implements worker-based SIFT extraction, GPU feature matching, incremental structure from motion and bundle adjustment, then WebGPU splat training. Current source documents degree-three spherical harmonics, MCMC relocation and growth, and WebCodecs video-frame selection. Arrival.Space also imports several splat formats, offers an enhanced SuperSplat editor and generates or accepts collision meshes for walkable scenes. A collision proxy enables navigation; it does not recover calibrated material dynamics.",
+    "problem": "Reconstruction often requires a CUDA workstation, installation-heavy tools or uploading private captures to a cloud service. Captured spaces also need editing, compatible formats and navigation before people can explore them.",
+    "stage": "Platform",
+    "tags": [
+      "Gaussian splatting",
+      "WebGPU",
+      "Structure from motion",
+      "Open source",
+      "Local compute",
+      "Spatial web"
+    ],
+    "related": [
+      "playcanvas",
+      "jawset",
+      "niantic-spatial"
+    ],
+    "evidence": [
+      {
+        "label": "Inspectable implementation",
+        "text": "Stratum1 publishes splat.js under MIT, including camera reconstruction, browser splat training, analytic-gradient checks and quality-test infrastructure.",
+        "url": "https://github.com/arrival-space/splat.js"
+      },
+      {
+        "label": "Runnable workflow",
+        "text": "A public splat.js interface accepts capture inputs for browser processing; Arrival.Space documents splat imports, editing and automatic or uploaded collision meshes.",
+        "url": "https://arrival.space/splat-js/index.html"
+      }
+    ],
+    "sources": [
+      {
+        "title": "splat.js reconstruction and training source",
+        "url": "https://github.com/arrival-space/splat.js",
+        "type": "code",
+        "note": "Current primary implementation; more recent than the August launch report, including video support and updated SH settings."
+      },
+      {
+        "title": "Run splat.js in the browser",
+        "url": "https://arrival.space/splat-js/index.html",
+        "type": "demo",
+        "note": "Direct interface for a local WebGPU reconstruction experiment; browser and GPU support matter."
+      },
+      {
+        "title": "Arrival.Space splats, editing and collisions",
+        "url": "https://codex.arrival.space/edit/3d-content/splats",
+        "type": "company",
+        "note": "Primary format support, editing workflow and configurable collision-mesh generation."
+      },
+      {
+        "title": "Stratum1 founders and company boundary",
+        "url": "https://claim.arrival.space/",
+        "type": "company",
+        "note": "Official page identifies Arrival.Space as a Stratum1 GmbH platform and names its three founders."
+      },
+      {
+        "title": "Founder interview: the 3D web",
+        "url": "https://www.xraispotlight.com/videos/why-gaussian-splatting-changes-everything-for-the-3d-web/",
+        "type": "report",
+        "note": "Interview with Lisa Maria Egger about walkable splats, interoperability and browser delivery."
+      },
+      {
+        "title": "Browser training launch coverage",
+        "url": "https://radiancefields.com/arrival.space-splat.js-trains-gaussian-splats-in-browser",
+        "type": "report",
+        "note": "August 21, 2026 technical coverage of an earlier release; do not substitute its defaults for the current repository."
+      }
+    ],
+    "caveat": "Browser reconstruction still needs compatible WebGPU hardware, sufficient memory and well-covered static captures. Repository performance examples are developer measurements. Open splat.js licensing does not make the hosted Arrival.Space service open source.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "amrax",
+    "name": "Amrax",
+    "website": "https://amrax.ai/",
+    "category": "spatial",
+    "subcategory": "Mobile LiDAR → structured building geometry",
+    "focus": "Measured indoor capture for CAD and BIM",
+    "edge": "Turns phone scans into editable architectural geometry for CAD and BIM.",
+    "summary": "Its Metaroom product turns Apple-device LiDAR scans into structured floor plans and editable building models for CAD, BIM and spatial planning.",
+    "thesis": "The interesting economic niche is the gap between a point cloud and a usable building model. Lighting, retrofit and facility teams need walls, openings and dimensions they can edit in existing planning software. Amrax targets that structured handoff, with large-building alignment extending the idea beyond single-room visualization.",
+    "technology": "Metaroom combines LiDAR depth and camera imagery from supported Apple devices with Apple RoomPlan and proprietary computer-vision and semantic-segmentation models. It extracts parametric architectural components such as walls, doors, windows and openings, then manages them in a web workspace for CAD/BIM export. Enterprise Building Capture adds SLAM-based alignment of scans from multiple sessions and operators into building structures. That June 2026 public beta specifically documents IFC and PDF export; broader Metaroom formats differ.",
+    "problem": "Existing-building documentation is often missing or outdated, while laser surveys and manual CAD redraws are expensive. Planning teams need structured as-built geometry that fits their workflow and can be checked.",
+    "stage": "Deployed",
+    "tags": [
+      "LiDAR",
+      "Parametric geometry",
+      "CAD",
+      "BIM",
+      "Indoor capture",
+      "Digital twins"
+    ],
+    "related": [
+      "xgrids",
+      "niantic-spatial",
+      "cognite",
+      "duality-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Large-building demonstration",
+        "text": "Amrax’s June 4, 2026 release reports scanning a roughly 60,000 m² German hospital during operations in connection with a Siemens project. This is company-reported scope, not an independent accuracy test.",
+        "url": "https://amrax.ai/wp-content/uploads/2026/06/2026-06-04-Pressrelease_EN_Metaroom_EnterpriseBuildingCapture-1.pdf"
+      },
+      {
+        "label": "Named workflow partner",
+        "text": "Bluebeam’s February 17, 2026 announcement describes integrating Metaroom-generated floor plans into PDF-based planning workflows.",
+        "url": "https://press.bluebeam.com/2026/02/scanbasierte-grundrisse-direkt-in-pdf-workflows-integriertmetaroom-gibt-kooperation-mit-bluebeam-bekannt/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Metaroom product facts and supported outputs",
+        "url": "https://amrax.ai/facts/metaroom/",
+        "type": "company",
+        "note": "Primary product boundary: indoor capture, Apple LiDAR inputs and structured CAD/BIM outputs."
+      },
+      {
+        "title": "How the Scan App and Workspace fit together",
+        "url": "https://help.amrax.ai/sample-page/getting-started-with-metaroom/what-is-metaroom-by-amrax/",
+        "type": "company",
+        "note": "June 2026 operational overview and supported capture devices."
+      },
+      {
+        "title": "Enterprise Building Capture technical release",
+        "url": "https://amrax.ai/wp-content/uploads/2026/06/2026-06-04-Pressrelease_EN_Metaroom_EnterpriseBuildingCapture-1.pdf",
+        "type": "company",
+        "note": "June 2026 primary description of RoomPlan, proprietary semantic models, multi-session alignment and public-beta exports."
+      },
+      {
+        "title": "Bluebeam partnership announcement",
+        "url": "https://press.bluebeam.com/2026/02/scanbasierte-grundrisse-direkt-in-pdf-workflows-integriertmetaroom-gibt-kooperation-mit-bluebeam-bekannt/",
+        "type": "company",
+        "note": "Primary integration-partner announcement, rather than an unverified customer logo."
+      },
+      {
+        "title": "Amrax founders and research focus",
+        "url": "https://amrax.ai/who-we-are/",
+        "type": "company",
+        "note": "Official founders Martin Huber and Hans Schlick; Metaroom is a product, not another company."
+      },
+      {
+        "title": "Metaroom platform and planning workflows",
+        "url": "https://amrax.ai/",
+        "type": "company",
+        "note": "Current commercial product and CAD handoff; headline time savings and precision are not independently benchmarked."
+      }
+    ],
+    "caveat": "The core product is commercial, while Enterprise Building Capture was announced as a public beta. Phone-derived parametric geometry needs task-specific error checks; hospital scale and partner announcements do not establish survey-certified accuracy.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "kiri-innovations",
+    "name": "KIRI Innovations",
+    "website": "https://www.kiriengine.app/",
+    "category": "spatial",
+    "subcategory": "Multi-method mobile reconstruction",
+    "focus": "Photogrammetry, neural surfaces and splats-to-mesh",
+    "edge": "One mobile workflow spans photogrammetry, neural surfaces and splats-to-mesh.",
+    "summary": "Builds KIRI Engine, a mobile and web capture platform combining photogrammetry, neural surface reconstruction, LiDAR and Gaussian-splat mesh conversion.",
+    "thesis": "KIRI is interesting because it treats reconstruction as several complementary representations rather than a single capture trick. A creator can select textured photogrammetry, neural surfaces or splats depending on the object, then attempt a mesh handoff. Its Blender tools make representation tradeoffs and practical capture limits unusually easy to inspect.",
+    "technology": "Photo Scan uses photogrammetry; Featureless Object mode fits a neural volumetric representation from video and reconstructs a surface mesh, targeting low-feature and reflective objects. Separate LiDAR and 3D Gaussian-splat workflows feed mobile/web tools, with the April 2026 3DGS-to-Mesh 3.0 release addressing thin structures and cleanup. An open Blender add-on imports, edits and renders splats; its shadow proxies and sequence-based animation are experimental rendering features, not a public implementation of the proprietary reconstruction pipeline.",
+    "problem": "Affordable mobile scanning needs to handle objects with different surface properties and deliver geometry usable in conventional tools. A visually successful splat can still fail when converted into a mesh.",
+    "stage": "Platform",
+    "tags": [
+      "Gaussian splatting",
+      "Photogrammetry",
+      "Neural surfaces",
+      "Mobile capture",
+      "Mesh extraction",
+      "Blender"
+    ],
+    "related": [
+      "jawset",
+      "niantic-spatial",
+      "solaya",
+      "playcanvas"
+    ],
+    "evidence": [
+      {
+        "label": "Shipping mesh-conversion update",
+        "text": "KIRI’s April 10, 2026 release documents 3DGS-to-Mesh 3.0. Its measuring tool initially estimates scale with AI and explicitly requires a known measurement for accurate rescaling.",
+        "url": "https://www.kiriengine.app/blog/kiri-engine-4.2-release"
+      },
+      {
+        "label": "Public integration code",
+        "text": "KIRI publishes a GPL-2.0 Blender splat add-on with editing and rendering features; the repository now states that maintenance is moving toward community stewardship.",
+        "url": "https://github.com/Kiri-Innovation/3dgs-render-blender-addon"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Featureless Object mode and neural surface reconstruction",
+        "url": "https://www.kiriengine.app/blog/announcement/kiri-engine-revolutionizes-3d-scanning-featureless-object-mode",
+        "type": "company",
+        "note": "Primary explanation of neural volumetric fitting and surface-mesh extraction; marketing claims are not independent reflection benchmarks."
+      },
+      {
+        "title": "KIRI Engine 4.2 / 3DGS-to-Mesh 3.0",
+        "url": "https://www.kiriengine.app/blog/kiri-engine-4.2-release",
+        "type": "company",
+        "note": "April 2026 product behavior, geometry cleanup and explicit scale-estimation limitation."
+      },
+      {
+        "title": "Capture guidance for splats-to-mesh",
+        "url": "https://www.kiriengine.app/tutorial/tips-to-improve-3d-gaussian-splatting-to-mesh-results",
+        "type": "company",
+        "note": "May 2026 founder-authored guidance: static subjects, coverage and method selection matter."
+      },
+      {
+        "title": "Blender Gaussian-splat add-on",
+        "url": "https://github.com/Kiri-Innovation/3dgs-render-blender-addon",
+        "type": "code",
+        "note": "GPL source and compatibility details; rendering add-on, not open-source KIRI reconstruction."
+      },
+      {
+        "title": "KIRI founders and explicitly published contacts",
+        "url": "https://www.kiriengine.app/about",
+        "type": "company",
+        "note": "Current official team page names Jack and Chris and publishes professional email addresses."
+      },
+      {
+        "title": "Practitioner comparison of free capture tools",
+        "url": "https://www.reddit.com/r/photogrammetry/comments/1r1cr1r/i_tried_all_the_free_photogrammetry_software_and/",
+        "type": "reddit",
+        "note": "Object-scan comparison with exported models; useful workflow observations, uncontrolled test and version-specific results."
+      },
+      {
+        "title": "Accelerator profile and company identities",
+        "url": "https://innovationfactory.ca/clients/kiri-innovation-kiri-engine/",
+        "type": "company",
+        "note": "Innovation Factory identifies KIRI Innovations, Jack Wang and Chris Hu; distinguishes company from KIRI Engine product."
+      }
+    ],
+    "caveat": "Cloud processing, paid-method access and output quality vary by workflow. Do not confuse a splat, converted mesh and measured surface. AI-estimated scale needs calibration; published capture guidance recommends other methods for some large scenes.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "solaya",
+    "name": "Solaya",
+    "website": "https://www.solaya.ai/",
+    "category": "spatial",
+    "subcategory": "Product digitization & commerce",
+    "focus": "Phone capture → reusable product assets",
+    "edge": "Captures each real SKU and delivers the same splat through commerce and content tools.",
+    "summary": "Turns smartphone walk-around video of real products into Gaussian-splat assets and reusable visual content for commerce, with browser delivery.",
+    "thesis": "The useful niche is instance-level digitization: refurbished goods and changing fashion catalogues are expensive to model manually and cannot always reuse an idealized CAD asset. Solaya connects guided capture to a commerce viewer and content production. Its latest partner interview explains the delivery architecture, making this more substantive than a generic AI product-photo app.",
+    "technology": "Guided phone capture records a stationary product from multiple angles, followed by proprietary cloud Gaussian-splat reconstruction. In an October 6, 2026 PlayCanvas interview, the founders describe PLY interchange with content tools and SOG-compressed assets rendered with PlayCanvas in the app and on the web. CDN delivery and per-model cache invalidation support catalogue publishing. The interview separately lists lighting correction, underside capture, mesh/GLB export and PBR extraction as work ahead, despite broader homepage language.",
+    "problem": "Product catalogues need fresh, faithful assets without repeated studio shoots or manual modeling. Refurbished items add unique wear and condition, making a reusable ideal-product model insufficient.",
+    "stage": "Deployed",
+    "tags": [
+      "Gaussian splatting",
+      "Product capture",
+      "Commerce",
+      "SOG",
+      "Browser delivery",
+      "Neural rendering"
+    ],
+    "related": [
+      "playcanvas",
+      "kiri-innovations",
+      "jawset",
+      "volinga"
+    ],
+    "evidence": [
+      {
+        "label": "Named content customer",
+        "text": "Solaya’s Karl Lagerfeld case study describes smartphone-based 360° product content for the Fall/Winter 2025 collection. It establishes a named content workflow, not that every item shipped an interactive splat.",
+        "url": "https://www.solaya.ai/customers/solaya-x-karl-lagerfeld"
+      },
+      {
+        "label": "Technical partner interview",
+        "text": "PlayCanvas’ October 6, 2026 developer spotlight describes Solaya’s reconstruction and browser delivery and reports work on Rimowa RE-CRAFTED’s individually refurbished suitcases.",
+        "url": "https://blog.playcanvas.com/from-iphone-video-to-photorealistic-3d-digital-twin-developer-spotlight-on-solaya/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Solaya product and current scope",
+        "url": "https://www.solaya.ai/",
+        "type": "company",
+        "note": "Current commerce product; robotics and manufacturing are explicitly marked coming soon."
+      },
+      {
+        "title": "Capture best practices",
+        "url": "https://www.solaya.ai/best-practices",
+        "type": "company",
+        "note": "Primary guidance for bounding boxes, viewing coverage and stable lighting."
+      },
+      {
+        "title": "Solaya × Karl Lagerfeld case study",
+        "url": "https://www.solaya.ai/customers/solaya-x-karl-lagerfeld",
+        "type": "company",
+        "note": "Named customer, seasonal collection and 360° content workflow; not an independently measured conversion study."
+      },
+      {
+        "title": "PlayCanvas developer spotlight on Solaya",
+        "url": "https://blog.playcanvas.com/from-iphone-video-to-photorealistic-3d-digital-twin-developer-spotlight-on-solaya/",
+        "type": "company",
+        "note": "October 6, 2026 partner interview: PLY/SOG delivery, infrastructure, named applications and explicit roadmap."
+      },
+      {
+        "title": "Algorithm update and user feedback",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1tcymj8/solaya_algorithm_update_better_reflections_depth/",
+        "type": "reddit",
+        "note": "May 2026 company announcement with capture questions, small-object regressions and transparency discussion; historical feedback."
+      },
+      {
+        "title": "Solaya founders and company background",
+        "url": "https://www.solaya.ai/about",
+        "type": "company",
+        "note": "Primary founders Massimo Moretti and Mariem Farhat, with CEO/COO roles; avoids an older podcast role error."
+      }
+    ],
+    "caveat": "Commercial product-content use is evidenced; robotics simulation is a coming-soon application. Captured lighting and unseen surfaces remain constraints. Distinguish current export availability from the October interview’s roadmap; conversion-lift claims lack a published methodology.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "spaitial",
+    "name": "SpAItial",
+    "website": "https://spaitial.ai/about",
+    "category": "world",
+    "subcategory": "Persistent, editable generative 3D scenes",
+    "focus": "Text/image → coherent spatial scenes",
+    "edge": "Generates an editable 3D scene once, preserving viewpoints instead of rolling video.",
+    "summary": "Builds Echo models that generate persistent, explorable 3D environments from text or images and support semantic decomposition and scene editing.",
+    "thesis": "Its worthwhile research bet is persistent spatial representation: users revisit and edit a place rather than receive another frame prediction. That connects generative models to architecture and game prototyping. The team's published 3D work is substantive, but the distinction between viewpoint consistency and validated physical behavior is essential to judging robotics relevance.",
+    "technology": "Echo-2 predicts an internal 3D scene representation from text or image inputs, then converts it to renderable outputs; the public web demonstration uses Gaussian splatting. The company describes semantic component decomposition, localized edits and floor-plan anchoring, with an API for creating worlds and managing generation requests. The internal architecture is not publicly specified enough to assume it trains natively on Gaussian splats. Temporal dynamics and physics-based reasoning are explicitly future model capabilities.",
+    "problem": "Generated video can drift when a camera revisits a place, while manual scene creation is slow. Designers need coherent, editable spatial assets; robots ultimately need those assets to support trustworthy physical interaction.",
+    "stage": "Platform",
+    "tags": [
+      "World models",
+      "Generative 3D",
+      "Gaussian splatting",
+      "Scene editing",
+      "Spatial consistency",
+      "Semantic decomposition"
+    ],
+    "related": [
+      "world-labs",
+      "odyssey",
+      "niantic-spatial",
+      "splatica",
+      "duality-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Research-backed founding team",
+        "text": "The May 26, 2025 launch names Matthias Niessner, Luke Rogers, Ricardo Martin-Brualla and David Novotny as founders and reports a $13 million seed round led by Earlybird.",
+        "url": "https://spaitial.ai/blog/announcing-spaitial"
+      },
+      {
+        "label": "Available generation model",
+        "text": "SpAItial released Echo-2 on April 28, 2026 with interactive scenes and editing examples. Its announcement expressly places temporal and physical consistency in future versions.",
+        "url": "https://spaitial.ai/blog/echo-2-release"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Echo-2 representation, editing and limitations",
+        "url": "https://spaitial.ai/blog/echo-2-release",
+        "type": "company",
+        "note": "April 2026 primary technical announcement; distinguish present spatial consistency from future dynamics."
+      },
+      {
+        "title": "Founders and seed financing",
+        "url": "https://spaitial.ai/blog/announcing-spaitial",
+        "type": "company",
+        "note": "May 2025 primary founding-team and financing announcement; company-reported capital."
+      },
+      {
+        "title": "Developer documentation",
+        "url": "https://docs.spaitial.ai/",
+        "type": "company",
+        "note": "Primary API entry point for generating and managing worlds; availability does not demonstrate robotics transfer."
+      },
+      {
+        "title": "SpAItial company and model scope",
+        "url": "https://spaitial.ai/about",
+        "type": "company",
+        "note": "Working primary company page; marketing physical-grounding language is constrained by the Echo-2 roadmap."
+      },
+      {
+        "title": "Echo-2 practitioner questions",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1sz1pkp/echo2_is_a_new_world_model_based_on_gaussian/",
+        "type": "reddit",
+        "note": "Exact discussion of exports, scan repair, close-up quality and compute economics; several proposed uses are speculation."
+      },
+      {
+        "title": "CAT3D: multi-view diffusion followed by 3D reconstruction",
+        "url": "https://cat3d.github.io/",
+        "type": "paper",
+        "note": "NeurIPS 2024 primary paper/project co-authored by Ricardo Martin-Brualla. Technical background on consistent generated views and reconstruction, not a disclosure of Echo's implementation."
+      }
+    ],
+    "caveat": "A generated room is an inference, not a measured digital twin. Public scene-quality comparisons are company-run. Echo-2's announcement reserves dynamics and physics reasoning for future versions; no independent policy-training improvement was established.",
+    "reviewed": "2026-10-07"
+  }
+]

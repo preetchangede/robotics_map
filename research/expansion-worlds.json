@@ -1,0 +1,544 @@
+[
+  {
+    "id": "rendered-ai",
+    "name": "Rendered.ai",
+    "website": "https://rendered.ai/",
+    "category": "simulation",
+    "subcategory": "Sensor-specific synthetic data",
+    "focus": "Radiometry · rare classes · sensor design",
+    "edge": "Synthetic data that models the sensor's physics, including thermal, spectral, SAR and X-ray imagery.",
+    "summary": "A synthetic-data platform for computer vision where sensor physics, rare objects and controlled experiments matter more than attractive RGB renders.",
+    "thesis": "Its strongest niche is data that cannot simply be photographed: an unbuilt satellite sensor, a rare industrial defect or a scarcely observed target. The open DIRSIG channel makes the radiometric pipeline inspectable. A customer experiment exposes a useful boundary: CycleGAN-adapted synthetic pretraining followed by real-data training helped, while naive mixing could hurt.",
+    "technology": "Users build parameterized generation graphs combining scene geometry, spectral materials, atmosphere, illumination, sensor focal planes and trajectories. The platform orchestrates generators such as DIRSIG and manages labeled datasets, training and validation workflows. Its Apache-licensed DIRSIG starter channel uses Python to configure the separate DIRSIG 5 simulator; it is not an open release of the entire commercial platform. This supports deliberate sensor and coverage experiments rather than only prompt-generated images.",
+    "problem": "Rare classes and new sensing hardware lack representative training data. Real collection can be expensive, unsafe or impossible before hardware deployment; annotation alone cannot fill missing conditions.",
+    "stage": "Platform",
+    "tags": [
+      "synthetic data",
+      "sensor simulation",
+      "radiometry",
+      "domain gap",
+      "open code"
+    ],
+    "related": [
+      "parallel-domain",
+      "bifrost",
+      "duality-ai",
+      "aves-reality"
+    ],
+    "evidence": [
+      {
+        "label": "Customer experiment",
+        "text": "Orbital Insight's July 2021 NGA SBIR report used more than 500,000 synthetic images for rare crane classes. CycleGAN-adapted synthetic pretraining followed by real-data training improved AP; naive joint mixing could reduce it.",
+        "url": "https://rendered.ai/wp-content/uploads/2024/02/oi_technical_report_on_synthetic_imagery_for_model_training_fixed.pdf"
+      },
+      {
+        "label": "Inspectable pipeline",
+        "text": "The public DIRSIG channel includes EO-drone and thermal workflows, graph nodes and Python configuration examples. Running the hosted workflow requires platform access and a separate simulator binary.",
+        "url": "https://github.com/Rendered-ai/dirsig-channel"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Rendered.ai platform and sensor FAQ",
+        "url": "https://rendered.ai/",
+        "type": "company",
+        "note": "Explains supported sensing modalities, simulator integrations and production workflows; performance language is vendor-authored."
+      },
+      {
+        "title": "DIRSIG starter channel",
+        "url": "https://github.com/Rendered-ai/dirsig-channel",
+        "type": "code",
+        "note": "Concrete graph definitions and radiometric-generation configuration, with setup and access requirements."
+      },
+      {
+        "title": "Orbital Insight synthetic-imagery technical report",
+        "url": "https://rendered.ai/wp-content/uploads/2024/02/oi_technical_report_on_synthetic_imagery_for_model_training_fixed.pdf",
+        "type": "report",
+        "note": "Customer-authored July 2021 experiment: adapted synthetic pretraining then real-data training, AP at IoU 0.15–0.50, and negative mixing results. The upload path is not its publication date."
+      },
+      {
+        "title": "Company background and current leadership",
+        "url": "https://rendered.ai/about/",
+        "type": "company",
+        "note": "Identifies the production platform and current leadership, including the founder's move to executive chairman."
+      },
+      {
+        "title": "Synthetic-data deployment discussion",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/l01nm5/n_learnings_from_deployments_of_synthetic_data/",
+        "type": "reddit",
+        "note": "January 2021 discussion linking a Nathan Kundtz NGA presentation. Company-adjacent discovery, not independent customer validation."
+      }
+    ],
+    "caveat": "Physical sensor realism does not guarantee transfer. The successful crane recipe used CycleGAN-adapted synthetic pretraining followed by real-data training; naive mixing could lower AP. Evaluation used IoU thresholds 0.15–0.50, and scores remained below deployment requirements. This is not evidence of universal synthetic-data gains.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "aves-reality",
+    "name": "AVES Reality",
+    "website": "https://avesreality.com/",
+    "category": "simulation",
+    "subcategory": "Geospatial simulation environments",
+    "focus": "Geospatial reconstruction · road semantics · AV validation",
+    "edge": "Real geospatial layouts become editable simulation worlds, with labels generated before visual augmentation.",
+    "summary": "Turns satellite and geospatial data into semantically structured 3D environments and road maps for autonomous-driving simulation and synthetic datasets.",
+    "thesis": "The useful asset is a geographically grounded, editable environment with road semantics, not a pretty virtual city. AVES connects this foundation to CARLA and then generative appearance augmentation. That division makes it an interesting bridge between reconstruction, deterministic simulation and world-model infrastructure, without pretending those are the same technology.",
+    "technology": "AVES Launcher supplies georeferenced 3D geometry and HD road maps. The disclosed synthetic-data workflow runs controlled scenarios in CARLA, exporting RGB, depth, semantic and instance masks, normals, edges and object boxes. NVIDIA Cosmos Transfer then varies lighting, weather, seasons and camera appearance. Structural ground truth is created before augmentation; checking whether generated images preserve all labeled details remains a necessary validation step. Its current synthetic-data offering is described as a developer release with facilitated access.",
+    "problem": "Manually constructing realistic road networks and cities makes simulation coverage costly. Teams need location-grounded scenarios, editable semantics and rare visual conditions without repeatedly surveying and labeling the world.",
+    "stage": "Platform",
+    "tags": [
+      "geospatial",
+      "HD maps",
+      "CARLA",
+      "synthetic data",
+      "Cosmos",
+      "autonomous driving"
+    ],
+    "related": [
+      "applied-intuition",
+      "parallel-domain",
+      "nvidia",
+      "rendered-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Automotive partnership",
+        "text": "AVES and AVL announced an October 2024 partnership for virtual verification and validation of ADAS and autonomous driving. This is a named integration relationship, not a disclosed production fleet count.",
+        "url": "https://avesreality.com/aves-reality-partners-with-avl-towards-virtual-vv-in-adas-ad-2/"
+      },
+      {
+        "label": "Financing",
+        "text": "The company announced a €2.7 million seed round on January 14, 2026, led by Matterwave Ventures.",
+        "url": "https://avesreality.com/aves-reality-raises-oversubscribed-seed-round/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "CARLA-to-Cosmos synthetic-data workflow",
+        "url": "https://avesreality.com/synthetic-data/",
+        "type": "company",
+        "note": "Detailed generation stages, output labels, preset augmentations and current developer-release access conditions."
+      },
+      {
+        "title": "AVL virtual V&V partnership",
+        "url": "https://avesreality.com/aves-reality-partners-with-avl-towards-virtual-vv-in-adas-ad-2/",
+        "type": "company",
+        "note": "Names the partner and application; announcement evidence rather than broad deployment metrics."
+      },
+      {
+        "title": "January 2026 seed announcement",
+        "url": "https://avesreality.com/aves-reality-raises-oversubscribed-seed-round/",
+        "type": "company",
+        "note": "Primary financing amount, date and investor list."
+      },
+      {
+        "title": "Matterwave portfolio thesis",
+        "url": "https://www.matterwave.vc/portfolio/aves-reality",
+        "type": "report",
+        "note": "Investor account of geospatial environment generation and target markets; financially interested source."
+      },
+      {
+        "title": "Company origin and founding team",
+        "url": "https://avesreality.com/about/",
+        "type": "company",
+        "note": "Primary explanation of the company and its three founders, founded in 2022."
+      }
+    ],
+    "caveat": "Geospatial reconstruction and appearance augmentation are not a learned dynamics model. Satellite-derived geometry may omit fine or recent details, and photorealistic augmentation needs checks for label drift. Public evidence does not quantify downstream safety improvements.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "luminary",
+    "name": "Luminary",
+    "website": "https://luminary.ai/",
+    "category": "twins",
+    "subcategory": "Engineering physics surrogates",
+    "focus": "CFD · geometry-conditioned prediction · calibrated uncertainty",
+    "edge": "A simulation-to-surrogate platform that explicitly confronts mesh leakage and uncertainty calibration.",
+    "summary": "Combines cloud physics simulation with large physics models that predict engineering fields quickly across candidate designs.",
+    "thesis": "Fast physics models are most valuable when engineers can trust their operating envelope. Luminary's detailed treatment of adaptive-mesh shortcut leakage and calibrated error bars makes it more interesting than a generic 'AI replaces CFD' pitch. Its opportunity is repeated design exploration, supported by expensive reference simulations and clear conditions for escalation.",
+    "technology": "Its disclosed SMART architecture encodes geometry point clouds into compact latent tokens, resamples points through the encoder and queries physical fields independently of the original mesh. Training data comes from simulation and engineering workflows. An uncertainty companion network learns the frozen model's errors against reference CFD, then normalized split-conformal calibration targets average prediction-interval coverage on the calibration distribution. Separate out-of-distribution detection flags unsupported designs.",
+    "problem": "High-fidelity solves make broad design searches slow. Learned surrogates can accelerate iteration, but exploiting mesh artifacts or reporting overconfident predictions can silently produce incorrect engineering decisions.",
+    "stage": "Platform",
+    "tags": [
+      "physics AI",
+      "CFD",
+      "surrogate models",
+      "uncertainty",
+      "out-of-distribution",
+      "engineering"
+    ],
+    "related": [
+      "physicsx",
+      "emmi-ai",
+      "akselos",
+      "nvidia"
+    ],
+    "evidence": [
+      {
+        "label": "Customer signals",
+        "text": "Luminary publishes named customer statements from Otto Aviation and Northrop Grumman on using its platform for proprietary flight-sciences and spacecraft engineering work. These are vendor-hosted customer references.",
+        "url": "https://luminary.ai/company/"
+      },
+      {
+        "label": "Financing",
+        "text": "The September 2025 $72 million Series B announcement and current company page report $187 million in capital raised.",
+        "url": "https://luminary.ai/resources/luminary-cloud-secures-72m-series-b-to-lead-the-physics-ai-era/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "SMART architecture and mesh shortcuts",
+        "url": "https://luminary.ai/resources/luminary-smart-the-new-state-of-the-art-model-architecture-for-large-physics-models/",
+        "type": "company",
+        "note": "July 28, 2026 technical explanation of geometry encoding, mesh-independent queries and benchmark design."
+      },
+      {
+        "title": "Uncertainty quantification for large physics models",
+        "url": "https://luminary.ai/resources/uncertainty-quantification-for-large-physics-models/",
+        "type": "company",
+        "note": "October 6, 2026 methods post: learned error against reference CFD, conformal calibration and average coverage under the calibration distribution, not physical-truth certification."
+      },
+      {
+        "title": "OOD detection and uncertainty",
+        "url": "https://luminary.ai/resources/quantifying-the-unknown-ood-detection-and-uncertainty-quantification-for-large-physics-models/",
+        "type": "company",
+        "note": "August 2026 account of detecting unsupported inputs; read alongside the later calibration post."
+      },
+      {
+        "title": "Customer references and current company",
+        "url": "https://luminary.ai/company/",
+        "type": "company",
+        "note": "Named customer quotes, capital and current leadership; distinguishes co-founder Juan Alonso from CEO Pete Schlampp."
+      },
+      {
+        "title": "$72M Series B announcement",
+        "url": "https://luminary.ai/resources/luminary-cloud-secures-72m-series-b-to-lead-the-physics-ai-era/",
+        "type": "company",
+        "note": "Primary financing event, investors and date; capital is not a reliability benchmark."
+      },
+      {
+        "title": "Practitioners evaluate Luminary",
+        "url": "https://www.reddit.com/r/CFD/comments/1n6ohru/luminary_cloud/",
+        "type": "reddit",
+        "note": "Mixed September 2025–February 2026 discussion of SDK automation, cost, cloud tradeoffs and surrogate extrapolation. Anonymous experience is not audited performance evidence."
+      }
+    ],
+    "caveat": "This is a design and physics-model platform, not proof of a continuously synchronized operational twin for every customer. Vendor-run uncertainty intervals estimate error against reference CFD and target average coverage under the calibration distribution; they certify neither every surface point nor CFD agreement with physical truth. Coverage does not extend to arbitrary new geometries, regimes or physics.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "akselos",
+    "name": "Akselos",
+    "website": "https://akselos.com/",
+    "category": "twins",
+    "subcategory": "Structural integrity twins",
+    "focus": "Reduced-order FEM · fatigue · critical infrastructure",
+    "edge": "Operational structural twins built from reduced finite-element physics, with named large-asset deployments.",
+    "summary": "Connects operating conditions and inspections to fast structural models of large industrial assets, informing maintenance and safe life extension.",
+    "thesis": "Akselos offers a useful counterpoint to neural-surrogate companies: its speed comes from reducing physics-based finite-element systems. The economic target is concrete—inspection effort, fatigue risk and remaining life in very expensive assets. A named Shell FPSO deployment provides stronger operational evidence than an attractive twin visualization or an isolated lab benchmark.",
+    "technology": "Reduced-basis finite-element analysis assembles reusable reduced component models, preserving the underlying structural equations while making repeated parameterized solves cheaper. Loading conditions, inspections and asset geometry update an as-operated structural representation. The current structural-performance-management product translates pressure, temperature and cycles into stress, fatigue, creep and damage assessments. Published related work combines component models and Bayesian state estimation with sensor observations; the paper's UAV experiment should be distinguished from commercial offshore deployments.",
+    "problem": "Large-asset operators can observe temperatures and pressures without knowing where stress or fatigue is accumulating. Full detailed solves are too expensive for frequent operational updates and targeted inspection planning.",
+    "stage": "Deployed",
+    "tags": [
+      "digital twins",
+      "reduced-order models",
+      "finite elements",
+      "structural integrity",
+      "energy",
+      "maintenance"
+    ],
+    "related": [
+      "cognite",
+      "physicsx",
+      "luminary",
+      "emmi-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Named deployment",
+        "text": "Akselos announced a deployed structural twin of Shell's Bonga Main FPSO in 2020, using changing loads and inspection data for fatigue assessment. The announcement includes a Shell asset-manager statement.",
+        "url": "https://akselos.com/akselos-deploys-digital-twin-of-shells-bonga-fpso/"
+      },
+      {
+        "label": "Published method",
+        "text": "A peer-reviewed component-based reduced-order-model paper demonstrates sensor-informed structural state estimation on a 12-foot UAV wing. It was first published in 2020, with a 2022 journal issue.",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1002/nme.6423"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Shell Bonga FPSO structural-twin deployment",
+        "url": "https://akselos.com/akselos-deploys-digital-twin-of-shells-bonga-fpso/",
+        "type": "company",
+        "note": "Specific named asset, deployed application and customer quotation; does not establish all later ROI claims."
+      },
+      {
+        "title": "Component-based reduced-order models for digital twins",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1002/nme.6423",
+        "type": "paper",
+        "note": "Peer-reviewed formulation and UAV demonstration; first online 2020, not a new 2026 paper."
+      },
+      {
+        "title": "RB-FEA versus data-driven physics AI",
+        "url": "https://akselos.com/rb-fea-vs-physics-ai/",
+        "type": "company",
+        "note": "Vendor explanation of reduced-equation and learned-surrogate boundaries. Competitive comparisons require independent validation."
+      },
+      {
+        "title": "Digital twins mature in the North Sea",
+        "url": "https://jpt.spe.org/digital-twins-mature-north-sea",
+        "type": "report",
+        "note": "2019 Society of Petroleum Engineers trade reporting provides historical industry context beyond current company marketing."
+      },
+      {
+        "title": "Current structural-performance-management approach",
+        "url": "https://akselos.com/",
+        "type": "company",
+        "note": "Explains operating-data inputs and stress, fatigue and damage outputs; numerical savings remain vendor claims."
+      }
+    ],
+    "caveat": "Reduced models have validity limits and need appropriate components, material assumptions, boundary conditions and inspection data. A fast structural twin does not measure every hidden defect or replace engineering review and certification.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "emmi-ai",
+    "name": "Emmi AI / Mistral",
+    "website": "https://www.emmi.ai/",
+    "category": "twins",
+    "subcategory": "Industrial neural physics surrogates",
+    "focus": "CFD · multiphysics · open training infrastructure",
+    "edge": "Open neural-physics methods reach industrial mesh scales; the team is joining Mistral's engineering effort.",
+    "summary": "Develops neural surrogates for industrial fluid, thermal and particulate simulation, with open research code and an announced move into Mistral.",
+    "thesis": "Emmi is interesting for inspectable physics-model machinery rather than only a fast airfoil demo. AB-UPT separates geometry encoding from field queries, while Noether documents practical training recipes. Its move into Mistral connects specialist physics prediction to engineering agents, but that expanded product vision should be evaluated separately from the published surrogate results.",
+    "technology": "Anchored-Branched Universal Physics Transformers encode large geometries into a compact latent representation, with separate branches and anchored neural-field decoders for predicting surface and volume fields at queried locations. The research targets mesh-free inference at industrial CFD scale and includes physical consistency constraints. Emmi's broader published portfolio spans particulate-flow NeuralDEM and other multiphysics models. Noether exposes configurable data, model and training infrastructure, including a documented heat-transfer recipe, making the approach more reproducible than a closed demo alone.",
+    "problem": "Large CFD and multiphysics simulations make iterative engineering slow and expensive. A useful surrogate must handle geometry and field resolution while maintaining accuracy across the intended operating regime.",
+    "stage": "Demonstrated",
+    "tags": [
+      "physics AI",
+      "CFD",
+      "surrogate models",
+      "transformers",
+      "multiphysics",
+      "open code"
+    ],
+    "related": [
+      "physicsx",
+      "luminary",
+      "akselos",
+      "ami-labs"
+    ],
+    "evidence": [
+      {
+        "label": "Research and code",
+        "text": "AB-UPT reports industrial CFD experiments with millions of surface points and more than 100 million volume points; accompanying public code documents the method. These are paper results, not independent deployment metrics.",
+        "url": "https://arxiv.org/abs/2502.09692"
+      },
+      {
+        "label": "Company status",
+        "text": "Mistral's May 2026 announcement states a definitive agreement to acquire Emmi and says the team and co-founders would join its Science and Applied AI effort in May. Emmi's chief scientist separately describes joining Mistral.",
+        "url": "https://mistral.ai/news/accelerate-ai-native-industry/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "AB-UPT paper",
+        "url": "https://arxiv.org/abs/2502.09692",
+        "type": "paper",
+        "note": "Primary architecture and evaluation; distinguish author-reported scale and accuracy from production validation."
+      },
+      {
+        "title": "AB-UPT implementation",
+        "url": "https://github.com/Emmi-AI/anchored-branched-universal-physics-transformers",
+        "type": "code",
+        "note": "Public implementation supporting inspection and reproduction of the surrogate architecture."
+      },
+      {
+        "title": "Noether heat-transfer training recipe",
+        "url": "https://noether-docs.emmi.ai/noether/heat_transfer.html",
+        "type": "code",
+        "note": "Concrete framework documentation for data, configuration and model training."
+      },
+      {
+        "title": "Mistral industrial-engineering acquisition announcement",
+        "url": "https://mistral.ai/news/accelerate-ai-native-industry/",
+        "type": "company",
+        "note": "Primary definitive-agreement wording and planned team integration; no separate legal closing confirmation was verified."
+      },
+      {
+        "title": "Chief scientist on joining Mistral",
+        "url": "https://www.emmi.ai/news/building-the-frontier-lab-for-industrial-engineering",
+        "type": "company",
+        "note": "May 19, 2026 founder account explains the engineering mission and next organizational chapter."
+      },
+      {
+        "title": "CFD practitioners question the airfoil demo",
+        "url": "https://www.reddit.com/r/CFD/comments/1s2i5mj/what_is_emmi_ai_doing_differently_using_neural/",
+        "type": "reddit",
+        "note": "March–July 2026 discussion raises coefficient plausibility, data cost and interpolation concerns. Anonymous criticism is a validation prompt, not proof that the models fail."
+      }
+    ],
+    "caveat": "The team is joining Mistral; do not treat Emmi as an unaffected independent startup. Primary legal wording is a definitive acquisition agreement. Public demos and published accuracy do not establish generalization outside trained geometries and flow regimes.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "decart",
+    "name": "Decart",
+    "website": "https://decart.ai/",
+    "category": "world",
+    "subcategory": "Action-conditioned visual simulation",
+    "focus": "Interactive video dynamics · real-time inference · RL interfaces",
+    "edge": "Low-latency action-conditioned pixels, progressing from a playable game model to multi-camera AV simulation.",
+    "summary": "Builds real-time generative models, including Oasis worlds that respond to actions and can expose visual environments to learning agents.",
+    "thesis": "Decart makes world-model latency tangible: a model must answer actions fast enough for a human or an agent to remain in the loop. The transition from open Oasis gameplay to an Oasis 3 driving interface is worth studying. Its optimized inference stack is a differentiator, while causal fidelity remains the harder test than frame rate.",
+    "technology": "Oasis learns autoregressive visual transitions conditioned on recent observations and controls instead of executing an explicit game or rigid-body engine. The 2024 open model exposes diffusion-based inference code and weights developed with Etched. Current Oasis 3 presents action-conditioned multi-camera driving rollouts, control inputs and an SDK/RL example. Decart reports 22 frames per second for three 512×768 views and less than 200 milliseconds end-to-end latency; these are company measurements, not an independently replicated safety benchmark.",
+    "problem": "Traditional virtual worlds require costly authored assets and rules. Learned environments could broaden agent training, but must respond quickly and maintain useful action consequences over long rollouts.",
+    "stage": "Demonstrated",
+    "tags": [
+      "world models",
+      "action conditioning",
+      "video diffusion",
+      "real-time",
+      "reinforcement learning",
+      "autonomous driving"
+    ],
+    "related": [
+      "odyssey",
+      "general-intuition",
+      "waabi",
+      "ami-labs"
+    ],
+    "evidence": [
+      {
+        "label": "Current model interface",
+        "text": "The Oasis 3 page describes multi-camera driving generation, control-conditioned rollouts and a robotics SDK with an RL example. Robot locomotion and manipulation are described as directions beyond the current AV focus.",
+        "url": "https://decart.ai/oasis"
+      },
+      {
+        "label": "Open research artifact",
+        "text": "The original Open Oasis repository publishes a 500-million-parameter model inference implementation. It is an earlier gameplay model, not an open release of Oasis 3.",
+        "url": "https://github.com/etched-ai/open-oasis"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Oasis 3 capabilities and controls",
+        "url": "https://decart.ai/oasis",
+        "type": "company",
+        "note": "Current AV focus, latency claims and interface examples; future robotics use cases are separated from demonstrated scope."
+      },
+      {
+        "title": "Original Oasis technical report",
+        "url": "https://oasis-model.github.io/",
+        "type": "paper",
+        "note": "2024 Decart/Etched visual-world architecture, inference approach and public collaboration route."
+      },
+      {
+        "title": "Open Oasis implementation",
+        "url": "https://github.com/etched-ai/open-oasis",
+        "type": "code",
+        "note": "Runnable earlier-model inference and setup requirements. This release does not verify Oasis 3's capabilities."
+      },
+      {
+        "title": "Decart robotics SDK",
+        "url": "https://github.com/DecartAI/decart-robotics",
+        "type": "code",
+        "note": "Control and streaming interfaces with an RL example; inspect API access and usage costs before experiments."
+      },
+      {
+        "title": "Company history and financing",
+        "url": "https://decart.ai/about",
+        "type": "company",
+        "note": "Records the May 2026 $300 million announcement and more than $450 million total funding; financing is not model validation."
+      },
+      {
+        "title": "Running Open Oasis on consumer GPUs",
+        "url": "https://www.reddit.com/r/Decart/comments/1hsnzch/setup_to_play_open_oasis_on_device/",
+        "type": "reddit",
+        "note": "January 2025 hands-on setup and memory/performance discussion for the open gameplay model, not the current driving model."
+      }
+    ],
+    "caveat": "Responsive photorealistic pixels can still drift, invent objects or respond incorrectly to controls. An AV training API does not establish calibrated counterfactual dynamics, safety coverage or successful transfer of trained policies to real vehicles.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "ami-labs",
+    "name": "AMI Labs",
+    "website": "https://amilabs.xyz/",
+    "category": "world",
+    "subcategory": "Latent predictive world models",
+    "focus": "JEPA · action-conditioned prediction · representation learning",
+    "edge": "A major research bet on predicting abstract states for planning rather than reproducing every future pixel.",
+    "summary": "Research lab developing abstract, action-conditioned world models for planning and control, with emerging open representation-learning work.",
+    "thesis": "AMI's bet is that useful planning needs a predictive state that omits unpredictable detail. This is a distinct route from interactive video generation. Its founding team's research and large initial financing make it consequential, but the map should track inspectable representation methods and future closed-loop results separately from the company's broad reliability ambitions.",
+    "technology": "The company describes world models that encode continuous sensor data into abstract representations and predict action consequences in that space, with memory and planning layered above. JEPA is the relevant research lineage. LeVJEPA, an August 2026 multi-institution paper with explicit AMI-affiliated co-authors, trains a single video encoder with view-invariance and SIGReg anti-collapse regularization, aggressive token dropping and block-causal attention. It supplies an inspectable perception component; it is not itself a shipped AMI planning system.",
+    "problem": "Predicting every stochastic visual detail spends capacity on information that may be irrelevant to action. Agents need compact states that retain the physical relationships necessary for reliable planning and control.",
+    "stage": "Research",
+    "tags": [
+      "world models",
+      "JEPA",
+      "latent dynamics",
+      "planning",
+      "representation learning",
+      "open research"
+    ],
+    "related": [
+      "world-labs",
+      "odyssey",
+      "general-intuition",
+      "decart",
+      "emmi-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Research financing",
+        "text": "Investor H.V. Capital records a $1.03 billion March 2026 seed round. This is a dated round amount, not a claim about the latest cumulative funding.",
+        "url": "https://hvcapital.com/portfolio/ami-labs"
+      },
+      {
+        "label": "Open scientific contribution",
+        "text": "LeVJEPA's project page lists AMI Labs affiliations for three co-authors and links a public implementation and checkpoints. The paper evaluates representation pretraining, not deployed robotic or industrial control.",
+        "url": "https://levjepa.github.io/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "AMI research direction and founding team",
+        "url": "https://amilabs.xyz/",
+        "type": "company",
+        "note": "Primary company domain, abstract-state prediction thesis, intended applications and public professional contact address."
+      },
+      {
+        "title": "H.V. Capital investment profile",
+        "url": "https://hvcapital.com/portfolio/ami-labs",
+        "type": "report",
+        "note": "Primary investor account of the March 2026 seed round and research approach."
+      },
+      {
+        "title": "LeVJEPA project and affiliations",
+        "url": "https://levjepa.github.io/",
+        "type": "paper",
+        "note": "Multi-institution work with explicit AMI affiliations; shows the representation component and its scope."
+      },
+      {
+        "title": "LeVJEPA paper",
+        "url": "https://arxiv.org/abs/2608.27395",
+        "type": "paper",
+        "note": "August 27, 2026 preprint, methods and compute-matched evaluations. Author benchmarks need replication."
+      },
+      {
+        "title": "LeVJEPA implementation and checkpoints",
+        "url": "https://github.com/MLO-lab/LeVJEPA",
+        "type": "code",
+        "note": "Official paper implementation with training and visualization notebooks. Checkpoint/model-code licensing differs from the repository's general MIT license."
+      },
+      {
+        "title": "Nabla describes its AMI partnership",
+        "url": "https://www.nabla.com/blog/ami-raises-1-03b-to-build-world-models----powering-the-next-generation-of-healthcare-ai-with-nabla",
+        "type": "company",
+        "note": "Partner announcement describes early access to emerging research; does not show AMI models deployed in clinical decisions."
+      }
+    ],
+    "caveat": "Research-stage company. LeVJEPA is a video encoder, not a validated action planner or general world model. Earlier LeWorldModel papers without AMI affiliations should be credited to their actual institutions, not relabeled as company products.",
+    "reviewed": "2026-10-07"
+  }
+]

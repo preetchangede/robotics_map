@@ -123,6 +123,7 @@ export const views = [
   ["companies", "Companies"],
   ["problems", "Open problems"],
   ["experiments", "Experiments"],
+  ["resources", "Essentials"],
   ["sources", "Source library"],
 ];
 export const typeLabels = {
@@ -136,3 +137,23 @@ export const typeLabels = {
   x: "X / Twitter",
   reddit: "Reddit",
 };
+export const resourcePaths = [
+  {
+    id: "act",
+    title: "Teach a body",
+    description: "Control → data → policies → real-world evaluation",
+    categories: ["general", "foundation", "niche", "simulation"],
+  },
+  {
+    id: "predict",
+    title: "Model a world",
+    description: "Dynamics → prediction → synchronized assets",
+    categories: ["world", "twins"],
+  },
+  {
+    id: "capture",
+    title: "Capture a space",
+    description: "Geometry → radiance → reconstruction limits",
+    categories: ["spatial"],
+  },
+];

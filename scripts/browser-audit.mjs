@@ -2,6 +2,20 @@ import fs from "node:fs";
 import assert from "node:assert/strict";
 import { chromium } from "playwright-core";
 import AxeBuilder from "@axe-core/playwright";
+const data = JSON.parse(
+  fs.readFileSync(new URL("../src/data/atlas.json", import.meta.url)),
+);
+const all = [
+  ...data.companies,
+  ...data.problems,
+  ...data.experiments,
+  ...data.resources,
+];
+const sourceList = [
+  ...new Map(all.flatMap((e) => e.sources).map((s) => [s.url, s])).values(),
+];
+const companies = data.companies.length;
+const byCategory = (c) => data.companies.filter((e) => e.category === c).length;
 const base = process.env.ATLAS_BASE_URL || "http://localhost:5173";
 fs.mkdirSync(".qa", { recursive: true });
 const browser = await chromium.launch({
@@ -70,19 +84,19 @@ try {
     "Landscape renders with seven navigable fields and explained relationships",
   );
   await clickTab("Companies");
-  await count(36);
+  await count(companies);
   log("All company profiles available");
   const search = page.getByRole("textbox", { name: "Search the atlas" });
   await search.fill("Physical Intelligence");
   await count(1);
   await search.fill("");
-  await count(36);
+  await count(companies);
   log("Search returns and clears real results");
   await page
     .locator(".category-nav")
     .getByRole("button", { name: /Foundation models/ })
     .click();
-  await count(6);
+  await count(byCategory("foundation"));
   assert.equal(
     (await page.locator(".field-connections>button").count()) > 0,
     true,
@@ -95,15 +109,56 @@ try {
   await page
     .getByLabel("Focus", { exact: true })
     .selectOption("Generalist action policies");
-  await count(4);
+  await count(
+    data.companies.filter(
+      (e) =>
+        e.category === "foundation" && e.focus === "Generalist action policies",
+    ).length,
+  );
   await page.getByLabel("Focus", { exact: true }).selectOption("all");
   await page.getByLabel("Evidence stage").selectOption("Research");
-  await count(3);
+  await count(
+    data.companies.filter(
+      (e) => e.category === "foundation" && e.stage === "Research",
+    ).length,
+  );
   await page.getByRole("button", { name: "Reset", exact: true }).click();
-  await count(36);
+  await count(companies);
   log("Category, subcategory, and evidence-stage filters work and reset");
+  await page
+    .getByLabel("Focus", { exact: true })
+    .selectOption("Generalist action policies");
+  await page.locator(".brand").click();
+  await count(3);
+  await clickTab("Companies");
+  await count(companies);
+  await page.getByRole("button", { name: /New bearings/ }).click();
+  await count(data.companies.filter((e) => e.added).length);
+  await page.getByRole("button", { name: "All builders", exact: true }).click();
+  await count(companies);
+  log(
+    "Home clears prior focus; the new-company discovery lens shows the curated expansion",
+  );
+  await clickTab("Essentials");
+  if (
+    (await page.locator(".filter-toggle").getAttribute("aria-expanded")) ===
+    "false"
+  )
+    await page.locator(".filter-toggle").click();
+  await page.getByLabel("Resource format").selectOption("Watch");
+  await count(data.resources.filter((e) => e.format === "Watch").length);
+  await page.goBack();
+  await count(companies);
+  assert.equal(await page.getByLabel("Evidence stage").inputValue(), "all");
+  assert.equal(
+    await page.locator('.view-tabs [aria-current="page"]').textContent(),
+    "Companies",
+  );
+  log(
+    "Browser Back clears inapplicable resource filters and restores active-view semantics",
+  );
   await page.getByRole("button", { name: "List view", exact: true }).click();
-  assert.equal(await page.locator(".entity-card.row").count(), 36);
+  assert.equal(await page.locator(".entity-card.row").count(), companies);
   await page.getByRole("button", { name: "Grid view", exact: true }).click();
   log("Grid and list layouts work");
   const bookmark = page.getByRole("button", {
@@ -143,8 +198,11 @@ try {
     await page.locator("#detail-title").textContent(),
     "Physical Intelligence",
   );
-  assert.equal(await page.locator(".source-links a").count(), 6);
-  assert.equal(await page.locator(".related-section>button").count(), 3);
+  assert.equal(
+    await page.locator(".source-links a").count(),
+    data.companies.find((e) => e.id === "physical-intelligence").sources.length,
+  );
+  assert.equal(await page.locator(".related-section>button").count(), 4);
   await page.keyboard.press("Control+k");
   assert.equal(
     await page.evaluate(
@@ -161,6 +219,38 @@ try {
   );
   await accessibility("company-detail");
   await page.screenshot({ path: ".qa/company-detail.png" });
+  const jump = page.getByRole("button", { name: "Founders", exact: true });
+  await jump.focus();
+  await jump.press("Enter");
+  assert.equal(
+    await page.evaluate(() => document.activeElement.id),
+    "founders",
+  );
+  await page.keyboard.press("Tab");
+  assert.equal(
+    await page.evaluate(
+      () => document.activeElement.closest(".founder-section") !== null,
+    ),
+    true,
+  );
+  assert.equal(await page.locator(".founder-section").count(), 1);
+  await page
+    .locator(".founder-card details")
+    .first()
+    .locator("summary")
+    .click();
+  assert.equal(
+    await page.locator(".founder-card details").first().getAttribute("open"),
+    "",
+  );
+  assert.equal(
+    (await page.locator(".contact-provenance a:visible").count()) > 0,
+    true,
+  );
+  await accessibility("founder-provenance");
+  log(
+    "Founder routes expose identity evidence and separate channel provenance",
+  );
   await page
     .locator(".research-drawer")
     .evaluate((el) => (el.scrollTop = el.scrollHeight));
@@ -202,12 +292,64 @@ try {
   log(
     "Experiment plans include difficulty, five steps, resources, and metrics",
   );
+  await clickTab("Essentials");
+  await count(data.resources.length);
+  assert.equal(await page.locator(".resource-paths button").count(), 3);
+  await page
+    .locator(".resource-paths button")
+    .filter({ hasText: "Capture a space" })
+    .click();
+  await count(data.resources.filter((e) => e.category === "spatial").length);
+  assert.equal(
+    await page.evaluate(() => location.hash.includes("path=capture")),
+    true,
+  );
+  await page.reload();
+  await count(data.resources.filter((e) => e.category === "spatial").length);
+  await page.locator(".filter-toggle").click();
+  await page.getByLabel("Resource format").selectOption("Build");
+  await count(
+    data.resources.filter(
+      (e) => e.category === "spatial" && e.format === "Build",
+    ).length,
+  );
+  await page.getByRole("button", { name: "Reset", exact: true }).click();
+  await count(data.resources.length);
+  await accessibility("essentials");
+  await page.screenshot({ path: ".qa/essentials.png", fullPage: true });
+  await page.locator(".card-main").first().click();
+  assert.equal(
+    await page.locator(".resource-launch").getAttribute("href"),
+    data.resources[0].url,
+  );
+  assert.equal(
+    await page
+      .locator(".research-drawer")
+      .getByText("What you will understand", { exact: true })
+      .count(),
+    1,
+  );
+  await accessibility("resource-detail");
+  await page.keyboard.press("Escape");
+  await page.getByRole("dialog").waitFor({ state: "detached" });
+  log(
+    "Essential paths survive reload; format filters, learning payoff and direct links work",
+  );
   await clickTab("Source library");
-  assert.equal(await page.locator(".source-library>article").count(), 312);
+  assert.equal(
+    await page.locator(".source-library>article").count(),
+    sourceList.length,
+  );
   await page.getByLabel("Filter source type").selectOption("reddit");
-  assert.equal(await page.locator(".source-library>article").count(), 34);
+  assert.equal(
+    await page.locator(".source-library>article").count(),
+    sourceList.filter((s) => s.type === "reddit").length,
+  );
   await page.getByLabel("Filter source type").selectOption("docs");
-  assert.equal(await page.locator(".source-library>article").count(), 17);
+  assert.equal(
+    await page.locator(".source-library>article").count(),
+    sourceList.filter((s) => s.type === "docs").length,
+  );
   await page.getByLabel("Filter source type").selectOption("all");
   await accessibility("sources");
   log(
@@ -220,7 +362,7 @@ try {
   );
   await page.keyboard.press("Escape");
   await page.getByRole("dialog").waitFor({ state: "detached" });
-  await count(6);
+  await count(byCategory("spatial"));
   log("Deep links restore category and profile");
   await page.evaluate(() => window.scrollTo(0, 1200));
   await clickTab("Open problems");
@@ -268,7 +410,7 @@ try {
     .locator(".category-nav")
     .getByRole("button", { name: /Splatting & 3D/ })
     .click();
-  await count(6);
+  await count(byCategory("spatial"));
   assert.equal(
     await page
       .getByRole("button", { name: "Open navigation", exact: true })
@@ -314,7 +456,7 @@ try {
   await navigate("#companies");
   await page.evaluate(() => localStorage.setItem("field-atlas-saved", "null"));
   await page.reload();
-  await count(36);
+  await count(companies);
   assert.equal(errors.length, 0, errors.join("\n"));
   log("Corrupt bookmark storage recovers; no browser runtime errors");
   fs.writeFileSync(
