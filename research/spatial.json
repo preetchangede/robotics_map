@@ -1,0 +1,462 @@
+[
+  {
+    "id": "niantic-spatial",
+    "name": "Niantic Spatial",
+    "website": "https://nianticspatial.com/",
+    "category": "spatial",
+    "subcategory": "Geospatial reconstruction & localization",
+    "summary": "Combines mobile and aerial 3D capture, Gaussian-splat reconstruction and visual localization to give machines a geographically anchored understanding of real places.",
+    "thesis": "Its distinctive asset is the connection between capture, reconstruction and localization: a scan becomes part of a geographically anchored map that other devices can use. Scaniverse is a product of Niantic Spatial, while the company’s broader ambition is a Large Geospatial Model for physical-world AI.",
+    "technology": "Scaniverse supports on-device mesh and Gaussian-splat reconstruction; enterprise workflows combine ground and aerial sensor inputs into georeferenced scenes. Visual Positioning System technology localizes cameras against mapped places. The MIT-licensed SPZ format compresses splat attributes and handles coordinate conventions. Its Cross-View Splatter research explores feed-forward reconstruction from ground photos plus orthorectified satellite imagery; that research should be distinguished from generally available enterprise capabilities.",
+    "problem": "Robots, AR devices and field teams need persistent spatial maps, accurate localization and useful 3D geometry. Attractive visual reconstructions alone do not provide shared coordinates, semantics or dependable machine navigation.",
+    "stage": "Platform",
+    "tags": [
+      "Gaussian splatting",
+      "Geospatial AI",
+      "Visual localization",
+      "Digital twins",
+      "Mobile capture",
+      "Open source"
+    ],
+    "related": [
+      "xgrids",
+      "playcanvas"
+    ],
+    "evidence": [
+      {
+        "label": "Independent company",
+        "text": "Niantic Spatial’s May 29, 2025 launch announcement says the games sale to Scopely had completed and the new company started with $250 million in funding.",
+        "url": "https://www.nianticspatial.com/en/blog/niantic-spatial-day-one"
+      },
+      {
+        "label": "Named partnership",
+        "text": "Niantic Spatial announced a multi-year mapping partnership and additional investment from Snap on June 10, 2025. This establishes a commercial relationship, not proof of universal robotic autonomy.",
+        "url": "https://www.nianticspatial.com/blog/vps-snap-investment"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Reconstruct product and capture modes",
+        "url": "https://nianticspatial.com/products/reconstruct",
+        "type": "company",
+        "note": "Current primary product description; distinguishes on-device and enterprise reconstruction."
+      },
+      {
+        "title": "Day One for Niantic Spatial",
+        "url": "https://www.nianticspatial.com/en/blog/niantic-spatial-day-one",
+        "type": "company",
+        "note": "May 2025 separation, initial capital and enterprise ambitions."
+      },
+      {
+        "title": "Niantic Spatial and Snap partnership",
+        "url": "https://www.nianticspatial.com/blog/vps-snap-investment",
+        "type": "company",
+        "note": "Named mapping partnership; company-reported plans and investment."
+      },
+      {
+        "title": "SPZ compression library",
+        "url": "https://github.com/nianticlabs/spz",
+        "type": "code",
+        "note": "MIT source, coordinate-system conversions, format details and browser utility."
+      },
+      {
+        "title": "Cross-View Splatter",
+        "url": "https://nianticspatial.github.io/cross-view-splatter/",
+        "type": "paper",
+        "note": "Primary project page for feed-forward ground/satellite view synthesis; research, not a shipped-product guarantee."
+      },
+      {
+        "title": "Practitioner questions about on-device Scaniverse",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1mdjscn/",
+        "type": "reddit",
+        "note": "Discussion of phone reconstruction speed and quality tradeoffs; practitioner observations, not benchmarks."
+      }
+    ],
+    "caveat": "The Large Geospatial Model is broader than a splat viewer, but public imagery counts and positioning precision are company claims. Evaluate geometric error, coverage, map freshness and privacy for each actual deployment.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "xgrids",
+    "name": "XGRIDS",
+    "website": "https://www.xgrids.com/intl",
+    "category": "spatial",
+    "subcategory": "SLAM capture hardware & reconstruction",
+    "summary": "Builds portable spatial scanners and reconstruction software that fuse motion tracking, LiDAR and imagery into measurable point clouds and navigable Gaussian-splat scenes.",
+    "thesis": "The interesting bet is capture engineering: reliable camera trajectories and measured structure can matter as much as the splat optimizer. XGRIDS connects a physical scanner to reconstruction, large-scene delivery and downstream engines, making it especially relevant to surveying, facilities and virtual-production teams that need repeatable capture.",
+    "technology": "Its Multi-SLAM capture devices provide LiDAR and visual inputs to LixelStudio and Lixel CyberColor. LCC reconstructs Gaussian splats with measured structural information; documented workflows include ground-map fusion, drone/ground fusion and high-resolution image enhancement. The published LCC specification describes spatial chunks, levels of detail, asynchronous loading and optional collision data. Current LCC Studio documentation lists PLY, LCC/LCC2, USD and 3D Tiles exports, with capabilities varying by edition.",
+    "problem": "Manual image capture often produces incomplete coverage and unstable camera alignment. Large facilities also exceed simple viewer memory budgets. Teams need an efficient route from walking a site to useful geometry and deployable visualization.",
+    "stage": "Deployed",
+    "tags": [
+      "Gaussian splatting",
+      "LiDAR",
+      "SLAM",
+      "Reality capture",
+      "Digital twins",
+      "Large scenes"
+    ],
+    "related": [
+      "volinga",
+      "playcanvas",
+      "niantic-spatial"
+    ],
+    "evidence": [
+      {
+        "label": "Commercial release",
+        "text": "XGRIDS’ April 9, 2025 announcement reports commercial release of Lixel CyberColor after industry-partner beta testing.",
+        "url": "https://www.prnewswire.com/news-releases/xgrids-unveils-lcc-pioneering-slam-based-gaussian-splatting-software-for-rapid-photorealistic-3d-environment-creation-302424505.html"
+      },
+      {
+        "label": "Named workflow",
+        "text": "Volinga’s May 2026 Casepak case study names XGRIDS PortalCam and LCC in a facility-capture pipeline feeding an interactive Unreal application. Accuracy requirements in the article are not measured achieved accuracy.",
+        "url": "https://www.volinga.ai/insights/building-a-real-time-interactive-digital-twin-for-casepak/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "LCC Studio v2.3 getting started",
+        "url": "https://cdn-docs.xgrids.cloud/en-us/06-lixel-cybercolor/01-lcc-studio/v2.3.0/01-getting-started.html",
+        "type": "company",
+        "note": "Primary LiDAR/visual reconstruction, fusion, export and hardware/edition documentation."
+      },
+      {
+        "title": "LCC format white paper",
+        "url": "https://github.com/xgrids/LCCWhitepaper",
+        "type": "code",
+        "note": "Public technical specification for chunks, LODs, streaming and optional collision; not open-source reconstruction software."
+      },
+      {
+        "title": "LCC commercial launch",
+        "url": "https://www.prnewswire.com/news-releases/xgrids-unveils-lcc-pioneering-slam-based-gaussian-splatting-software-for-rapid-photorealistic-3d-environment-creation-302424505.html",
+        "type": "company",
+        "note": "Company-issued April 2025 press release; maturity signal, not independent performance validation."
+      },
+      {
+        "title": "Casepak capture-to-Unreal case study",
+        "url": "https://www.volinga.ai/insights/building-a-real-time-interactive-digital-twin-for-casepak/",
+        "type": "company",
+        "note": "Named customer workflow reported by an integration partner."
+      },
+      {
+        "title": "PortalCam edition and data-access discussion",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1tvjrbe/xgrids_portalcam_basic_or_premium/",
+        "type": "reddit",
+        "note": "Buyers discuss fusion value and access to raw captures; anecdotal and version dependent."
+      },
+      {
+        "title": "LCC Viewer announcement on X",
+        "url": "https://x.com/XGRIDS_OFFICIAL/status/2057427471935705375",
+        "type": "x",
+        "note": "Exact official post discovered through an indexed repost; direct X page exposes no readable text here and may require login."
+      }
+    ],
+    "caveat": "The reconstruction stack is proprietary. Confirm raw-data access, export rights, fusion licensing and processing hardware before buying; a published file specification does not make the capture pipeline open source.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "volinga",
+    "name": "Volinga",
+    "website": "https://www.volinga.ai/",
+    "category": "spatial",
+    "subcategory": "Production rendering & Unreal integration",
+    "summary": "Turns reality-capture imagery and splat files into editable assets that production teams can render, color-manage and integrate into Unreal Engine scenes.",
+    "thesis": "Volinga focuses on the difficult step after reconstruction: making radiance-field assets usable inside actual production workflows. Its value lies in color management, scene integration, large-data handling and packaged delivery, with named film, broadcast and industrial examples that go beyond a standalone splat demo.",
+    "technology": "Volinga Suite creates and edits Gaussian splats; the Unreal plugin renders static and animated assets. Current documentation describes separate Renderer and DataBridge components, NVOL/PLY/SOG/SPZ support, Sequencer, level streaming, ACES/OCIO color handling and nDisplay multi-GPU workflows. Normal-based lighting controls allow artistic lighting adjustments. These capabilities are production-integration tools; they do not, by themselves, prove physically correct recovery of the original scene’s materials and illumination.",
+    "problem": "A raw reconstructed scene is difficult to deploy on an LED stage or inside an interactive application. Artists need predictable color, controllable appearance, engine interoperability and manageable memory without rebuilding everything as polygon meshes.",
+    "stage": "Deployed",
+    "tags": [
+      "Gaussian splatting",
+      "Unreal Engine",
+      "Virtual production",
+      "Relighting",
+      "ACES",
+      "Digital twins"
+    ],
+    "related": [
+      "xgrids",
+      "jawset",
+      "gracia"
+    ],
+    "evidence": [
+      {
+        "label": "Industrial example",
+        "text": "Volinga reports that UFX used its renderer to build an interactive Casepak recycling-facility twin from a capture dataset exceeding 200,000 images in May 2026.",
+        "url": "https://www.volinga.ai/insights/building-a-real-time-interactive-digital-twin-for-casepak/"
+      },
+      {
+        "label": "Production example",
+        "text": "An August 2026 company case study describes ZARA Kids using six captured environments over five shoot days, rendered with Pixotope and Volinga on an LED wall.",
+        "url": "https://www.volinga.ai/insights/how-zara-kids-brought-california-to-europe/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Unreal plugin product overview",
+        "url": "https://docs.volinga.ai/en/home/volinga-plugin/product-overview",
+        "type": "company",
+        "note": "July 2026 primary documentation for Renderer/DataBridge, file formats, color and production integrations."
+      },
+      {
+        "title": "ACES and OpenEXR workflow",
+        "url": "https://docs.volinga.ai/en/home/volinga-suite/exr-files-aces",
+        "type": "company",
+        "note": "Primary HDR/color workflow documentation and Unreal OCIO handling."
+      },
+      {
+        "title": "Casepak digital twin",
+        "url": "https://www.volinga.ai/insights/building-a-real-time-interactive-digital-twin-for-casepak/",
+        "type": "company",
+        "note": "Named industrial application; performance and accuracy language is company-reported."
+      },
+      {
+        "title": "ZARA Kids virtual production",
+        "url": "https://www.volinga.ai/insights/how-zara-kids-brought-california-to-europe/",
+        "type": "company",
+        "note": "Production workflow, scene sizes, GPU limits and remaining cleanup work."
+      },
+      {
+        "title": "Volinga 3DGS workflow technical review",
+        "url": "https://digitalproduction.com/2026/06/09/splat-happens-volinga-3dgs-workflow-for-unreal/",
+        "type": "report",
+        "note": "Industry technical discussion of local processing, normal estimation and engine workflow."
+      },
+      {
+        "title": "Unreal exposure troubleshooting",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1wcevte/does_anyone_know_why_my_splats_look_so/",
+        "type": "reddit",
+        "note": "Practitioner discussion of ambient lighting and exposure mismatches across tools."
+      }
+    ],
+    "caveat": "Case studies establish use, not independent metrology or universal FPS. Captured lighting, scene cleanup, GPU memory and cross-renderer exposure still need validation in the intended production setup.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "jawset",
+    "name": "Jawset Visual Computing",
+    "website": "https://www.jawset.com/",
+    "category": "spatial",
+    "subcategory": "Local reconstruction & artist tooling",
+    "summary": "Makes Postshot, a desktop application that reconstructs radiance fields from ordinary photos or videos and connects the results to professional rendering workflows.",
+    "thesis": "Postshot is compelling because it packages tracking, training and editing into a local workflow that an artist can inspect as it converges. It accepts external camera solutions and offers controls for difficult captures, making it useful when data ownership and reconstruction quality matter more than a cloud upload.",
+    "technology": "Postshot estimates or imports camera poses, selects images, trains Gaussian-splat radiance fields and previews reconstruction locally. Its documentation describes Splat3, MCMC and legacy adaptive-density profiles; photometric compensation handles exposure, white balance and vignetting variation. Masks can suppress occluders, region-of-interest training allocates effort and spherical harmonics model view-dependent color. Paid plans add PLY/SPZ export and engine render nodes; Studio adds HDR, command-line processing and AprilTag alignment.",
+    "problem": "Research reconstruction pipelines are fragmented and hard to troubleshoot. Production users need a practical local workflow with controllable image selection, alignment, training and export, especially for private or high-resolution captured material.",
+    "stage": "Platform",
+    "tags": [
+      "Gaussian splatting",
+      "Local compute",
+      "Photogrammetry",
+      "Neural rendering",
+      "Unreal Engine",
+      "Artist tools"
+    ],
+    "related": [
+      "volinga",
+      "playcanvas"
+    ],
+    "evidence": [
+      {
+        "label": "Independent research use",
+        "text": "A September 2026 forensic feasibility paper used Postshot 1.1.0 with RealityCapture camera alignment for visualization. The authors explicitly distinguish those splats from metrically validated surface meshes.",
+        "url": "https://link.springer.com/article/10.1007/s12024-026-01353-z"
+      },
+      {
+        "label": "Shipping product",
+        "text": "Jawset’s current pricing page documents Free, Indie and Studio plans; PLY/SPZ radiance-field export is an Indie-or-higher feature, while commercial use is excluded from Free.",
+        "url": "https://www.jawset.com/shop/pricing/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Postshot overview",
+        "url": "https://www.jawset.com/",
+        "type": "company",
+        "note": "Primary local-processing, editing, alignment and engine-integration description."
+      },
+      {
+        "title": "Training configuration",
+        "url": "https://www.jawset.com/docs/d/Postshot%2BUser%2BGuide/Interface/Training%2BConfiguration",
+        "type": "company",
+        "note": "Technical details on poses, photometric compensation, profiles, masks and spherical harmonics."
+      },
+      {
+        "title": "Postshot plan capabilities",
+        "url": "https://www.jawset.com/shop/pricing/",
+        "type": "company",
+        "note": "Feature gates verified; do not use crawler-rendered €0 placeholders as paid prices."
+      },
+      {
+        "title": "Forensic reconstruction feasibility study",
+        "url": "https://link.springer.com/article/10.1007/s12024-026-01353-z",
+        "type": "paper",
+        "note": "Independent documented use; small feasibility study, not routine forensic validation."
+      },
+      {
+        "title": "Postshot v0.6 practitioner post on X",
+        "url": "https://x.com/lileaLab/status/1914705650527207678",
+        "type": "x",
+        "note": "Indexed April 2025 practitioner quote of Jawset’s update; historical discovery resource, not current-version evidence."
+      },
+      {
+        "title": "Free local alternatives and subscription discussion",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1t93wxe/free_local_worflow_to_replace_postshot/",
+        "type": "reddit",
+        "note": "Practitioners discuss cost, local alternatives and workflow tradeoffs."
+      }
+    ],
+    "caveat": "Postshot is proprietary and plan gates matter. Free reconstruction does not imply free portable splat export or commercial rights. Visually sharp splats should not be treated as validated measurement surfaces.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "playcanvas",
+    "name": "PlayCanvas",
+    "website": "https://playcanvas.com/products/supersplat",
+    "category": "spatial",
+    "subcategory": "Open web rendering, editing & delivery",
+    "summary": "Develops an open-source web engine and SuperSplat tooling for editing, compressing, publishing and embedding Gaussian-splat scenes directly in the browser.",
+    "thesis": "PlayCanvas is a particularly useful ecosystem company because it makes reconstruction distributable and hackable. SuperSplat is its product, not a separate startup. Open renderer, editor, viewer and conversion tools let developers examine interoperability, memory use and interaction without depending entirely on an opaque proprietary viewer.",
+    "technology": "Its MIT-licensed engine and SuperSplat editor support Gaussian-splat rendering and editing. SOG encodes spatially ordered attributes into WebP-backed data, with a published specification and SplatTransform reference tools. SuperSplat 3.0 moves projection, culling, radix sorting, drawing and editing passes onto WebGPU while streaming exports in chunks. Streamed level-of-detail formats address large scenes; engine integration also enables hybrid scenes combining splats and conventional geometry.",
+    "problem": "High-fidelity captures are often enormous files with awkward viewers. Teams need smaller payloads, lower memory use, editable scenes and dependable browser delivery before reconstructed spaces can become ordinary interactive software.",
+    "stage": "Platform",
+    "tags": [
+      "Gaussian splatting",
+      "Open source",
+      "WebGPU",
+      "Compression",
+      "LOD streaming",
+      "Browser tools"
+    ],
+    "related": [
+      "niantic-spatial",
+      "xgrids",
+      "gracia",
+      "jawset"
+    ],
+    "evidence": [
+      {
+        "label": "Open delivery format",
+        "text": "PlayCanvas’ September 2025 SOG announcement provides an open specification and reference converter; its illustrated 4-million-Gaussian scene shrank from a 1GB PLY to 42MB. This is one example, not a universal ratio.",
+        "url": "https://blog.playcanvas.com/playcanvas-open-sources-sog-format-for-gaussian-splatting/"
+      },
+      {
+        "label": "Current engineering release",
+        "text": "SuperSplat 3.0 shipped September 9, 2026 with WebGPU-based sorting and editing, chunked GPU storage and streamed exports. The release is documented in source and technical release notes.",
+        "url": "https://blog.playcanvas.com/new-in-supersplat-editor-3-0-rebuilt-on-webgpu/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "SuperSplat source",
+        "url": "https://github.com/playcanvas/supersplat",
+        "type": "code",
+        "note": "MIT editor source and release history; product of PlayCanvas."
+      },
+      {
+        "title": "SOG format and implementation",
+        "url": "https://blog.playcanvas.com/playcanvas-open-sources-sog-format-for-gaussian-splatting/",
+        "type": "company",
+        "note": "Morton order, WebP storage and links to open specification/reference tools."
+      },
+      {
+        "title": "SuperSplat 3.0 engineering notes",
+        "url": "https://blog.playcanvas.com/new-in-supersplat-editor-3-0-rebuilt-on-webgpu/",
+        "type": "company",
+        "note": "September 2026 GPU data model, sorting, memory comparison and WebGPU requirements."
+      },
+      {
+        "title": "SuperSplat developer manual",
+        "url": "https://developer.playcanvas.com/user-manual/supersplat/",
+        "type": "company",
+        "note": "Editor, publishing, embedding, streaming and self-hosting paths."
+      },
+      {
+        "title": "PlayCanvas company relationship to Snap",
+        "url": "https://developer.playcanvas.com/user-manual/security/",
+        "type": "company",
+        "note": "Current documentation explicitly identifies PlayCanvas as part of Snap."
+      },
+      {
+        "title": "SuperSplat 3.0 practitioner discussion",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1wanwgm/supersplat_editor_30_rebuilt_on_webgpu_support/",
+        "type": "reddit",
+        "note": "Release discussion and direct source links; publisher participation is not independent benchmarking."
+      }
+    ],
+    "caveat": "PlayCanvas is part of Snap, not an independent new startup. SuperSplat edits and delivers reconstructions; it does not solve capture or geometric validity. Version 3.0’s editor requires compatible WebGPU hardware/browser support.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "gracia",
+    "name": "Gracia",
+    "website": "https://gracia.ai/",
+    "category": "spatial",
+    "subcategory": "Dynamic 4D capture & volumetric streaming",
+    "summary": "Builds a capture-to-playback pipeline for dynamic Gaussian-splat video, allowing viewers to move around recorded performances instead of watching a fixed camera frame.",
+    "thesis": "Gracia extends reconstruction from static rooms to moving people and interactions. The technically valuable question is whether temporal reconstruction, compression and playback can make captured motion reusable across browsers, XR and physical-AI datasets. Its accessible demos make this an inspectable proposition, while its new data offering deserves separate scrutiny.",
+    "technology": "Synchronized multi-camera footage feeds proprietary reconstruction and temporal-stability pipelines, outputting Gracia’s MINT format or PLY sequences. The Web SDK uses WebGPU and WASM with adaptive streaming and Three.js, PlayCanvas and React integrations. Its physical-AI offering advertises stereo POV, depth, hand tracks, semantic splats and novel views. Public repositories distribute the runtime and integration examples; the runtime license remains proprietary while examples and documentation are MIT.",
+    "problem": "Moving volumetric scenes need consistent appearance over time and economical storage, transmission and playback. Robotics research also needs view-controllable interaction data; ordinary video lacks directly registered 3D geometry and trajectories.",
+    "stage": "Platform",
+    "tags": [
+      "4D Gaussian splatting",
+      "Volumetric video",
+      "Temporal coherence",
+      "WebGPU",
+      "XR",
+      "Physical AI data"
+    ],
+    "related": [
+      "playcanvas",
+      "volinga"
+    ],
+    "evidence": [
+      {
+        "label": "Inspectable playback",
+        "text": "Gracia publishes a working PlayCanvas demo and Web SDK with adaptive streaming, XR modes and self-contained integration examples. Those artifacts show availability, not independently measured reconstruction accuracy.",
+        "url": "https://github.com/gracia-labs/web-sdk"
+      },
+      {
+        "label": "Physical-AI offering",
+        "text": "The company’s current data page offers synchronized stereo/multi-camera captures with rendered depth, hand tracking and per-splat semantic attributes. Its sub-millimeter and temporal-stability claims are not independently validated here.",
+        "url": "https://gracia.ai/data"
+      }
+    ],
+    "sources": [
+      {
+        "title": "4DGS pipeline and capture requirements",
+        "url": "https://gracia.ai/4dgs",
+        "type": "company",
+        "note": "Primary workflow, synchronized camera requirements, MINT/PLY output and processing offer; full text available through search indexing."
+      },
+      {
+        "title": "Physical-AI data offering",
+        "url": "https://gracia.ai/data",
+        "type": "company",
+        "note": "Emerging data product with stereo POV, tracking, geometry and semantics; performance statements are marketing claims."
+      },
+      {
+        "title": "Gracia Web SDK",
+        "url": "https://github.com/gracia-labs/web-sdk",
+        "type": "code",
+        "note": "Public distribution, examples, WebGPU/WASM requirements and proprietary runtime/MIT examples license distinction."
+      },
+      {
+        "title": "Interactive PlayCanvas 4D demo",
+        "url": "https://demo.gracia.ai/playcanvas.html",
+        "type": "demo",
+        "note": "Direct playable demonstration; requires supported browser/GPU features."
+      },
+      {
+        "title": "Streaming discussion and practitioner skepticism",
+        "url": "https://www.reddit.com/r/GaussianSplatting/comments/1rtfirg/animated_gaussian_splatting_can_now_be_streamed/",
+        "type": "reddit",
+        "note": "Contains demo links and useful questions about compression, motion and mobile performance."
+      },
+      {
+        "title": "March 2026 browser-streaming practitioner post on X",
+        "url": "https://x.com/taziku_co/status/2032785023884288238",
+        "type": "x",
+        "note": "Exact post linked and quoted by the author at note.com/taziku/n/n2748b4abd94b; direct X reading is blocked here."
+      }
+    ],
+    "caveat": "Capture still needs calibrated, synchronized hardware. Runtime and streaming infrastructure are proprietary; API access requires a partner account. Media demos do not establish collision accuracy, general world-model capability or policy-training improvements.",
+    "reviewed": "2026-10-07"
+  }
+]

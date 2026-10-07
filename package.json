@@ -1,0 +1,28 @@
+{
+  "name": "field-atlas",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "node scripts/prepare-data.mjs && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "audit": "node scripts/audit-data.mjs",
+    "test": "node scripts/browser-audit.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "5.2.8",
+    "@fontsource-variable/newsreader": "5.2.8",
+    "@fontsource/ibm-plex-mono": "5.2.7",
+    "lucide-react": "0.468.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@vitejs/plugin-react": "5.0.4",
+    "playwright-core": "1.56.0",
+    "prettier": "^3.6.2",
+    "vite": "7.3.7"
+  }
+}

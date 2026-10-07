@@ -1,0 +1,205 @@
+{
+  "general-recovery": [
+    "recovery-data",
+    "dyna",
+    "niche-supervision"
+  ],
+  "general-contact": [
+    "sunday",
+    "rlwrld",
+    "simulation-contact"
+  ],
+  "general-safety": [
+    "1x",
+    "field-ai",
+    "simulation-validation"
+  ],
+  "foundation-embodiment": [
+    "skild-ai",
+    "latency-trap",
+    "1x"
+  ],
+  "foundation-data": [
+    "physical-intelligence",
+    "recovery-data",
+    "generalist"
+  ],
+  "foundation-evaluation": [
+    "smolvla-shift",
+    "world-evaluation",
+    "skild-ai"
+  ],
+  "niche-supervision": [
+    "gecko-robotics",
+    "general-recovery",
+    "field-ai"
+  ],
+  "niche-integration": [
+    "wandelbots",
+    "monumental",
+    "twins-semantics"
+  ],
+  "niche-clinical": [
+    "cmr-surgical",
+    "twins-credibility",
+    "simulation-contact"
+  ],
+  "simulation-contact": [
+    "contact-gradient-audit",
+    "general-contact",
+    "nvidia"
+  ],
+  "simulation-transfer": [
+    "randomization-frontier",
+    "latency-trap",
+    "physical-intelligence"
+  ],
+  "simulation-validation": [
+    "applied-intuition",
+    "waabi",
+    "foundation-evaluation"
+  ],
+  "world-causality": [
+    "diamond-consistency",
+    "waabi",
+    "foundation-evaluation"
+  ],
+  "world-persistence": [
+    "world-labs",
+    "general-intuition",
+    "spatial-dynamics"
+  ],
+  "world-evaluation": [
+    "dreamer-horizon",
+    "odyssey",
+    "simulation-validation"
+  ],
+  "twins-synchronization": [
+    "cognite",
+    "wandelbots",
+    "niche-integration"
+  ],
+  "twins-semantics": [
+    "cognite",
+    "niantic-spatial",
+    "niche-integration"
+  ],
+  "twins-credibility": [
+    "physicsx",
+    "duality-ai",
+    "simulation-validation"
+  ],
+  "spatial-geometry": [
+    "world-labs",
+    "xgrids",
+    "simulation-contact"
+  ],
+  "spatial-dynamics": [
+    "gracia",
+    "world-persistence",
+    "niantic-spatial"
+  ],
+  "spatial-scale": [
+    "playcanvas",
+    "xgrids",
+    "twins-synchronization"
+  ],
+  "act-vs-diffusion": [
+    "physical-intelligence",
+    "foundation-evaluation"
+  ],
+  "smolvla-shift": [
+    "generalist",
+    "foundation-evaluation"
+  ],
+  "recovery-data": [
+    "dyna",
+    "general-recovery"
+  ],
+  "randomization-frontier": [
+    "nvidia",
+    "simulation-transfer"
+  ],
+  "contact-gradient-audit": [
+    "physicsx",
+    "simulation-contact"
+  ],
+  "latency-trap": [
+    "wandelbots",
+    "simulation-transfer"
+  ],
+  "dreamer-horizon": [
+    "waabi",
+    "world-evaluation"
+  ],
+  "diamond-consistency": [
+    "odyssey",
+    "general-intuition",
+    "world-causality"
+  ],
+  "live-usd-twin": [
+    "cognite",
+    "wandelbots",
+    "twins-synchronization"
+  ],
+  "twin-identifiability": [
+    "physicsx",
+    "twins-credibility"
+  ],
+  "gsplat-efficiency": [
+    "playcanvas",
+    "jawset",
+    "spatial-scale"
+  ],
+  "splat-slam-loop": [
+    "niantic-spatial",
+    "spatial-geometry"
+  ],
+  "splat-collision-gap": [
+    "world-labs",
+    "xgrids",
+    "spatial-geometry"
+  ],
+  "articulated-splat": [
+    "figure",
+    "nvidia",
+    "general-contact"
+  ],
+  "laptop-splat": [
+    "playcanvas",
+    "jawset"
+  ],
+  "touch-under-occlusion": [
+    "sunday",
+    "general-contact"
+  ],
+  "world-labs": [
+    "niantic-spatial",
+    "playcanvas",
+    "splat-collision-gap",
+    "world-persistence"
+  ],
+  "dyna": [
+    "odyssey",
+    "general-recovery",
+    "recovery-data"
+  ],
+  "1x": [
+    "world-causality",
+    "odyssey",
+    "general-safety"
+  ],
+  "x-square": [
+    "world-causality",
+    "odyssey"
+  ],
+  "field-ai": [
+    "cognite",
+    "world-evaluation",
+    "niche-supervision"
+  ],
+  "gracia": [
+    "general-intuition",
+    "spatial-dynamics"
+  ]
+}

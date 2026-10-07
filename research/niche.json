@@ -1,0 +1,557 @@
+[
+  {
+    "id": "monumental",
+    "name": "Monumental",
+    "category": "niche",
+    "subcategory": "Construction & on-site fabrication",
+    "website": "https://www.monumental.co/",
+    "summary": "Autonomous bricklaying fleets that work as a construction subcontractor, delivering finished masonry on active building sites instead of requiring contractors to buy and manage robots.",
+    "thesis": "The interesting innovation is the combination of small, coordinated machines and an outcome-priced subcontracting business. Contractors buy completed wall; Monumental absorbs deployment and robot ownership complexity. That makes messy construction sites a product-development environment and ties progress to real work delivered.",
+    "technology": "Compact electric robots use sensors, computer vision, and small cranes to place brick and mortar. Atrium is the proprietary software stack spanning microcontrollers through the user interface. Multiple robots share construction work on active sites. The public material documents the integrated hardware/software approach, but does not disclose model architecture, training data, or an open implementation of the control stack.",
+    "problem": "Bricklaying is physically demanding, skilled work, and shortages can delay construction. Automating masonry must accommodate existing building methods, site access, variable materials, quality requirements, and the other trades sharing space.",
+    "stage": "Deployed",
+    "tags": [
+      "Construction",
+      "Multi-robot coordination",
+      "Outcome pricing",
+      "Mobile manipulation",
+      "Brownfield deployment"
+    ],
+    "related": [
+      "field-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Real work delivered",
+        "text": "Company reported walls for more than 100 homes and a fleet exceeding 100 robots in its July 18, 2026 update.",
+        "url": "https://www.monumental.so/blog/we-raised-32-million-to-put-more/"
+      },
+      {
+        "label": "Series B",
+        "text": "Tech.eu reported a $32 million Series B led by Khosla Ventures on July 15, 2026.",
+        "url": "https://tech.eu/2026/07/15/monumental-secures-32m-series-b-to-accelerate-construction-automation"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Monumental — company and deployment overview",
+        "url": "https://www.monumental.co/",
+        "type": "company",
+        "note": "Current company-reported deployment totals and operating regions."
+      },
+      {
+        "title": "Atrium — integrated construction software",
+        "url": "https://www.monumental.co/atrium/",
+        "type": "company",
+        "note": "Confirms software spans microcontroller to UI; detailed architecture is proprietary."
+      },
+      {
+        "title": "July 2026 funding and field-work update",
+        "url": "https://www.monumental.so/blog/we-raised-32-million-to-put-more/",
+        "type": "company",
+        "note": "Explains finished-wall pricing, robot fleet, and European work; US expansion was planned."
+      },
+      {
+        "title": "Tech.eu — $32m Series B",
+        "url": "https://tech.eu/2026/07/15/monumental-secures-32m-series-b-to-accelerate-construction-automation",
+        "type": "report",
+        "note": "Independent trade reporting of the funding announcement, not an independent productivity audit."
+      },
+      {
+        "title": "Reddit — masonry economics and adoption debate",
+        "url": "https://www.reddit.com/r/technology/comments/1ati9z9/dutch_startup_monumental_is_using_robots_to_lay/",
+        "type": "reddit",
+        "note": "February 2024 discussion of labor shortages, skilled work, regulation, and total construction costs; opinions are unverified."
+      }
+    ],
+    "caveat": "Completed brickwork does not mean a robot built the entire home. Fleet and project counts are company-reported; audited cost per wall, intervention rate, weather uptime, and contractor margins are not public. Housing prices also depend on land, approvals, and finance.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "mytra",
+    "name": "Mytra",
+    "category": "niche",
+    "subcategory": "Warehouse & material flow",
+    "website": "https://mytra.ai/",
+    "summary": "A three-dimensional robotic storage and material movement system whose bots travel within modular cells, handling heavy loads without dedicating warehouse space to aisles and elevators.",
+    "thesis": "Mytra attacks warehouse topology, not only robot navigation. Its modular cell structure makes material accessible in three dimensions, while routing software coordinates interchangeable bots. Heavy-load movement, storage, and buffering share one infrastructure, potentially removing bottlenecks and installation complexity created by multiple specialized automation systems.",
+    "technology": "Bots move through a modular storage structure in three dimensions. A patented helical drive uses discrete rolling elements against complementary tracks to translate vertically, reducing the sliding friction of a conventional worm drive while allowing engagement and disengagement. The company pairs this mechanical design with perception and multi-bot routing software. Its published specification lists a 3,000-pound lift capability.",
+    "problem": "Industrial material handling consumes labor and floor space. Conventional storage and movement systems often need aisles, fixed pathways, or elevators, and can be expensive to reconfigure when throughput or inventory changes.",
+    "stage": "Deployed",
+    "tags": [
+      "AS/RS",
+      "3D material flow",
+      "Heavy payloads",
+      "Fleet routing",
+      "Mechanical innovation"
+    ],
+    "related": [
+      "exotec"
+    ],
+    "evidence": [
+      {
+        "label": "Production and pilots",
+        "text": "January 15, 2026 announcement reports two pilot systems shipped in 2025, a new production site, and a $120 million Series C.",
+        "url": "https://mytra.ai/news/mytra-raises-120m-series-c"
+      },
+      {
+        "label": "Early economics",
+        "text": "Company reports early deployments reduced material-handling labor by 32% and improved storage density by 34%; these are not independently audited.",
+        "url": "https://mytra.ai/news/mytra-raises-120m-series-c"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Mytra — system specifications and animation",
+        "url": "https://mytra.ai/",
+        "type": "company",
+        "note": "Explains bots, software, and cells; headline throughput and reliability specifications are vendor claims."
+      },
+      {
+        "title": "Mytra — January 2026 Series C and deployments",
+        "url": "https://mytra.ai/news/mytra-raises-120m-series-c",
+        "type": "company",
+        "note": "Reports production progress, pilot shipments, customers by industry, and early deployment metrics."
+      },
+      {
+        "title": "Helical translation drive — US12345312B2",
+        "url": "https://patents.google.com/patent/US12345312B2/en",
+        "type": "paper",
+        "note": "Primary technical patent, granted July 1, 2025; explains rolling elements and rack engagement, not operating ROI."
+      },
+      {
+        "title": "Mytra — patent register",
+        "url": "https://mytra.ai/patents",
+        "type": "company",
+        "note": "Company register, updated January 30, 2026, confirms patent numbers assigned to its products."
+      },
+      {
+        "title": "Reddit — how does Mytra's climbing mechanism work?",
+        "url": "https://www.reddit.com/r/MechanicalEngineering/comments/1vs6loh/what_kind_of_mechanism_is_this/",
+        "type": "reddit",
+        "note": "August 2026 practitioner discussion led to the actual patent; commenters' mechanism guesses were checked against it."
+      }
+    ],
+    "caveat": "Early customer economics are vendor-reported and installation-specific. The advertised 99.999% uptime is not a published independently measured fleet statistic. Retrofitting structures, maintenance access, load variability, and congestion at larger scales remain important diligence questions.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "gecko-robotics",
+    "name": "Gecko Robotics",
+    "category": "niche",
+    "subcategory": "Industrial inspection & asset health",
+    "website": "https://www.geckorobotics.com/",
+    "summary": "Climbing inspection robots collect dense ultrasonic measurements of industrial assets, while Cantilever turns those measurements into digital models that guide maintenance, repairs, and capital spending.",
+    "thesis": "The robot is a means of acquiring scarce physical data. Dense measurements can reveal where steel has thinned, giving maintenance teams a better basis for repairs than sparse sampling. The economic wedge is avoiding unnecessary replacement and downtime across assets whose failures are enormously expensive.",
+    "technology": "Wall-climbing robots carry ultrasonic transducer arrays across asset surfaces. Reflected acoustic pulses become A-scans; sequences of measurements form B-scans that reveal thickness variation. Cantilever combines inspection data into asset models and maintenance workflows. A 2025 technical post explores reinforcement learning for selecting thickness measurements using signal-consistency rewards; it is an illustrative research approach, not evidence that the entire production stack uses that algorithm.",
+    "problem": "Corrosion and hidden defects can stop plants or sideline ships. Manual inspection often requires scaffolding, exposes workers to risk, and samples too sparsely to support confident repair planning across large assets.",
+    "stage": "Deployed",
+    "tags": [
+      "Ultrasonic sensing",
+      "Nondestructive testing",
+      "Asset digital twins",
+      "Infrastructure",
+      "Predictive maintenance"
+    ],
+    "related": [
+      "anybotics"
+    ],
+    "evidence": [
+      {
+        "label": "Navy contract ceiling",
+        "text": "March 2026 five-year IDIQ has a $71 million ceiling and covers an initial 18 Pacific Fleet ships; full spending is not guaranteed.",
+        "url": "https://www.stripes.com/branches/navy/2026-03-19/navy-ship-maintenance-ai-robotics-21114338.html"
+      },
+      {
+        "label": "Initial work scope",
+        "text": "Gecko says the initial award is worth up to $54 million over five years, within the broader contract vehicle.",
+        "url": "https://www.geckorobotics.com/news/navy-idiq"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Gecko — built-world robotics",
+        "url": "https://www.geckorobotics.com/",
+        "type": "company",
+        "note": "Company overview of robotic data acquisition and industrial/defense applications."
+      },
+      {
+        "title": "Cantilever — physical asset data platform",
+        "url": "https://www.geckorobotics.com/cantilever",
+        "type": "company",
+        "note": "Links measurements to asset health and organizational maintenance decisions."
+      },
+      {
+        "title": "Reinforcement learning for ultrasonic gridding",
+        "url": "https://www.geckorobotics.com/resources/blog/reinforcement-learning-for-rug",
+        "type": "company",
+        "note": "June 2, 2025 technical post; includes A/B scans, a DQN experiment, and explicit reward/generalization limitations."
+      },
+      {
+        "title": "Gecko — March 2026 Navy IDIQ",
+        "url": "https://www.geckorobotics.com/news/navy-idiq",
+        "type": "company",
+        "note": "Primary announcement; $71m is a ceiling, and claimed speed improvements are company assertions."
+      },
+      {
+        "title": "Stars and Stripes — Navy maintenance contract",
+        "url": "https://www.stripes.com/branches/navy/2026-03-19/navy-ship-maintenance-ai-robotics-21114338.html",
+        "type": "report",
+        "note": "Independent reporting explains the IDIQ ceiling and confirms initial ship scope; performance claims still originate with Gecko."
+      },
+      {
+        "title": "Reddit — boiler inspection time-lapse",
+        "url": "https://www.reddit.com/r/Wevolver/comments/vsmu49/pulverized_coal_boiler_robotic_inspection/",
+        "type": "reddit",
+        "note": "July 2022 demonstration context with a linked original video; promotional technical sharing, not independent validation."
+      }
+    ],
+    "caveat": "Detecting thinning is different from predicting failure. Inspection quality, material coverage, uncertainty calibration, and integration into repair decisions matter. Navy contract ceilings are not revenue, and the illustrative RL post does not establish a validated production measurement model.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "anybotics",
+    "name": "ANYbotics",
+    "category": "niche",
+    "subcategory": "Industrial inspection & asset health",
+    "website": "https://www.anybotics.com/",
+    "summary": "Industrial quadrupeds repeatedly inspect difficult facilities with visual, thermal, acoustic, and optional gas sensors, then connect findings to maintenance workflows through enterprise software and APIs.",
+    "thesis": "ANYbotics shows how legged robotics can become economically concrete: inspect equipment repeatedly in plants designed for humans, then feed observations into existing maintenance systems. Its differentiation includes industrial ruggedness, hazardous-area variants, autonomous docking, and integration that turns a sensor reading into a work order.",
+    "technology": "ANYmal combines lidar and depth cameras for navigation with a pan-tilt inspection payload carrying visual and thermal cameras and an ultrasonic microphone. Optional payloads add gas sensing and acoustic imaging. Autonomous missions and docking support repeated routes. ANYmal X targets explosive atmospheres. ETH-led perceptive-locomotion research provides technical lineage; the open ANYmal C model is a simplified research asset, not the proprietary commercial autonomy stack.",
+    "problem": "Industrial inspection routes involve stairs, hazardous areas, unreliable connectivity, and repetitive measurements. Missing a developing fault can cause downtime, but putting people in remote or dangerous sites is itself costly.",
+    "stage": "Deployed",
+    "tags": [
+      "Quadrupeds",
+      "Industrial sensing",
+      "Legged locomotion",
+      "Hazardous environments",
+      "Enterprise integration"
+    ],
+    "related": [
+      "gecko-robotics",
+      "field-ai"
+    ],
+    "evidence": [
+      {
+        "label": "Productive use",
+        "text": "SAP's March 30, 2026 partner feature reports more than 200 ANYmal robots in productive use worldwide, with site testing and field engineers.",
+        "url": "https://news.sap.com/2026/03/anybotics-industrial-inspections-into-business-insights/"
+      },
+      {
+        "label": "Named customer",
+        "text": "ANYbotics' Grace chemical-plant case reports a 1.5% uptime improvement; this is a customer case study, not a controlled fleet-wide result.",
+        "url": "https://www.anybotics.com/news/anymal-contributes-to-chemical-facility/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "ANYmal — industrial robot and sensor specifications",
+        "url": "https://www.anybotics.com/robotics/anymal/",
+        "type": "company",
+        "note": "Inspection payload, mobility, docking, battery duration, and operating specifications."
+      },
+      {
+        "title": "ANYmal — autonomy and inspection capabilities",
+        "url": "https://www.anybotics.com/robotics/robot-capabilities/",
+        "type": "company",
+        "note": "Explains SLAM, autonomous missions, and inspection measurements."
+      },
+      {
+        "title": "SAP — integrating inspections with maintenance workflows",
+        "url": "https://news.sap.com/2026/03/anybotics-industrial-inspections-into-business-insights/",
+        "type": "company",
+        "note": "Partner reporting, March 2026; unusually useful disclosure of deployment testing and on-site engineering."
+      },
+      {
+        "title": "Grace — chemical facility uptime case",
+        "url": "https://www.anybotics.com/news/anymal-contributes-to-chemical-facility/",
+        "type": "company",
+        "note": "Named deployment and reported uptime benefit; source is the robot vendor."
+      },
+      {
+        "title": "Learning robust perceptive locomotion in the wild",
+        "url": "https://leggedrobotics.github.io/rl-perceptiveloco/",
+        "type": "paper",
+        "note": "ETH-led Science Robotics 2022 research with ANYmal; commercial controller equivalence is not established."
+      },
+      {
+        "title": "ANYmal C — simplified robot description",
+        "url": "https://github.com/ANYbotics/anymal_c_simple_description",
+        "type": "code",
+        "note": "Official open robot model for research and simulation, not a complete deployable product."
+      }
+    ],
+    "caveat": "A rugged quadruped still needs validated routes, inspection configuration, customer training, and a maintenance workflow. SAP describes field engineers at each deployment. Research parkour demonstrations should not be mistaken for certified capabilities of every commercial robot.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "carbon-robotics",
+    "name": "Carbon Robotics",
+    "category": "niche",
+    "subcategory": "Precision agriculture",
+    "website": "https://carbonrobotics.com/",
+    "summary": "Vision-guided agricultural machines distinguish crops from weeds and burn weed growing points with lasers, replacing expensive hand labor and some herbicides in specialty crop production.",
+    "thesis": "This is a focused computer-vision problem with unusually tangible economic value: protect a valuable crop without contacting soil or spraying every plant. The installed fleet also generates labeled plant imagery. University field trials make Carbon especially useful to study because benefits and biological limitations are both documented.",
+    "technology": "High-resolution cameras and onboard neural models identify crop and weed plants. Directed lasers heat the weed's meristem, the growing point needed for regrowth. LaserWeeder G2 uses sealed, liquid-cooled modules with cameras, GPUs, and lasers; module counts vary by model. Carbon also offers tractor-autonomy kits with remote supervision. The tractor implement and its autonomy service are distinct parts of the system.",
+    "problem": "Specialty crops face costly hand weeding, labor shortages, and crop injury from herbicides. Precision treatment must identify tiny weeds near valuable plants quickly enough to meet agronomic timing and field-scale economics.",
+    "stage": "Deployed",
+    "tags": [
+      "Agriculture",
+      "Computer vision",
+      "Precision actuation",
+      "Laser weeding",
+      "Field data"
+    ],
+    "related": [],
+    "evidence": [
+      {
+        "label": "Independent field trials",
+        "text": "Cornell/Rutgers 2024 trials, published in 2025, found laser treatment competitive with tested herbicides in peas, spinach, and beets.",
+        "url": "https://scijournals.onlinelibrary.wiley.com/doi/10.1002/ps.8912"
+      },
+      {
+        "label": "Commercial footprint",
+        "text": "Current company website reports more than 200 growers across 15 countries; this deployment count is vendor-reported.",
+        "url": "https://carbonrobotics.com/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Carbon Robotics — products and grower footprint",
+        "url": "https://carbonrobotics.com/",
+        "type": "company",
+        "note": "Current products, remote supervision, and company-reported commercial adoption."
+      },
+      {
+        "title": "LaserWeeder G2 — modular engineering and economics",
+        "url": "https://carbonrobotics.com/laserweeder-g2",
+        "type": "company",
+        "note": "Hardware modules and crop use cases; advertised payback and cost reductions depend on conditions."
+      },
+      {
+        "title": "Laserweeding technology — vision and meristem targeting",
+        "url": "https://carbonrobotics.com/laserweeding-technology",
+        "type": "company",
+        "note": "Explains the sensing/actuation loop; some specifications refer to the earlier LaserWeeder generation."
+      },
+      {
+        "title": "Peer-reviewed laser vs. herbicide field trials",
+        "url": "https://scijournals.onlinelibrary.wiley.com/doi/10.1002/ps.8912",
+        "type": "paper",
+        "note": "Sosnoskie et al., Pest Management Science, 2025; three vegetable systems, not universal weed elimination."
+      },
+      {
+        "title": "Cornell — results and biological limitations",
+        "url": "https://news.cornell.edu/stories/2025/06/lasers-match-common-herbicides-zapping-east-coast-weeds",
+        "type": "report",
+        "note": "University reporting explains weaker control of grasses/purslane and the need for multiple passes."
+      },
+      {
+        "title": "Reddit — detection, throughput, and field constraints",
+        "url": "https://www.reddit.com/r/computervision/comments/1uvivxh/could_a_50_watt_laser_on_drone_be_a_possible/",
+        "type": "reddit",
+        "note": "July 2026 discussion compares drone ideas with commercial laser weeders; useful skepticism, not validated safety or efficacy guidance."
+      }
+    ],
+    "caveat": "Laser weeding is species-, growth-stage-, and throughput-dependent. Cornell found weaker control of purslane and annual grasses with hidden meristems, and trials needed multiple passes. Trials do not establish universal herbicide replacement or the advertised payback for every farm.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "exotec",
+    "name": "Exotec",
+    "category": "niche",
+    "subcategory": "Warehouse & material flow",
+    "website": "https://www.exotec.com/system/automated-warehouse-robots/",
+    "summary": "Rack-climbing warehouse robots retrieve containers in three dimensions, integrating storage, picking, buffering, and sequencing to make dense fulfillment systems adapt as demand and assortments change.",
+    "thesis": "Exotec is a strong counterexample to the idea that valuable robotics must be humanoid. Standardized rack-climbing robots, modular storage, and execution software solve an expensive logistics problem at deployed scale. The next generation adds outbound sequencing and buffering, attacking surrounding processes instead of optimizing retrieval alone.",
+    "technology": "Skypod robots drive beneath and climb within storage racks, transporting containers to workstations and exchangers. The published robot specification supports 30-kilogram loads and rack heights up to 14 meters. Warehouse software coordinates inventory and movements. Next-generation Skypod integrates each and case picking, in-rack buffering, outbound sequencing, and pick-and-pack, reducing dependence on separate downstream equipment.",
+    "problem": "Growing fulfillment volumes and shifting assortments strain labor-intensive warehouses. Operators need storage density, peak throughput, and accurate sequencing without repeatedly rebuilding fixed conveyor systems or separating every process into its own subsystem.",
+    "stage": "Deployed",
+    "tags": [
+      "AS/RS",
+      "Rack climbing",
+      "Goods-to-person",
+      "Warehouse execution",
+      "Sequencing"
+    ],
+    "related": [
+      "mytra"
+    ],
+    "evidence": [
+      {
+        "label": "Installed scale",
+        "text": "October 2025 company report lists more than 200 customer sites and 10,000 robots manufactured and deployed worldwide.",
+        "url": "https://www.exotec.com/news/exotec-celebrates-10-years-of-innovation-driving-a-new-era-of-warehouse-technology/"
+      },
+      {
+        "label": "Customer confirmation",
+        "text": "DSV's June 10, 2026 announcement describes roughly 100 Skypod robots and about 100,000 bins/trays at its Venlo logistics center.",
+        "url": "https://www.dsv.com/nl-nl/over-dsv/pers/nieuws/dsv-and-exotec-gaan-strategisch-partnerschap-aan-2704652"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Skypod — robot engineering and specifications",
+        "url": "https://www.exotec.com/system/automated-warehouse-robots/",
+        "type": "company",
+        "note": "Container loads, rack height, movement speeds, and optional peak-season robot rental."
+      },
+      {
+        "title": "Next-generation Skypod — integrated warehouse processes",
+        "url": "https://www.exotec.com/news/exotec-launches-next-generation-of-skypod-system-an-all-in-one-robot-based-as-rs-that-addresses-the-majority-of-processes-within-a-warehouse/",
+        "type": "company",
+        "note": "February 2025 launch; explains each/case picking, buffer, sequencing, and pick-and-pack."
+      },
+      {
+        "title": "Exotec — ten-year deployment update",
+        "url": "https://www.exotec.com/news/exotec-celebrates-10-years-of-innovation-driving-a-new-era-of-warehouse-technology/",
+        "type": "company",
+        "note": "October 2025 company-reported site, robot, and cycle counts."
+      },
+      {
+        "title": "DSV — Venlo deployment",
+        "url": "https://www.dsv.com/nl-nl/over-dsv/pers/nieuws/dsv-and-exotec-gaan-strategisch-partnerschap-aan-2704652",
+        "type": "company",
+        "note": "Direct customer announcement in Dutch; confirms deployed scale and warehouse use."
+      }
+    ],
+    "caveat": "A mature retrieval system does not imply arbitrary-item robotic manipulation. Many flows still involve human picking and customer-specific integration. Throughput depends on workstation configuration and order mix; installed fleet totals and headline performance gains are company-reported.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "cmr-surgical",
+    "name": "CMR Surgical",
+    "category": "niche",
+    "subcategory": "Surgical assistance",
+    "website": "https://cmrsurgical.com/",
+    "summary": "Modular, portable surgical robots give surgeons precise instrument control through an open console, with flexible operating-room layouts and digital records for evaluating usage and performance.",
+    "thesis": "CMR's architectural bet is that smaller, separate robotic units and an open console can make robotic surgery easier to integrate into existing hospitals. The valuable research question is hospital adoption economics and measured patient outcomes, with regulatory records and prospective studies providing stronger evidence than impressive demonstrations.",
+    "technology": "Versius is a surgeon-controlled minimally invasive surgical system with modular robotic units, an open console, and endoscopic instruments. Versius Plus adds integrated fluorescence visualization with vLimeLite and digital tools for procedure logbooks and operating-room utilization. Flexible placement supports different port arrangements. FDA documentation defines its cleared US use narrowly: adult cholecystectomy; other procedures and geographies have separate regulatory status.",
+    "problem": "Hospitals want to expand minimally invasive surgery but face equipment costs, dedicated-room constraints, staff training, and operating-room utilization pressure. Adoption must demonstrate appropriate safety and clinical outcomes alongside usable workflow economics.",
+    "stage": "Deployed",
+    "tags": [
+      "Surgical robotics",
+      "Teleoperation",
+      "Modular hardware",
+      "Clinical validation",
+      "Regulated systems"
+    ],
+    "related": [],
+    "evidence": [
+      {
+        "label": "Regulatory verification",
+        "text": "FDA record K252111 lists a December 16, 2025 substantial-equivalence decision for Versius Plus; the summary specifies adult cholecystectomy.",
+        "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K252111"
+      },
+      {
+        "label": "Clinical comparison",
+        "text": "COMPAR-P (March 2026) studied 150 patients across Da Vinci, Hugo, and Versius; this single-center study supports comparable short-term outcomes within its limitations.",
+        "url": "https://link.springer.com/article/10.1007/s11701-026-03260-5"
+      }
+    ],
+    "sources": [
+      {
+        "title": "CMR — Versius Plus clearance and design",
+        "url": "https://us.cmrsurgical.com/news/cmr-surgical-secures-510k-clearance-of-its-versius-plus-robotic-surgical-system",
+        "type": "company",
+        "note": "Official description of modular hardware, open console, fluorescence imaging, and digital tools; FDA establishes the actual clearance date."
+      },
+      {
+        "title": "FDA — Versius Plus K252111 regulatory record",
+        "url": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K252111",
+        "type": "report",
+        "note": "Primary regulator record confirms decision date and device identity."
+      },
+      {
+        "title": "FDA — clearance letter and technical summary",
+        "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf25/K252111.pdf",
+        "type": "report",
+        "note": "Primary seven-page regulatory document defines intended use and device characteristics."
+      },
+      {
+        "title": "COMPAR-P — three-platform prospective comparison",
+        "url": "https://link.springer.com/article/10.1007/s11701-026-03260-5",
+        "type": "paper",
+        "note": "Open-access March 2026 study; 50 patients per platform, two experienced surgeons, six-month follow-up, single center."
+      }
+    ],
+    "caveat": "Versius is robot-assisted, surgeon-controlled surgery. Clearance is specific to indications and geography, and pending submissions are not approvals. A 150-patient single-center comparison cannot establish universal superiority, long-term outcomes, or cost-effectiveness across hospitals.",
+    "reviewed": "2026-10-07"
+  },
+  {
+    "id": "field-ai",
+    "name": "FieldAI",
+    "category": "niche",
+    "subcategory": "Autonomy for changing industrial sites",
+    "website": "https://www.fieldai.com/",
+    "summary": "Hardware-agnostic autonomy software lets different mobile robots explore changing industrial environments, assess operational risk, and gather useful site data without relying on preconfigured navigation infrastructure.",
+    "thesis": "FieldAI is interesting because it tackles the recurring deployment cost of robotics: every changing site can invalidate a prepared map or route. Its commercial wedge is inspection and site documentation, while the broader ambition is one risk-aware autonomy layer across different embodiments and coordinated robot fleets.",
+    "technology": "Field Foundation Models are described as physics-first and risk-aware, with a Belief World Model reasoning under uncertainty. The EDGE platform runs onboard and aims to navigate without prior maps, GPS, or fixed paths. Public examples combine Spot mobility with inspections, 3D scans, progress monitoring, and alignment to BIM or digital-twin models. Detailed model internals and standardized comparative benchmarks remain unpublished in the reviewed sources.",
+    "problem": "Construction and industrial sites constantly change as people, materials, and equipment move. Reliable robot operation must tolerate uncertainty without expensive remapping, extensive site infrastructure, or unacceptable supervision and safety overhead.",
+    "stage": "Deployed",
+    "tags": [
+      "Risk-aware autonomy",
+      "World models",
+      "Industrial deployment",
+      "Multi-robot coordination",
+      "BIM",
+      "Edge inference"
+    ],
+    "related": [
+      "monumental",
+      "anybotics"
+    ],
+    "evidence": [
+      {
+        "label": "Named field deployment",
+        "text": "April 2, 2026 company case documents Big-D Construction's expanding use for site monitoring and integration with existing project models.",
+        "url": "https://www.fieldai.com/news/bringing-general-purpose-robots-to-every-construction-site-inside-big-d-constructions-expansion-with-fieldai"
+      },
+      {
+        "label": "Funding status",
+        "text": "$405m was announced in August 2025. October 2, 2026 reporting describes a $700m/$10b term sheet; closing was not established.",
+        "url": "https://siliconangle.com/2026/10/02/robotics-ai-developer-fieldai-reportedly-raising-700m-in-funding/"
+      }
+    ],
+    "sources": [
+      {
+        "title": "FieldAI — EDGE and Belief World Model",
+        "url": "https://www.fieldai.com/",
+        "type": "company",
+        "note": "Current product framing and proprietary world-model description; broad generalization assertions are company claims."
+      },
+      {
+        "title": "FieldAI — confirmed August 2025 financing",
+        "url": "https://www.fieldai.com/news/fieldai-announces-over-400m-in-funds-raised-to-advance-embodied-ai-at-scale",
+        "type": "company",
+        "note": "Announced $405m across two consecutive rounds; daily deployments and testing counts are vendor-reported."
+      },
+      {
+        "title": "Big-D Construction — expanding site use",
+        "url": "https://www.fieldai.com/news/bringing-general-purpose-robots-to-every-construction-site-inside-big-d-constructions-expansion-with-fieldai",
+        "type": "company",
+        "note": "Named customer testimony published by FieldAI; supports actual workflow use, not independent performance measurement."
+      },
+      {
+        "title": "Boston Dynamics — construction autonomy partnership",
+        "url": "https://www.fieldai.com/news/boston-dynamics-and-fieldai-partner-to-bring-robots-into-uncharted-and-dynamic-environments",
+        "type": "company",
+        "note": "March 2026 joint announcement details Spot integration, edge operation, mapping, and BIM-aligned documentation."
+      },
+      {
+        "title": "SiliconANGLE — October 2026 reported term sheet",
+        "url": "https://siliconangle.com/2026/10/02/robotics-ai-developer-fieldai-reportedly-raising-700m-in-funding/",
+        "type": "report",
+        "note": "Cites Business Insider; reported financing is a term sheet, while revenue plus contracts is not recognized revenue."
+      },
+      {
+        "title": "Reddit — latest financing discovery",
+        "url": "https://www.reddit.com/r/Humanoids/comments/1ww3iek/fieldai_raises_700_million_at_a_10_billion/",
+        "type": "reddit",
+        "note": "October 2, 2026 discovery post; its 'raised' wording overstates the underlying reported term-sheet status."
+      }
+    ],
+    "caveat": "Named deployments make this worth watching, but hardware-agnostic autonomy claims need task-specific benchmarks, intervention rates, and safety evidence. Public architecture descriptions are limited. Reported revenue combined with contracts is not revenue, and the October financing was not verified as closed.",
+    "reviewed": "2026-10-07"
+  }
+]
